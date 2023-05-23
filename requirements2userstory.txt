@@ -1,0 +1,60 @@
+1    Gesamtpreisübersicht
+1        Pro Kategorie
+1        Pro Service/Instanz
+2        Aufteilung
+2            Provisioning
+2            Monthly
+
+3    Angebotserstellung
+4        Konditionen
+4        SLA
+4        Rabatt
+3        Email / Kontakt zum jeweiligen Vertrieb
+
+5    Konkurrenz
+5        Vergleiche mit ähnlichen Services
+
+6    Kategorien
+7        Produkte
+8            ServicePlans
+8                Dauer
+8                Instances
+8                Preis pro Einheit pro Zeit
+9                Währungen
+10+11        Konfiguration
+11+12        Speicherung
+13            DB -> JSON im mount
+        
+14    Suche
+15        Nach Service / Kategorie filtern
+    
+16    Demoszenarien
+    
+17    Teilen
+17        Url
+17        Speichern
+
+18+19    Hostingmöglichkeiten
+18+19      Docker
+18+19		NodeJS
+18+19		mounts config and data directories (supports multi + single tenant)
+		
+
+20    Provisioned Hosting
+21        Multi Tenant
+22            Login 😢
+23            Konfiguration
+24                Weboberfläche
+
+25        Single Tenant 
+22            Login 😢
+23            Konfiguration
+24                Weboberfläche
+        
+18+19    Self Hosting
+-----        Kein login 😁
+18+19        Datei hinterlegen
+
+26    Rechtliches
+26       FAQ
+26       Impressum
