@@ -1,36 +1,13 @@
-image: openjdk:17
+image: eclipse-temurin:17-jre-jammy
 
 plantuml:
+  before_script:
+    - apt-get install --no-install-recommends -y \
+      graphviz \
+      fonts-dejavu
   script:
-    - echo $CI_PROJECT_PATH
-    - java -jar ./diagrams/bin/plantuml.jar ./diagrams
+    - java -jar ./diagrams/bin/plantuml.jar
   artifacts:
-    name: 'plant uml diagrams'
+    name: 'plantuml'
     paths:
       - diagrams/*.png
-
-# release:
-#   stage: release
-#   image: registry.gitlab.com/gitlab-org/release-cli:latest
-#   script:
-#     - echo 'running release_job'
-#     - echo 'Previous Job ID is printed below'
-#     - echo $GE_JOB_ID
-#   # Specifying that this job requires artifacts from the previous job to succeed
-#   needs:
-#     - job: plantuml
-#       artifacts: true
-#   release:
-#     name: 'Release Diagrams $CI_COMMIT_SHORT_SHA'
-#     description: 'Created using the release-cli'
-#     # tag_name is a mendatory field and can not be an empty string
-#     tag_name: '$CI_COMMIT_SHORT_SHA'
-#     assets:
-#       links:
-#         - name: 'Diagram exports'
-#           url: 'https://gitlab.com/codemancers/engineering/cw/-/jobs/${GE_JOB_ID}/artifacts/file/dist/cloudwatch-linux'
-#         - name: 'Mac executable'
-#           url: 'https://gitlab.com/codemancers/engineering/cw/-/jobs/${GE_JOB_ID}/artifacts/file/dist/cloudwatch-macos'
-#   only:
-#     # Can be removed if you want to trigger the pipeline for merge request or other branches
-#     - main
