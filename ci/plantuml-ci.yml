@@ -1,15 +1,11 @@
-image: eclipse-temurin:17-jre-jammy
+image: openjdk:17
 
 plantuml:
   before_script:
-    - add-apt-repository "deb http://archive.ubuntu.com/ubuntu $(lsb_release -sc) universe"
     - apt-get update 
     - apt-get install --no-install-recommends -y \
         graphviz \
-        fonts-dejavu \
-    - apt-get autoremove
-    - apt-get clean \
-    - rm -rf /var/lib/apt/lists/*
+        fonts-dejavu
   script:
     - java -jar ./diagrams/bin/plantuml.jar
   artifacts:
