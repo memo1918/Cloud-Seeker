@@ -1,9 +1,9 @@
-image: openjdk:17
+image: eclipse-temurin:17-jre-jammy
 
 plantuml:
   before_script:
     - apt-get update 
-    - apt-get install --no-install-recommends -y \
+    - apt-get install -y \
         graphviz \
         fonts-dejavu
   script:
