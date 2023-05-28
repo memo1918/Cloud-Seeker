@@ -2,6 +2,7 @@ image: openjdk:17
 
 plantuml:
   script:
+    - echo $CI_PROJECT_PATH
     - java -jar ./diagrams/bin/plantuml.jar ./diagrams
   artifacts:
     name: 'plant uml diagrams'
