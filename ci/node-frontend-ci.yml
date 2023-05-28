@@ -1,6 +1,7 @@
 image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
 
 stages:
+  - build
   - test
   
 cache:
@@ -14,3 +15,16 @@ test_frontend: # job
     - npm install # building
   script:
     - npm run test-ci # testing
+
+build_frontend: # job
+  stage: test
+  needs: ["test_frontend"] 
+  before_script:
+    - cd frontend
+    - npm install # building
+  script:
+    - npm run build # testing
+  artifacts:
+    paths:
+      - "frontend/dist/**"
+    expire_in: never
