@@ -3,6 +3,7 @@ image: ghcr.io/plantuml/plantuml
 plantuml:
   script:
     - java -jar /opt/plantuml.jar diagrams
+    - echo $CI_PROJECT_PATH
   artifacts:
     name: 'plant uml diagrams'
     paths:
