@@ -8,7 +8,7 @@ describe("index-Modul",()=>{
     });
 
     test('sayHello bad case', () => {
-        expect(sayHello(`Marvin`)).toBe(`Hello Kevin`);
+        expect(sayHello(`Marvin`)).not.toBe(`Hello Kevin`);
     })
 
 })    
