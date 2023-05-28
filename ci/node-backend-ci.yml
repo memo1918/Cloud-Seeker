@@ -1,0 +1,15 @@
+image: node:latest
+
+stages:
+  - test
+  
+cache:
+  paths:
+    - backend/node_modules/
+
+test_backend: # job
+  stage: test
+  before_script:
+    - npm install # building
+  script:
+    - npm test # testing

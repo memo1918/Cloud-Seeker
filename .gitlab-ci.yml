@@ -1,2 +1,2 @@
 include:
-  - /ci/plantuml-ci.yml
+  - /ci/node-backend-ci.yml
