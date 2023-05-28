@@ -1,4 +1,4 @@
 include:
   - /ci/node-backend-ci.yml
   - /ci/node-frontend-ci.yml
-  - /ci/plantuml.yml
+  - /ci/plantuml-ci.yml
