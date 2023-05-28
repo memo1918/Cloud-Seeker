@@ -14,3 +14,9 @@ test_backend: # job
     - npm install # building
   script:
     - npm test # testing
+  artifacts:
+    paths:
+      - junit.xml
+    reports:
+      junit: junit.xml
+    expire_in: never
