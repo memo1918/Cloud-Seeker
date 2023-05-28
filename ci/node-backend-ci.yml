@@ -18,5 +18,5 @@ test_backend: # job
     paths:
       - junit.xml
     reports:
-      junit: */junit.xml
+      junit: "**/junit.xml"
     expire_in: never
