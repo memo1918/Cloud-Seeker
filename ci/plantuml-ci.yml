@@ -1,0 +1,9 @@
+image: ghcr.io/plantuml/plantuml
+
+plantuml:
+  script:
+    - java -jar /opt/plantuml.jar diagrams
+  artifacts:
+    name: 'plant uml diagrams'
+    paths:
+      - diagrams/*.png
