@@ -2,7 +2,7 @@ image: ghcr.io/plantuml/plantuml
 
 plantuml:
   script:
-    - java -jar ./diagrams/bin/plantuml.jar
+    - java -jar ./diagrams/bin/plantuml.jar diagrams
   artifacts:
     name: 'plantuml'
     paths:
