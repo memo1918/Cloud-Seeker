@@ -1,11 +1,6 @@
 image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
 
 plantuml:
-  before_script:
-    - apt-get update 
-    - apt-get install -y \
-        graphviz \
-        fonts-dejavu
   script:
     - java -jar ./diagrams/bin/plantuml.jar
   artifacts:
