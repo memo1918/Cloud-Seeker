@@ -1,4 +1,4 @@
-image: node:latest
+image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
 
 stages:
   - test
