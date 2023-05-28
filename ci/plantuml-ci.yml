@@ -2,10 +2,14 @@ image: eclipse-temurin:17-jre-jammy
 
 plantuml:
   before_script:
-    - apt-get update
+    - add-apt-repository universe
+    - apt-get update 
     - apt-get install --no-install-recommends -y \
-      graphviz \
-      fonts-dejavu
+        graphviz \
+        fonts-dejavu \
+    - apt-get autoremove
+    - apt-get clean \
+    - rm -rf /var/lib/apt/lists/*
   script:
     - java -jar ./diagrams/bin/plantuml.jar
   artifacts:
