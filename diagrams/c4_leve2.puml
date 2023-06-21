@@ -1,0 +1,36 @@
+@startuml C4_Elements
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+
+title Cloud Price-Calculator
+
+Person(customer, "Potential Customer", "User who wants to compare pricing information for different cloud service configurations.")
+Person(employee, "Employee", "User who configures the price calculator and the prices.")
+
+System_Ext(hostingProvider, "Hosting Provider","Manages Infrastructure")
+System_Ext(webapp, "Web Application", "External application which provides the pricing calculator component to the user.")
+System_Ext(auth, "Authentication Provider", "Manages Permissions/User authentication [Firebase/Auth0/...]")
+
+
+Container_Boundary(priceCalculator, "Cloud Price-Calculator", "AngularJS / NodeJS"){
+    Container(web, "Angular Web Component", "AngularJS", "The UI of the price calculator can be embedded into a web-application")
+    Container(api, "API-Application", "NodeJS", "Supplies the cloud calculator with price informations capabilities (CRUD-Operations)")
+    ContainerDb(db, "DB", "MongoDB", "Stores data for the API-Application")
+
+    Rel_Back(web, api, "provides pricing information")
+    Rel(web, api, "updates pricing information")
+
+    Rel(api, db, "stores / updates pricing information")
+    Rel_Back(api, db, "provides pricing data")
+
+    Rel(api, auth, "check auth status of the user")
+}
+
+Rel(customer, auth, "logs in")
+Rel(employee, auth, "logs in")
+Rel(customer, web, "creates configurations and compare pricing using")
+Rel(employee, web, "updates price information / service mapping using")
+Rel(web, webapp, "embedded in")
+Rel_Up(api, hostingProvider, "runs on")
+Rel(webapp, hostingProvider, "runs on")
+@enduml

@@ -1,0 +1,18 @@
+@startuml C4_Elements
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+
+title Cloud Price-Calculator
+
+Person(customer, "Potential Customer", "User who wants to compare pricing information for different cloud service configurations.")
+Person(employee, "Employee", "User who configures the price calculator and the prices.")
+
+
+System_Ext(hostingProvider, "Hosting Provider", "Manages Infrastructure")
+System(priceCalculator, "Cloud Price-Calculator", "Provides capibilities to configure and compare pricing of clound applications")
+
+Rel(customer, priceCalculator, "creates configurations and views comparisons using")
+Rel(employee, priceCalculator, "updates price information / service mapping using")
+Rel_Back(hostingProvider, priceCalculator, "runs on")
+
+@enduml
