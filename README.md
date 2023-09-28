@@ -6,7 +6,7 @@
 
 ## Personas
 
-* [Adam Promotion](/personas/adam.md)
-* [Alex Aufmerksam](/personas/alex.md)
-* [Arnold Intern](/personas/arnold.md)
-* [Ming Maxprinzip](/personas/ming.md)
+* [Alex](/personas/alex.md)
+* [Max](/personas/max.md)
+* [Emily](/personas/emily.md)
+* [Sarah](/personas/sarah.md)
