@@ -5,7 +5,7 @@ cache:
   paths:
     - backend/node_modules/
 
-test:
+test_backend:
   stage: test
   needs: []
   before_script:
@@ -15,16 +15,15 @@ test:
     - npm test
   artifacts:
     when: on_success
-    expire_in: 30 days
     paths:
-      - build/
+      - backend/build/
     reports:
       junit: build/tests/junit.xml
       coverage_report:
         coverage_format: cobertura
         path: build/coverage/cobertura-coverage.xml
 
-build:
+build_backend:
   stage: build
   needs: []
   before_script:
@@ -36,9 +35,9 @@ build:
     when: on_success
     expire_in: 30 days
     paths:
-      - build/
+      - backend/build/
 
-formatting:
+formatting_backend:
   stage: test
   needs: []
   before_script:
