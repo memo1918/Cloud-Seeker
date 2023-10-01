@@ -1,3 +1,6 @@
-export function sayHello(name: string) {
-    return `Hello ${name}`;
-}
+// express setup
+import { startServer, stopServer } from "./express/setup";
+import { registerRoutes } from "./routing/register";
+
+registerRoutes();
+startServer();
