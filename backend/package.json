@@ -1,11 +1,45 @@
 {
-  "scripts": {
-    "test": "jest"
-  },
-  "devDependencies": {
-    "@jest/globals": "^29.5.0",
-    "jest": "^29.5.0",
-    "jest-junit": "^16.0.0",
-    "ts-jest": "^29.1.0"
-  }
+    "name": "api-framework",
+    "version": "1.0.0",
+    "description": "",
+    "main": "src/index.ts",
+    "scripts": {
+        "test": "jest",
+        "build": "webpack --config webpack.prod.config.js",
+        "start": "ts-node --project tsconfig.json src/index.ts",
+        "checkformat": "prettier . --check",
+        "format": "prettier . --write",
+        "clean": "rimraf build"
+    },
+    "devDependencies": {
+        "@jest/globals": "^29.5.0",
+        "@types/cors": "^2.8.10",
+        "@types/express": "^4.17.12",
+        "@types/joi": "^17.2.3",
+        "@types/jsonwebtoken": "^8.5.6",
+        "@types/node": "^15.14.0",
+        "@types/webpack-env": "^1.16.0",
+        "@types/ws": "^8.5.5",
+        "jest": "^29.5.0",
+        "jest-junit": "^16.0.0",
+        "prettier": "^3.0.0",
+        "rimraf": "^3.0.2",
+        "ts-jest": "^29.1.0",
+        "ts-loader": "^9.2.3",
+        "ts-node": "^10.9.1",
+        "typescript": "^4.3.5",
+        "webpack": "^5.88.2",
+        "webpack-cli": "^5.1.4",
+        "@jest-mock/express": "^2.0.2"
+    },
+    "dependencies": {
+        "bufferutil": "^4.0.7",
+        "cors": "^2.8.5",
+        "express": "^4.17.1",
+        "joi": "^17.5.0",
+        "jsonwebtoken": "^9.0.1",
+        "socket.io": "^4.4.1",
+        "utf-8-validate": "^5.0.10"
+    },
+    "license": "ISC"
 }
