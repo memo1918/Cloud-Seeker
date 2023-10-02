@@ -1,4 +1,4 @@
-import path from "path";
+import { path } from "../path";
 import { ValidMethod, validMethods } from "./methods";
 
 const NAME_REGEX = /^[a-z0-9_()]+$/gs;
@@ -38,6 +38,12 @@ const extractMethod = (segment: string) => {
 };
 
 export function getExpressRoute(rootPath: string, routePath: string): [ValidMethod, string] {
+    if (rootPath.includes("/")) {
+        // linux style path
+    } else {
+        // win style path
+    }
+
     const relativeRoutePath = path.relative(rootPath, routePath).toLowerCase();
     const relativeRoutePathSegments = relativeRoutePath.split(path.sep);
 
