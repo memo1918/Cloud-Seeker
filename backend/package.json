@@ -10,7 +10,7 @@
         "checkformat": "prettier . --check",
         "format": "prettier . --write",
         "clean": "rimraf build",
-        "containerise": "docker build -t cloudseeker/backend:latest ."
+        "containerise": "docker build -t cloud-seeker/backend:latest ."
     },
     "devDependencies": {
         "@jest/globals": "^29.5.0",
