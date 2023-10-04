@@ -1,0 +1,28 @@
+services:
+  cloudseeker-frontend:
+    image: cloud-seeker/frontend
+    build:
+      context: frontend
+
+  cloudseeker-backend:
+    image: cloud-seeker/backend
+    build:
+      context: backend
+    environment:
+      - DB_CONNECTION_STRING=mongodb:\\mongodb:27017
+
+  reverseproxy:
+    image: cloud-seeker/reverseproxy
+    build:
+      context: reverseproxy
+    ports:
+      - "8080:80"
+
+  mongodb:
+    # mongodb should only be needed for a cache on runtime and might not store any persistent data (tbd)
+    image: mongo
+    #    volumes: # need to figure out volumes
+    #      - ./mongodb:/data
+    # ports should only be open when debugging with MongoDB Compass
+    #    ports:
+    #      - "27017:27017"

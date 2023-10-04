@@ -9,7 +9,8 @@
         "start": "ts-node --project tsconfig.json src/index.ts",
         "checkformat": "prettier . --check",
         "format": "prettier . --write",
-        "clean": "rimraf build"
+        "clean": "rimraf build",
+        "containerise": "docker build -t cloud-seeker/backend:latest ."
     },
     "devDependencies": {
         "@jest/globals": "^29.5.0",

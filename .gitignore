@@ -2,3 +2,4 @@ node_modules
 junit.xml
 devcontainer/dbdata
 .idea
+**/.idea
