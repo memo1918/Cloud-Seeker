@@ -1,16 +1,20 @@
 services:
   cloudseeker-frontend:
     image: cloud-seeker/frontend
+    build:
+      context: frontend
 
   cloudseeker-backend:
     image: cloud-seeker/backend
+    build:
+      context: backend
     environment:
       - DB_CONNECTION_STRING=mongodb:\\mongodb:27017
 
   reverseproxy:
-    image: nginx
-    volumes:
-      - ./nginx:/etc/nginx
+    image: cloud-seeker/reverseproxy
+    build:
+      context: reverseproxy
     ports:
       - "8080:80"
 

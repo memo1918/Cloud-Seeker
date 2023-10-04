@@ -3,10 +3,22 @@
 
 FROM node:18.16.0-alpine
 
+EXPOSE 3000
+
+WORKDIR /app/build
+
+COPY . /app/build
+
+RUN npm install
+
+RUN npm run build
+
+RUN cp -a /app/build/build/webpack/. /app/deploy/
+
 WORKDIR /app
 
-COPY ./build/webpack/* /app
+RUN npx rimraf build
 
-EXPOSE 3000
+WORKDIR /app/deploy/
 
 ENTRYPOINT ["node", "index.mjs"]
