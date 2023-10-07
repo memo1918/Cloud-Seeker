@@ -1,0 +1,21 @@
+services:
+  cloudseeker-frontend:
+    image: cloud-seeker/frontend
+    build:
+      context: ../frontend
+
+  reverseproxy:
+    image: nginx
+    volumes:
+      - ./nginx-frontend:/etc/nginx/
+    ports:
+      - "8080:80"
+
+  mongodb:
+    # mongodb should only be needed for a cache on runtime and might not store any persistent data (tbd)
+    image: mongo
+    volumes:
+      - ./mongodb:/data
+    # ports should only be open when debugging with MongoDB Compass
+    ports:
+      - "27017:27017"

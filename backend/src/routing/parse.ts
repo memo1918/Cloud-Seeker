@@ -1,4 +1,4 @@
-import { path } from "../path";
+import path from "path";
 import { ValidMethod, validMethods } from "./methods";
 
 const NAME_REGEX = /^[a-z0-9_()]+$/gs;

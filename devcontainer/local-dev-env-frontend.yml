@@ -1,0 +1,19 @@
+services:
+  cloudseeker-backend:
+    image: cloud-seeker/backend
+    build:
+      context: ../backend
+    environment:
+      - DB_CONNECTION_STRING=mongodb:\\mongodb:27017
+
+  reverseproxy:
+    image: nginx
+    volumes:
+      - ./nginx-frontend:/etc/nginx/
+    ports:
+      - "8080:80"
+    extra_hosts:
+      host.docker.internal: host-gateway
+
+  mongodb:
+    image: mongo
