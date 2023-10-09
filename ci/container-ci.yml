@@ -3,8 +3,7 @@ containerise:
   #  needs: ["build_backend", "test_backend", "build_frontend", "test_frontend"]
 
   before_script:
-    - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/download-secure-files/-/raw/main/installer" | bash
-    - cp "${CI_PROJECT_DIR}/.secure/config.json" /kaniko/.docker/config.json
+    - ECHO "$KANIKO_CONFIG_JSON" > /kaniko/.docker/config.json
   script:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/backend"
