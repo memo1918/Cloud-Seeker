@@ -5,7 +5,7 @@ containerise:
   #  needs: ["build_backend", "test_backend", "build_frontend", "test_frontend"]
 
   before_script:
-    - ECHO "$KANIKO_CONFIG_JSON" > /kaniko/.docker/config.json
+    - echo "$KANIKO_CONFIG_JSON" > /kaniko/.docker/config.json
   script:
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}/backend"
