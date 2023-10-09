@@ -5,7 +5,7 @@ containerise:
     STORAGE_DRIVER: vfs
     BUILDAH_FORMAT: docker
   before_script:
-    - buildah login -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_TOKEN
+    - echo "$CI_REGISTRY_PASSWORD" | buildah login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin docker.io
   script:
     - buildah compose build
     - buildah compose push
