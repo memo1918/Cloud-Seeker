@@ -1,11 +1,11 @@
 containerise:
   image: quay.io/buildah/stable
-  needs: ["build_backend", "test_backend", "build_frontend", "test_frontend"]
+  #  needs: ["build_backend", "test_backend", "build_frontend", "test_frontend"]
   variables:
     STORAGE_DRIVER: vfs
     BUILDAH_FORMAT: docker
   before_script:
-    - buildah login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin $DOCKER_REGISTRY_TOKEN
+    - buildah login -u $DOCKER_REGISTRY_USERNAME -p $DOCKER_REGISTRY_TOKEN
   script:
     - buildah compose build
     - buildah compose push
