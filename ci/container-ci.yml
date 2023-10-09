@@ -1,7 +1,7 @@
 containerise:
   image:
-    name: gcr.io/kaniko-project/executor
-    entrypoint: ["/bin/bash"]
+    name: gcr.io/kaniko-project/executor:v1.14.0-debug
+    entrypoint: [""]
   #  needs: ["build_backend", "test_backend", "build_frontend", "test_frontend"]
 
   before_script:
