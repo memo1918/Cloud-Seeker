@@ -1,11 +1,12 @@
 containerise:
-  image: quay.io/buildah/stable
+  image: gcr.io/kaniko-project/executor
   #  needs: ["build_backend", "test_backend", "build_frontend", "test_frontend"]
-  variables:
-    STORAGE_DRIVER: vfs
-    BUILDAH_FORMAT: docker
+
   before_script:
-    - echo "$CI_REGISTRY_PASSWORD" | buildah login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin docker.io
+    - curl --silent "https://gitlab.com/gitlab-org/incubation-engineering/mobile-devops/download-secure-files/-/raw/main/installer" | bash
+    - cp "${CI_PROJECT_DIR}/.secure/config.json" /kaniko/.docker/config.json
   script:
-    - buildah compose build
-    - buildah compose push
+    - /kaniko/executor
+      --context "${CI_PROJECT_DIR}/backend"
+      --dockerfile "${CI_PROJECT_DIR}/backend/Dockerfile"
+      --destination "docker.io/cloudseeker/backend:latest"
