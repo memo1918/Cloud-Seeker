@@ -46,11 +46,3 @@ formatting_backend:
   script:
     - npm run checkformat
 
-#containerise_backend:
-#  image: docker
-#  needs: ["build_backend"]
-#  before_script:
-#    - docker info
-#    - cd backend
-#  script:
-#    - docker build -t cloudseeker/backend:latest .

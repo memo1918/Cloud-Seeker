@@ -15,4 +15,5 @@ RUN cp -a /app/build/dist/frontend/. /app/deploy
 RUN npx rimraf build
 
 FROM nginx
+
 COPY --from=0 /app/deploy/. /usr/share/nginx/html
