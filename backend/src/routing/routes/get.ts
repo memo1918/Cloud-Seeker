@@ -10,7 +10,7 @@ export default class Root implements Route {
         res.contentType("application/json")
             .json({
                 data: {
-                    helloWorld: "helloWorld"
+                    helloWorld: "test"
                 }
             })
             .end();
