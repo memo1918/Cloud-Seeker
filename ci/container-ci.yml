@@ -26,6 +26,7 @@ containerise-frontend:
       --context "${CI_PROJECT_DIR}/frontend"
       --dockerfile "${CI_PROJECT_DIR}/frontend/Dockerfile"
       --destination "docker.io/cloudseeker/frontend:$CI_COMMIT_TAG"
+      --destination "docker.io/cloudseeker/frontend:latest"
 
 containerise-backend:
   image:
@@ -41,6 +42,7 @@ containerise-backend:
       --context "${CI_PROJECT_DIR}/backend"
       --dockerfile "${CI_PROJECT_DIR}/backend/Dockerfile"
       --destination "docker.io/cloudseeker/backend:$CI_COMMIT_TAG"
+      --destination "docker.io/cloudseeker/backend:latest"
 
 containerise-reverseproxy:
   image:
@@ -56,3 +58,4 @@ containerise-reverseproxy:
       --context "${CI_PROJECT_DIR}/reverseproxy"
       --dockerfile "${CI_PROJECT_DIR}/reverseproxy/Dockerfile"
       --destination "docker.io/cloudseeker/reverseproxy:$CI_COMMIT_TAG"
+      --destination "docker.io/cloudseeker/reverseproxy:latest"
