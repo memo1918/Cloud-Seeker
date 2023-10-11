@@ -11,6 +11,8 @@
 # the following values above need to be replaced.
 # registry_url = "https://index.docker.io/v1/" for default docker registry or $CI_REGISTRY
 # base64_encoded_username_and_password = "username:password" base64 encoded
+stages:
+  - containerisation
 
 containerise-frontend:
   stage: "containerisation"

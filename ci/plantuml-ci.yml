@@ -1,6 +1,11 @@
 image: ghcr.io/plantuml/plantuml
 
+
+stages:
+  - build
+
 plantuml:
+  stage: build
   script:
     - java -jar ./diagrams/bin/plantuml.jar diagrams
   artifacts:

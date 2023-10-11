@@ -1,5 +1,9 @@
 image: node:18.16.0
 
+stages:
+  - build
+  - test
+
 # This folder is cached between builds
 cache:
   paths:
