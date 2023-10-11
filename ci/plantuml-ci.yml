@@ -1,9 +1,6 @@
 image: ghcr.io/plantuml/plantuml
 
 
-stages:
-  - build
-
 plantuml:
   stage: build
   script:

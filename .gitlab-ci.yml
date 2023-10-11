@@ -1,3 +1,9 @@
+stages:
+  - build
+  - test
+  - containerisation
+
+
 include:
   - /ci/node-backend-ci.yml
   - /ci/node-frontend-ci.yml

@@ -1,9 +1,5 @@
 image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
 
-stages:
-  - build
-  - test
-  
 cache:
   paths:
     - frontend/node_modules/
