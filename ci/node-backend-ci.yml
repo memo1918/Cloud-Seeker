@@ -1,12 +1,10 @@
-image: node:18.16.0
-
-
 # This folder is cached between builds
 cache:
   paths:
     - backend/node_modules/
 
 test_backend:
+  image: node:18.16.0
   stage: test
   needs: []
   before_script:
@@ -25,6 +23,7 @@ test_backend:
         path: build/coverage/cobertura-coverage.xml
 
 build_backend:
+  image: node:18.16.0
   stage: build
   needs: []
   before_script:
@@ -39,6 +38,7 @@ build_backend:
       - backend/build/
 
 formatting_backend:
+  image: node:18.16.0
   stage: test
   needs: []
   before_script:
