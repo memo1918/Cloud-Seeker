@@ -13,7 +13,7 @@
 # base64_encoded_username_and_password = "username:password" base64 encoded
 
 containerise-frontend:
-  stage: containerisation
+  stage: "containerisation"
   image:
     name: gcr.io/kaniko-project/executor:v1.14.0-debug
     entrypoint: [ "" ]
@@ -30,7 +30,7 @@ containerise-frontend:
       --destination "docker.io/cloudseeker/frontend:latest"
 
 containerise-backend:
-  stage: containerisation
+  stage: "containerisation"
   image:
     name: gcr.io/kaniko-project/executor:v1.14.0-debug
     entrypoint: [ "" ]
@@ -47,7 +47,7 @@ containerise-backend:
       --destination "docker.io/cloudseeker/backend:latest"
 
 containerise-reverseproxy:
-  stage: containerisation
+  stage: "containerisation"
   image:
     name: gcr.io/kaniko-project/executor:v1.14.0-debug
     entrypoint: [ "" ]
