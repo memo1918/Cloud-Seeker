@@ -17,7 +17,7 @@ test_frontend: # job
     - npm run test-ci # testing
 
 build_frontend: # job
-  stage: test
+  stage: build
   before_script:
     - cd frontend
     - npm install
