@@ -1,5 +1,5 @@
-import {afterEach, beforeEach, describe, expect, jest, test} from "@jest/globals";
-import {MongoMemoryServer} from "mongodb-memory-server";
+import { afterEach, beforeEach, describe, expect, test } from "@jest/globals";
+import { MongoMemoryServer } from "mongodb-memory-server";
 
 describe("mongodb setup", () => {
     let mongoServer: MongoMemoryServer;
@@ -10,11 +10,11 @@ describe("mongodb setup", () => {
     });
 
     afterEach(async () => {
-        await mongoServer.stop({force:true,doCleanup:true});
+        await mongoServer.stop({ force: true, doCleanup: true });
     });
 
     test("mongodb to connect and disconnect", async () => {
-        const {connectClient, disconnectClient} = require("../../src/db");
+        const { connectClient, disconnectClient } = require("../../src/db");
         await expect(connectClient()).resolves.not.toThrow();
         await expect(disconnectClient()).resolves.not.toThrow();
     });
