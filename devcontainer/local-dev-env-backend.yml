@@ -6,8 +6,10 @@ services:
 
   reverseproxy:
     image: nginx
+    extra_hosts:
+      host.docker.internal: host-gateway
     volumes:
-      - ./nginx-frontend:/etc/nginx/
+      - ./nginx-backend:/etc/nginx/
     ports:
       - "8080:80"
 
