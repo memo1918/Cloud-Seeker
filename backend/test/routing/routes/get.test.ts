@@ -1,11 +1,11 @@
-import { afterEach, beforeEach, describe, expect, jest, test } from "@jest/globals";
+import { afterEach, describe, expect, jest, test } from "@jest/globals";
 import { getMockReq, getMockRes } from "@jest-mock/express";
 import { FrameworkRequest } from "../../../src/routing/route";
 import Root from "../../../src/routing/routes/get";
 
 describe("root route", () => {
     const { res, next, clearMockRes } = getMockRes();
-    const errorMock = jest.fn((error) => {});
+    const errorMock = jest.fn(() => {});
 
     afterEach(() => {
         clearMockRes();
@@ -22,7 +22,7 @@ describe("root route", () => {
 
         expect(res.json).toHaveBeenCalledWith(
             expect.objectContaining({
-                data: { helloWorld: "test" }
+                data: { visitors: 0 }
             })
         );
 
