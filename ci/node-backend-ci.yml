@@ -4,7 +4,7 @@ cache:
     - backend/node_modules/
 
 test_backend:
-  image: node:18.16.0
+  image: node:18.16.0-bullseye
   stage: test
   needs: []
   before_script:
@@ -23,7 +23,7 @@ test_backend:
         path: build/coverage/cobertura-coverage.xml
 
 build_backend:
-  image: node:18.16.0
+  image: node:18.16.0-bullseye
   stage: build
   needs: []
   before_script:
@@ -38,7 +38,7 @@ build_backend:
       - backend/build/
 
 formatting_backend:
-  image: node:18.16.0
+  image: node:18.16.0-bullseye
   stage: test
   needs: []
   before_script:
