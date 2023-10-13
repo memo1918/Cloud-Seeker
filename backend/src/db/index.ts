@@ -41,9 +41,7 @@ function createMongoClient() {
                 }
             }
 
-            Promise.race([result, error])
-                .then(resolve)
-                .catch(reject);
+            Promise.race([result, error]).then(resolve).catch(reject);
         });
     });
 }
