@@ -7,12 +7,16 @@ describe("mongodb setup", () => {
     let mongoServer: MongoMemoryServer;
 
     beforeAll(async () => {
+        try{
         mongoServer = await MongoMemoryServer.create();
         setURI(mongoServer.getUri());
+        }catch(e){}
     });
 
     afterAll(async () => {
-        await mongoServer.stop({ force: true, doCleanup: true });
+        try{
+            await mongoServer.stop();
+        }catch (e) {}
     });
 
     test("mongodb to connect and disconnect", async () => {

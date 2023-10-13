@@ -41,10 +41,9 @@ function createMongoClient() {
                 }
             }
 
-            Promise.race([result, error]).then((value) => {
-                if (value instanceof MongoClient) resolve(value);
-                else reject(value);
-            });
+            Promise.race([result, error])
+                .then(resolve)
+                .catch(reject);
         });
     });
 }
