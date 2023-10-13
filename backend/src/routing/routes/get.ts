@@ -5,12 +5,12 @@ export default class Root implements Route {
     getFileName(): string {
         return __filename;
     }
-
+    public static counter = 0;
     handle(req: FrameworkRequest, res: FrameworkResponse, next: NextFunction, error: ErrorCallback): Promise<any> {
         res.contentType("application/json")
             .json({
                 data: {
-                    helloWorld: "test"
+                    visitors: Root.counter++
                 }
             })
             .end();
