@@ -3,3 +3,4 @@ junit.xml
 devcontainer/dbdata
 .idea
 **/.idea
+mongodb

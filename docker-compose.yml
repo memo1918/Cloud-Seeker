@@ -9,7 +9,7 @@ services:
     build:
       context: backend
     environment:
-      - DB_CONNECTION_STRING=mongodb:\\mongodb:27017
+      - DB_CONNECTION_STRING=mongodb://mongodb:27017
 
   reverseproxy:
     image: cloudseeker/reverseproxy
@@ -21,8 +21,8 @@ services:
   mongodb:
     # mongodb should only be needed for a cache on runtime and might not store any persistent data (tbd)
     image: mongo
-    #    volumes: # need to figure out volumes
-    #      - ./mongodb:/data
+    volumes: # need to figure out volumes
+      - ./mongodb:/data
     # ports should only be open when debugging with MongoDB Compass
     #    ports:
     #      - "27017:27017"
