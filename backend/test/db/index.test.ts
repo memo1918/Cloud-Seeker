@@ -27,7 +27,7 @@ describe("mongodb setup", () => {
     });
 
     test("mongodb to throw illegal uri error", async () => {
-        const { execQuery ,setURI} = require("../../src/db");
+        const { execQuery, setURI } = require("../../src/db");
         setURI(mongoServer.getUri().substring(1));
 
         const executePing = execQuery(async (_client: any) => {
@@ -38,7 +38,7 @@ describe("mongodb setup", () => {
         await expect(executePing).rejects.toBeInstanceOf(Error);
     });
     test("mongodb to throw missing uri error", async () => {
-        const { execQuery ,setURI} = require("../../src/db");
+        const { execQuery, setURI } = require("../../src/db");
         setURI("");
 
         const executePing = execQuery(async (_client: any) => {
@@ -49,7 +49,7 @@ describe("mongodb setup", () => {
         await expect(executePing).rejects.toBeInstanceOf(Error);
     });
     test("mongodb to throw timout error", async () => {
-        const { execQuery ,setURI} = require("../../src/db");
+        const { execQuery, setURI } = require("../../src/db");
         setURI("mongodb://127.0.0.1:80");
 
         const executePing = execQuery(async (_client: any) => {

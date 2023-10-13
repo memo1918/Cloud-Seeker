@@ -3,7 +3,7 @@ import { MongoClient, ServerApiVersion } from "mongodb";
 let uri = "";
 
 export function setURI(newUri: string) {
-    nextClient?.then(c => c.close()).catch(console.error);
+    nextClient?.then((c) => c.close()).catch(console.error);
     uri = newUri;
     nextClient = createMongoClient();
 }
@@ -17,15 +17,13 @@ function createMongoClient() {
         setImmediate(() => {
             try {
                 if (!uri) {
-                    if (resolveError)
-                        resolveError(new Error("[ENV] DB_CONNECTION_STRING missing"));
+                    if (resolveError) resolveError(new Error("[ENV] DB_CONNECTION_STRING missing"));
                 } else
                     new MongoClient(uri, {
                         serverApi: {
                             version: ServerApiVersion.v1,
                             strict: true,
                             deprecationErrors: true
-
                         },
                         connectTimeoutMS: 200,
                         serverSelectionTimeoutMS: 200
@@ -54,7 +52,6 @@ function createMongoClient() {
 let nextClient: Promise<MongoClient>;
 
 export async function execQuery(command: (client: MongoClient) => Promise<void>) {
-
     const clientPromise: Promise<MongoClient> = nextClient;
     nextClient = createMongoClient();
     let client: MongoClient | null = null;
