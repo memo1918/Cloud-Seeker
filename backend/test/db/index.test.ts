@@ -12,14 +12,12 @@ describe("mongodb setup", () => {
     });
 
     afterAll(async () => {
-        try {
-            await mongoServer.stop();
-        } catch (e) {}
+        await mongoServer.stop({ force: true, doCleanup: true });
     });
 
     test("mongodb to connect and disconnect", async () => {
-        const { execQuery, setupDB } = await import("../../src/db");
-        setupDB(mongoServer.getUri());
+        const { execQuery } = require("../../src/db");
+
         const executePing = execQuery(async (_client: any) => {
             const client: MongoClient = _client;
             await client.db("admin").command({ ping: 1 });
