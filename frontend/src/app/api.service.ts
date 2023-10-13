@@ -7,7 +7,7 @@ export class APIService {
   private baseLocation: string;
 
   constructor() {
-    this.baseLocation = `${window.location.protocol}//api.${window.location.host}/`;
+    this.baseLocation = `${window.location.protocol}//${window.location.host}/api`;
   }
 
 

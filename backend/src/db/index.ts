@@ -1,48 +1,69 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
-// Replace the placeholder with your Atlas connection string
-const uri: string = process.env["DB_CONNECTION_STRING"] ? process.env["DB_CONNECTION_STRING"] : "";
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
-const client = new MongoClient(uri, {
-    serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true
-    }
-});
-let connected = false;
 
-export function connectClient(timeout_ms = 2000) {
-    return new Promise<MongoClient>(async (resolve, reject) => {
-        let exit = false;
-        let timeout = setTimeout(() => {
-            reject(new Error("Could not connect to db."));
-            exit = true;
-        }, timeout_ms);
-        while (!connected || exit) {
-            await run();
-        }
-        if (!exit) {
-            clearTimeout(timeout);
-            resolve(client);
-        }
+let uri = "";
+
+export function setURI(newUri: string) {
+    nextClient?.then(c => c.close()).catch(console.error);
+    uri = newUri;
+    nextClient = createMongoClient();
+}
+
+function createMongoClient() {
+    return new Promise<MongoClient>((resolve, reject) => {
+        let resolveError: ((reason: any) => void) | null = null;
+        let resolveResult: ((client: MongoClient) => void) | null = null;
+        let result: Promise<MongoClient> = new Promise<MongoClient>((resolve) => (resolveResult = resolve));
+        let error: Promise<any> = new Promise<any>((reason) => (resolveError = reason));
+        setImmediate(() => {
+            try {
+                if (!uri) {
+                    if (resolveError)
+                        resolveError(new Error("[ENV] DB_CONNECTION_STRING missing"));
+                } else
+                    new MongoClient(uri, {
+                        serverApi: {
+                            version: ServerApiVersion.v1,
+                            strict: true,
+                            deprecationErrors: true
+
+                        },
+                        connectTimeoutMS: 200,
+                        serverSelectionTimeoutMS: 200
+                    })
+                        .connect()
+                        .then((_client) => {
+                            if (resolveResult) resolveResult(_client);
+                        })
+                        .catch((reason) => {
+                            if (resolveError) resolveError(reason);
+                        });
+            } catch (reason) {
+                if (resolveError) {
+                    resolveError(reason);
+                }
+            }
+
+            Promise.race([result, error]).then((value) => {
+                if (value instanceof MongoClient) resolve(value);
+                else reject(value);
+            });
+        });
     });
 }
 
-async function run() {
-    try {
-        // Connect the client to the server (optional starting in v4.7)
-        await client.connect();
-        // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
-        connected = true;
-    } catch (err) {
-        // Ensures that the client will close when you finish/error
-        await client.close();
-        connected = false;
-    }
-}
+let nextClient: Promise<MongoClient>;
 
-export async function disconnectClient() {
-    connected = false;
-    await client.close();
+export async function execQuery(command: (client: MongoClient) => Promise<void>) {
+
+    const clientPromise: Promise<MongoClient> = nextClient;
+    nextClient = createMongoClient();
+    let client: MongoClient | null = null;
+    try {
+        client = await clientPromise;
+        await command(client);
+    } finally {
+        if (client) {
+            await client.close();
+        }
+    }
 }
