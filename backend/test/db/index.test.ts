@@ -16,8 +16,8 @@ describe("mongodb setup", () => {
     });
 
     test("mongodb to connect and disconnect", async () => {
-        const { execQuery } = require("../../src/db");
-
+        const { execQuery, setupDB } = require("../../src/db");
+        setupDB(mongoServer.getUri());
         const executePing = execQuery(async (_client: any) => {
             const client: MongoClient = _client;
             await client.db("admin").command({ ping: 1 });
