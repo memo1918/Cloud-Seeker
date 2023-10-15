@@ -8,4 +8,4 @@ plantuml:
   artifacts:
     name: 'plantuml'
     paths:
-      - diagrams/*.png
+      - diagrams/**.png
