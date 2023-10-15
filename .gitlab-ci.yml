@@ -6,7 +6,7 @@ stages:
 
 
 include:
-#  - /ci/node-backend-ci.yml
-#  - /ci/node-frontend-ci.yml
-#  - /ci/container-ci.yml
+  - /ci/node-backend-ci.yml
+  - /ci/node-frontend-ci.yml
+  - /ci/container-ci.yml
   - /ci/plantuml-ci.yml
