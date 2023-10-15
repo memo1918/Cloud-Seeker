@@ -4,7 +4,7 @@ plantuml:
     entrypoint: [ "" ]
   stage: documentation
   script:
-    - java -jar /opt/plantuml.jar diagrams
+    - java -jar /opt/plantuml.jar -o ./diagrams/output ./diagrams/**.puml
   artifacts:
     name: 'plantuml'
     paths:
