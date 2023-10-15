@@ -1,0 +1,27 @@
+@startuml C4_Elements
+!include <C4/C4_Container>
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/nodejs.puml
+!include DEVICONS/mongodb.puml
+!include FONTAWESOME/users.puml
+
+title Cloud-Seeker-Architecture
+
+
+Person(user, "Customer", "People that want to compare cloud prices", $sprite="users")
+
+Boundary(c1, "Cloud-Seeker System"){
+    Container(spa, "SPA", "Angular", "UI of the price comparison application", $sprite="angular")
+    Container(api, "API", "Node.js", "Regularly updates pricing and category information/serve data to the user", $sprite="nodejs")
+    ContainerDb(db, "Database", "MongoDB", "Holds category, pricing information, and service mappings", $sprite="mongodb")
+}
+
+Rel(user, spa, "Accesses", "https")
+Rel(spa, api, "Uses", "https")
+Rel_R(api, db, "Reads/Writes")
+
+
+@enduml

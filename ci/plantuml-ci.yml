@@ -2,9 +2,10 @@ plantuml:
   image:
     name: ghcr.io/plantuml/plantuml
     entrypoint: [ "" ]
+    cmd: [ "" ]
   stage: build
   script:
-    - java -jar ./diagrams/bin/plantuml.jar diagrams
+    - java -jar /opt/plantuml.jar diagrams
   artifacts:
     name: 'plantuml'
     paths:

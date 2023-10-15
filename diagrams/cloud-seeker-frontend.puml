@@ -1,0 +1,41 @@
+@startuml C4_Elements
+!include <C4/C4_Container>
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/nodejs.puml
+!include DEVICONS/mongodb.puml
+!include FONTAWESOME/users.puml
+
+title Cloud-Seeker-Frontend
+
+
+Person(user, "Customer", "People that want to compare cloud prices", $sprite="users")
+
+Boundary(spa, "Cloud-Seeker SPA"){
+
+    Container(cart,"Shopping cart","angular component","Stores the current cloud configuration")
+    Container(category,"Category selection","angular component","Displays available service categories")
+    Container(instance,"Instance selection","angular component", "Displays different filters for selecting the desired service instance")
+    Container(search,"Service and Instance search","angular component", "Displays search results from Services and Instances")
+    Container(service, "Cloud-Seeker-Service", "angular service", "Proxy for API")
+}
+
+Container_Ext(api, "API", "Node.js", "Regularly updates pricing and category information/serve data to the user", $sprite="nodejs")
+
+Rel(instance, cart, "Add instance to cart")
+Rel_R(category, instance, "prefilter instances")
+
+Rel(user, cart, "view comparison")
+Rel(user, instance, "configure")
+Rel(user, category, "select")
+Rel_L(user, search, "full text search")
+
+
+Rel(category, service, "Queries available categories")
+Rel(instance, service, "Queries available instances by filter")
+Rel(search, service, "Search instances and services")
+Rel_L(cart, service, "Get price information")
+Rel(service, api, "State transfer")
+@enduml

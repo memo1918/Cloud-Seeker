@@ -1,0 +1,39 @@
+@startuml C4_Elements
+!include <C4/C4_Container>
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/code_badge.puml
+!include DEVICONS/mongodb.puml
+
+title Cloud-Seeker-Backend
+
+
+Container(service, "Cloud-Seeker-Service", "angular service", "Proxy for API")
+
+Boundary(api, "Cloud-Seeker API"){
+    Container(routing,"Route management","Express.js","Web server library for managing requests")
+    Container(dbwrapper,"Database access","MongoDB","DB-Driver for interacting with mongodb")
+    Container(business,"Business layer", "","Holds logic for performing multiple database operations")
+    Container(priceapi, "External pricing api´s from AWS,Azure...", "", "External pricing api wrapper")
+    Container(timer,"Timer service", "", "Managing regularly reoccurring events")
+    Container(mapping,"Mapping service", "","Matching service instances and their pricing")
+}
+
+
+Container_Ext(cloudprovider,"AWS,Azure... Price-API","price api","Pricing information about cloud specific provider")
+Container_Ext(mappingconfig,"Mapping configuration","service mappings","specific cloud mapping services", $sprite="code_badge")
+ContainerDb(db, "Database", "MongoDB", "Holds category, pricing information, and service mappings", $sprite="mongodb")
+
+
+Rel(service, routing,"Web request")
+Rel(dbwrapper,db,"Read/Write")
+Rel(routing, business,"Forwards request after validation")
+Rel(mapping,priceapi,"Query pricing for services")
+Rel(timer,mapping,"Regularly starts")
+Rel(business,dbwrapper,"perform transactions/queries/search")
+Rel_R(mapping,business,"update service descriptions")
+Rel(priceapi,cloudprovider,"Access")
+Rel_L(mapping,mappingconfig,"Uses")
+
+@enduml
