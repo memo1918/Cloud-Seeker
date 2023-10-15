@@ -1,0 +1,51 @@
+@startuml Cloud_Seeker_Hosting
+!include <C4/C4_Deployment>
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+
+!include DEVICONS/angular.puml
+!include DEVICONS/nodejs.puml
+!include DEVICONS/mongodb.puml
+!include DEVICONS/nginx.puml
+!include DEVICONS/code_badge.puml
+!include FONTAWESOME/lock.puml
+
+title Cloud-Seeker-Hosting / Cloud-Seeker-Networking
+
+Deployment_Node(comp, "Customer's computer", "Microsoft Windows or Apple macOS"){
+    Container(browser, "Web Browser", "Google Chrome, Mozilla Firefox, Apple Safari or Microsoft Edge")
+}
+
+Deployment_Node(vm, "VM") {
+
+    Deployment_Node(docker,"Docker") {
+
+        Boundary(network,"Docker Network"){
+
+            Deployment_Node(nginx_spa, "static file hosting", $sprite=nginx){
+                Container(spa, "SPA", "Angular", "UI of the price comparison application", $sprite=angular)
+            }
+
+            Deployment_Node(nginx_proxy, "reverse proxy", $sprite=nginx){
+                Container(reverse_ssl, "SSL", "", "", $sprite=lock)
+                Container(reverse_config, "proxy configuration", "", "", $sprite=code_badge)
+            }
+
+            Deployment_Node(api, "Node.js container", $sprite="nodejs") {
+                Container(backend,"API","Node.js","Serve + Update pricing information")
+            }
+
+            Deployment_Node(db, "Database container") {
+                Container(mongo, "Database","MongoDB","Store pricing information", $sprite="mongodb")
+            }
+        }
+    }
+}
+
+Rel(browser, reverse_ssl, "https://{domain}/*","HTTPS:443")
+Rel_R(reverse_ssl, reverse_config, "forward request")
+Rel_R(reverse_config, spa, "http://cloudseeker-frontend/", "HTTP")
+Rel(reverse_config, backend, "http://cloudseeker-backend:3000/api/*", "HTTP")
+Rel(backend, mongo, "mongodb://mongo:27017", "TCP/IP")
+@enduml
