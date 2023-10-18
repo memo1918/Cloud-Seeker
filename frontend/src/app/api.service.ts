@@ -7,9 +7,8 @@ export class APIService {
   private baseLocation: string;
 
   constructor() {
-    this.baseLocation = `${window.location.protocol}//${window.location.host}/api`;
+    this.baseLocation = `${window.location.origin}/api`;
   }
-
 
   public counter: number | null = null;
   public counterLoading: boolean = true;
@@ -24,5 +23,4 @@ export class APIService {
       console.error(err);
     }
   }
-
 }
