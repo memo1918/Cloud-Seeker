@@ -7,7 +7,7 @@ export class APIService {
   private baseLocation: string;
 
   constructor() {
-    this.baseLocation = `${window.location.origin}/api`;
+    this.baseLocation = `${window.location.protocol}//${window.location.host}/api`;
   }
 
   public counter: number | null = null;
@@ -15,7 +15,7 @@ export class APIService {
 
   public async loadCounter() {
     try {
-      let response = await fetch(`${this.baseLocation}`);
+      let response = await fetch(`${this.baseLocation}/`);
       let {data}: { "data": { "visitors": number } } = await response.json();
       this.counter = data.visitors;
       this.counterLoading = false;
