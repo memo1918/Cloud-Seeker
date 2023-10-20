@@ -7,7 +7,7 @@ import {APIService} from "./api.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'kai is gay';
+  title = 'frontend';
 
   constructor(public api: APIService) {
     this.api.loadCounter();
