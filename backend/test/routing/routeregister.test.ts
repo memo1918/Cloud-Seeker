@@ -150,7 +150,7 @@ describe("RouteRegister test cases", () => {
         const register = new RouteRegister(app, __dirname);
         expect(() => register.register({ default: DummyRoute_test_name_get })).not.toThrow();
         expect(appSpies.get).toBeCalled();
-        expect(appSpies.get).toBeCalledWith("/test/:name", expect.anything(),expect.anything());
+        expect(appSpies.get).toBeCalledWith("/test/:name", expect.anything(), expect.anything());
     });
 
     test("a request to call the handle of the route", async () => {
