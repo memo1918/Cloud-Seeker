@@ -1,9 +1,8 @@
 import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../../route";
 import { NextFunction } from "express";
-import { getVisits } from "../../../db/models/websitevisits";
-import { addCategories, getAllCategories, ICategory, removeCategories } from "../../../db/models/categories";
+import { getAllCategories, removeCategories } from "../../../db/models/categories";
 import { execQuery } from "../../../db";
-
+import joi from "joi";
 export default class Root implements Route {
     getFileName(): string {
         return __filename;
@@ -18,7 +17,15 @@ export default class Root implements Route {
         // data validation
         // execute sm fn in business layer
 
+        // const schema = joi.object({
+        //     categories: joi.array().items(joi.string())
+        // });
+
+        // const validationResult = await schema.validateAsync<{ categories: string[] }>(req.body);
+
         let body: { categories: string[] } = req.body;
+
+
 
         const categories = await execQuery(async (client)=> {
             await removeCategories(client, body.categories);

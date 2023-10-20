@@ -1,8 +1,4 @@
 # This folder is cached between builds
-cache:
-  paths:
-    - backend/node_modules/
-
 test_backend:
   image: node:18.16.0-bullseye
   stage: test

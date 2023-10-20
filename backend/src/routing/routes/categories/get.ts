@@ -16,14 +16,6 @@ export default class Root implements Route {
     ): Promise<any> {
         let categories = await execQuery<ICategory[]>(getAllCategories);
 
-        //
-        // await new Promise<number>((resolve, reject) => {
-        //     setTimeout(() => {
-        //         resolve(10);
-        //     }, 1000);
-        //     reject() // throw new Error(lkjhfkgh<l)
-        // });
-
         res.contentType("application/json")
             .json({
                 data: {
