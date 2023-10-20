@@ -1,5 +1,5 @@
 import { ErrorCallback, makeFramework, RouteClass } from "./route";
-import { Application, NextFunction, Request, Response } from "express";
+import { Application, NextFunction, Request, Response, json } from "express";
 import { getExpressRoute } from "./parse";
 
 export class RouteRegister {
@@ -23,7 +23,7 @@ export class RouteRegister {
         this.routes[routeExpressPath][method] = routeClass;
 
         // @ts-ignore
-        this.app[method](routeExpressPath, async (req: Request, res: Response, next: NextFunction) => {
+        this.app[method](routeExpressPath,json(), async (req: Request, res: Response, next: NextFunction) => {
             const framework = makeFramework(req, res, next);
             let current = new routeClass();
             const onError: ErrorCallback = (error) => {
