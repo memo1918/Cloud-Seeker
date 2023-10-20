@@ -10,7 +10,6 @@ export function setupDbIndexMock() {
             setupDB: jest.fn()
         };
 
-
         return {
             __esModule: true,
             ...mockedFunctions,

@@ -20,7 +20,7 @@ export default class Root implements Route {
 
         let body: { categories: { name: string }[] } = req.body;
 
-        const categories = await execQuery(async (client)=> {
+        const categories = await execQuery(async (client) => {
             await addCategories(client, body.categories);
             return await getAllCategories(client);
         });

@@ -7,7 +7,7 @@ export interface ICategory extends WithId<Document> {
 
 export async function getAllCategories(client: MongoClient) {
     let categoryCollection = await getCollection(client, "cloud-seeker", "categories");
-    return await categoryCollection.find({}).toArray() as ICategory[];
+    return (await categoryCollection.find({}).toArray()) as ICategory[];
 }
 
 export async function addCategories(client: MongoClient, category: Partial<ICategory>[]) {
@@ -18,8 +18,6 @@ export async function addCategories(client: MongoClient, category: Partial<ICate
 
 export async function removeCategories(client: MongoClient, categories: string[]) {
     let categoryCollection = await getCollection(client, "cloud-seeker", "categories");
-    await categoryCollection.deleteMany({ $or:[
-            ...categories.map(name=>({name}))
-        ] });
+    await categoryCollection.deleteMany({ $or: [...categories.map((name) => ({ name }))] });
     return;
 }

@@ -17,8 +17,7 @@ export function stopServer() {
     process.off("SIGTERM", stopServer);
 
     if (server.listening) {
-        server.close(() => {
-        });
+        server.close(() => {});
         console.log("server closed");
     }
 }
