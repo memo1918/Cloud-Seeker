@@ -6,8 +6,7 @@ export const app = express();
 export const server = createServer(app);
 
 export function startServer() {
-    app.use(express.text());
-    app.use(express.json());
+    app.all("*",express.json())
     // app.use(urlencoded());
     process.on("SIGTERM", stopServer);
     server.listen(3000, () => console.log(`server listening on port ${3000}.`));
