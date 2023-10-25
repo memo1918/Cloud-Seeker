@@ -3,10 +3,11 @@ import express from "express";
 import { createServer } from "http";
 
 export const app = express();
+app.all("*",express.json())
+
 export const server = createServer(app);
 
 export function startServer() {
-    app.all("*",express.json())
     // app.use(urlencoded());
     process.on("SIGTERM", stopServer);
     server.listen(3000, () => console.log(`server listening on port ${3000}.`));

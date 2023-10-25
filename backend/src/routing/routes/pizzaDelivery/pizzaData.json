@@ -1,0 +1,12 @@
+{
+    "PizzaMenu":{
+    "margherita": {"id": 1, "toppings":["sauce", "cheese"], "price": 6},
+    "ham": {"id": 2, "toppings":["sauce", "cheese", "ham"], "price": 7 },
+    "special": {"id": 3, "toppings":["sauce", "cheese", "ham", "salami", "olive"], "price": 9 },
+    "diabolo": {"id":4, "toppings":["sauce", "cheese", "salami", "peperoni"], "price": 8 },
+    "hawaii": {"id":5, "toppings":["sauce","cheese","ham","pineapple"], "price": 7.5 },
+
+    "size": { "small": 1, "medium": 1.5, "large": 2, "extraLarge": 2.5 }
+  }
+}
+
