@@ -13,6 +13,18 @@ interface Category {
     };
 }
 
+
+interface Instance {
+    name: string;
+    price: { value: number, unit: string; };
+    fields: {
+        [fieldName: string]: {
+            value: string | number;
+            unit: string;
+        };
+    };
+}
+
 // we expect the vendor to contain consistent provider specific units or mapping via the cloud provider api based on instance values
 // to construct a category we first need to know all instance members
 interface CategoryVendor {
