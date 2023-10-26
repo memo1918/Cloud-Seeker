@@ -1,0 +1,34 @@
+{
+  "_id": {
+    "$oid": "65391c65c7baf7b8959b94f8"
+  },
+  "productHash": "31f7afe6f95e94e4f4c4a43d0c6e2742",
+  "sku": "generated-n2d-highcpu-32",
+  "vendorName": "gcp",
+  "region": "asia-northeast2",
+  "service": "Compute Engine",
+  "productFamily": "Compute Instance",
+  "attributes": {
+    "machineType": "n2d-highcpu-32"
+  },
+  "prices": {
+    "31f7afe6f95e94e4f4c4a43d0c6e2742-66d0d770bee368b4f2a8f2f597eeb417": [
+      {
+        "USD": "1.281664",
+        "unit": "Hours",
+        "priceHash": "31f7afe6f95e94e4f4c4a43d0c6e2742-66d0d770bee368b4f2a8f2f597eeb417",
+        "purchaseOption": "on_demand",
+        "effectiveDateStart": "2023-09-18T20:24:42.650518Z"
+      }
+    ],
+    "31f7afe6f95e94e4f4c4a43d0c6e2742-cfd7416b9a6fd4bc337fd81f1974337e": [
+      {
+        "USD": "0.20176",
+        "unit": "Hours",
+        "priceHash": "31f7afe6f95e94e4f4c4a43d0c6e2742-cfd7416b9a6fd4bc337fd81f1974337e",
+        "purchaseOption": "preemptible",
+        "effectiveDateStart": "2023-09-18T20:24:42.650518Z"
+      }
+    ]
+  }
+}
