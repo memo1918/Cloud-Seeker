@@ -57,5 +57,6 @@ interface CategoryField {
 
 
 interface CartItem {
+    name: string;
 
 }
