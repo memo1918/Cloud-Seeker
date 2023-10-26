@@ -1,13 +1,13 @@
 import express from "express";
-// import { json, urlencoded } from "body-parser";
 import { createServer } from "http";
 
 export const app = express();
+app.use(express.json());
+app.use(express.text());
+app.use(express.urlencoded());
 export const server = createServer(app);
 
 export function startServer() {
-    app.all("*",express.json())
-    // app.use(urlencoded());
     process.on("SIGTERM", stopServer);
     server.listen(3000, () => console.log(`server listening on port ${3000}.`));
 }
