@@ -5,9 +5,7 @@ export interface IServices extends WithId<Document> {
     name: string;
 }
 
-
-export async function findServices(client: MongoClient, sku:string[])  {
+export async function findServices(client: MongoClient, sku: string[]) {
     let serviceCollection = await getCollection(client, "cloud-seeker", "services");
-    return serviceCollection.find({ sku: {$in: sku} }).toArray();
+    return serviceCollection.find({ sku: { $in: sku } }).toArray();
 }
-
