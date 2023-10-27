@@ -13,7 +13,7 @@ startServer();
 countLinesInCSV(path.resolve(".", "src", "dummyCsvImport.csv"))
     .then((lineCount) => {
         console.log(`Total lines in CSV: ${lineCount}`);
-        return (`Total lines in CSV: ${lineCount}`);
+        return `Total lines in CSV: ${lineCount}`;
     })
     .catch((error) => {
         console.error(`Error: ${error}`);

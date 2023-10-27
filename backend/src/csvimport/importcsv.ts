@@ -21,5 +21,3 @@ export function countLinesInCSV(csvFilePath: string): Promise<number> {
         lineCount++;
     });
 }
-
-
