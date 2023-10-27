@@ -2,7 +2,6 @@ import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../..
 import { NextFunction } from "express";
 import { getAllCategories, removeCategories } from "../../../db/models/categories";
 import { execQuery } from "../../../db";
-import joi from "joi";
 export default class Root implements Route {
     getFileName(): string {
         return __filename;
