@@ -10,4 +10,6 @@ export class MainComponent {
   panelOpenState: boolean =false;
   constructor(public shoppingCart:ShoppingCartService) {
   }
+
+  protected readonly keys = Object.keys;
 }
