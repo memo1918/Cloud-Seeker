@@ -1,4 +1,4 @@
-import { afterEach, beforeEach, describe, expect, jest, test } from "@jest/globals";
+import { beforeEach, describe, expect, jest, test } from "@jest/globals";
 jest.dontMock("../../src/routing/routeregister.ts");
 
 describe("register module", () => {
