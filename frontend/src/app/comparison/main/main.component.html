@@ -1,16 +1,86 @@
-<mat-accordion>
+<!--<mat-accordion>-->
+<!--  <mat-expansion-panel *ngFor="let cartItem of shoppingCart.items" hideToggle>-->
+<!--    <mat-expansion-panel-header>-->
+<!--      <mat-panel-title>-->
+<!--        {{cartItem.name}}-->
+<!--      </mat-panel-title>-->
+<!--    </mat-expansion-panel-header>-->
+<!--    <mat-panel-description>-->
+<!--      Quick description-->
+<!--    </mat-panel-description>-->
+<!--    <p *ngFor="let priceKey of keys(cartItem.price)">-->
+<!--      {{priceKey}}:{{cartItem.price[priceKey].value}} {{cartItem.price[priceKey].unit}}-->
+<!--    </p>-->
+<!--  </mat-expansion-panel>-->
+<!--</mat-accordion>-->
 
-  <mat-expansion-panel *ngFor="let cartItem of shoppingCart.items" hideToggle>
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        {{cartItem.name}}
-      </mat-panel-title>
-    </mat-expansion-panel-header>
-    <mat-panel-description>
-      This is a summary of the content
-    </mat-panel-description>
-    <p *ngFor="let priceKey of keys(cartItem.price)" >
-      {{priceKey}}:{{cartItem.price[priceKey].value}} {{cartItem.price[priceKey].unit}}
-    </p>
-  </mat-expansion-panel>
-</mat-accordion>
+<!--<mat-accordion>-->
+<!--  <mat-expansion-panel *ngFor="let cartItem of shoppingCart.items" hideToggle>-->
+<!--    <mat-expansion-panel-header>-->
+<!--      <mat-panel-title>-->
+<!--        {{cartItem.name}}-->
+<!--        <table *ngFor="let priceKey of keys(cartItem.price)">-->
+<!--          <td>-->
+<!--            {{cartItem.price[priceKey].value}}-->
+<!--          </td>-->
+<!--          <td>-->
+<!--            {{cartItem.price[priceKey].unit}}-->
+<!--          </td>-->
+<!--        </table>-->
+<!--      </mat-panel-title>-->
+<!--    </mat-expansion-panel-header>-->
+<!--    <mat-panel-description>-->
+
+<!--      Quick description-->
+<!--    </mat-panel-description>-->
+<!--    <table *ngFor="let priceKey of keys(cartItem.price)">-->
+<!--      <td>-->
+<!--        {{cartItem.price[priceKey].value}}-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        {{cartItem.price[priceKey].unit}}-->
+<!--      </td>-->
+<!--      <td>-->
+<!--        {{cartItem.fields}}-->
+<!--      </td>-->
+<!--    </table>-->
+<!--  </mat-expansion-panel>-->
+<!--</mat-accordion>-->
+
+<table>
+  <tr>    <td>Instance Name</td>    <td>aws</td>    <td>gcp</td>    <td>azure</td>  </tr>
+  <tr *ngFor="let cartItem of shoppingCart.items">
+    <td>
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{cartItem.name}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+            Quick description
+          </mat-panel-description>
+          <p>
+            CPU: {{cartItem.fields["cpu"].unit}} {{cartItem.fields["cpu"].value}}
+          </p>
+          <p>
+            Memory: {{cartItem.fields["memory"].value}} {{cartItem.fields["memory"].unit}}
+          </p>
+          <p>
+            Storage: {{cartItem.fields["storage"].value}} {{cartItem.fields["storage"].unit}}
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </td>
+    <td>
+      {{cartItem.price["aws"].value}} {{cartItem.price["aws"].unit}}
+    </td>
+    <td>
+      {{cartItem.price["gcp"].value}} {{cartItem.price["gcp"].unit}}
+    </td>
+    <td>
+      {{cartItem.price["azure"].value}} {{cartItem.price["azure"].unit}}
+    </td>
+  </tr>
+</table>
