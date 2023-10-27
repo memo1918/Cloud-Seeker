@@ -1,0 +1,14 @@
+<div>
+    <mat-tab-group dynamicHeight="true" mat-stretch-tabs="false">
+        <mat-tab *ngFor="let category of this.categoryService.api.categories" mat-align-tabs="left">
+            <ng-template mat-tab-label>
+                <div class="container">
+                    <mat-icon aria-hidden="false" aria-label="category icon" fontIcon="{{category.icon}}"></mat-icon>
+                    <div>{{category.name}}</div>
+                </div>
+                <div>{{category.description}}</div>
+            </ng-template>
+            <div>{{category.fields}}</div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

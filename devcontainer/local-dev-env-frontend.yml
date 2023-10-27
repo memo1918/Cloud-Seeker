@@ -17,3 +17,8 @@ services:
 
   mongodb:
     image: mongo
+    volumes:
+      - ./mongodb:/data
+    # ports should only be open when debugging with MongoDB Compass
+    ports:
+      - "27017:27017"

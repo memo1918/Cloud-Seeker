@@ -1,23 +1,22 @@
-import { getCollection } from "../schema";
-import { Document, MongoClient, WithId } from "mongodb";
+import {getCollection} from "../schema";
+import {MongoClient} from "mongodb";
 
-export interface ICategory extends WithId<Document> {
+export interface ICategory {
     name: string;
+    icon: string;
+    description: string;
+    fields: {
+        name: string;
+        options: (string | number)[];
+        unit: string;
+    }[];
 }
 
-export async function getAllCategories(client: MongoClient) {
+export async function _getAllCategories(client: MongoClient) {
     let categoryCollection = await getCollection(client, "cloud-seeker", "categories");
-    return (await categoryCollection.find({}).toArray()) as ICategory[];
-}
-
-export async function addCategories(client: MongoClient, category: Partial<ICategory>[]) {
-    let categoryCollection = await getCollection(client, "cloud-seeker", "categories");
-    await categoryCollection.insertMany(category);
-    return;
-}
-
-export async function removeCategories(client: MongoClient, categories: string[]) {
-    let categoryCollection = await getCollection(client, "cloud-seeker", "categories");
-    await categoryCollection.deleteMany({ $or: [...categories.map((name) => ({ name }))] });
-    return;
+    return (await categoryCollection
+        .find({})
+        .map(doc =>
+            ({name: doc.name, icon: doc.icon, description: doc.description, fields: doc.fields}))
+        .toArray()) as ICategory[];
 }
