@@ -20,13 +20,13 @@ export class ReadCSV {
         });
     }
 
-    onNewLine(line: any) {
+    async onNewLine(line: any) {
         this.filestream?.pause();
         //@ts-ignore
         this.onResolve(line);
     }
 
-    readLine(): Promise<any> {
+    async readLine(): Promise<any> {
         return new Promise<any>((resolve, reject) => {
             this.onResolve = resolve;
             this.onReject = reject;

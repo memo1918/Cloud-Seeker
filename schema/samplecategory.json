@@ -8,15 +8,19 @@
       "name": "aws",
       "columns": {
         "cores": {
-          "path": "attributes.vcpu",
-          "conversion": {}
-        },
-        "storage": {
-          "path": "attributes.storage",
+          "path": ["attributes","vcpu"],
           "conversion": {}
         },
         "memory": {
-          "path": "attributes.memory",
+          "path": ["attributes","memory"],
+          "conversion": {}
+        },
+        "regionCode": {
+          "path": ["attributes","regionCode"],
+          "conversion": {}
+        },
+        "storage": {
+          "path": ["attributes","storage"],
           "conversion": {}
         }
       }
@@ -41,31 +45,36 @@
       "unit": "Cores"
     },
     {
-      "name": "storage",
+      "name": "regionCode",
+      "options": [],
+      "unit": "text"
+    },
+    {
+      "name": "memory",
       "options": [],
       "unit": "GB"
     },
     {
-      "name": "memory",
+      "name": "storage",
       "options": [],
       "unit": "GB"
     }
   ],
   "discovery": {
     "aws": {
-      "key": "productFamily",
+      "key": ["productFamily"],
       "value": [
         "Compute Instance"
       ]
     },
     "gcp": {
-      "key": "productFamily",
+      "key": ["productFamily"],
       "value": [
         "Compute Instance"
       ]
     },
     "azure": {
-      "key": "productFamily",
+      "key": ["productFamily"],
       "value": [
         "Compute"
       ]

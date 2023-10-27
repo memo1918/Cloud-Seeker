@@ -10,21 +10,8 @@ export interface Category {
     discovery: {
         // defines the mapping of the instance to a category like: does instance x meet vendor specific requirements to be part of this category?
         [vendor: string]: {
-            key: string; // maps a json path like "attributes.serviceType",
+            key: string[]; // maps a json path like "attributes.serviceType",
             value: string[]; // possible options for this field like ["Storage","Database","storage"...]
-        };
-    };
-}
-
-interface InstanceComparison {
-    name: string;
-    price: {
-        [vendor: string]: { value: number; unit: string };
-    };
-    fields: {
-        [fieldName: string]: {
-            value: string | number;
-            unit: string;
         };
     };
 }
@@ -36,7 +23,7 @@ export interface CategoryVendor {
     columns: {
         [columnname: string]: {
             // columnname = CategoryField.name -> when we want to map that service we can get that field and convert it to the target unit and add it to the options
-            path: string; // maps a json path like {description:"attributes.description"} to resolve property names recursive and dynamic for each vendor
+            path: string[]; // maps a json path like {description:"attributes.description"} to resolve property names recursive and dynamic for each vendor
             conversion: any; // additional conversion information for the cloud specific api like math function or smthing else
         };
     };
@@ -56,6 +43,20 @@ export interface CategoryField {
 // the fill out the options in the category field
 // in the frontend we only need: name, icon, description, fields
 // after this is done continue with te instance mapping part
+
+export interface InstanceComparison {
+    name: string;
+    price: {
+        [vendor: string]: { value: number | string; unit: string };
+    };
+    fields: {
+        [fieldName: string]: {
+            value: string | number;
+            unit: string;
+        };
+    };
+    skus: string[];
+}
 
 export interface Instance extends WithId<Document> {
     productHash: string;

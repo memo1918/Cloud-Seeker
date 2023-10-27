@@ -1,8 +1,10 @@
 import { getCollection } from "../schema";
 import { Document, MongoClient, WithId } from "mongodb";
 
-export interface IServices extends WithId<Document> {
-    name: string;
+export interface IService extends WithId<Document> {
+    productHash: string;
+    sku: string;
+    vendorName: string;
 }
 
 export async function findServices(client: MongoClient, sku: string[]) {
