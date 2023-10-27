@@ -8,8 +8,7 @@ export class ReadCSV {
     private onReject?: (data: any) => void;
 
     constructor(private csvFilePath: string) {
-        this.filestream = fs.createReadStream(this.csvFilePath).pipe(csv());
-        this.filestream.pause();
+        this.filestream = fs.createReadStream(this.csvFilePath).pause().pipe(csv());
         this.filestream.on("data", this.onNewLine.bind(this));
         this.filestream.on("close", () => {
             console.log(`CSV file reading complete.`);
@@ -20,14 +19,22 @@ export class ReadCSV {
         });
     }
 
-    async onNewLine(line: any) {
+    onNewLine(data: { [key: string]: string }) {
         this.filestream?.pause();
-        //@ts-ignore
-        this.onResolve(line);
+        let key = Object.keys(data)[0];
+        let value = data[key];
+        if (this.onResolve) {
+            this.onResolve(value.split(";"));
+            this.onResolve = undefined;
+            this.onReject = undefined;
+        }
     }
 
-    async readLine(): Promise<any> {
-        return new Promise<any>((resolve, reject) => {
+    readLine(): Promise<string[]> {
+        if (this.onResolve || this.onReject) {
+            throw new Error("another request is currently fulfilled");
+        }
+        return new Promise<string[]>((resolve, reject) => {
             this.onResolve = resolve;
             this.onReject = reject;
             this.filestream?.resume();
