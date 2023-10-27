@@ -19,8 +19,8 @@ countLinesInCSV(path.resolve(".", "src", "dummyCsvImport.csv"))
         console.error(`Error: ${error}`);
     });
 
-const csvReader = new ReadCSV(path.resolve(".", "src", "dummyCsvImport.csv"))
+const csvReader = new ReadCSV(path.resolve(".", "src", "dummyCsvImport.csv"));
 
-const line1 = csvReader.readLine().then((data)=>{
+const line1 = csvReader.readLine().then((data) => {
     console.log(data);
 });
