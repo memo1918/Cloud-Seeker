@@ -22,7 +22,7 @@ services:
     # mongodb should only be needed for a cache on runtime and might not store any persistent data (tbd)
     image: mongo
     #    volumes: # need to figure out volumes
-    #      - ./mongodb:/data
+    #      - ./mongodb:/data/db
     # ports should only be open when debugging with MongoDB Compass
     #    ports:
     #      - "27017:27017"
