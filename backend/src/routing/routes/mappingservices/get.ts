@@ -1,6 +1,6 @@
 import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../../route";
 import { NextFunction } from "express";
-import { MappingService } from "../../../mappingservice/mappingService";
+import { MappingService } from "../../../mappingservice/mappingservice";
 
 export default class Root implements Route {
     getFileName(): string {
@@ -15,7 +15,7 @@ export default class Root implements Route {
     ): Promise<any> {
         let MS = new MappingService();
 
-        await MS.forEachSku();
+        await MS.start();
 
         res.contentType("application/json").json({}).end();
 
