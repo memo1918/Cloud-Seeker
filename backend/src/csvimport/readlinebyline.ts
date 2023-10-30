@@ -11,7 +11,7 @@ export class ReadCSV {
         this.filestream = fs.createReadStream(this.csvFilePath).pause().pipe(csv());
         this.filestream.on("data", this.onNewLine.bind(this));
         this.filestream.on("close", () => {
-            console.log(`CSV file reading complete.`);
+            //console.log(`CSV file reading complete.`);
         });
 
         this.filestream.on("error", (error: Error) => {

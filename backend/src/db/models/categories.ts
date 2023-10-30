@@ -16,6 +16,12 @@ export async function addCategories(client: MongoClient, category: Partial<ICate
     return;
 }
 
+export async function updateCategories(client: MongoClient, category: Partial<ICategory>) {
+    let categoryCollection = await getCollection(client, "cloud-seeker", "categories");
+    await categoryCollection.updateOne({ name: category.name }, category, { upsert: true });
+    return;
+}
+
 export async function removeCategories(client: MongoClient, categories: string[]) {
     let categoryCollection = await getCollection(client, "cloud-seeker", "categories");
     await categoryCollection.deleteMany({ $or: [...categories.map((name) => ({ name }))] });
