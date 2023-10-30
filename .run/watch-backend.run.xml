@@ -6,7 +6,10 @@
       <script value="watch" />
     </scripts>
     <node-interpreter value="project" />
-    <envs />
+      <envs>
+          <env name="DB_CONNECTION_STRING" value="mongodb://mongodb:27017"/>
+          <env name="INFRACOST_API_KEY" value="ico-L0D8qyYQ38KgwpHmuujgj4AxWtfZR9CD"/>
+      </envs>
     <method v="2" />
   </configuration>
 </component>
