@@ -8,15 +8,13 @@ describe("website visite module", () => {
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
-        } catch (e) {
-        }
+        } catch (e) {}
     });
 
     afterEach(async () => {
         try {
             await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {
-        }
+        } catch (e) {}
     });
 
     test("creating and incrementing unvisited element", async () => {
