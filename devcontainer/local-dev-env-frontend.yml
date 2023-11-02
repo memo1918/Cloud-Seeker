@@ -5,6 +5,7 @@ services:
       context: ../backend
     environment:
       - DB_CONNECTION_STRING=mongodb://mongodb:27017
+      - INFRACOST_API_KEY=ico-L0D8qyYQ38KgwpHmuujgj4AxWtfZR9CD
 
   reverseproxy:
     image: nginx
