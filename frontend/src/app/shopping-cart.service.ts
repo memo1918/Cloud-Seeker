@@ -27,6 +27,130 @@ export class ShoppingCartService {
         "memory": {value: 16, unit: "GiB"},
         "storage": {value: 200, unit: " NVMe SSD"}
       }
+    },
+    {
+      "name": "Instancename5",
+      "price": {
+        "aws": {
+          "value": 0.932,
+          "unit": "USD"
+        },
+        "gcp": {
+          "value": 0.614,
+          "unit": "USD"
+        },
+        "azure": {
+          "value": 0.759,
+          "unit": "USD"
+        }
+      },
+      "fields": {
+        "cpu": {
+          "value": 16,
+          "unit": "cors"
+        },
+        "memory": {
+          "value": 32,
+          "unit": "GiB"
+        },
+        "storage": {
+          "value": 300,
+          "unit": "NVMe SSD"
+        }
+      }
+    }
+    , {
+      "name": "Instancename4",
+      "price": {
+        "aws": {
+          "value": 0.847,
+          "unit": "USD"
+        },
+        "gcp": {
+          "value": 0.541,
+          "unit": "USD"
+        },
+        "azure": {
+          "value": 0.686,
+          "unit": "USD"
+        }
+      },
+      "fields": {
+        "cpu": {
+          "value": 12,
+          "unit": "cors"
+        },
+        "memory": {
+          "value": 24,
+          "unit": "GiB"
+        },
+        "storage": {
+          "value": 250,
+          "unit": "NVMe SSD"
+        }
+      }
+    }
+    , {
+      "name": "Instancename3",
+      "price": {
+        "aws": {
+          "value": 0.712,
+          "unit": "USD"
+        },
+        "gcp": {
+          "value": 0.392,
+          "unit": "USD"
+        },
+        "azure": {
+          "value": 0.577,
+          "unit": "USD"
+        }
+      },
+      "fields": {
+        "cpu": {
+          "value": 2,
+          "unit": "cors"
+        },
+        "memory": {
+          "value": 4,
+          "unit": "GiB"
+        },
+        "storage": {
+          "value": 50,
+          "unit": "NVMe SSD"
+        }
+      }
+    }
+    , {
+      "name": "Instancename2",
+      "price": {
+        "aws": {
+          "value": 0.635,
+          "unit": "USD"
+        },
+        "gcp": {
+          "value": 0.327,
+          "unit": "USD"
+        },
+        "azure": {
+          "value": 0.498,
+          "unit": "USD"
+        }
+      },
+      "fields": {
+        "cpu": {
+          "value": 6,
+          "unit": "cors"
+        },
+        "memory": {
+          "value": 12,
+          "unit": "GiB"
+        },
+        "storage": {
+          "value": 150,
+          "unit": "NVMe SSD"
+        }
+      }
     }
   ];
 
@@ -44,14 +168,6 @@ export class ShoppingCartService {
     })
      */
   }
-  getNextAwsPrice(){
-    return this.items[0].price["aws"].value + " " + this.items[0].price["aws"].unit;
-  }
-  getNextGcpPrice(){
-    return this.items[0].price["gcp"].value + " " + this.items[0].price["gcp"].unit;
-  }
-  getNextAzurePrice(){
-    return this.items[0].price["azure"].value + " " + this.items[0].price["azure"].unit;
-  }
+
 
 }
