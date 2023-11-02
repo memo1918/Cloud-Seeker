@@ -5,6 +5,7 @@ import * as https from "https";
 import { ParseCsvBatch } from "../csvimport/parsecsvbatch";
 import { execQuery } from "../db";
 import { createServicesIndex, dropServices, insertServicesData } from "../db/models/services";
+import axios from "axios";
 
 export function getInfracostApiKey() {
     if (!process.env["INFRACOST_API_KEY"]) {
@@ -16,43 +17,21 @@ export function getInfracostApiKey() {
 
 
 export async function getDumpUrl() {
-    return new Promise<string>((resolve, reject) => {
-        let infracost_api_key = getInfracostApiKey();
 
-        console.log({ message: "fetching dump download url", infracost_api_key, __filename });
+    let infracost_api_key = getInfracostApiKey();
 
-        let request = https
-            .get("https://pricing.api.infracost.io/data-download/latest", {
-                headers: {
-                    "X-Api-Key": infracost_api_key,
-                    "Accepts": "application/json"
-                }
-            }, res => {
-                let data: Buffer[] = [];
+    console.log({ message: "fetching dump download url", infracost_api_key, __filename });
 
-                res.on("data", (chunk: Buffer) => {
-                    data.push(chunk);
-                });
+    const downloadUrlObject: { downloadUrl: string } = await axios.get(
+        "https://pricing.api.infracost.io/data-download/latest",
+        {
+            headers: {
+                "X-Api-Key": infracost_api_key
+            }
+        });
 
-                res.on("end", () => {
-                    let response = Buffer.concat(data).toString();
-                    console.log({ message: "fetch complete", response, __filename });
-                    const downloadUrlObject: { downloadUrl: string } = JSON.parse(response);
-                    console.log({ message: "got url", downloadUrl: downloadUrlObject.downloadUrl, __filename });
-                    resolve(downloadUrlObject.downloadUrl);
-                });
-            })
-            .on("error", err => {
-                console.error({
-                    message: "error occured while fetching data",
-                    url: "https://pricing.api.infracost.io/data-download/latest",
-                    infracostapikey: getInfracostApiKey(),
-                    err,
-                    __filename
-                });
-                reject(err);
-            });
-    });
+    console.log({ message: "got url", downloadUrl: downloadUrlObject.downloadUrl, __filename });
+    return downloadUrlObject.downloadUrl;
 }
 
 export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
@@ -119,6 +98,15 @@ export interface CsvData {
     prices: string
 }
 
+export interface PriceInformation {
+    USD: string,
+    unit: string,
+    priceHash: string,
+    purchaseOption: string,
+    startUsageAmount: string,
+    effectiveDateStart: string,
+}
+
 export interface DumpData {
     productHash: string,
     sku: string,
@@ -127,16 +115,7 @@ export interface DumpData {
     service: string,
     productFamily: string,
     attributes: { [attributeName: string]: string },
-    prices: {
-        [priceHash: string]: [{
-            USD: string,
-            unit: string,
-            priceHash: string,
-            purchaseOption: string,
-            startUsageAmount: string,
-            effectiveDateStart: string,
-        }]
-    }
+    prices: PriceInformation[]
 }
 
 export async function loadInfracostDumpInDb() {
@@ -144,10 +123,10 @@ export async function loadInfracostDumpInDb() {
     let archiveFile: PathLike = path.join(process.cwd(), "archive.csv.gz");
     let extractionFile: PathLike = path.join(process.cwd(), "archive.csv");
 
-    let dumpUrl = await getDumpUrl();
-    await downloadDump(dumpUrl, archiveFile);
-    await extractDump(archiveFile, extractionFile);
-    await removeFile(archiveFile);
+    // let dumpUrl = await getDumpUrl();
+    // await downloadDump(dumpUrl, archiveFile);
+    // await extractDump(archiveFile, extractionFile);
+    // await removeFile(archiveFile);
 
     let csvParser = new ParseCsvBatch<CsvData>(extractionFile, 10000);
 
@@ -172,7 +151,10 @@ export async function loadInfracostDumpInDb() {
                     .map(d => {
                         try {
                             let attributes = JSON.parse(d.attributes);
-                            let prices = JSON.parse(d.prices);
+                            let priceMap: { [hash: string]: [PriceInformation] } = JSON.parse(d.prices);
+
+                            let prices = Object.values(priceMap).flat();
+
                             return { ...d, attributes, prices };
                         } catch (err) {
                             errors.push({ csvData: d, error: err });
@@ -199,6 +181,6 @@ export async function loadInfracostDumpInDb() {
     if (errors.length > 0)
         console.error("errors", JSON.stringify(errors));
 
-    await removeFile(extractionFile);
+    // await removeFile(extractionFile);
     console.log({ message: "loading of infracost dump complete" });
 }

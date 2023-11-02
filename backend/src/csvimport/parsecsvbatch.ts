@@ -63,7 +63,7 @@ export class ParseCsvBatch<T> {
         if (!this.onReject || !this.onResolve) {
             return;
         }
-        this.onResolve(err);
+        this.onReject(err);
         this.onResolve = undefined;
         this.onReject = undefined;
     }
