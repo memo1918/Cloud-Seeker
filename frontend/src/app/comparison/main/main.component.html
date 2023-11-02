@@ -1,3 +1,48 @@
+<table mat-table [dataSource]="shoppingCart.items">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Instance Name</th>
+    <td mat-cell *matCellDef="let item">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{item.name}}
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <mat-panel-description>
+            Quick description
+          </mat-panel-description>
+          <p>
+            CPU: {{item.fields["cpu"].unit}} {{item.fields["cpu"].value}}
+          </p>
+          <p>
+            Memory: {{item.fields["memory"].value}} {{item.fields["memory"].unit}}
+          </p>
+          <p>
+            Storage: {{item.fields["storage"].value}} {{item.fields["storage"].unit}}
+          </p>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="aws">
+    <th mat-header-cell *matHeaderCellDef> AWS</th>
+    <td mat-cell *matCellDef="let item"> {{item.price["aws"].value}} </td>
+  </ng-container>
+  <ng-container matColumnDef="azure">
+    <th mat-header-cell *matHeaderCellDef> Azure</th>
+    <td mat-cell *matCellDef="let item"> {{item.price["azure"].value}} </td>
+  </ng-container>
+  <ng-container matColumnDef="gcp">
+    <th mat-header-cell *matHeaderCellDef> GCP</th>
+    <td mat-cell *matCellDef="let item"> {{item.price["gcp"].value}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let item; columns: columnsToDisplay;"></tr>
+</table>
+
+
 <!--<mat-accordion>-->
 <!--  <mat-expansion-panel *ngFor="let cartItem of shoppingCart.items" hideToggle>-->
 <!--    <mat-expansion-panel-header>-->
@@ -85,25 +130,3 @@
 <!--  </tr>-->
 <!--</table>-->
 
-<table mat-table [dataSource]="shoppingCart.items">
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Instance Name </th>
-
-    <td mat-cell *matCellDef="let item"> {{item.name}} </td>
-  </ng-container>
-  <ng-container matColumnDef="aws">
-    <th mat-header-cell *matHeaderCellDef> AWS </th>
-    <td mat-cell *matCellDef="let item"> {{item.price["aws"].value}} </td>
-  </ng-container>
-  <ng-container matColumnDef="azure">
-    <th mat-header-cell *matHeaderCellDef> Azure </th>
-    <td mat-cell *matCellDef="let item"> {{item.price["azure"].value}} </td>
-  </ng-container>
-  <ng-container matColumnDef="gcp">
-    <th mat-header-cell *matHeaderCellDef> GCP </th>
-    <td mat-cell *matCellDef="let item"> {{item.price["gcp"].value}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let item; columns: columnsToDisplay;"></tr>
-</table>
