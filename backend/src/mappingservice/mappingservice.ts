@@ -7,40 +7,37 @@ export class MappingService {
     private categoryprovider: CategoryProvider;
     private mappingdb: MappingDB;
     private csvreader: ReadCSV;
-    private instanceClist: InstanceComparison[];
 
     constructor() {
         this.categoryprovider = new CategoryProvider();
         this.mappingdb = new MappingDB();
         this.csvreader = new ReadCSV("../backend/src/dummyCsvImport.csv"); //can be changed to parameter
-        this.instanceClist = [];
     }
 
     async start() {
-        let skuArr = await this.getNextLine();
+        await this.mappingdb.dropInstanceComparioson();
 
-        while (skuArr !== -1) {
+        let skuArr = await this.getNextLine();
+        while (skuArr != false) {
             await this.forEachSku(skuArr as string[]);
 
             skuArr = await this.getNextLine();
         }
-
-        console.log(this.categoryprovider.categories);
+        await this.mappingdb.pushCategories(this.categoryprovider.categories);
     }
 
     async getNextLine() {
-        // TODO: readLine() breaks and goes into infinit after no lines left to read.
         try {
             const line = await this.csvreader.readLine();
 
             if (line) {
-                return line;
+                return Object.values(line); //list of values
             } else {
-                return -1;
+                return false;
             }
         } catch (error) {
             console.log("error/end of file");
-            return -1;
+            return false;
         }
     }
 
@@ -53,51 +50,50 @@ export class MappingService {
                 let category = await this.categoryprovider.findCategory(instance);
                 attributes = { ...attributes, ...this.getAttributesForInstance(instance, category) };
             } catch (error) {
-                return;
+                continue;
             }
         }
-
         await this.createInstanceCompare(instanceArr, attributes);
     }
 
     getAttributesForInstance(instance: Instance, category: Category) {
         let attributes: { [attributeName: string]: string } = {};
 
-        for (let columnName in category.vendors[0].columns) {
-            let path = category.vendors[0].columns[columnName].path;
+        for (let i = 0; i < category.vendors.length; i++) {
+            for (let columnName in category.vendors[i].columns) {
+                let path = category.vendors[i].columns[columnName].path;
 
-            //value from the instance to write in category.field options
-            const value = path.reduce((currentValue, path) => currentValue[path], instance as any) as string;
+                //value from the instance to write in category.field options
+                const value = path.reduce((currentValue, path) => currentValue[path], instance as any) as string;
 
-            // finds the correct category.field and pushes new value to option
-            if (value !== undefined) {
-                let categoryField = category.fields.find((field) => field.name === columnName);
-                categoryField?.options?.push(value);
-                attributes[columnName] = value;
+                // finds the correct category.field and pushes new value to option
+                if (value !== undefined) {
+                    let categoryField = category.fields.find((field) => field.name === columnName);
+                    categoryField?.options?.push(value);
+                    attributes[columnName] = value;
+                }
             }
         }
-
         return attributes;
     }
 
     async createInstanceCompare(instanceArr: Instance[], attributes: { [attributeName: string]: string }) {
         let newInstanceComparison: InstanceComparison = {
-            name: "ich weiss es nicht", //TODO: Name should be proper
+            name: instanceArr[0].productFamily, //TODO: Name should be proper
             price: {},
             fields: {},
             skus: [] as any[]
         } as InstanceComparison;
 
         for (let instance of instanceArr) {
-            for (const key of Object.keys(instance.prices)) {
-                //TODO There is going to be a "service", so we can pass the instance and
-                // get the correct price and unit.
+            //TODO There is going to be a "service", so we can pass the instance and
+            // get the correct price and unit.
 
-                newInstanceComparison.price[instance.vendorName] = {
-                    value: instance.prices[key][0].USD,
-                    unit: instance.prices[key][0].unit
-                };
-            }
+            newInstanceComparison.price[instance.vendorName] = {
+                value: instance.prices[0].USD.toString(),
+                unit: instance.prices[0].unit.toString()
+            };
+
             newInstanceComparison.skus.push(instance.sku);
         }
 
@@ -109,6 +105,6 @@ export class MappingService {
             };
         }
 
-        this.instanceClist.push(newInstanceComparison);
+        await this.mappingdb.pushInstanceComparison(newInstanceComparison);
     }
 }

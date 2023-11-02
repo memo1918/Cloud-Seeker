@@ -1,7 +1,8 @@
 import { execQuery } from "../db";
 import { findServices } from "../db/models/services";
-import { updateCategories } from "../db/models/categories";
-import { Category } from "./interfaces";
+import { addCategories, dropCategories } from "../db/models/categories";
+import { addInstanceComparison, dropInstanceComparion } from "../db/models/instancecomparison";
+import { Category, InstanceComparison } from "./interfaces";
 
 export class MappingDB {
     async findSkus(skuArr: string[]) {
@@ -10,9 +11,22 @@ export class MappingDB {
         });
     }
 
-    async pushDb(category: Category) {
+    async pushCategories(categories: Category[]) {
         await execQuery(async (client) => {
-            return await updateCategories(client, category);
+            await dropCategories(client);
+            return await addCategories(client, categories);
+        });
+    }
+
+    async pushInstanceComparison(instanceComparison: InstanceComparison) {
+        await execQuery(async (client) => {
+            return await addInstanceComparison(client, instanceComparison);
+        });
+    }
+
+    async dropInstanceComparioson() {
+        await execQuery(async (client) => {
+            return await dropInstanceComparion(client);
         });
     }
 }

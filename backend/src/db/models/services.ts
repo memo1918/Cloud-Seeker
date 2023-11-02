@@ -11,8 +11,13 @@ const dbName = "cloud-seeker";
 const collectionName = "services";
 
 export async function findServices(client: MongoClient, sku: string[]) {
-    let serviceCollection = await getCollection(client, "cloud-seeker", "services");
+    let serviceCollection = await getCollection(client, dbName, collectionName);
     return serviceCollection.find({ sku: { $in: sku } }).toArray();
+}
+
+export async function getUniqueVendors(client: MongoClient) {
+    let serviceCollection = await getCollection(client, dbName, collectionName);
+    return serviceCollection.distinct("vendorName");
 }
 
 export async function dropServices(client: MongoClient) {
@@ -44,15 +49,17 @@ export async function getDistinctUnits(client: MongoClient) {
 export async function getDistinctUnitsGroupedByServiceFamily(client: MongoClient) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
 
-    return serviceCollection.aggregate([
-        { $unwind: "$prices" },
-        {
-            $group: {
-                _id: "$productFamily",
-                units: {
-                    $addToSet: "$prices.unit"
+    return serviceCollection
+        .aggregate([
+            { $unwind: "$prices" },
+            {
+                $group: {
+                    _id: "$productFamily",
+                    units: {
+                        $addToSet: "$prices.unit"
+                    }
                 }
             }
-        }
-    ]).toArray();
+        ])
+        .toArray();
 }

@@ -64,7 +64,7 @@ export interface Instance extends WithId<Document> {
     vendorName: string;
     productFamily: string;
     attributes: Attributes;
-    prices: Prices;
+    prices: Prices[];
 }
 
 export interface Attributes {

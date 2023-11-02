@@ -2,7 +2,7 @@ import fs from "fs";
 import csv from "csv-parser";
 import csvParser from "csv-parser";
 
-export type CsvData = { [key: string]: string }
+export type CsvData = { [key: string]: string };
 
 export class ReadCSV {
     private filestream?: csvParser.CsvParser;
@@ -11,11 +11,11 @@ export class ReadCSV {
     private isCSVDone = false;
 
     constructor(private csvFilePath: string) {
-        this.filestream = fs.createReadStream(this.csvFilePath)
-            .pipe(csv(
-                {
-                    mapHeaders: ({ header }) => header.trim()
-                }));
+        this.filestream = fs.createReadStream(this.csvFilePath).pipe(
+            csv({
+                mapHeaders: ({ header }) => header.trim()
+            })
+        );
 
         this.filestream.on("data", this.onNewLine.bind(this));
 
@@ -27,7 +27,7 @@ export class ReadCSV {
         });
         this.filestream.on("end", () => {
             this.isCSVDone = true;
-        })
+        });
 
         this.filestream.on("error", (error: Error) => {
             if (this.onReject) {
@@ -51,8 +51,8 @@ export class ReadCSV {
         if (this.onResolve || this.onReject) {
             throw new Error("another request is currently fulfilled.");
         }
-        if(this.isCSVDone) {
-            throw new Error("CSV reading is done.")
+        if (this.isCSVDone) {
+            throw new Error("CSV reading is done.");
         }
         return new Promise<CsvData>((resolve, reject) => {
             this.onResolve = resolve;

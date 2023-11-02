@@ -78,6 +78,74 @@
       "value": [
         "Compute"
       ]
+     }
+    }
+  },
+
+  {
+  "name": "Storage",
+  "icon": "Storage",
+  "description": "test",
+  "vendors": [
+    {
+      "name": "aws",
+      "columns": {
+        "regionCode": {
+          "path": ["attributes","regionCode"],
+          "conversion": {}
+        },
+        "storageClass": {
+          "path": ["attributes","storageClass"],
+          "conversion": {}
+        }
+
+      }
+    },
+    {
+      "name": "gcp",
+      "columns": {
+
+      }
+    },
+    {
+      "name": "azure",
+      "columns": {
+
+      }
+    }
+  ],
+  "fields": [
+    {
+      "name": "regionCode",
+      "options": [],
+      "unit": ""
+    },
+    {
+      "name": "storageClass",
+      "options": [],
+      "unit": ""
+    }
+  ],
+  "discovery": {
+    "aws": {
+      "key": ["productFamily"],
+      "value": [
+        "Storage"
+      ]
+    },
+    "gcp": {
+      "key": ["productFamily"],
+      "value": [
+        "Storage"
+      ]
+    },
+    "azure": {
+      "key": ["productFamily"],
+      "value": [
+        "Storage"
+      ]
     }
   }
+
+
 }]

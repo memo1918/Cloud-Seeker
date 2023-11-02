@@ -9,7 +9,10 @@ export class ParseCsvBatch<T> {
     private data: T[] = [];
     private isComplete = false;
 
-    constructor(private csvFilePath: string, private numberOfLines = 1000) {
+    constructor(
+        private csvFilePath: string,
+        private numberOfLines = 1000
+    ) {
         this.filestream = fs.createReadStream(this.csvFilePath).pause().pipe(csv());
 
         this.filestream.on("data", this.onNewLine.bind(this));
@@ -27,7 +30,6 @@ export class ParseCsvBatch<T> {
     }
 
     private onNewLine(data: T) {
-
         this.data.push(data);
         if (this.data.length == this.numberOfLines) {
             this.filestream?.pause();

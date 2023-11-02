@@ -47,7 +47,8 @@
         "mongodb": "^5.9.0",
         "mongodb-memory-server": "^9.0.0",
         "socket.io": "^4.4.1",
-        "utf-8-validate": "^5.0.10"
+        "utf-8-validate": "^5.0.10",
+        "axios": "^1.6.0"
     },
     "license": "ISC",
     "config": {

@@ -2,11 +2,9 @@ import { getCategoryTemplate } from "./categoryjsonread";
 import { Category, Instance } from "../mappingservice/interfaces";
 
 export class CategoryProvider {
-    public categories: Category[] = [];
+    public categories: Category[] = getCategoryTemplate();
 
     async findCategory(instance: Instance) {
-        this.categories = getCategoryTemplate();
-
         for (let category of this.categories) {
             if (!category.discovery[instance.vendorName]) {
                 throw new Error("UwU, didn't find the vendor :/ ");
