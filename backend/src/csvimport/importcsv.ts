@@ -4,8 +4,7 @@ import csv from "csv-parser";
 export function countLinesInCSV(csvFilePath: string): Promise<number> {
     return new Promise<number>((resolve, reject) => {
         let lineCount = 0;
-        fs.createReadStream(csvFilePath)
-            .pipe(csv())
+        fs.createReadStream(csvFilePath).pipe(csv())
             .on("data", () => {
                 // Increment the line count for each row
                 lineCount++;
@@ -18,6 +17,5 @@ export function countLinesInCSV(csvFilePath: string): Promise<number> {
                 // Reject the promise if an error occurs
                 reject(error);
             });
-        lineCount++;
     });
 }
