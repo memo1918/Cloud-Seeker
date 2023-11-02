@@ -6,10 +6,15 @@ import { ShoppingCartService } from "../../shopping-cart.service";
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
+
 export class MainComponent {
   panelOpenState: boolean =false;
   constructor(public shoppingCart:ShoppingCartService) {
+
   }
 
+
   protected readonly keys = Object.keys;
+
+  columnsToDisplay = [`name`, `aws`, `azure`, `gcp`]
 }

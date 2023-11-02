@@ -156,18 +156,4 @@ export class ShoppingCartService {
 
   constructor() {
   }
-
-  getItemsAsString() {
-    return JSON.stringify(this.items)
-  }
-
-  getInstanceName() {
-    return this.items[0].name;
-    /*
-    return this.items.forEach(item =>{
-    })
-     */
-  }
-
-
 }
