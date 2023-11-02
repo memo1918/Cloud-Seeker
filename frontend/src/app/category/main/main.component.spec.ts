@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { MainComponent } from './main.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {MainComponent} from './main.component';
+import {MatTabsModule} from "@angular/material/tabs";
 
 describe('MainComponent', () => {
   let component: MainComponent;
@@ -8,6 +8,7 @@ describe('MainComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [MatTabsModule],
       declarations: [MainComponent]
     });
     fixture = TestBed.createComponent(MainComponent);
@@ -15,7 +16,7 @@ describe('MainComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('category component should create', () => {
     expect(component).toBeTruthy();
   });
 });

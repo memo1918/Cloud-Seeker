@@ -1,11 +1,9 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MainComponent } from './category/main/main.component';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {AppComponent} from './app.component';
+import {MainComponent} from './category/main/main.component';
 import {MatTabsModule} from "@angular/material/tabs";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
@@ -13,14 +11,14 @@ import {MatIconModule} from "@angular/material/icon";
     AppComponent,
     MainComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        MatTabsModule,
-        BrowserAnimationsModule,
-        MatIconModule
-    ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatTabsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

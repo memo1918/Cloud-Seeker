@@ -1,5 +1,6 @@
+<div>{{this.title}}</div>
 <div class="primary-background">Visits:
-    <ng-container *ngIf="api.counterLoading">loading...</ng-container>
-    <ng-container *ngIf="!api.counterLoading">{{api.counter}}</ng-container>
+  <ng-container *ngIf="api.counterLoading">loading...</ng-container>
+  <ng-container *ngIf="!api.counterLoading">{{api.counter}}</ng-container>
 </div>
 <app-main></app-main>
