@@ -1,7 +1,13 @@
-import * as fs from "fs";
+import { readFileSync } from "fs";
 import { Category } from "../mappingservice/interfaces";
 
-export function getCategoryTemplate() {
-    let path = "C:\\Users\\mehme\\Downloads\\School\\SoftwareLAB\\cloud-seeker\\schema\\samplecategory.json";
-    return JSON.parse(fs.readFileSync(path, "utf-8").toString()) as Category[];
+let defpath = "C:\\Users\\mehme\\Downloads\\School\\SoftwareLAB\\cloud-seeker\\schema\\samplecategory.json";
+
+export function getCategoryTemplate(path: string = defpath) {
+    try {
+        let data = JSON.parse(readFileSync(path, "utf-8").toString()) as Category[];
+        return data;
+    } catch (error) {
+        throw new Error("file read error");
+    }
 }
