@@ -1,7 +1,3 @@
-cache:
-  paths:
-    - frontend/node_modules/
-
 test_frontend: # job
   image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
   stage: test

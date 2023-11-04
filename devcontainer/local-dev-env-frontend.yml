@@ -4,7 +4,7 @@ services:
     build:
       context: ../backend
     environment:
-      - DB_CONNECTION_STRING=mongodb:\\mongodb:27017
+      - DB_CONNECTION_STRING=mongodb://mongodb:27017
 
   reverseproxy:
     image: nginx
@@ -17,3 +17,8 @@ services:
 
   mongodb:
     image: mongo
+    volumes:
+      - ./mongodb:/data/db # storing persistent data
+    # ports should only be open when debugging with MongoDB Compass
+    ports:
+      - "27017:27017"

@@ -8,6 +8,9 @@ import { getMockReq, getMockRes } from "@jest-mock/express";
 
 beforeAll(setupExpressMock);
 
+function last(arr: any[]) {
+    return arr[arr.length - 1];
+}
 describe("RouteRegister test cases", () => {
     let app: Application;
 
@@ -158,7 +161,7 @@ describe("RouteRegister test cases", () => {
         expect(() => register.register({ default: DummyRoute_test_post })).not.toThrow();
         const { res, next, clearMockRes } = getMockRes();
         const req = getMockReq();
-        await app._router.stack[2].route.stack[0].handle(req, res, next);
+        await last(app._router.stack[2].route.stack).handle(req, res, next);
 
         expect(req.params.correlationID).toBeTruthy();
         expect(DummyRoute_test_post.instance?.handle).toBeCalledWith(req, res, next, expect.anything());
@@ -170,13 +173,13 @@ describe("RouteRegister test cases", () => {
         const { res, next, clearMockRes } = getMockRes();
 
         const req1 = getMockReq();
-        await app._router.stack[2].route.stack[0].handle(req1, res, next);
+        await last(app._router.stack[2].route.stack).handle(req1, res, next);
         const firstInstance = DummyRoute_test_post.instance;
 
         clearMockRes(); // reuse response
 
         const req2 = getMockReq();
-        await app._router.stack[2].route.stack[0].handle(req2, res, next);
+        await last(app._router.stack[2].route.stack).handle(req2, res, next);
         const secondInstance = DummyRoute_test_post.instance;
 
         expect(secondInstance).not.toEqual(firstInstance);
@@ -188,7 +191,7 @@ describe("RouteRegister test cases", () => {
         const { res, next, clearMockRes } = getMockRes();
 
         const req1 = getMockReq();
-        await app._router.stack[2].route.stack[0].handle(req1, res, next);
+        await last(app._router.stack[2].route.stack).handle(req1, res, next);
 
         expect(next).toBeCalled();
     });
@@ -199,7 +202,7 @@ describe("RouteRegister test cases", () => {
         const { res, next, clearMockRes } = getMockRes();
 
         const req1 = getMockReq();
-        await app._router.stack[2].route.stack[0].handle(req1, res, next);
+        await last(app._router.stack[2].route.stack).handle(req1, res, next);
 
         expect(next).toBeCalled();
     });
