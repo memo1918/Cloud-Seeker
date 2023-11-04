@@ -17,7 +17,7 @@ export async function getAllInstanceComparisons(client: MongoClient) {
     return (await instanceComparisonCollection.find({}).toArray()) as ICategory[];
 }
 
-export async function addInstanceComparison(client: MongoClient, instanceComparison: Partial<IInstanceComparison>) {
+export async function addOneInstanceComparison(client: MongoClient, instanceComparison: Partial<IInstanceComparison>) {
     let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
     await instanceComparisonCollection.insertOne(instanceComparison);
     return;

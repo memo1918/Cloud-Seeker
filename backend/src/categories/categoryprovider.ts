@@ -1,4 +1,4 @@
-import { getCategoryTemplate } from "./categoryjsonread";
+import { getCategoryTemplate } from "./categorytemplateread";
 import { Category, Instance } from "../mappingservice/interfaces";
 
 export class CategoryProvider {

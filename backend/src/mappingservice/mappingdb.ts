@@ -1,7 +1,7 @@
 import { execQuery } from "../db";
 import { findServices } from "../db/models/services";
 import { addCategories, dropCategories } from "../db/models/categories";
-import { addInstanceComparison, dropInstanceComparion } from "../db/models/instancecomparison";
+import { addOneInstanceComparison, dropInstanceComparion } from "../db/models/instancecomparison";
 import { Category, InstanceComparison } from "./interfaces";
 
 export class MappingDB {
@@ -20,7 +20,7 @@ export class MappingDB {
 
     async pushInstanceComparison(instanceComparison: InstanceComparison) {
         await execQuery(async (client) => {
-            return await addInstanceComparison(client, instanceComparison);
+            return await addOneInstanceComparison(client, instanceComparison);
         });
     }
 
