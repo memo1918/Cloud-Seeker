@@ -1,5 +1,4 @@
 import { jest } from "@jest/globals";
-import { getCategoryTemplate } from "../src/categories/categorytemplateread";
 import { Category } from "../src/mappingservice/interfaces";
 
 export function setupgetCategoryTemplateMock() {

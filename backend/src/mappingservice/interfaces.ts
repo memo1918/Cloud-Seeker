@@ -1,4 +1,3 @@
-// categories ned to be defined externally
 import { Document, WithId } from "mongodb";
 
 export interface Category {
@@ -64,15 +63,11 @@ export interface Instance extends WithId<Document> {
     vendorName: string;
     productFamily: string;
     attributes: Attributes;
-    prices: Prices[];
+    prices: Price[];
 }
 
 export interface Attributes {
     [attributeName: string]: string;
-}
-
-export interface Prices {
-    [priceId: string]: [Price];
 }
 
 export interface Price {
@@ -83,5 +78,5 @@ export interface Price {
     endUsageAmount: string;
     purchaseOption: string;
     startUsageAmount: string;
-    effectiveDateStart: Date;
+    effectiveDateStart: string;
 }

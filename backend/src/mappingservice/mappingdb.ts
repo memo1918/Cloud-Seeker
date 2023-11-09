@@ -3,8 +3,16 @@ import { findServices } from "../db/models/services";
 import { addCategories, dropCategories } from "../db/models/categories";
 import { addOneInstanceComparison, dropInstanceComparion } from "../db/models/instancecomparison";
 import { Category, InstanceComparison } from "./interfaces";
+import { Document, WithId } from "mongodb";
 
-export class MappingDB {
+export interface MappingDB {
+    findSkus: (skuArr: string[]) => Promise<WithId<Document>[]>;
+    pushCategories: (categories: Category[]) => Promise<void>;
+    pushInstanceComparison(instanceComparison: InstanceComparison): Promise<void>;
+    dropInstanceComparison(): Promise<void>;
+}
+
+export class MappingMongoDB implements MappingDB {
     async findSkus(skuArr: string[]) {
         return await execQuery(async (client) => {
             return await findServices(client, skuArr); // returns a list
@@ -24,7 +32,7 @@ export class MappingDB {
         });
     }
 
-    async dropInstanceComparioson() {
+    async dropInstanceComparison() {
         await execQuery(async (client) => {
             return await dropInstanceComparion(client);
         });

@@ -1,28 +1,29 @@
-import { Category, Instance, InstanceComparison } from "./interfaces";
+import { Attributes, Category, Instance, InstanceComparison } from "./interfaces";
 import { CategoryProvider } from "../categories/categoryprovider";
-import { ReadCSV } from "../csvimport/readlinebyline";
 import { MappingDB } from "./mappingdb";
+import { CSVReader } from "../csvimport/CSVReader";
 
 export class MappingService {
-    private categoryprovider: CategoryProvider;
-    private mappingdb: MappingDB;
-    private csvreader: ReadCSV;
-
-    constructor() {
-        this.categoryprovider = new CategoryProvider();
-        this.mappingdb = new MappingDB();
-        this.csvreader = new ReadCSV("../backend/src/dummyCsvImport.csv"); //can be changed to parameter
-    }
+    constructor(
+        private categoryprovider: CategoryProvider,
+        private mappingdb: MappingDB,
+        private csvreader: CSVReader
+    ) {}
 
     async start() {
-        await this.mappingdb.dropInstanceComparioson();
+        await this.mappingdb.dropInstanceComparison();
 
-        let skuArr = await this.getNextLine();
-        while (skuArr != false) {
-            await this.forEachSku(skuArr as string[]);
+        let skuArr: string[];
 
-            skuArr = await this.getNextLine();
+        while (true) {
+            try {
+                skuArr = await this.getNextLine();
+                await this.forEachSku(skuArr as string[]);
+            } catch (error) {
+                break;
+            }
         }
+
         await this.mappingdb.pushCategories(this.categoryprovider.categories);
     }
 
@@ -33,11 +34,10 @@ export class MappingService {
             if (line) {
                 return Object.values(line); //list of values
             } else {
-                return false;
+                throw new Error("end of lines");
             }
         } catch (error) {
-            console.log("error/end of file");
-            return false;
+            throw new Error("end of lines");
         }
     }
 
@@ -56,8 +56,8 @@ export class MappingService {
         await this.createInstanceCompare(instanceArr, attributes);
     }
 
-    getAttributesForInstance(instance: Instance, category: Category) {
-        let attributes: { [attributeName: string]: string } = {};
+    getAttributesForInstance(instance: Instance, category: Category): Attributes {
+        let attributes: Attributes = {};
 
         for (let i = 0; i < category.vendors.length; i++) {
             for (let columnName in category.vendors[i].columns) {
@@ -77,7 +77,7 @@ export class MappingService {
         return attributes;
     }
 
-    async createInstanceCompare(instanceArr: Instance[], attributes: { [attributeName: string]: string }) {
+    async createInstanceCompare(instanceArr: Instance[], attributes: Attributes) {
         let newInstanceComparison: InstanceComparison = {
             name: instanceArr[0].productFamily, //TODO: Name should be proper
             price: {},

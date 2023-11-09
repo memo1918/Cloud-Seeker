@@ -1,10 +1,9 @@
 import fs from "fs";
 import csv from "csv-parser";
 import csvParser from "csv-parser";
+import { CsvData, CSVReader } from "./CSVReader";
 
-export type CsvData = { [key: string]: string };
-
-export class ReadCSV {
+export class ReadCSV implements CSVReader {
     private filestream?: csvParser.CsvParser;
     private onResolve?: (data: CsvData) => void;
     private onReject?: (err: any) => void;
@@ -38,7 +37,7 @@ export class ReadCSV {
         this.filestream.pause();
     }
 
-    onNewLine(data: CsvData) {
+    private onNewLine(data: CsvData) {
         this.filestream?.pause();
         if (this.onResolve) {
             this.onResolve(data);
@@ -47,7 +46,7 @@ export class ReadCSV {
         }
     }
 
-    readLine(): Promise<CsvData> {
+    public readLine(): Promise<CsvData> {
         if (this.onResolve || this.onReject) {
             throw new Error("another request is currently fulfilled.");
         }
