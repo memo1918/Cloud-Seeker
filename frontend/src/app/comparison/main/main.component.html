@@ -1,3 +1,4 @@
+<p *ngFor="let i of shoppingCart.items" >{{i.name}}</p>
 <table mat-table [dataSource]="shoppingCart.items">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Instance Name</th>
@@ -12,7 +13,7 @@
           <mat-panel-description>
             Quick description
           </mat-panel-description>
-          <p>
+          <p data-additional-information>
             CPU: {{item.fields["cpu"].unit}} {{item.fields["cpu"].value}}
           </p>
           <p>

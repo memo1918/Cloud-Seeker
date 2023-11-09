@@ -1,12 +1,25 @@
 import { TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import {MainComponent} from "./comparison/main/main.component";
+import {MatTable, MatTableModule} from "@angular/material/table";
+import {ShoppingCartService} from "./shopping-cart.service";
+
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule],
-    declarations: [AppComponent]
-  }));
+  // let fakeShoppingCartService: ShoppingCartService = {
+  //   items:[]
+  // };
+
+  beforeEach(() => {
+    // fakeShoppingCartService
+
+
+    TestBed.configureTestingModule({
+      imports: [MatTableModule],
+      declarations: [MainComponent, AppComponent],
+      providers: [ShoppingCartService]
+    });
+  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -18,12 +31,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('frontend');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('frontend app is running!');
   });
 });
