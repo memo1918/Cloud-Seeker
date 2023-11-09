@@ -16,6 +16,8 @@ export class APIService {
 
     public categories: Category[] = [];
 
+    // public categoryLoading: boolean = true;
+
     public async loadCounter() {
         try {
             let response = await fetch(`${this.baseLocation}/`);
@@ -32,6 +34,7 @@ export class APIService {
             let response = await fetch(`${this.baseLocation}/categories`);
             let {data}: { "data": { "categories": Category[] } } = await response.json();
             this.categories = data.categories;
+            // this.categoryLoading = false;
         } catch (err) {
             console.error(err);
         }

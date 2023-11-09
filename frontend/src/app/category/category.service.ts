@@ -9,4 +9,9 @@ export class CategoryService {
     constructor(public api: APIService) {
         this.api.loadCategories();
     }
+
+    getCategories() {
+        return this.api.categories;
+    }
+
 }

@@ -7,6 +7,7 @@ import {CategoryService} from "../category.service";
   styleUrls: ['./main.component.scss'],
 })
 export class MainComponent {
+  title = 'categoryComponent';
 
   constructor(public categoryService: CategoryService) {
   }
