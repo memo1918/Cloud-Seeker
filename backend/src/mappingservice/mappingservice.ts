@@ -1,7 +1,10 @@
-import { Attributes, Category, Instance, InstanceComparison } from "./interfaces";
 import { CategoryProvider } from "../categories/categoryprovider";
 import { MappingDB } from "./mappingdb";
 import { CSVReader } from "../csvimport/CSVReader";
+import { Category } from "./interfaces/category.interface";
+import { InstanceComparison } from "./interfaces/instancecomparison.interface";
+import { Instance } from "./interfaces/instance.interface";
+import { Attributes } from "./interfaces/attributes.interface";
 
 export class MappingService {
     constructor(

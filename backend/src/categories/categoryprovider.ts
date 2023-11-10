@@ -1,5 +1,6 @@
 import { getCategoryTemplate } from "./categorytemplateread";
-import { Category, Instance } from "../mappingservice/interfaces";
+import { Category } from "../mappingservice/interfaces/category.interface";
+import { Instance } from "../mappingservice/interfaces/instance.interface";
 
 export class CategoryProvider {
     public categories: Category[] = getCategoryTemplate();

@@ -1,5 +1,9 @@
-import { Attributes, Category, Instance, Price } from "../../src/mappingservice/interfaces";
 import { ObjectId } from "mongodb";
+import { Category } from "../../src/mappingservice/interfaces/category.interface";
+import { InstanceComparison } from "../../src/mappingservice/interfaces/instancecomparison.interface";
+import { Instance } from "../../src/mappingservice/interfaces/instance.interface";
+import { Attributes } from "../../src/mappingservice/interfaces/attributes.interface";
+import { Price } from "../../src/mappingservice/interfaces/price.interface";
 
 export const SAMPLE_CATEGORY: Category = {
     name: "Compute",
@@ -174,4 +178,29 @@ export const SAMPLE_ATTRIBUTES: Attributes = {
     memory: "16 GiB",
     regionCode: "us-east-1-nyc-1",
     storage: "1 x 200 NVMe SSD"
+};
+
+export const SAMPLE_INSTANCECOMPARISON: InstanceComparison = {
+    name: "Instancename",
+    price: {
+        aws: {
+            value: 0.494,
+            unit: ""
+        },
+        gcp: {
+            value: 0.20176,
+            unit: ""
+        },
+        azure: {
+            value: 0.20176,
+            unit: ""
+        }
+    },
+    fields: {
+        cores: {
+            value: 8,
+            unit: "cors"
+        }
+    },
+    skus: []
 };

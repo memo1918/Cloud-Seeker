@@ -1,5 +1,6 @@
 import { readFileSync } from "fs";
-import { Category } from "../mappingservice/interfaces";
+
+import { Category } from "../mappingservice/interfaces/category.interface";
 
 let defpath = "C:\\Users\\mehme\\Downloads\\School\\SoftwareLAB\\cloud-seeker\\schema\\samplecategory.json";
 

@@ -1,6 +1,7 @@
 import { afterEach, beforeAll, beforeEach, describe, expect, test, jest } from "@jest/globals";
 import { setupgetCategoryTemplateMock } from "../../setups/categories.categorytemplateread";
-import { Category, Instance } from "../../src/mappingservice/interfaces";
+import { Category } from "../../src/mappingservice/interfaces/category.interface";
+import { Instance } from "../../src/mappingservice/interfaces/instance.interface";
 
 beforeAll(setupgetCategoryTemplateMock);
 beforeEach(() => {
