@@ -4,13 +4,22 @@ import { CategoryProvider } from "../../src/categories/categoryprovider";
 import { MappingDB } from "../../src/mappingservice/mappingdb";
 import { CsvData, CSVReader } from "../../src/csvimport/CSVReader";
 import { Document, WithId } from "mongodb";
-import { SAMPLE_CATEGORY, SAMPLE_SKUARR, SAMPE_INSTANCE, SAMPLE_ATTRIBUTES } from "./fixtures";
+import {
+    SAMPLE_CATEGORY,
+    SAMPLE_SKUARR,
+    SAMPE_INSTANCE,
+    SAMPLE_ATTRIBUTES,
+    SAMPLE_CATEGORY_TEMPLATE
+} from "./fixtures";
 import { Category } from "../../src/mappingservice/interfaces/category.interface";
 import { InstanceComparison } from "../../src/mappingservice/interfaces/instancecomparison.interface";
 import { Instance } from "../../src/mappingservice/interfaces/instance.interface";
+import { getCategoryTemplate } from "../../src/categories/categorytemplateread";
 
 describe("MappingService class test", () => {
+
     class MockCategoryProvider extends CategoryProvider {
+        categories = SAMPLE_CATEGORY_TEMPLATE as Category[];
         async findCategory(instance: Instance): Promise<Category> {
             return SAMPLE_CATEGORY;
         }
