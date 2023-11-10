@@ -1,7 +1,7 @@
 import { getCollection } from "../schema";
 import { Document, MongoClient, WithId } from "mongodb";
 
-export interface IServices extends WithId<Document> {
+export interface IService extends WithId<Document> {
     name: string;
 }
 
@@ -39,10 +39,10 @@ export async function getDistinctUnits(client: MongoClient) {
     return serviceCollection.distinct("prices.unit");
 }
 
-export async function getDistinctUnitsGroupedByServiceFamily(client: MongoClient) {
+export async function _getDistinctUnitsGroupedByServiceFamily(client: MongoClient) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
 
-    return serviceCollection.aggregate([
+    return await serviceCollection.aggregate([
         { $unwind: "$prices" },
         {
             $group: {
@@ -52,5 +52,8 @@ export async function getDistinctUnitsGroupedByServiceFamily(client: MongoClient
                 }
             }
         }
-    ]).toArray();
+    ]).toArray() as {
+        "_id": string,
+        "units": string[]
+    }[];
 }
