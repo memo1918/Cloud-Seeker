@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
 import {MatExpansionModule} from '@angular/material/expansion';
-import { ShoppingCartService } from "../../shopping-cart.service";
+import { ShoppingCartService } from "../shopping-cart.service";
 @Component({
-  selector: 'app-main',
-  templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  selector: 'app-comparison',
+  templateUrl: './comparison.component.html',
+  styleUrls: ['./comparison.component.scss']
 })
 
-export class MainComponent {
+export class ComparisonComponent {
   panelOpenState: boolean =false;
   constructor(public shoppingCart:ShoppingCartService) {
 
   }
-
-
   protected readonly keys = Object.keys;
 
   columnsToDisplay = [`name`, `aws`, `azure`, `gcp`]
