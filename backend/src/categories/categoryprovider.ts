@@ -3,7 +3,11 @@ import { Category } from "../mappingservice/interfaces/category.interface";
 import { Instance } from "../mappingservice/interfaces/instance.interface";
 
 export class CategoryProvider {
-    public categories: Category[] = getCategoryTemplate();
+    public categories: Category[];
+
+    constructor(categories: Category[] = getCategoryTemplate()) {
+        this.categories = categories;
+    }
 
     async findCategory(instance: Instance) {
         for (let category of this.categories) {
