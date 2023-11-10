@@ -15,4 +15,8 @@ export class NumberUnitCategorisation implements UnitCategorisation {
 
         return !isNaN(parseInt(token));
     }
+
+    public static create(token: string): UnitCategorisation {
+        return new NumberUnitCategorisation(token);
+    }
 }

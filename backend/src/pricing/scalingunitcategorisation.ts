@@ -3,7 +3,7 @@ import { UnitCategorisation } from "./units";
 export class ScalingUnitCategorisation implements UnitCategorisation {
     name: string = "ScalingUnitCategorisation";
     public value: number = 0;
-    private unitTable: { [key: string]: number } = {
+    private static unitTable: { [key: string]: number } = {
         "K": 10 ** 3,
         "M": 10 ** 4,
         "G": 10 ** 5,
@@ -15,26 +15,26 @@ export class ScalingUnitCategorisation implements UnitCategorisation {
 
     private convert(size: number, fromUnit: string, toUnit: string): number {
         try {
-            const sizeInBits = size * this.unitTable[fromUnit];
-            return sizeInBits / this.unitTable[toUnit];
+            const sizeInBits = size * ScalingUnitCategorisation.unitTable[fromUnit];
+            return sizeInBits / ScalingUnitCategorisation.unitTable[toUnit];
         } catch (error) {
-            throw new Error("Invalid unit. Supported units: b, B, Kb, KB, Mb, MB, Gb, GB, Tb, TB, Pb, PB, Eb, EB");
+            throw new Error("Invalid unit. Supported units: " + Object.keys(ScalingUnitCategorisation.unitTable).join(", "));
         }
     }
 
 
     private parse(unit: string): number {
 
-        if (this.unitTable[unit] == undefined) {
-            unit = Object.keys(this.unitTable).find(i => unit.startsWith(i)) || "";
+        if (ScalingUnitCategorisation.unitTable[unit] == undefined) {
+            unit = Object.keys(ScalingUnitCategorisation.unitTable).find(i => unit == i) || "";
         }
 
 
-        return this.unitTable[unit];
+        return ScalingUnitCategorisation.unitTable[unit];
     }
 
     constructor(public token: string) {
-        this.value = parseInt(this.token);
+        // this.value = parseInt(this.token);
     }
 
     public static match(token: string): boolean {
@@ -42,6 +42,10 @@ export class ScalingUnitCategorisation implements UnitCategorisation {
         // normalise
         token = token.trim();
 
-        return !isNaN(parseInt(token));
+        return ScalingUnitCategorisation.unitTable[token] != undefined;
+    }
+
+    public static create(token: string): UnitCategorisation {
+        return new ScalingUnitCategorisation(token);
     }
 }

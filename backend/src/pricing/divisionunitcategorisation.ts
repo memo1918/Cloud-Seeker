@@ -13,4 +13,8 @@ export class DivisionUnitCategorisation implements UnitCategorisation {
 
         return token == "/" || token == "\\" || token == "-";
     }
+
+    public static create(token: string): UnitCategorisation {
+        return new DivisionUnitCategorisation(token);
+    }
 }

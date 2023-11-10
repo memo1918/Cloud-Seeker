@@ -7,6 +7,10 @@ export class DefaultUnitCategorisation implements UnitCategorisation {
     }
 
     public static match(token: string): boolean {
-        return false;
+        return true;
+    }
+
+    public static create(token: string): UnitCategorisation {
+        return new DefaultUnitCategorisation(token);
     }
 }

@@ -3,6 +3,10 @@ import { Unit } from "./unit";
 import { TimeUnitCategorisation } from "./timeunitcategorisation";
 import { NumberUnitCategorisation } from "./numberunitcategorisation";
 import { DivisionUnitCategorisation } from "./divisionunitcategorisation";
+import { StorageUnitCategorisation } from "./storageunitcategorisation";
+import { ScalingUnitCategorisation } from "./scalingunitcategorisation";
+import { DefaultUnitCategorisation } from "./defaultunitcategorisation";
+import { CustomUnitCategorisation } from "./customunitcategorisation";
 
 export interface UnitCategorisation {
     name: string;
@@ -12,46 +16,98 @@ export interface UnitCategorisation {
 
 export class Units {
 
+    private constructor() {
+        this.loadAllUnits();
+    }
+
+    private static instance: Units;
+
+
+    public static getInstance(): Units {
+        if (!Units.instance) {
+            Units.instance = new Units();
+        }
+        return Units.instance;
+    }
+
     private static regex = /[0-9]+(?:\.[0-9]+)?|\/|-|([A-Z][a-z]+)|[A-Z]+(?![a-z])|[a-z]+[A-Z]|[a-z]+/g;
 
-    private tokens: string[][] = [];
-    private units: Unit[] = [];
+    private units: { [hash: string]: Unit } = {};
 
     public async loadAllUnits() {
         let unitsByServiceFamily = await getDistinctUnitsGroupedByServiceFamily();
         let units = unitsByServiceFamily.flatMap(i => i.units);
-        this.tokens.push(...units.map(i => (i.match(Units.regex) || [])));
-        this.units.push(...this.tokens.map(i => this.categorise(i)));
-        console.log(this);
+        let tokens = units.map(i => (i.match(Units.regex) || []));
+        tokens.forEach(i => this.categorise(i));
+        // this.units.push(...tokens.map(i => this.categorise(i)));
+        console.log({
+            message: `loaded all units completely`,
+            __filename
+        });
     }
 
-    public categorise(tokens: string[]): Unit {
-        return new Unit(tokens, tokens.map(token => this.findUnitCategorisation(token)));
+    private joinElements: [string, string][] = [
+        ["vC", "PU"],
+        ["On", "Prem"],
+        ["I", "Os"],
+        ["UR", "Ls"],
+        ["Mi", "Bps"]
+    ];
+
+    private static computeTokenHash(tokens: string[]) {
+        return tokens.map((v, i) => {
+            return ("" + i + v + i);
+        }).join("🪢");
     }
 
-    public findUnitCategorisation(token: string): UnitCategorisation {
-        let unit: UnitCategorisation[] = [];
+    public categorise(tokens: string[]) {
 
-        if (TimeUnitCategorisation.match(token)) {
-            unit.push(new TimeUnitCategorisation(token));
+        let _originalTokens = [...tokens];
+
+        for (let i = 0; i < tokens.length; i++) {
+            for (const joinElement of this.joinElements) {
+                if (tokens[i] != joinElement[0]) {
+                    continue;
+                }
+                if (tokens[i + 1] != joinElement[1]) {
+                    continue;
+                }
+                tokens[i] = tokens[i] + tokens[i + 1];
+                tokens.splice(i + 1, 1);
+            }
         }
 
-        if (NumberUnitCategorisation.match(token)) {
-            unit.push(new NumberUnitCategorisation(token));
-        }
 
-        if (DivisionUnitCategorisation.match(token)) {
-            unit.push(new DivisionUnitCategorisation(token));
-        }
+        this.units[Units.computeTokenHash(_originalTokens)] =
+            new Unit(tokens, tokens.map(token => this.findUnitCategorisation(token, tokens)));
 
-        if (unit.length > 1) {
-            console.error(`Multiple units found for ->${token}<-`);
-        }
+    }
 
-        if (unit.length == 0) {
-            console.error(`No units found for ->${token}<-`);
+    private static categorisations: [mapping: (token: string) => boolean, creation: (token: string) => UnitCategorisation][] = [
+        [ScalingUnitCategorisation.match, ScalingUnitCategorisation.create],
+        [StorageUnitCategorisation.match, StorageUnitCategorisation.create],
+        [TimeUnitCategorisation.match, TimeUnitCategorisation.create],
+        [NumberUnitCategorisation.match, NumberUnitCategorisation.create],
+        [DivisionUnitCategorisation.match, DivisionUnitCategorisation.create],
+        [CustomUnitCategorisation.match, CustomUnitCategorisation.create]
+        // [DefaultUnitCategorisation.match, DefaultUnitCategorisation.create]
+    ];
+
+    public findUnitCategorisation(token: string, tokens: string[]): UnitCategorisation {
+
+        for (const categorisation of Units.categorisations) {
+            const [mapping, creation] = categorisation;
+            if (mapping(token)) {
+                return creation(token);
+            }
         }
-        return unit[0];
+        console.log({
+            message: `Did not find any unit for "${token}" ${JSON.stringify(tokens)}. Please check if this is intended.`,
+            token,
+            tokens,
+            __filename
+        });
+        return DefaultUnitCategorisation.create(token);
     }
 
 }

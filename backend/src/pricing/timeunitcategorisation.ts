@@ -1,4 +1,5 @@
 import { UnitCategorisation } from "./units";
+import { isNil } from "lodash";
 
 export class TimeUnitCategorisation implements UnitCategorisation {
     public name = "TimeUnitCategorisation";
@@ -9,13 +10,23 @@ export class TimeUnitCategorisation implements UnitCategorisation {
     }
 
     private static patterns: { [unit: string]: RegExp } = {
-        s: /s(ec(ond(s)?)?)?/,
-        min: /min(ute(s)?)?/,
-        h: /h(our(s)?)?/,
-        d: /d(ay(s)?)?/,
-        w: /w(eek(s)?)?/,
-        m: /mo(nth(s)?)?/,
-        y: /y(ear(s)?)?/
+        s: /^(s(ec(ond(s)?)?)?)$/i,
+        min: /^(m(in(ute)?)?(s)?)$/i,
+        h: /^(h(our(s)?)?|Hrs)$/i,
+        d: /^(d(ay(s)?)?)$/i,
+        w: /^(w(eek(s)?)?|wks)$/i,
+        m: /^(m(o(nth(s)?)?)?)$/i,
+        y: /^(y(ear(s)?)?|yrs)$/i
+    };
+
+    private static conversion: { [unit: string]: number } = {
+        s: 1,
+        min: 60,
+        h: 60 * 60,
+        d: 24 * 60 * 60,
+        w: 7 * 24 * 60 * 60,
+        m: 30 * 24 * 60 * 60,
+        y: 365 * 24 * 60 * 60
     };
 
     public static getUnit(token: string): string | null {
@@ -34,27 +45,16 @@ export class TimeUnitCategorisation implements UnitCategorisation {
     }
 
     public static match(token: string): boolean {
-        return this.getUnit(token) != null;
+        return TimeUnitCategorisation.getUnit(token) != null;
     }
 
     categorizeTime(token: string) {
         // Convert the token to lowercase for case-insensitivity
         const lowerToken = token.toLowerCase();
 
-        // Define patterns for different time units
-        const patterns: { [unit: string]: RegExp } = {
-            s: /s(ec(ond(s)?)?)?/,
-            min: /min(ute(s)?)?/,
-            h: /h(our(s)?)?/,
-            d: /d(ay(s)?)?/,
-            w: /w(eek(s)?)?/,
-            m: /mo(nth(s)?)?/,
-            y: /y(ear(s)?)?/
-        };
-
         // Check for each time unit and return the corresponding category
-        for (const unit in patterns) {
-            if (patterns[unit].test(lowerToken)) {
+        for (const unit in TimeUnitCategorisation.patterns) {
+            if (TimeUnitCategorisation.patterns[unit].test(lowerToken)) {
                 return unit;
             }
         }
@@ -64,32 +64,16 @@ export class TimeUnitCategorisation implements UnitCategorisation {
     }
 
     getFactor(token: string) {
-        let factor: number;
-        switch (token) {
-            case "y":
-                factor = 365 * 24 * 60 * 60; // years to seconds
-                break;
-            case "m":
-                factor = 30 * 24 * 60 * 60; // months to seconds (approximating to 30 days per month)
-                break;
-            case "d":
-                factor = 24 * 60 * 60; // days to seconds
-                break;
-            case "h":
-                factor = 60 * 60; // hours to seconds
-                break;
-            case "min":
-                factor = 60; // minutes to seconds
-                break;
-            case "s":
-                factor = 1; // seconds (already in seconds)
-                break;
-            default:
-                throw new Error("Unsupported time unit");
+        let factor: number = TimeUnitCategorisation.conversion[token];
+
+        if (isNil(factor)) {
+            throw new Error("Unsupported time unit");
         }
 
         return factor;
     }
 
-    // convert()
+    public static create(token: string): UnitCategorisation {
+        return new TimeUnitCategorisation(token);
+    }
 }

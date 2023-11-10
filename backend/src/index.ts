@@ -12,7 +12,7 @@ setupDB(process.env["DB_CONNECTION_STRING"]);
 //     console.log("done");
 // });
 
-let unitConverter = new Units();
+let unitConverter = Units.getInstance();
 unitConverter.loadAllUnits();
 
 // let distinctByGroup: {
