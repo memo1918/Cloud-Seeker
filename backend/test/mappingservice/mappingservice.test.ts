@@ -18,7 +18,10 @@ import { getCategoryTemplate } from "../../src/categories/categorytemplateread";
 
 describe("MappingService class test", () => {
     class MockCategoryProvider extends CategoryProvider {
-        categories = SAMPLE_CATEGORY_TEMPLATE as Category[];
+        constructor() {
+            super();
+            this.categories = SAMPLE_CATEGORY_TEMPLATE as Category[];
+        }
         async findCategory(instance: Instance): Promise<Category> {
             return SAMPLE_CATEGORY;
         }
