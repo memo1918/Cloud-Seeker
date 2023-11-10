@@ -1,11 +1,11 @@
 import {TestBed} from '@angular/core/testing';
 import {AppComponent} from './app.component';
 import {MatTabsModule} from "@angular/material/tabs";
-import {MainComponent} from "./category/main/main.component";
+import {CategoryComponent} from "./category/category.component";
 
 describe('AppComponent', () => {
   beforeEach(() => TestBed.configureTestingModule({
-      declarations: [MainComponent, AppComponent],
+      declarations: [CategoryComponent, AppComponent],
       imports: [MatTabsModule]
     }
   ).compileComponents())

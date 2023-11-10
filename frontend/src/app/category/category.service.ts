@@ -12,7 +12,7 @@ export class CategoryService {
 
     constructor(public api: APIService) {
         this.api.loadCategories();
-        this.selectedCategory = this.getCategories().at(0);
+        this.selectedCategory = this.getCategories()[0];
     }
 
     setSelectedCategory(value: Category | undefined) {

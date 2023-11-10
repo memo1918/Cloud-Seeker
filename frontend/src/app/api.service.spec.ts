@@ -43,7 +43,7 @@ describe('APIService', () => {
     });
 
     //categories testing
-    it("should set the correct categories", async () => {
+    it("should load the correct categories", async () => {
         spyOn(window, 'fetch').and.resolveTo(okCategory);
         expect(service.categories).toEqual([]);
         await service.loadCategories();

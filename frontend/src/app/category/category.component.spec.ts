@@ -1,17 +1,17 @@
 import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {MainComponent} from './main.component';
+import {CategoryComponent} from './category.component';
 import {MatTabsModule} from "@angular/material/tabs";
 
 describe('MainComponent', () => {
-    let component: MainComponent;
-    let fixture: ComponentFixture<MainComponent>;
+    let component: CategoryComponent;
+    let fixture: ComponentFixture<CategoryComponent>;
 
     beforeEach(() => {
         TestBed.configureTestingModule({
             imports: [MatTabsModule],
-            declarations: [MainComponent]
+            declarations: [CategoryComponent]
         }).compileComponents();
-        fixture = TestBed.createComponent(MainComponent);
+        fixture = TestBed.createComponent(CategoryComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

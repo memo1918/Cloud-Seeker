@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
-import {CategoryService} from "../category.service";
+import {CategoryService} from "./category.service";
 
 @Component({
     selector: 'app-main',
-    templateUrl: './main.component.html',
-    styleUrls: ['./main.component.scss'],
+    templateUrl: './category.component.html',
+    styleUrls: ['./category.component.scss'],
 })
 
-export class MainComponent {
+export class CategoryComponent {
     title = 'categoryComponent';
 
     constructor(public categoryService: CategoryService) {
