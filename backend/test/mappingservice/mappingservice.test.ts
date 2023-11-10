@@ -17,7 +17,6 @@ import { Instance } from "../../src/mappingservice/interfaces/instance.interface
 import { getCategoryTemplate } from "../../src/categories/categorytemplateread";
 
 describe("MappingService class test", () => {
-
     class MockCategoryProvider extends CategoryProvider {
         categories = SAMPLE_CATEGORY_TEMPLATE as Category[];
         async findCategory(instance: Instance): Promise<Category> {

@@ -207,153 +207,130 @@ export const SAMPLE_INSTANCECOMPARISON: InstanceComparison = {
 
 export const SAMPLE_CATEGORY_TEMPLATE = [
     {
-        "name": "Compute",
-        "icon": "Computer",
-        "description": "test",
-        "vendors": [
+        name: "Compute",
+        icon: "Computer",
+        description: "test",
+        vendors: [
             {
-                "name": "aws",
-                "columns": {
-                    "cores": {
-                        "path": ["attributes","vcpu"],
-                        "conversion": {}
+                name: "aws",
+                columns: {
+                    cores: {
+                        path: ["attributes", "vcpu"],
+                        conversion: {}
                     },
-                    "memory": {
-                        "path": ["attributes","memory"],
-                        "conversion": {}
+                    memory: {
+                        path: ["attributes", "memory"],
+                        conversion: {}
                     },
-                    "regionCode": {
-                        "path": ["attributes","regionCode"],
-                        "conversion": {}
+                    regionCode: {
+                        path: ["attributes", "regionCode"],
+                        conversion: {}
                     },
-                    "storage": {
-                        "path": ["attributes","storage"],
-                        "conversion": {}
+                    storage: {
+                        path: ["attributes", "storage"],
+                        conversion: {}
                     }
                 }
             },
             {
-                "name": "gcp",
-                "columns": {
-
-                }
+                name: "gcp",
+                columns: {}
             },
             {
-                "name": "azure",
-                "columns": {
-
-                }
+                name: "azure",
+                columns: {}
             }
         ],
-        "fields": [
+        fields: [
             {
-                "name": "cores",
-                "options": [],
-                "unit": "Cores"
+                name: "cores",
+                options: [],
+                unit: "Cores"
             },
             {
-                "name": "regionCode",
-                "options": [],
-                "unit": "text"
+                name: "regionCode",
+                options: [],
+                unit: "text"
             },
             {
-                "name": "memory",
-                "options": [],
-                "unit": "GB"
+                name: "memory",
+                options: [],
+                unit: "GB"
             },
             {
-                "name": "storage",
-                "options": [],
-                "unit": "GB"
+                name: "storage",
+                options: [],
+                unit: "GB"
             }
         ],
-        "discovery": {
-            "aws": {
-                "key": ["productFamily"],
-                "value": [
-                    "Compute Instance"
-                ]
+        discovery: {
+            aws: {
+                key: ["productFamily"],
+                value: ["Compute Instance"]
             },
-            "gcp": {
-                "key": ["productFamily"],
-                "value": [
-                    "Compute Instance"
-                ]
+            gcp: {
+                key: ["productFamily"],
+                value: ["Compute Instance"]
             },
-            "azure": {
-                "key": ["productFamily"],
-                "value": [
-                    "Compute"
-                ]
+            azure: {
+                key: ["productFamily"],
+                value: ["Compute"]
             }
         }
     },
 
     {
-        "name": "Storage",
-        "icon": "Storage",
-        "description": "test",
-        "vendors": [
+        name: "Storage",
+        icon: "Storage",
+        description: "test",
+        vendors: [
             {
-                "name": "aws",
-                "columns": {
-                    "regionCode": {
-                        "path": ["attributes","regionCode"],
-                        "conversion": {}
+                name: "aws",
+                columns: {
+                    regionCode: {
+                        path: ["attributes", "regionCode"],
+                        conversion: {}
                     },
-                    "storageClass": {
-                        "path": ["attributes","storageClass"],
-                        "conversion": {}
+                    storageClass: {
+                        path: ["attributes", "storageClass"],
+                        conversion: {}
                     }
-
                 }
             },
             {
-                "name": "gcp",
-                "columns": {
-
-                }
+                name: "gcp",
+                columns: {}
             },
             {
-                "name": "azure",
-                "columns": {
-
-                }
+                name: "azure",
+                columns: {}
             }
         ],
-        "fields": [
+        fields: [
             {
-                "name": "regionCode",
-                "options": [],
-                "unit": ""
+                name: "regionCode",
+                options: [],
+                unit: ""
             },
             {
-                "name": "storageClass",
-                "options": [],
-                "unit": ""
+                name: "storageClass",
+                options: [],
+                unit: ""
             }
         ],
-        "discovery": {
-            "aws": {
-                "key": ["productFamily"],
-                "value": [
-                    "Storage"
-                ]
+        discovery: {
+            aws: {
+                key: ["productFamily"],
+                value: ["Storage"]
             },
-            "gcp": {
-                "key": ["productFamily"],
-                "value": [
-                    "Storage"
-                ]
+            gcp: {
+                key: ["productFamily"],
+                value: ["Storage"]
             },
-            "azure": {
-                "key": ["productFamily"],
-                "value": [
-                    "Storage"
-                ]
+            azure: {
+                key: ["productFamily"],
+                value: ["Storage"]
             }
         }
-
-
-    }]
-
+    }
+];
