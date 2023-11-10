@@ -1,4 +1,4 @@
-import {afterEach, beforeEach, describe, expect, test} from "@jest/globals";
+import {afterEach, beforeEach, describe} from "@jest/globals";
 import {MongoMemoryServer} from "mongodb-memory-server";
 
 describe("categories module", () => {
