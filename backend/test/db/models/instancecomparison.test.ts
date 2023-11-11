@@ -19,6 +19,9 @@ describe("instancecomparison db", () => {
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            await new Promise((resolve) => {
+                setTimeout(resolve, 500);
+            });
         } catch (e) {}
 
         let client = await new MongoClient(mongoServer.getUri()).connect();

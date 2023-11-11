@@ -8,6 +8,9 @@ describe("website visite module", () => {
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            await new Promise((resolve) => {
+                setTimeout(resolve, 500);
+            });
         } catch (e) {}
     });
 

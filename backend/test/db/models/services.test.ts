@@ -38,6 +38,9 @@ describe("services db", () => {
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            await new Promise((resolve) => {
+                setTimeout(resolve, 500);
+            });
             client = await new MongoClient(mongoServer.getUri()).connect();
             collection = await client.db(dbName).createCollection(collectionName);
         } catch (e) {}

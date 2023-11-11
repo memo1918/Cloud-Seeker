@@ -20,6 +20,9 @@ describe("test main entry point", () => {
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            await new Promise((resolve) => {
+                setTimeout(resolve, 500);
+            });
         } catch (e) {}
         (loadinfracostdumpindb as jest.Mock<any>).mockResolvedValue(undefined);
     });
