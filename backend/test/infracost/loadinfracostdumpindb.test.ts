@@ -8,11 +8,13 @@ import { removeFile } from "../../src/infracost/removefile";
 import { downloadDump } from "../../src/infracost/downloaddump";
 import { getDumpUrl } from "../../src/infracost/getdumpurl";
 import { ParseCsvBatch } from "../../src/csvimport/parsecsvbatch";
+import { shouldimportdump } from "../../src/infracost/shouldimportdump";
 
 jest.mock("../../src/infracost/getdumpurl");
 jest.mock("../../src/infracost/downloaddump");
 jest.mock("../../src/infracost/extractdump");
 jest.mock("../../src/infracost/removefile");
+jest.mock("../../src/infracost/shouldimportdump");
 jest.mock("../../src/db/models/services");
 jest.mock("../../src/db");
 
@@ -47,6 +49,7 @@ describe("the dump download and dump import into the db", () => {
         (removeFile as jest.Mock<any>).mockResolvedValue(undefined);
         (downloadDump as jest.Mock<any>).mockResolvedValue(undefined);
         (getDumpUrl as jest.Mock<any>).mockResolvedValue(someDummyUrl);
+        (shouldimportdump as jest.Mock<any>).mockResolvedValue(true);
     });
     beforeEach(() => {
         jest.clearAllMocks();
