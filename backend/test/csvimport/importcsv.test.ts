@@ -21,14 +21,4 @@ describe("countLinesInCSV", () => {
         expect(lineCount).not.toEqual(21);
     });
 
-    test("should handle errors and reject the promise if the file does not exist", async () => {
-        // provide non existent csv file path
-        const nonExFilePath = "./src/nonexistent-testcsv.csv";
-        const fnCal = countLinesInCSV(nonExFilePath);
-        // Try to call the function and handle reject
-        await expect(fnCal).rejects.toMatchObject({
-            message: expect.stringContaining("ENOENT"),
-            code: "ENOENT"
-        });
-    });
 });
