@@ -28,6 +28,7 @@ export class ReadCSV {
                 this.onReject(new Error("CSV file reading is complete."));
             }
         });
+
         this.filestream.on("end", () => {
             this.isCSVDone = true;
             this.filestream?.destroy();
@@ -37,7 +38,6 @@ export class ReadCSV {
         this.filestream.on("error", (error: Error) => {
             if (this.onReject) {
                 this.onReject(new Error("Error reading the CSV file."));
-                console.log("Error reading the CSV file.");
             }
         });
         this.filestream.pause();
@@ -63,10 +63,10 @@ export class ReadCSV {
 
     readLine(): Promise<CsvData[]> {
         if (this.onResolve || this.onReject) {
-            throw new Error("another request is currently fulfilled.");
+            return Promise.reject(new Error("another request is currently fulfilled."));
         }
         if (this.isCSVDone) {
-            throw new Error("CSV reading is done.");
+            return Promise.reject(new Error("CSV reading is done."));
         }
         return new Promise<CsvData[]>((resolve, reject) => {
             this.onResolve = resolve;
