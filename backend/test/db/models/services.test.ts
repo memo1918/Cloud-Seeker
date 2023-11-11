@@ -1,28 +1,27 @@
-import { afterEach, beforeEach, describe, expect, test } from "@jest/globals";
-import { MongoMemoryServer } from "mongodb-memory-server";
-import { MongoClient } from "mongodb";
-import { IService } from "../../../src/db/models/services";
-
-import { afterEach, beforeEach, describe, expect, jest, test } from "@jest/globals";
-import { MongoMemoryServer } from "mongodb-memory-server";
-import { MongoClient } from "mongodb";
 import {
     collectionName,
     createServicesIndex,
     dbName,
     dropServices,
-    getDistinctUnitsGroupedByServiceFamily
+    findServices,
+    getDistinctUnitsGroupedByServiceFamily,
+    insertServicesData,
+    IService
 } from "../../../src/db/models/services";
+
+import { afterEach, beforeEach, describe, expect, jest, test } from "@jest/globals";
+import { MongoMemoryServer } from "mongodb-memory-server";
+import { Collection, Document, MongoClient } from "mongodb";
+
 import { distinctSkus, skuFixture } from "./skuFixture";
 import { getCollection } from "../../../src/db/schema";
 import _ from "lodash";
 
 jest.mock("../../../src/db/schema");
 
-
-
 describe("services db", () => {
     let mongoServer: MongoMemoryServer;
+    let client: MongoClient;
     let fixtureServices: Partial<IService>[] = [
         {
             vendorName: "test1",
@@ -34,52 +33,36 @@ describe("services db", () => {
         }
     ];
 
+    let collection: Collection<Document>;
+
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            client = await new MongoClient(mongoServer.getUri()).connect();
+            collection = await client.db(dbName).createCollection(collectionName);
         } catch (e) {}
 
-        let client = await new MongoClient(mongoServer.getUri()).connect();
-        await client.db(dbName).collection(collectionName).insertMany(fixtureServices);
+        (getCollection as jest.Mock<any>).mockImplementation(async (...args: any[]) => {
+            return collection;
+        });
     });
 
     afterEach(async () => {
         try {
+            await client.close();
             await mongoServer.stop({ force: true, doCleanup: true });
         } catch (e) {}
     });
 
     test("find instances in collection services", async () => {
-        const { setURI } = await import("../../../src/db");
-        const { findServices } = await import("../../../src/db/models/services");
-        setURI(mongoServer.getUri());
-        let client = await new MongoClient(mongoServer.getUri()).connect();
-
+        await client.db(dbName).collection(collectionName).insertMany(fixtureServices);
         await expect(findServices(client, ["123", "321"])).resolves.toMatchObject(fixtureServices);
     });
 
-    test("drop collection services", async () => {
-        const { setURI } = await import("../../../src/db");
-        const { dropServices } = await import("../../../src/db/models/services");
-        setURI(mongoServer.getUri());
-
-        let client = await new MongoClient(mongoServer.getUri()).connect();
-
-        await expect(dropServices(client)).resolves.not.toThrow();
-
-        let collections = (await client.db(dbName).collections()).map((c) => c.collectionName);
-
-        expect(collections).not.toContain(collectionName);
-    });
-
     test("insert a instance to services collection", async () => {
-        const { setURI } = await import("../../../src/db");
-        const { insertServicesData } = await import("../../../src/db/models/services");
-        setURI(mongoServer.getUri());
-
         let testService: Partial<IService>[] = [{ vendorName: "test3", sku: "69" }];
 
-        let client = await new MongoClient(mongoServer.getUri()).connect();
+        await collection.insertMany(fixtureServices);
 
         await expect(insertServicesData(client, testService)).resolves.not.toThrow();
 
@@ -89,64 +72,36 @@ describe("services db", () => {
         });
     });
 
-    let mongoServer: MongoMemoryServer;
-
-    beforeEach(async () => {
-        try {
-            mongoServer = await MongoMemoryServer.create();
-        } catch (e) {}
-    });
-
-    afterEach(async () => {
-        try {
-            await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {}
-    });
-
     test("that the service collection is dropped", async () => {
-        let client = await new MongoClient(mongoServer.getUri()).connect();
-
-        await client.db(dbName).createCollection(collectionName);
-
-        let collectionsBeforeDelete = (await client.db("website").collections()).map((c) => c.collectionName);
-
+        let collectionsBeforeDelete = (await client.db(dbName).collections()).map((c) => c.collectionName);
         expect(collectionsBeforeDelete).toContain(collectionName);
 
         await expect(dropServices(client)).resolves.toBeTruthy();
 
-        let collectionsAfterDelete = (await client.db("website").collections()).map((c) => c.collectionName);
-
+        let collectionsAfterDelete = (await client.db(dbName).collections()).map((c) => c.collectionName);
         expect(collectionsAfterDelete).not.toContain(collectionName);
-        await client.close();
     });
 
     test("that a index for the sku is created", async () => {
-        let client = await new MongoClient(mongoServer.getUri()).connect();
-
-        await client.db(dbName).createCollection(collectionName);
-
         await expect(createServicesIndex(client)).resolves.toBeTruthy();
 
-        await expect(client.db(dbName).collection(collectionName).indexExists("sku")).resolves.toBeTruthy();
-        await client.close();
+        let test = await collection.listIndexes().toArray();
+
+        await expect(collection.indexExists("sku_text")).resolves.toBeTruthy();
     });
 
     test("that distinct pricing units for each service family are returned", async () => {
-        let client = await new MongoClient(mongoServer.getUri()).connect();
-        await client.db(dbName).createCollection(collectionName);
         await client.db(dbName).collection(collectionName).insertMany(skuFixture);
-        (getCollection as jest.Mock<any>).mockImplementation((...args: any[]) => {
-            return Promise.resolve(client.db(dbName).collection(collectionName));
-        });
 
         await expect(
             (async () => {
                 let data = await getDistinctUnitsGroupedByServiceFamily(client);
+                // data[0].
+                data = data.sort((a, b) => a._id.localeCompare(b._id));
+                data[0].units = data[0].units.sort();
+                data[1].units = data[1].units.sort();
                 return _.isEqual(data, distinctSkus);
             })()
         ).resolves.toBeTruthy();
-
-        await client.close();
     });
 });
-
