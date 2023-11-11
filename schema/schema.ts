@@ -56,3 +56,8 @@ interface CategoryField {
 // the fill out the options in the category field
 // in the frontend we only need: name, icon, description, fields
 // after this is done continue with te instance mapping part
+
+
+interface CartItem {
+
+}
