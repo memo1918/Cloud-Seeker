@@ -10,8 +10,13 @@ import { getDumpUrl } from "./getdumpurl";
 import { downloadDump } from "./downloaddump";
 import { removeFile } from "./removefile";
 import { extractDump } from "./extractdump";
+import { shouldimportdump } from "./shouldimportdump";
 
 export async function loadinfracostdumpindb() {
+    if (!(await shouldimportdump())) {
+        return;
+    }
+
     let archiveFile: PathLike = path.join(process.cwd(), "archive.csv.gz");
     let extractionFile: PathLike = path.join(process.cwd(), "archive.csv");
 
