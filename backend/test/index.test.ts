@@ -39,6 +39,7 @@ describe("test main entry point", () => {
         const { setupDB } = await import("../src/db/index");
 
         await import("../src/index");
+
         expect(loadinfracostdumpindb).toBeCalled();
         expect(registerRoutes).toBeCalled();
         expect(startServer).toBeCalled();
