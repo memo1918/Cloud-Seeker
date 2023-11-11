@@ -1,6 +1,7 @@
 import { execQuery } from "../db";
-import { _getAllCategories, ICategory } from "../db/models/categories";
+import { _getAllCategories } from "../db/models/categories";
+import { Category } from "../interfaces/category.interface";
 
 export async function getAllCategories() {
-    return execQuery<ICategory[]>(_getAllCategories);
+    return execQuery<Category[]>(_getAllCategories);
 }
