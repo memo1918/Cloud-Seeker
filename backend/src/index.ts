@@ -2,15 +2,22 @@
 import { startServer } from "./express/setup";
 import { registerRoutes } from "./routing/register";
 import { setupDB } from "./db";
+import { loadinfracostdumpindb } from "./infracost/loadinfracostdumpindb";
 // import { execQuery, setupDB } from "./db";
 // import { Units } from "./pricing/units";
 // import { loadInfracostDumpInDb } from "./infracost/dump";
 // import { getDistinctUnitsGroupedByServiceFamily } from "./layer/services";
 // import fs from "fs";
 
-registerRoutes();
-setupDB(process.env["DB_CONNECTION_STRING"]);
-startServer();
+async function start() {
+    registerRoutes();
+    setupDB(process.env["DB_CONNECTION_STRING"]);
+    startServer();
+    await loadinfracostdumpindb();
+}
+
+start();
+
 // loadInfracostDumpInDb().then(console.log)
 // execQuery(getDistinctUnitsGroupedByServiceFamily).then((data) => {
 //     // console.log(JSON.stringify(data));

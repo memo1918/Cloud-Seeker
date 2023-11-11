@@ -1,5 +1,5 @@
 import { MongoMemoryServer } from "mongodb-memory-server";
-import { afterEach, beforeAll, beforeEach, describe, expect, jest, test } from "@jest/globals";
+import { beforeAll, beforeEach, describe, expect, jest, test } from "@jest/globals";
 import { execQuery } from "../../src/db";
 import { createServicesIndex, dropServices, insertServicesData } from "../../src/db/models/services";
 import { csvTestDbFixtureData, transformedTestDbFixtureData } from "./csvTestDbFixtureData";

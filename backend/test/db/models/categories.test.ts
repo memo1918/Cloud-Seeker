@@ -5,6 +5,7 @@ import { Category } from "../../../src/interfaces/category.interface";
 
 describe("categories db", () => {
     let mongoServer: MongoMemoryServer;
+    let client: MongoClient;
     let fixtureCategories: Partial<Category>[] = [
         {
             name: "Compute Instance"
@@ -17,14 +18,14 @@ describe("categories db", () => {
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            client = await new MongoClient(mongoServer.getUri()).connect();
+            await client.db("cloud-seeker").collection("categories").insertMany(fixtureCategories);
         } catch (e) {}
-
-        let client = await new MongoClient(mongoServer.getUri()).connect();
-        await client.db("cloud-seeker").collection("categories").insertMany(fixtureCategories);
     });
 
     afterEach(async () => {
         try {
+            await client.close();
             await mongoServer.stop({ force: true, doCleanup: true });
         } catch (e) {}
     });
@@ -33,7 +34,6 @@ describe("categories db", () => {
         const { setURI } = await import("../../../src/db");
         const { _getAllCategories } = await import("../../../src/db/models/categories");
         setURI(mongoServer.getUri());
-        let client = await new MongoClient(mongoServer.getUri()).connect();
 
         await expect(_getAllCategories(client)).resolves.toMatchObject(fixtureCategories);
     });
@@ -42,8 +42,6 @@ describe("categories db", () => {
         const { setURI } = await import("../../../src/db");
         const { dropCategories } = await import("../../../src/db/models/categories");
         setURI(mongoServer.getUri());
-
-        let client = await new MongoClient(mongoServer.getUri()).connect();
 
         await expect(dropCategories(client)).resolves.not.toThrow();
 
@@ -66,8 +64,6 @@ describe("categories db", () => {
             }
         ];
 
-        let client = await new MongoClient(mongoServer.getUri()).connect();
-
         await expect(addCategories(client, testCategories)).resolves.not.toThrow();
 
         await expect(
@@ -81,8 +77,6 @@ describe("categories db", () => {
         const { setURI } = await import("../../../src/db");
         const { removeCategories } = await import("../../../src/db/models/categories");
         setURI(mongoServer.getUri());
-
-        let client = await new MongoClient(mongoServer.getUri()).connect();
 
         await expect(removeCategories(client, ["Compute Instance"])).resolves.not.toThrow();
 
