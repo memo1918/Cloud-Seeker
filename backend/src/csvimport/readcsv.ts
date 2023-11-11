@@ -5,11 +5,15 @@ import { CsvData, CSVReader } from "./CSVReader";
 
 export class ReadCSV implements CSVReader {
     private filestream?: csvParser.CsvParser;
-    private onResolve?: (data: CsvData) => void;
+    private onResolve?: (data: CsvData[]) => void;
     private onReject?: (err: any) => void;
+    private cache: CsvData[] = [];
     private isCSVDone = false;
 
-    constructor(private csvFilePath: string) {
+    constructor(
+        private csvFilePath: string,
+        private lineCount = 1
+    ) {
         this.filestream = fs.createReadStream(this.csvFilePath).pipe(
             csv({
                 mapHeaders: ({ header }) => header.trim()
@@ -26,6 +30,8 @@ export class ReadCSV implements CSVReader {
         });
         this.filestream.on("end", () => {
             this.isCSVDone = true;
+            this.filestream?.destroy();
+            this.publish();
         });
 
         this.filestream.on("error", (error: Error) => {
@@ -38,22 +44,31 @@ export class ReadCSV implements CSVReader {
     }
 
     private onNewLine(data: CsvData) {
-        this.filestream?.pause();
+        // add data to cache
+        this.cache.push(data);
+        if (this.cache.length == this.lineCount) {
+            this.filestream?.pause();
+            this.publish();
+        }
+    }
+
+    private publish() {
         if (this.onResolve) {
-            this.onResolve(data);
+            this.onResolve(this.cache);
+            this.cache = [];
             this.onResolve = undefined;
             this.onReject = undefined;
         }
     }
 
-    public readLine(): Promise<CsvData> {
+    public readLine(): Promise<CsvData[]> {
         if (this.onResolve || this.onReject) {
-            throw new Error("another request is currently fulfilled.");
+            return Promise.reject(new Error("another request is currently fulfilled."));
         }
         if (this.isCSVDone) {
-            throw new Error("CSV reading is done.");
+            return Promise.reject(new Error("CSV reading is done."));
         }
-        return new Promise<CsvData>((resolve, reject) => {
+        return new Promise<CsvData[]>((resolve, reject) => {
             this.onResolve = resolve;
             this.onReject = reject;
             this.filestream?.resume();

@@ -32,7 +32,7 @@ export class MappingService {
 
     async getNextLine() {
         try {
-            const line = await this.csvreader.readLine();
+            const line = (await this.csvreader.readLine())[0];
 
             if (line) {
                 return Object.values(line); //list of values

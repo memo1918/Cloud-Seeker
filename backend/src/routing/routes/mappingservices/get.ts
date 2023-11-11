@@ -1,9 +1,9 @@
 import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../../route";
 import { NextFunction } from "express";
 import { MappingService } from "../../../mappingservice/mappingservice";
-import { ReadCSV } from "../../../csvimport/readlinebyline";
 import { MappingMongoDB } from "../../../mappingservice/mappingdb";
 import { CategoryProvider } from "../../../categories/categoryprovider";
+import { ReadCSV } from "../../../csvimport/readcsv";
 
 export default class Root implements Route {
     getFileName(): string {

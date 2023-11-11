@@ -29,9 +29,9 @@ describe("MappingService class test", () => {
 
     class MockMappingDB implements MappingDB {
         findSkus(skuArr: string[]): Promise<WithId<Document>[]> {
-            if (JSON.stringify(skuArr.sort()) !== JSON.stringify(Object.values(MockReadCSV.dummydata).sort())) {
+            if (JSON.stringify(skuArr.sort()) !== JSON.stringify(Object.values(MockReadCSV.dummydata[0]).sort())) {
                 console.log(skuArr.sort());
-                console.log(Object.values(MockReadCSV.dummydata).sort());
+                console.log(Object.values(MockReadCSV.dummydata[0]).sort());
                 throw new Error("not expected value");
             }
 
@@ -54,15 +54,17 @@ describe("MappingService class test", () => {
     }
 
     class MockReadCSV implements CSVReader {
-        public static dummydata = {
-            aws: "aws1234",
-            gcp: "gcp1234",
-            azure: "azure1234"
-        };
+        public static dummydata = [
+            {
+                aws: "aws1234",
+                gcp: "gcp1234",
+                azure: "azure1234"
+            }
+        ];
 
         private hasResolvedOnce = false;
 
-        readLine(): Promise<CsvData> {
+        readLine(): Promise<CsvData[]> {
             if (this.hasResolvedOnce) {
                 throw new Error("done");
             }
@@ -73,7 +75,7 @@ describe("MappingService class test", () => {
 
     test("test if getNextLine() returns correct", async () => {
         let instance = new MappingService(new MockCategoryProvider(), new MockMappingDB(), new MockReadCSV());
-        await expect(instance.getNextLine()).resolves.toEqual(Object.values(MockReadCSV.dummydata));
+        await expect(instance.getNextLine()).resolves.toEqual(Object.values(MockReadCSV.dummydata[0]));
     });
 
     test("test start function", async () => {
