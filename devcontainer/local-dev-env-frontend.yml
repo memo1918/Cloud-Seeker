@@ -5,6 +5,7 @@ services:
       context: ../backend
     environment:
       - DB_CONNECTION_STRING=mongodb://mongodb:27017
+      - INFRACOST_API_KEY=ico-L0D8qyYQ38KgwpHmuujgj4AxWtfZR9CD
 
   reverseproxy:
     image: nginx
@@ -18,7 +19,7 @@ services:
   mongodb:
     image: mongo
     volumes:
-      - ./mongodb:/data
+      - ./mongodb:/data/db # storing persistent data
     # ports should only be open when debugging with MongoDB Compass
     ports:
       - "27017:27017"

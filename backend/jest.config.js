@@ -6,7 +6,7 @@ module.exports = {
     collectCoverage: true,
     coverageDirectory: "./build/coverage",
     coverageProvider: "v8",
-    collectCoverageFrom: ["src/**/*.{ts,js}"],
+    collectCoverageFrom: ["src/**/*.{ts,js}", "!src/**/*.interface.{ts,js}"],
     coverageReporters: ["cobertura", "lcov", "text"],
     reporters: [
         "default",
