@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+// Main spectre.
+@use '../node_modules/@angular-package/spectre.css/spectre' as *;
+
+// Experimentals.
+@use '../node_modules/@angular-package/spectre.css/spectre-exp' as *;
+
+// Icons.
+@use '../node_modules/@angular-package/spectre.css/spectre-icons' as *;
+
+// Define CSS variables.
+@use '../node_modules/@angular-package/spectre.css/css-variables' as *;
+
+// Get functions.
+@use '../node_modules/@angular-package/spectre.css/functions' as *;
+
+// Get mixins.
+@use '../node_modules/@angular-package/spectre.css/mixins' as *;
+
+// Get variables.
+@use '../node_modules/@angular-package/spectre.css/variables' as *;
+
+.primary-background {
+  background-color: red;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

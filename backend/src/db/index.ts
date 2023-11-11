@@ -14,10 +14,10 @@ async function createMongoClient() {
         return new MongoClient(uri, {
             serverApi: {
                 version: ServerApiVersion.v1,
-                deprecationErrors: true
+                deprecationErrors: false
             },
-            connectTimeoutMS: 200,
-            serverSelectionTimeoutMS: 200
+            connectTimeoutMS: 20000,
+            serverSelectionTimeoutMS: 20000
         }).connect();
     } catch (e) {
         throw e;

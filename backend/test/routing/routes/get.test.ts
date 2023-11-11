@@ -34,11 +34,8 @@ describe("root route", () => {
         );
 
         expect(res.contentType).toHaveBeenCalledWith("application/json");
-
         expect(res.end).toHaveBeenCalled();
-
         expect(errorMock).not.toHaveBeenCalled();
-
         expect(getVisits).toBeCalled();
     });
 });

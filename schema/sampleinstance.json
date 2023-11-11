@@ -12,11 +12,12 @@
     }
   },
   "fields": {
-    "cpu": {
+    "cores": {
       "value": 8,
       "unit": "cors"
     },
     "memory": "16 GiB",
     "storage": "1 x 200 NVMe SSD"
-  }
+  },
+  "skus": []
 }

@@ -2,15 +2,22 @@ import { getCollection } from "../schema";
 import { Document, MongoClient, WithId } from "mongodb";
 
 export interface IService extends WithId<Document> {
-    name: string;
+    productHash: string;
+    sku: string;
+    vendorName: string;
 }
 
-const dbName = "cloud-seeker";
-const collectionName = "services";
+export const dbName = "cloud-seeker";
+export const collectionName = "services";
 
 export async function findServices(client: MongoClient, sku: string[]) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
     return serviceCollection.find({ sku: { $in: sku } }).toArray();
+}
+
+export async function getUniqueVendors(client: MongoClient) {
+    let serviceCollection = await getCollection(client, dbName, collectionName);
+    return serviceCollection.distinct("vendorName");
 }
 
 export async function dropServices(client: MongoClient) {
@@ -29,30 +36,22 @@ export async function insertServicesData(client: MongoClient, services: any[]) {
     return serviceCollection.insertMany(services);
 }
 
-export async function getDistinctVendors(client: MongoClient) {
-    let serviceCollection = await getCollection(client, dbName, collectionName);
-    return serviceCollection.distinct("vendorName");
-}
-
-export async function getDistinctUnits(client: MongoClient) {
-    let serviceCollection = await getCollection(client, dbName, collectionName);
-    return serviceCollection.distinct("prices.unit");
-}
-
-export async function _getDistinctUnitsGroupedByServiceFamily(client: MongoClient) {
+export async function getDistinctUnitsGroupedByServiceFamily(client: MongoClient) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
 
-    return await serviceCollection.aggregate([
-        { $unwind: "$prices" },
-        {
-            $group: {
-                _id: "$productFamily",
-                units: {
-                    $addToSet: "$prices.unit"
+    return await serviceCollection
+        .aggregate([
+            { $unwind: "$prices" },
+            {
+                $group: {
+                    _id: "$productFamily",
+                    units: {
+                        $addToSet: "$prices.unit"
+                    }
                 }
             }
-        }
-    ]).toArray() as {
+        ])
+        .toArray() as {
         "_id": string,
         "units": string[]
     }[];

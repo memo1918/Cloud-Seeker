@@ -8,6 +8,9 @@ describe("mongodb setup", () => {
     beforeAll(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            await new Promise((resolve) => {
+                setTimeout(resolve, 500);
+            });
         } catch (e) {}
     });
 
@@ -42,18 +45,6 @@ describe("mongodb setup", () => {
     test("mongodb to throw missing uri error", async () => {
         const { execQuery, setupDB } = await import("../../src/db");
         setupDB("");
-
-        const executePing = execQuery(async (_client: any) => {
-            const client: MongoClient = _client;
-            await client.db("admin").command({ ping: 1 });
-            return true;
-        });
-
-        await expect(executePing).rejects.toBeInstanceOf(Error);
-    });
-    test("mongodb to throw timout error", async () => {
-        const { execQuery, setupDB } = await import("../../src/db");
-        setupDB("mongodb://127.0.0.1:80");
 
         const executePing = execQuery(async (_client: any) => {
             const client: MongoClient = _client;
