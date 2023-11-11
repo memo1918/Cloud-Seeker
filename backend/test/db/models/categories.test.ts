@@ -34,17 +34,13 @@ describe("categories db", () => {
     });
 
     test("get all categories with two instance available", async () => {
-        const { setURI } = await import("../../../src/db");
         const { _getAllCategories } = await import("../../../src/db/models/categories");
-        setURI(mongoServer.getUri());
 
         await expect(_getAllCategories(client)).resolves.toMatchObject(fixtureCategories);
     });
 
     test("drop collection categories", async () => {
-        const { setURI } = await import("../../../src/db");
         const { dropCategories } = await import("../../../src/db/models/categories");
-        setURI(mongoServer.getUri());
 
         await expect(dropCategories(client)).resolves.not.toThrow();
 
@@ -54,9 +50,7 @@ describe("categories db", () => {
     });
 
     test("add two instance to categories collection", async () => {
-        const { setURI } = await import("../../../src/db");
         const { addCategories } = await import("../../../src/db/models/categories");
-        setURI(mongoServer.getUri());
 
         let testCategories: Partial<Category>[] = [
             {
@@ -77,9 +71,7 @@ describe("categories db", () => {
     });
 
     test("remove an instance from categories collection", async () => {
-        const { setURI } = await import("../../../src/db");
         const { removeCategories } = await import("../../../src/db/models/categories");
-        setURI(mongoServer.getUri());
 
         await expect(removeCategories(client, ["Compute Instance"])).resolves.not.toThrow();
 
