@@ -54,11 +54,13 @@ describe("MappingService class test", () => {
     }
 
     class MockReadCSV implements CSVReader {
-        public static dummydata = [{
-            aws: "aws1234",
-            gcp: "gcp1234",
-            azure: "azure1234"
-        }];
+        public static dummydata = [
+            {
+                aws: "aws1234",
+                gcp: "gcp1234",
+                azure: "azure1234"
+            }
+        ];
 
         private hasResolvedOnce = false;
 

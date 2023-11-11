@@ -10,8 +10,10 @@ export class ReadCSV implements CSVReader {
     private cache: CsvData[] = [];
     private isCSVDone = false;
 
-    constructor(private csvFilePath: string, private lineCount = 1) {
-
+    constructor(
+        private csvFilePath: string,
+        private lineCount = 1
+    ) {
         this.filestream = fs.createReadStream(this.csvFilePath).pipe(
             csv({
                 mapHeaders: ({ header }) => header.trim()

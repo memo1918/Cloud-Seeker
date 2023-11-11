@@ -20,5 +20,4 @@ describe("countLinesInCSV", () => {
         // test same file for different line count
         expect(lineCount).not.toEqual(21);
     });
-
 });

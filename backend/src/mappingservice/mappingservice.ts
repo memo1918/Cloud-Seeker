@@ -20,7 +20,7 @@ export class MappingService {
 
         while (true) {
             try {
-                skuArr = (await this.getNextLine());
+                skuArr = await this.getNextLine();
                 await this.forEachSku(skuArr as string[]);
             } catch (error) {
                 break;

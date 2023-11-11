@@ -3,7 +3,7 @@ import { NextFunction } from "express";
 import { MappingService } from "../../../mappingservice/mappingservice";
 import { MappingMongoDB } from "../../../mappingservice/mappingdb";
 import { CategoryProvider } from "../../../categories/categoryprovider";
-import {ReadCSV} from "../../../csvimport/readcsv";
+import { ReadCSV } from "../../../csvimport/readcsv";
 
 export default class Root implements Route {
     getFileName(): string {
