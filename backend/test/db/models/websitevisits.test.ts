@@ -36,5 +36,6 @@ describe("website visite module", () => {
             name: "test_my_unique_name",
             visits: 1
         });
+        await client.close();
     });
 });

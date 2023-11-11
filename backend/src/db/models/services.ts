@@ -7,8 +7,8 @@ export interface IService extends WithId<Document> {
     vendorName: string;
 }
 
-const dbName = "cloud-seeker";
-const collectionName = "services";
+export const dbName = "cloud-seeker";
+export const collectionName = "services";
 
 export async function findServices(client: MongoClient, sku: string[]) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
@@ -36,30 +36,19 @@ export async function insertServicesData(client: MongoClient, services: any[]) {
     return serviceCollection.insertMany(services);
 }
 
-export async function getDistinctVendors(client: MongoClient) {
-    let serviceCollection = await getCollection(client, dbName, collectionName);
-    return serviceCollection.distinct("vendorName");
-}
-
-export async function getDistinctUnits(client: MongoClient) {
-    let serviceCollection = await getCollection(client, dbName, collectionName);
-    return serviceCollection.distinct("prices.unit");
-}
 
 export async function getDistinctUnitsGroupedByServiceFamily(client: MongoClient) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
 
-    return serviceCollection
-        .aggregate([
-            { $unwind: "$prices" },
-            {
-                $group: {
-                    _id: "$productFamily",
-                    units: {
-                        $addToSet: "$prices.unit"
-                    }
+    return serviceCollection.aggregate([
+        { $unwind: "$prices" },
+        {
+            $group: {
+                _id: "$productFamily",
+                units: {
+                    $addToSet: "$prices.unit"
                 }
             }
-        ])
-        .toArray();
+        }
+    ]).toArray();
 }

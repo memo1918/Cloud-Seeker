@@ -1,16 +1,14 @@
 import { describe, expect, test, jest, beforeAll, beforeEach, afterEach } from "@jest/globals";
 import { setupRoutingRegisterMock } from "../setups/routing.routes.register";
 import { setupExpressSetupMock } from "../setups/express.setup";
-import { registerRoutes } from "../src/routing/register";
-import { startServer } from "../src/express/setup";
+
 import { setupDbIndexMock } from "../setups/db.index";
-import { setupDB } from "../src/db";
 import { MongoMemoryServer } from "mongodb-memory-server";
 
 beforeAll(setupRoutingRegisterMock);
 beforeAll(setupExpressSetupMock);
 beforeAll(setupDbIndexMock);
-beforeAll(() => {
+beforeEach(() => {
     jest.clearAllMocks();
 });
 
