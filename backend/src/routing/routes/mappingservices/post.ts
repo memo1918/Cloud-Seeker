@@ -1,7 +1,6 @@
 import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../../route";
 import { NextFunction } from "express";
 
-
 import { execQuery } from "../../../db";
 
 export default class Root implements Route {
@@ -18,13 +17,9 @@ export default class Root implements Route {
         // data validation
         // execute sm fn in business layer
 
-
-
         res.contentType("application/json")
             .json({
-                data: {
-
-                }
+                data: {}
             })
             .end();
 
