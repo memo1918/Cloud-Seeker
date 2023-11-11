@@ -8,12 +8,15 @@ describe("website visite module", () => {
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            await new Promise((resolve) => {
+                setTimeout(resolve, 500);
+            });
         } catch (e) {}
     });
 
     afterEach(async () => {
         try {
-            await mongoServer.stop();
+            await mongoServer.stop({ force: true, doCleanup: true });
         } catch (e) {}
     });
 
@@ -36,5 +39,6 @@ describe("website visite module", () => {
             name: "test_my_unique_name",
             visits: 1
         });
+        await client.close();
     });
 });

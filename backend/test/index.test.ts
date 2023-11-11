@@ -1,16 +1,16 @@
 import { describe, expect, test, jest, beforeAll, beforeEach, afterEach } from "@jest/globals";
 import { setupRoutingRegisterMock } from "../setups/routing.routes.register";
 import { setupExpressSetupMock } from "../setups/express.setup";
-import { registerRoutes } from "../src/routing/register";
-import { startServer } from "../src/express/setup";
+
 import { setupDbIndexMock } from "../setups/db.index";
-import { setupDB } from "../src/db";
 import { MongoMemoryServer } from "mongodb-memory-server";
+import { loadinfracostdumpindb } from "../src/infracost/loadinfracostdumpindb";
 
 beforeAll(setupRoutingRegisterMock);
 beforeAll(setupExpressSetupMock);
 beforeAll(setupDbIndexMock);
-beforeAll(() => {
+jest.mock("../src/infracost/loadinfracostdumpindb");
+beforeEach(() => {
     jest.clearAllMocks();
 });
 
@@ -20,7 +20,11 @@ describe("test main entry point", () => {
     beforeEach(async () => {
         try {
             mongoServer = await MongoMemoryServer.create();
+            await new Promise((resolve) => {
+                setTimeout(resolve, 500);
+            });
         } catch (e) {}
+        (loadinfracostdumpindb as jest.Mock<any>).mockResolvedValue(undefined);
     });
 
     afterEach(async () => {
@@ -35,7 +39,7 @@ describe("test main entry point", () => {
         const { setupDB } = await import("../src/db/index");
 
         await import("../src/index");
-
+        expect(loadinfracostdumpindb).toBeCalled();
         expect(registerRoutes).toBeCalled();
         expect(startServer).toBeCalled();
         expect(setupDB).toBeCalled();

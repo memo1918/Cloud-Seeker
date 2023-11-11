@@ -2,3 +2,7 @@ node_modules
 .idea
 build
 .vscode
+archive.csv
+archive.csv.gz
+archive.csv
+archive.csv.gz
