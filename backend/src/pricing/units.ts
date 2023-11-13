@@ -52,7 +52,7 @@ export class Units {
         units.sort();
         let tokens = units.map((i) => i.match(Units.regex) || []);
         // filter out duplicates after matching
-        tokens = [...new Set(tokens.map(i => JSON.stringify(i))).values()].map(i => JSON.parse(i));
+        tokens = [...new Set(tokens.map((i) => JSON.stringify(i))).values()].map((i) => JSON.parse(i));
         tokens.forEach((token, i) => {
             this.categorise(token);
         });

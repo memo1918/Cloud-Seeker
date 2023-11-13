@@ -37,7 +37,6 @@ export class NumberUnitCategorisation implements UnitCategorisation {
     }
 
     expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
-
         if (prevUnit != null && prevUnit instanceof NumberUnitCategorisation) {
             prevUnit.add(this.value);
             return [];
@@ -53,6 +52,4 @@ export class NumberUnitCategorisation implements UnitCategorisation {
     isCompatible(other: UnitCategorisation): boolean {
         return other instanceof NumberUnitCategorisation;
     }
-
-
 }

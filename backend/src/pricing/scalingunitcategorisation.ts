@@ -43,7 +43,6 @@ export class ScalingUnitCategorisation implements UnitCategorisation {
     }
 
     expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
-
         if (prevUnit != null && prevUnit instanceof NumberUnitCategorisation) {
             prevUnit.multiply(this.factor);
             return [];

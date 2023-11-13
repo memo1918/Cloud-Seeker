@@ -113,9 +113,11 @@ export class TimeUnitCategorisation implements UnitCategorisation {
             return [NumberUnitCategorisation.create("1"), this];
         }
 
-        if (prevUnit instanceof StorageUnitCategorisation ||
+        if (
+            prevUnit instanceof StorageUnitCategorisation ||
             prevUnit instanceof CustomUnitCategorisation ||
-            prevUnit instanceof DefaultUnitCategorisation) {
+            prevUnit instanceof DefaultUnitCategorisation
+        ) {
             return [DivisionUnitCategorisation.create("/"), NumberUnitCategorisation.create("1"), this];
         }
         return [NumberUnitCategorisation.create("1"), this];
@@ -124,6 +126,4 @@ export class TimeUnitCategorisation implements UnitCategorisation {
     isCompatible(other: UnitCategorisation): boolean {
         return other instanceof TimeUnitCategorisation;
     }
-
-
 }

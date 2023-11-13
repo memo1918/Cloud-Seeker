@@ -34,6 +34,4 @@ export class DivisionUnitCategorisation implements UnitCategorisation {
     isCompatible(other: UnitCategorisation): boolean {
         return other instanceof DivisionUnitCategorisation;
     }
-
-
 }

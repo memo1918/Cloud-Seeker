@@ -17,7 +17,6 @@ export class DefaultUnitCategorisation implements UnitCategorisation {
         return new DefaultUnitCategorisation(token);
     }
 
-
     expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
         if (prevUnit != null && prevUnit instanceof DefaultUnitCategorisation) {
             prevUnit.token = `${prevUnit.token} ${this.token}`;

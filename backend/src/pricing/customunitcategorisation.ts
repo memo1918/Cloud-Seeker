@@ -99,7 +99,6 @@ export class CustomUnitCategorisation implements UnitCategorisation {
 
         if (prevUnit != null && prevUnit instanceof NumberUnitCategorisation) {
             return [this];
-
         }
         return [NumberUnitCategorisation.create("1"), this];
     }
