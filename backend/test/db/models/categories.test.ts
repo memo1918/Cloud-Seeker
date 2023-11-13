@@ -22,9 +22,15 @@ describe("categories db", () => {
                 setTimeout(resolve, 500);
             });
             await mongoServer.ensureInstance();
-            client = await new MongoClient(mongoServer.getUri()).connect();
-            await client.db("cloud-seeker").collection("categories").insertMany(fixtureCategories);
         } catch (e) {}
+        while (true) {
+            try {
+                client = await new MongoClient(mongoServer.getUri()).connect();
+                await client.db("cloud-seeker").collection("categories").insertMany(fixtureCategories);
+                break;
+            } catch (err) {
+            }
+        }
     });
 
     afterEach(async () => {

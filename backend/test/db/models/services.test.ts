@@ -42,9 +42,16 @@ describe("services db", () => {
                 setTimeout(resolve, 500);
             });
             await mongoServer.ensureInstance();
-            client = await new MongoClient(mongoServer.getUri()).connect();
-            collection = await client.db(dbName).createCollection(collectionName);
         } catch (e) {}
+
+        while (true) {
+            try {
+                client = await new MongoClient(mongoServer.getUri()).connect();
+                collection = await client.db(dbName).createCollection(collectionName);
+                break;
+            } catch (err) {
+            }
+        }
 
         (getCollection as jest.Mock<any>).mockImplementation(async (...args: any[]) => {
             return collection;

@@ -18,12 +18,12 @@ describe("behaviour of extracting the data from the archive", () => {
         const gz = zlib.createGzip();
         gz.pipe(fs.createWriteStream(gunzipFile));
         gz.write(testFileContents, "utf-8");
-        // await new Promise((resolve, reject) => gz.once("drain", resolve));
-        gz.end();
+        await new Promise<void>((resolve) => gz.end(resolve));
 
         // create invaild file
         fs.writeFileSync(invalidFile, testFileContents);
     });
+
     afterAll(() => {
         // delete dummy temporary gunzip files
         fs.unlinkSync(gunzipFile);
