@@ -11,6 +11,7 @@ describe("website visite module", () => {
             await new Promise((resolve) => {
                 setTimeout(resolve, 500);
             });
+            await mongoServer.ensureInstance();
         } catch (e) {}
     });
 

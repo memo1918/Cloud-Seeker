@@ -22,9 +22,9 @@ describe("instancecomparison db", () => {
             await new Promise((resolve) => {
                 setTimeout(resolve, 500);
             });
+            await mongoServer.ensureInstance();
         } catch (e) {}
-
-        let client = await new MongoClient(mongoServer.getUri()).connect();
+        let client = await new MongoClient(mongoServer.getUri(), {}).connect();
         await client.db(dbName).collection(collectionName).insertMany(fixtureInstanceComparison);
     });
 

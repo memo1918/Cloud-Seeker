@@ -41,6 +41,7 @@ describe("services db", () => {
             await new Promise((resolve) => {
                 setTimeout(resolve, 500);
             });
+            await mongoServer.ensureInstance();
             client = await new MongoClient(mongoServer.getUri()).connect();
             collection = await client.db(dbName).createCollection(collectionName);
         } catch (e) {}

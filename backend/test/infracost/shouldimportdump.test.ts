@@ -4,10 +4,10 @@ import { collectionName, dbName, IService } from "../../src/db/models/services";
 import { afterEach, beforeEach, describe, expect, jest, test } from "@jest/globals";
 import { getCollection } from "../../src/db/schema";
 import { shouldimportdump } from "../../src/infracost/shouldimportdump";
+import { execQuery } from "../../src/db";
 
 jest.mock("../../src/db/schema");
 jest.mock("../../src/db");
-import { execQuery } from "../../src/db";
 
 describe("function to decide if the db dum should be imported", () => {
     let mongoServer: MongoMemoryServer;
@@ -31,6 +31,7 @@ describe("function to decide if the db dum should be imported", () => {
             await new Promise((resolve) => {
                 setTimeout(resolve, 500);
             });
+            await mongoServer.ensureInstance();
             client = await new MongoClient(mongoServer.getUri()).connect();
             collection = await client.db(dbName).createCollection(collectionName);
         } catch (e) {}

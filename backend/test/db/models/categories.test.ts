@@ -21,6 +21,7 @@ describe("categories db", () => {
             await new Promise((resolve) => {
                 setTimeout(resolve, 500);
             });
+            await mongoServer.ensureInstance();
             client = await new MongoClient(mongoServer.getUri()).connect();
             await client.db("cloud-seeker").collection("categories").insertMany(fixtureCategories);
         } catch (e) {}
