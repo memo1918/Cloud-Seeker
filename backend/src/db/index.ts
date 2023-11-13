@@ -6,7 +6,7 @@ export function setURI(newUri: string) {
     uri = newUri;
 }
 
-async function createMongoClient() {
+async function createMongoClient(timeout_ms: number) {
     if (!uri) {
         return Promise.reject(new Error("[ENV] DB_CONNECTION_STRING missing"));
     }
@@ -16,16 +16,16 @@ async function createMongoClient() {
                 version: ServerApiVersion.v1,
                 deprecationErrors: false
             },
-            connectTimeoutMS: 20000,
-            serverSelectionTimeoutMS: 20000
+            connectTimeoutMS: timeout_ms,
+            serverSelectionTimeoutMS: timeout_ms
         }).connect();
     } catch (e) {
         throw e;
     }
 }
 
-export async function execQuery<T>(command: (client: MongoClient) => Promise<T>) {
-    const clientPromise: Promise<MongoClient> = createMongoClient();
+export async function execQuery<T>(command: (client: MongoClient) => Promise<T>, timeout_ms = 100) {
+    const clientPromise: Promise<MongoClient> = createMongoClient(timeout_ms);
     let client: MongoClient | null = null;
     try {
         client = await clientPromise;

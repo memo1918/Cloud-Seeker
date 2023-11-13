@@ -52,6 +52,7 @@ describe("services db", () => {
     });
 
     afterEach(async () => {
+        (getCollection as jest.Mock<any>).mockClear();
         try {
             await client.close();
             await mongoServer.stop({ force: true, doCleanup: true });

@@ -7,5 +7,5 @@ export async function shouldimportdump(): Promise<boolean> {
         let collection = await getCollection(client, dbName, collectionName);
         let count = await collection.countDocuments();
         return count == 0;
-    });
+    }, 20000);
 }
