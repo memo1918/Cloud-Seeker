@@ -28,8 +28,7 @@ describe("categories db", () => {
                 client = await new MongoClient(mongoServer.getUri()).connect();
                 await client.db("cloud-seeker").collection("categories").insertMany(fixtureCategories);
                 break;
-            } catch (err) {
-            }
+            } catch (err) {}
         }
     });
 

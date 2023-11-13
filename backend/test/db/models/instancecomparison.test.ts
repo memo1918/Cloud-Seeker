@@ -29,8 +29,7 @@ describe("instancecomparison db", () => {
                 let client = await new MongoClient(mongoServer.getUri(), {}).connect();
                 await client.db(dbName).collection(collectionName).insertMany(fixtureInstanceComparison);
                 break;
-            } catch (err) {
-            }
+            } catch (err) {}
         }
     });
 

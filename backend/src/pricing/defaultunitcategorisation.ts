@@ -7,8 +7,7 @@ export class DefaultUnitCategorisation implements UnitCategorisation {
     acceptsUserInput: boolean = false;
     inputType: InputType = null;
 
-    constructor(public token: string) {
-    }
+    constructor(public token: string) {}
 
     public static match(token: string): boolean {
         return true;

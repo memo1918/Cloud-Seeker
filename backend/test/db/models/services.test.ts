@@ -49,8 +49,7 @@ describe("services db", () => {
                 client = await new MongoClient(mongoServer.getUri()).connect();
                 collection = await client.db(dbName).createCollection(collectionName);
                 break;
-            } catch (err) {
-            }
+            } catch (err) {}
         }
 
         (getCollection as jest.Mock<any>).mockImplementation(async (...args: any[]) => {

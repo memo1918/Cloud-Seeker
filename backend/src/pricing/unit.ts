@@ -4,6 +4,5 @@ export class Unit {
     constructor(
         private tokens: string[] = [],
         private categories: UnitCategorisation[] = []
-    ) {
-    }
+    ) {}
 }

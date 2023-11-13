@@ -5,8 +5,7 @@ import { AwsApi } from "./aws";
 import { AzureApi } from "./azure";
 import { GcpApi } from "./gcp";
 
-export class UnknownProviderError extends Error {
-}
+export class UnknownProviderError extends Error {}
 
 export class ApiProvider {
     private static instance: ApiProvider;
@@ -16,8 +15,7 @@ export class ApiProvider {
         return this.instance;
     }
 
-    private constructor() {
-    }
+    private constructor() {}
 
     private apis: { [name: string]: BaseApi } = {};
 

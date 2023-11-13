@@ -1,2450 +1,1775 @@
 [
-  {
-    "_id": "EUC1-ConfigurationItemRecorded",
-    "productFamilies": [
-      "Management Tools - AWS Config"
-    ]
-  },
-  {
-    "_id": "NumberMonths",
-    "productFamilies": [
-      "AmazonChimeVoiceConnector",
-      "AmazonChimeBusinessCalling"
-    ]
-  },
-  {
-    "_id": "Terabytes",
-    "productFamilies": [
-      "Redshift Data Scan",
-      "Athena Queries"
-    ]
-  },
-  {
-    "_id": "1 GiB Second",
-    "productFamilies": [
-      "Compute"
-    ]
-  },
-  {
-    "_id": "Hrs",
-    "productFamilies": [
-      "Compute",
-      "Fee",
-      "ML Instance",
-      "Kinesis Firehose",
-      "Lightsail Networking",
-      "AWS Systems Manager",
-      "Lightsail Load Balancing",
-      "Load Balancer-Application",
-      "StorageGateway-Instance",
-      "Elastic Map Reduce Instance",
-      "Lightsail Containers",
-      "IP Address",
-      "API Calls",
-      "Streaming Instance",
-      "RDSProxy",
-      "Amazon OpenSearch Service Instance",
-      "Compute Instance",
-      "Data Transfer",
-      "Load Balancer",
-      "Machine Learning",
-      "NAT Gateway",
-      "Cloud Connectivity",
-      "Cache Instance",
-      "DAX",
-      "Lightsail Instance",
-      "AWS Directory Service",
-      "Transcode minute",
-      "Load Balancer-Network",
-      "Replication Server",
-      "Amazon API Gateway Cache",
-      "Search Instance",
-      "VpcEndpoint",
-      "Dedicated Host",
-      "Elastic Graphics",
-      "AutoML Jobs",
-      "Load Balancer-Gateway",
-      "VMwareCloudOnAWS",
-      "ML Elastic Inference",
-      "GameLift EC2 Instance",
-      "Blockchain Instance",
-      "Blockchain Member",
-      "Broker Instances",
-      "Bundle",
-      "Amazon MemoryDB",
-      "Compute Instance (bare metal)",
-      "Database Instance",
-      "",
-      "EMR Containers",
-      "OpsWorks",
-      "Lightsail Database"
-    ]
-  },
-  {
-    "_id": "hours",
-    "productFamilies": [
-      "Fast Snapshot Restore",
-      "Streaming Instance",
-      "AWS Outposts Subscription",
-      "Managed Streaming for Apache Kafka (MSK)",
-      "Machine Learning",
-      "DNS Query",
-      "AWS Supply Chain",
-      "AWS Managed Services",
-      "Streaming",
-      "Direct Connect",
-      "Dedicated-Host",
-      "",
-      "Transcode minute",
-      "Fee",
-      "Compute",
-      "Kinesis Firehose",
-      "Elastic Inference"
-    ]
-  },
-  {
-    "_id": "dollars",
-    "productFamilies": [
-      "",
-      "Simple Messaging Service",
-      "Compute",
-      "AWSMobile-AmazonPinpoint"
-    ]
-  },
-  {
-    "_id": "1K",
-    "productFamilies": [
-      "Analytics",
-      "Other",
-      "Internet of Things",
-      "AI + Machine Learning",
-      "Management and Governance",
-      "Web"
-    ]
-  },
-  {
-    "_id": "mebibyte hour",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "Game Sessions Placed",
-    "productFamilies": [
-      "GameLift Anywhere"
-    ]
-  },
-  {
-    "_id": "Characters",
-    "productFamilies": [
-      "Synthesize Speech",
-      "AmazonPolly"
-    ]
-  },
-  {
-    "_id": "Rule Evaluation Event",
-    "productFamilies": [
-      "AWS Security Hub - Automation"
-    ]
-  },
-  {
-    "_id": "NetworkInterface-Assessment",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "Month",
-    "productFamilies": [
-      "Web Application Firewall",
-      "FinSpace",
-      "User Fees",
-      "Firewall Manager Policy",
-      "AWSMobile-AmazonPinpoint",
-      "Enterprise Applications",
-      "Business Analytics",
-      "AWSIoTTwinMaker"
-    ]
-  },
-  {
-    "_id": "GB",
-    "productFamilies": [
-      "DT-Data Transfer",
-      "Fee",
-      "Security Lake",
-      "AWS Backup Restore Data Size EFS",
-      "AWS DataSync",
-      "AWS Systems Manager",
-      "GuardDuty",
-      "Kinesis Firehose",
-      "Management Tools - AWS CloudTrail",
-      "System Operation",
-      "Lightsail Networking",
-      "Shield-DataTransfer",
-      "Amazon Detective",
-      "AR & VR",
-      "Storage Snapshot",
-      "Packaging Data Transfer",
-      "Load Balancer",
-      "Managed Streaming for Apache Kafka (MSK)",
-      "Blockchain Data Written",
-      "Data Transfer",
-      "Data Payload",
-      "Machine Learning",
-      "Amazon DynamoDB Restore Data Size",
-      "NAT Gateway",
-      "Direct Connect",
-      "Amazon Macie",
-      "Kinesis Streams",
-      "AWS Backup Storage",
-      "IoTAnalytics",
-      "Database Utilization",
-      "AWS Transfer Family",
-      "Amazon DynamoDB Import Data Size",
-      "AWS Security Services - Macie Content Processing",
-      "AWS Transfer for SFTP",
-      "Kinesis Video",
-      "AWS Backup Restore Data Size",
-      "AWS Firewall",
-      "VMwareCloudOnAWS",
-      "Snowball Device",
-      "StorageGateway-Fee",
-      "Sending Attachments",
-      "Amazon DynamoDB Export Data Size",
-      "Amazon MemoryDB",
-      "",
-      "API Request",
-      "Redshift Inter Region Data Transfer",
-      "Storage",
-      "StorageGateway-Deep Archive-Fee"
-    ]
-  },
-  {
-    "_id": "1 Rotation",
-    "productFamilies": [
-      "Security"
-    ]
-  },
-  {
-    "_id": "Workflow-days",
-    "productFamilies": [
-      "Amazon Simple Workflow"
-    ]
-  },
-  {
-    "_id": "GiBps-mo",
-    "productFamilies": [
-      "Provisioned Throughput"
-    ]
-  },
-  {
-    "_id": "10M",
-    "productFamilies": [
-      "Management and Governance"
-    ]
-  },
-  {
-    "_id": "Metric Datapoints",
-    "productFamilies": [
-      "AWSIoT",
-      "Metric",
-      "API Request"
-    ]
-  },
-  {
-    "_id": "1 IOPS/Month",
-    "productFamilies": [
-      "Databases"
-    ]
-  },
-  {
-    "_id": "ChangeDataCaptureUnits",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "kilometric",
-    "productFamilies": [
-      "Business Analytics"
-    ]
-  },
-  {
-    "_id": "usagehours",
-    "productFamilies": [
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "Gigabyte",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "VM-hour",
-    "productFamilies": [
-      "VMwareCloudOnAWS"
-    ]
-  },
-  {
-    "_id": "gibibyte day",
-    "productFamilies": [
-      "Storage",
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "GB-month",
-    "productFamilies": [
-      "AWS Backup Storage",
-      "Kinesis Streams",
-      "Storage",
-      "QLDB Storage",
-      "AWS Supply Chain",
-      "AWS Backup Early Delete Size",
-      "Amazon OpenSearch Service Serverless",
-      "FinSpace",
-      "StorageGateway-Storage",
-      "Kinesis Analytics",
-      "StorageGateway-Fee",
-      "Machine Learning",
-      "VMwareCloudOnAWS"
-    ]
-  },
-  {
-    "_id": "Pages",
-    "productFamilies": [
-      "API Request"
-    ]
-  },
-  {
-    "_id": "1 GB Second",
-    "productFamilies": [
-      "Compute",
-      "Containers",
-      "Azure Stack"
-    ]
-  },
-  {
-    "_id": "Certificates",
-    "productFamilies": [
-      "AWS Certificate Manager"
-    ]
-  },
-  {
-    "_id": "ShardHour",
-    "productFamilies": [
-      "Kinesis Streams"
-    ]
-  },
-  {
-    "_id": "Workflow executions",
-    "productFamilies": [
-      "Amazon Simple Workflow"
-    ]
-  },
-  {
-    "_id": "100 Hours",
-    "productFamilies": [
-      "Integration"
-    ]
-  },
-  {
-    "_id": "MAU",
-    "productFamilies": [
-      "Enterprise Applications"
-    ]
-  },
-  {
-    "_id": "pipelines",
-    "productFamilies": [
-      "Active Pipeline"
-    ]
-  },
-  {
-    "_id": "OpsItems",
-    "productFamilies": [
-      "AWS Systems Manager"
-    ]
-  },
-  {
-    "_id": "AmazonChime_Meetings_Active_Host_Days",
-    "productFamilies": [
-      "AmazonChime",
-      ""
-    ]
-  },
-  {
-    "_id": "Preconditions",
-    "productFamilies": [
-      "Active Pipeline"
-    ]
-  },
-  {
-    "_id": "Messages",
-    "productFamilies": [
-      "WebSocket",
-      "AmazonConnect",
-      "RealTime",
-      "",
-      "Kinesis Video",
-      "AmazonChime",
-      "AWSIoT",
-      "AWSMobile-AmazonPinpoint",
-      "Message Delivery"
-    ]
-  },
-  {
-    "_id": "CloudMapResource",
-    "productFamilies": [
-      "AWS Cloud Map"
-    ]
-  },
-  {
-    "_id": "Computations",
-    "productFamilies": [
-      "AWSIoTSiteWise"
-    ]
-  },
-  {
-    "_id": "minutes",
-    "productFamilies": [
-      "CloudWatch Events",
-      "Braket Managed Jobs Instance",
-      "AmazonChimeVoiceConnector",
-      "Audio",
-      "Standard Definition",
-      "Data Payload",
-      "AmazonChimeDialinProductFamily",
-      "Machine Learning",
-      "AmazonChime",
-      "FinSpace",
-      "",
-      "Transcode minute",
-      "WebSocket",
-      "Amazon Lex",
-      "Compute",
-      "Reserved Transcoding",
-      "High Definition",
-      "Simulator Task",
-      "Developer Tools",
-      "Braket Managed Jobs Simulator Task",
-      "Kinesis Video",
-      "AWS Amplify",
-      "Rekognition API",
-      "AmazonChimeBusinessCalling"
-    ]
-  },
-  {
-    "_id": "1 GiB Hour",
-    "productFamilies": [
-      "Integration",
-      "Compute",
-      "Other"
-    ]
-  },
-  {
-    "_id": "1 Hour",
-    "productFamilies": [
-      "Azure Stack",
-      "Databases",
-      "AI + Machine Learning",
-      "Networking",
-      "Other",
-      "Telecommunications",
-      "Compute",
-      "Containers",
-      "Internet of Things",
-      "Analytics",
-      "Security",
-      "Integration",
-      "Azure Arc",
-      "Developer Tools",
-      "Web",
-      "Data",
-      "Management and Governance",
-      "Mixed Reality",
-      "Quantum Computing"
-    ]
-  },
-  {
-    "_id": "InferenceUnits",
-    "productFamilies": [
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "100 Seconds",
-    "productFamilies": [
-      "Containers"
-    ]
-  },
-  {
-    "_id": "1B",
-    "productFamilies": [
-      "Management and Governance"
-    ]
-  },
-  {
-    "_id": "CreateModelRequest",
-    "productFamilies": [
-      "AutoML Jobs"
-    ]
-  },
-  {
-    "_id": "Deployments",
-    "productFamilies": [
-      "AWSIoT"
-    ]
-  },
-  {
-    "_id": "mebibyte",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "1 TB/Month",
-    "productFamilies": [
-      "Analytics",
-      "Compute"
-    ]
-  },
-  {
-    "_id": "Address",
-    "productFamilies": [
-      "AmazonLocationService"
-    ]
-  },
-  {
-    "_id": "Secrets",
-    "productFamilies": [
-      "Secret"
-    ]
-  },
-  {
-    "_id": "byte",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "Instance-hrs",
-    "productFamilies": [
-      "Compute",
-      "Amazon Inspector"
-    ]
-  },
-  {
-    "_id": "GB-Seconds",
-    "productFamilies": [
-      "AWS Step Functions",
-      "AWS Amplify",
-      "Serverless"
-    ]
-  },
-  {
-    "_id": "AgentAssessments",
-    "productFamilies": [
-      "Agent Assessments"
-    ]
-  },
-  {
-    "_id": "IOPS-Mo",
-    "productFamilies": [
-      "Provisioned IOPS",
-      "System Operation",
-      "Amazon OpenSearch Service Volume"
-    ]
-  },
-  {
-    "_id": "5/Month",
-    "productFamilies": [
-      "Other"
-    ]
-  },
-  {
-    "_id": "Configuration Requests",
-    "productFamilies": [
-      "AWS Systems Manager"
-    ]
-  },
-  {
-    "_id": "recipients",
-    "productFamilies": [
-      "AmazonChime"
-    ]
-  },
-  {
-    "_id": "Instance - Months",
-    "productFamilies": [
-      "AWS Supply Chain"
-    ]
-  },
-  {
-    "_id": "message",
-    "productFamilies": [
-      "Business Analytics"
-    ]
-  },
-  {
-    "_id": "ReplicatedWriteRequestUnits",
-    "productFamilies": [
-      "Amazon DynamoDB PayPerRequest Throughput"
-    ]
-  },
-  {
-    "_id": "Transaction",
-    "productFamilies": [
-      "AmazonLocationService"
-    ]
-  },
-  {
-    "_id": "callme-minutes",
-    "productFamilies": [
-      "AmazonChimeCallMeProductFamily"
-    ]
-  },
-  {
-    "_id": "Map Tile",
-    "productFamilies": [
-      "AmazonLocationService"
-    ]
-  },
-  {
-    "_id": "minute",
-    "productFamilies": [
-      "ContactCenterTelecomm",
-      "ApplicationServices",
-      "Business Analytics"
-    ]
-  },
-  {
-    "_id": "tebibyte month",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "Geofence",
-    "productFamilies": [
-      "AmazonLocationService"
-    ]
-  },
-  {
-    "_id": "Security Checks",
-    "productFamilies": [
-      "AWS Security Hub - Standards"
-    ]
-  },
-  {
-    "_id": "gigabyte",
-    "productFamilies": [
-      "ApplicationServices",
-      "Network"
-    ]
-  },
-  {
-    "_id": "100K",
-    "productFamilies": [
-      "Internet of Things",
-      "Other"
-    ]
-  },
-  {
-    "_id": "1 GiB/Month",
-    "productFamilies": [
-      "Databases",
-      "Storage",
-      "Developer Tools"
-    ]
-  },
-  {
-    "_id": "Runs",
-    "productFamilies": [
-      "Canaries"
-    ]
-  },
-  {
-    "_id": "1 GB Hour",
-    "productFamilies": [
-      "Other",
-      "Containers"
-    ]
-  },
-  {
-    "_id": "10K",
-    "productFamilies": [
-      "Storage",
-      "Other",
-      "Developer Tools",
-      "Blockchain",
-      "Networking",
-      "Security",
-      "Analytics",
-      "Integration",
-      "Databases"
-    ]
-  },
-  {
-    "_id": "Active-GGC-Devices",
-    "productFamilies": [
-      "AWSGreengrass"
-    ]
-  },
-  {
-    "_id": "API Request",
-    "productFamilies": [
-      "AWS Migration Hub",
-      "AmazonLocationService",
-      "API Request"
-    ]
-  },
-  {
-    "_id": "Index Updates",
-    "productFamilies": [
-      "IoTDeviceManagement"
-    ]
-  },
-  {
-    "_id": "Lambda-GB-Second",
-    "productFamilies": [
-      "Serverless"
-    ]
-  },
-  {
-    "_id": "count",
-    "productFamilies": [
-      "ContactCenterTelecomm",
-      "Utility",
-      "Storage",
-      "ApplicationServices",
-      "Search",
-      "Network",
-      "Compute"
-    ]
-  },
-  {
-    "_id": "ACU-Months",
-    "productFamilies": [
-      "Performance Insights",
-      "GuardDuty"
-    ]
-  },
-  {
-    "_id": "RPU-Hr",
-    "productFamilies": [
-      "Serverless"
-    ]
-  },
-  {
-    "_id": "Steps",
-    "productFamilies": [
-      "AWSIoT"
-    ]
-  },
-  {
-    "_id": "Replication-hour",
-    "productFamilies": [
-      "Server Migration",
-      "Server DR"
-    ]
-  },
-  {
-    "_id": "Prediction",
-    "productFamilies": [
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "1/Year",
-    "productFamilies": [
-      "AI + Machine Learning",
-      "Compute",
-      "Azure Stack"
-    ]
-  },
-  {
-    "_id": "ConfigurationItemRecorded",
-    "productFamilies": [
-      "Management Tools - AWS Config"
-    ]
-  },
-  {
-    "_id": "Recommendations",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "GB-Mo",
-    "productFamilies": [
-      "Database Storage",
-      "Managed Streaming for Apache Kafka (MSK)",
-      "StorageGateway-Deep Archive",
-      "Machine Learning",
-      "Amazon OpenSearch Service Volume",
-      "Amazon MemoryDB",
-      "Business Analytics",
-      "",
-      "Braket Managed Jobs Volume",
-      "Storage",
-      "StorageGateway-Deep Archive-Fee",
-      "Redshift Managed Storage",
-      "Sync Storage",
-      "Fee",
-      "Blockchain Node Storage",
-      "Broker Storage",
-      "Replication Storage",
-      "Enterprise Applications",
-      "Lightsail Snapshot",
-      "Lightsail Storage",
-      "FeatureStore Storage",
-      "StorageGateway-Storage",
-      "AWS Systems Manager",
-      "EC2 Container Registry",
-      "Storage Snapshot"
-    ]
-  },
-  {
-    "_id": "1/Hour",
-    "productFamilies": [
-      "AI + Machine Learning",
-      "Databases",
-      "Networking",
-      "Storage",
-      "Other",
-      "Telecommunications",
-      "Internet of Things",
-      "Mixed Reality",
-      "Analytics",
-      "Security",
-      "Integration",
-      "Web",
-      "Management and Governance",
-      "Developer Tools",
-      "Blockchain",
-      "Windows Virtual Desktop"
-    ]
-  },
-  {
-    "_id": "Rule-Hour",
-    "productFamilies": [
-      "Contributor Insights",
-      ""
-    ]
-  },
-  {
-    "_id": "1",
-    "productFamilies": [
-      "Blockchain",
-      "Azure Communication Services",
-      "AI + Machine Learning",
-      "Machine Learning",
-      "Storage",
-      "Telecommunications",
-      "Microsoft Syntex",
-      "Networking",
-      "Gaming",
-      "Security",
-      "Analytics",
-      "Integration",
-      "Mixed Reality",
-      "Compute",
-      "Internet of Things",
-      "Power Platform",
-      "AWS Systems Manager",
-      "Azure Stack",
-      "Management and Governance",
-      "Web",
-      "Developer Tools"
-    ]
-  },
-  {
-    "_id": "Run",
-    "productFamilies": [
-      "Compute"
-    ]
-  },
-  {
-    "_id": "Blocks",
-    "productFamilies": [
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "GiB",
-    "productFamilies": [
-      "Image Fees"
-    ]
-  },
-  {
-    "_id": "Internet Monitor - City-Network",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "Tasks",
-    "productFamilies": [
-      "AmazonConnect",
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "GB-Month",
-    "productFamilies": [
-      "Amazon DynamoDB On-Demand Backup Storage",
-      "Kinesis Video"
-    ]
-  },
-  {
-    "_id": "Sessions",
-    "productFamilies": [
-      "",
-      "AWS Glue",
-      "AmazonChime",
-      "Business Analytics"
-    ]
-  },
-  {
-    "_id": "year",
-    "productFamilies": [
-      "Network",
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "Geofence-month",
-    "productFamilies": [
-      "AmazonLocationService"
-    ]
-  },
-  {
-    "_id": "1/Day",
-    "productFamilies": [
-      "Containers",
-      "Storage",
-      "Azure Stack",
-      "Compute",
-      "Web",
-      "Management and Governance",
-      "Developer Tools",
-      "Analytics",
-      "AI + Machine Learning",
-      "Databases",
-      "Internet of Things"
-    ]
-  },
-  {
-    "_id": "BH_Team_Paid_Members_Monthly",
-    "productFamilies": [
-      "BH-TEAM"
-    ]
-  },
-  {
-    "_id": "Minutes",
-    "productFamilies": [
-      "RealTime",
-      "AmazonConnect"
-    ]
-  },
-  {
-    "_id": "HSM",
-    "productFamilies": [
-      "Dedicated-Host"
-    ]
-  },
-  {
-    "_id": "GB-Hours",
-    "productFamilies": [
-      "AWSIoTSiteWise",
-      "Database Storage",
-      "Compute",
-      "Compute Metering",
-      ""
-    ]
-  },
-  {
-    "_id": "PutRequest",
-    "productFamilies": [
-      "Kinesis Streams"
-    ]
-  },
-  {
-    "_id": "millisecond",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "User-Mo",
-    "productFamilies": [
-      "Enterprise Applications",
-      "WorkSpaces Application Manager",
-      "FinSpace"
-    ]
-  },
-  {
-    "_id": "MillionCells",
-    "productFamilies": [
-      "AutoML Jobs"
-    ]
-  },
-  {
-    "_id": "Images Processed",
-    "productFamilies": [
-      "Kinesis Video",
-      "Rekognition Image API"
-    ]
-  },
-  {
-    "_id": "10K/Month",
-    "productFamilies": [
-      "Storage"
-    ]
-  },
-  {
-    "_id": "1 GB/Month",
-    "productFamilies": [
-      "Compute",
-      "Storage",
-      "Azure Stack",
-      "Other",
-      "Developer Tools",
-      "Management and Governance",
-      "Blockchain",
-      "Networking",
-      "Analytics",
-      "Security",
-      "Integration",
-      "Internet of Things",
-      "Databases",
-      "Containers"
-    ]
-  },
-  {
-    "_id": "world",
-    "productFamilies": [
-      "RoboMaker Simulation"
-    ]
-  },
-  {
-    "_id": "API Calls",
-    "productFamilies": [
-      "API Calls",
-      "AWSIoTTwinMaker",
-      "Machine Learning",
-      "Enterprise Applications",
-      "Performance Insights"
-    ]
-  },
-  {
-    "_id": "1/Month",
-    "productFamilies": [
-      "AI + Machine Learning",
-      "Databases",
-      "Azure Communication Services",
-      "Networking",
-      "Storage",
-      "Other",
-      "Telecommunications",
-      "Internet of Things",
-      "Compute",
-      "Azure Arc",
-      "Security",
-      "Analytics",
-      "Integration",
-      "Web",
-      "Management and Governance",
-      "Developer Tools",
-      "Blockchain",
-      "Windows Virtual Desktop",
-      "Azure Stack"
-    ]
-  },
-  {
-    "_id": "Count",
-    "productFamilies": [
-      "Sending Email",
-      "VMwareCloudOnAWS",
-      "Machine Learning",
-      "Receiving Email",
-      "AWSMobile-AmazonPinpoint",
-      "Bundle",
-      "",
-      "API Request",
-      "AmazonConnect",
-      "AWS Backup Storage",
-      "Fee",
-      "ContactCenterTelecomm",
-      "Kinesis Video",
-      "IoTDeviceManagement",
-      "IP Address"
-    ]
-  },
-  {
-    "_id": "1 GB",
-    "productFamilies": [
-      "AI + Machine Learning",
-      "Databases",
-      "Azure Communication Services",
-      "Microsoft Syntex",
-      "Networking",
-      "Other",
-      "Storage",
-      "Internet of Things",
-      "Compute",
-      "Security",
-      "Analytics",
-      "Integration",
-      "Web",
-      "Management and Governance",
-      "Developer Tools",
-      "Blockchain"
-    ]
-  },
-  {
-    "_id": "TIB-hour",
-    "productFamilies": [
-      "VMwareCloudOnAWS"
-    ]
-  },
-  {
-    "_id": "ReadRequestUnits",
-    "productFamilies": [
-      "FeatureStore PayPerRequestThroughput",
-      "Amazon DynamoDB PayPerRequest Throughput",
-      "PayPerRequest Throughput"
-    ]
-  },
-  {
-    "_id": "Remote Actions",
-    "productFamilies": [
-      "IoTDeviceManagement"
-    ]
-  },
-  {
-    "_id": "DCU-Hr",
-    "productFamilies": [
-      "Replication Server"
-    ]
-  },
-  {
-    "_id": "Minutes Processed",
-    "productFamilies": [
-      "Rekognition Video API - Live Streams",
-      "Rekognition Video API - Archived Content"
-    ]
-  },
-  {
-    "_id": "sessions",
-    "productFamilies": [
-      "Business Analytics"
-    ]
-  },
-  {
-    "_id": "Dashboards",
-    "productFamilies": [
-      "Dashboard"
-    ]
-  },
-  {
-    "_id": "Bucket-days",
-    "productFamilies": [
-      "Amazon Macie"
-    ]
-  },
-  {
-    "_id": "Jobs",
-    "productFamilies": [
-      "Snowball Device",
-      ""
-    ]
-  },
-  {
-    "_id": "25K",
-    "productFamilies": [
-      "Security"
-    ]
-  },
-  {
-    "_id": "StreamHr",
-    "productFamilies": [
-      "Kinesis Streams"
-    ]
-  },
-  {
-    "_id": "GU-Hour",
-    "productFamilies": [
-      "RoboMaker Simulation"
-    ]
-  },
-  {
-    "_id": "Explanations_in_Thousands",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "Batch Recommendations",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "DPU-Hour",
-    "productFamilies": [
-      "AWS Glue",
-      "Athena Spark",
-      "Athena Queries"
-    ]
-  },
-  {
-    "_id": "CognitoUserPoolsMAU",
-    "productFamilies": [
-      "User Pool Enterprise MAU",
-      "User Pool ASF MAU",
-      "User Pool MAU"
-    ]
-  },
-  {
-    "_id": "Application",
-    "productFamilies": [
-      "AWS Resilience Hub"
-    ]
-  },
-  {
-    "_id": "1 Second",
-    "productFamilies": [
-      "Compute",
-      "Containers"
-    ]
-  },
-  {
-    "_id": "PIOPS-Mo",
-    "productFamilies": [
-      "Amazon OpenSearch Service Volume"
-    ]
-  },
-  {
-    "_id": "NCU-hr",
-    "productFamilies": [
-      "Serverless"
-    ]
-  },
-  {
-    "_id": "Mo",
-    "productFamilies": [
-      "",
-      "DNS Health Check",
-      "DNS Domain Names",
-      "Fee",
-      "Sending Email"
-    ]
-  },
-  {
-    "_id": "GB-mo",
-    "productFamilies": [
-      "AR & VR"
-    ]
-  },
-  {
-    "_id": "Obj-Month",
-    "productFamilies": [
-      "AWS Glue"
-    ]
-  },
-  {
-    "_id": "Job",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "50K",
-    "productFamilies": [
-      "Analytics"
-    ]
-  },
-  {
-    "_id": "Requests",
-    "productFamilies": [
-      "API Calls",
-      "User Pool ASF MAU",
-      "Serverless",
-      "Lex Text Request",
-      "AWSMobile-AmazonPinpoint",
-      "",
-      "API Request",
-      "Request",
-      "Blockchain Request",
-      "AWS Backup Storage",
-      "AWS Systems Manager",
-      "User Pool Enterprise MAU",
-      "User Pool MAU",
-      "Fee",
-      "EBS direct API Requests",
-      "AWS Step Functions",
-      "Lex Speech Request",
-      "AWS Backup Restore Data Size",
-      "Web Application Firewall"
-    ]
-  },
-  {
-    "_id": "ReachabilityAnalyses",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "10",
-    "productFamilies": [
-      "Compute",
-      "Management and Governance",
-      "Azure Stack"
-    ]
-  },
-  {
-    "_id": "OSI-hour",
-    "productFamilies": [
-      "VMwareCloudOnAWS"
-    ]
-  },
-  {
-    "_id": "Server Process Conn Minutes",
-    "productFamilies": [
-      "GameLift Anywhere"
-    ]
-  },
-  {
-    "_id": "User",
-    "productFamilies": [
-      "Business Analytics"
-    ]
-  },
-  {
-    "_id": "100",
-    "productFamilies": [
-      "Web",
-      "Storage",
-      "AI + Machine Learning"
-    ]
-  },
-  {
-    "_id": "job",
-    "productFamilies": [
-      "Snowball Device",
-      ""
-    ]
-  },
-  {
-    "_id": "Predictions",
-    "productFamilies": [
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "1 GB/Hour",
-    "productFamilies": [
-      "Storage",
-      "Compute",
-      "Azure Stack"
-    ]
-  },
-  {
-    "_id": "Batch Segment",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "1 GiB/Hour",
-    "productFamilies": [
-      "Storage"
-    ]
-  },
-  {
-    "_id": "Users",
-    "productFamilies": [
-      "User Fees",
-      "AWSMobile-AmazonPinpoint",
-      "Business Analytics",
-      "Wickr",
-      "Enterprise Applications",
-      "AWSIoTSiteWise"
-    ]
-  },
-  {
-    "_id": "Configuration Received",
-    "productFamilies": [
-      "AWS Systems Manager"
-    ]
-  },
-  {
-    "_id": "100 GB Seconds",
-    "productFamilies": [
-      "Containers"
-    ]
-  },
-  {
-    "_id": "Events",
-    "productFamilies": [
-      "AWSMobile-Analytics",
-      "GuardDuty",
-      "AWS Security Services - Macie Log Processing",
-      "",
-      "Management Tools - AWS CloudTrail Data Events Recorded",
-      "AWSMobile-AmazonPinpoint",
-      "Management Tools - AWS CloudTrail Free Events Recorded",
-      "Management Tools - AWS CloudTrail Insights Events",
-      "Management Tools - AWS CloudTrail Paid Events Recorded"
-    ]
-  },
-  {
-    "_id": "1M/Month",
-    "productFamilies": [
-      "Networking"
-    ]
-  },
-  {
-    "_id": "Hour",
-    "productFamilies": [
-      "Enterprise Applications",
-      "AWS Systems Manager"
-    ]
-  },
-  {
-    "_id": "Node-hour",
-    "productFamilies": [
-      "FinSpace"
-    ]
-  },
-  {
-    "_id": "Queries",
-    "productFamilies": [
-      "Machine Learning",
-      "IoTDeviceManagement",
-      "Business Analytics",
-      "DNS Query"
-    ]
-  },
-  {
-    "_id": "Object-days",
-    "productFamilies": [
-      "Amazon Macie"
-    ]
-  },
-  {
-    "_id": "traces",
-    "productFamilies": [
-      "Developer Tools"
-    ]
-  },
-  {
-    "_id": "KPU-Hour",
-    "productFamilies": [
-      "Kinesis Analytics"
-    ]
-  },
-  {
-    "_id": "inbound_minutes",
-    "productFamilies": [
-      "AmazonChimeVoiceConnector",
-      "AmazonChimeBusinessCalling"
-    ]
-  },
-  {
-    "_id": "Devices",
-    "productFamilies": [
-      "AmazonLocationService",
-      "Enterprise Applications",
-      "Storage Device"
-    ]
-  },
-  {
-    "_id": "ReadCapacityUnit-Hrs",
-    "productFamilies": [
-      "Provisioned IOPS"
-    ]
-  },
-  {
-    "_id": "ActivePortfolios",
-    "productFamilies": [
-      "Portfolio"
-    ]
-  },
-  {
-    "_id": "Metrics",
-    "productFamilies": [
-      "Metric",
-      "API Request",
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "1 MB",
-    "productFamilies": [
-      "Azure Communication Services",
-      "Storage",
-      "Internet of Things"
-    ]
-  },
-  {
-    "_id": "Report",
-    "productFamilies": [
-      "Business Analytics"
-    ]
-  },
-  {
-    "_id": "Minute",
-    "productFamilies": [
-      "AWS Ground Station Contact",
-      "AmazonChimeDialinProductFamily",
-      "AWSMobile-AmazonPinpoint",
-      "AmazonConnect",
-      "ContactCenterTelecomm",
-      ""
-    ]
-  },
-  {
-    "_id": "Pack",
-    "productFamilies": [
-      "AWSIoTSiteWise"
-    ]
-  },
-  {
-    "_id": "Character",
-    "productFamilies": [
-      "Text Translation"
-    ]
-  },
-  {
-    "_id": "Route",
-    "productFamilies": [
-      "AmazonLocationService"
-    ]
-  },
-  {
-    "_id": "Alarms",
-    "productFamilies": [
-      "Bundle",
-      "AWSIoTEvents",
-      "Alarm"
-    ]
-  },
-  {
-    "_id": "Finding Ingestion Events",
-    "productFamilies": [
-      "AWS Security Hub - Findings"
-    ]
-  },
-  {
-    "_id": "CertificateAuthorities",
-    "productFamilies": [
-      "AWS Certificate Manager"
-    ]
-  },
-  {
-    "_id": "1 MB/Month",
-    "productFamilies": [
-      "Internet of Things"
-    ]
-  },
-  {
-    "_id": "Objects",
-    "productFamilies": [
-      "Fee",
-      "AWSIoTSiteWise",
-      "Machine Learning",
-      "",
-      "Kinesis Firehose",
-      "AWS Lake Formation"
-    ]
-  },
-  {
-    "_id": "1K/Month",
-    "productFamilies": [
-      "Security"
-    ]
-  },
-  {
-    "_id": "Months",
-    "productFamilies": [
-      "Encryption Key",
-      "Firewall Manager Policy"
-    ]
-  },
-  {
-    "_id": "Dollar",
-    "productFamilies": [
-      "AWSMobile-AmazonPinpoint"
-    ]
-  },
-  {
-    "_id": "RealTimeLogLines",
-    "productFamilies": [
-      "RealTime"
-    ]
-  },
-  {
-    "_id": "Things Registered",
-    "productFamilies": [
-      "IoTDeviceManagement"
-    ]
-  },
-  {
-    "_id": "Mins",
-    "productFamilies": [
-      "Compute"
-    ]
-  },
-  {
-    "_id": "ConsumerShardHour",
-    "productFamilies": [
-      "Kinesis Streams"
-    ]
-  },
-  {
-    "_id": "vCPU-Months",
-    "productFamilies": [
-      "Performance Insights",
-      "GuardDuty"
-    ]
-  },
-  {
-    "_id": "ConfigRuleEvaluations",
-    "productFamilies": [
-      "Management Tools - AWS Config Rules"
-    ]
-  },
-  {
-    "_id": "100/Month",
-    "productFamilies": [
-      "Security",
-      "Storage"
-    ]
-  },
-  {
-    "_id": "Processed-Gigabytes",
-    "productFamilies": [
-      "Serverless"
-    ]
-  },
-  {
-    "_id": "CloudMapAPICall",
-    "productFamilies": [
-      "AWS Cloud Map"
-    ]
-  },
-  {
-    "_id": "TPS-hours",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "DAU",
-    "productFamilies": [
-      "Daily Active Users"
-    ]
-  },
-  {
-    "_id": "BH_Team_Base_Monthly",
-    "productFamilies": [
-      "BH-TEAM"
-    ]
-  },
-  {
-    "_id": "Accounts",
-    "productFamilies": [
-      "AWS Billing Conductor"
-    ]
-  },
-  {
-    "_id": "gibibyte",
-    "productFamilies": [
-      "Storage",
-      "Network",
-      "Compute",
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "day",
-    "productFamilies": [
-      "ApplicationServices",
-      "Network",
-      "",
-      "Extra Days"
-    ]
-  },
-  {
-    "_id": "UsersPerMonth",
-    "productFamilies": [
-      "AmazonConnect"
-    ]
-  },
-  {
-    "_id": "Units",
-    "productFamilies": [
-      "Entity Detection",
-      "Fee",
-      "Interactive Video Service - Live",
-      "AWSMobile-AmazonPinpoint",
-      "",
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "CR-Hr",
-    "productFamilies": [
-      "System Operation"
-    ]
-  },
-  {
-    "_id": "1 TB",
-    "productFamilies": [
-      "Analytics"
-    ]
-  },
-  {
-    "_id": "vCPU-hour",
-    "productFamilies": [
-      "VMwareCloudOnAWS",
-      "Compute",
-      "Database Utilization"
-    ]
-  },
-  {
-    "_id": "MONTH",
-    "productFamilies": [
-      "Enterprise Applications"
-    ]
-  },
-  {
-    "_id": "Hours",
-    "productFamilies": [
-      "Compute Instance",
-      "Compute Instance (bare metal)",
-      "DNS Query",
-      "Transcode minute",
-      "Elastic Inference",
-      "Compute",
-      "Storage Device"
-    ]
-  },
-  {
-    "_id": "1 Day",
-    "productFamilies": [
-      "Analytics",
-      "Compute",
-      "Storage"
-    ]
-  },
-  {
-    "_id": "Numbers",
-    "productFamilies": [
-      "AWSMobile-AmazonPinpoint"
-    ]
-  },
-  {
-    "_id": "Operations",
-    "productFamilies": [
-      "",
-      "Request",
-      "AWSIoT"
-    ]
-  },
-  {
-    "_id": "Unit",
-    "productFamilies": [
-      "Custom Entities",
-      "Custom Classification",
-      "AWSMobile-AmazonPinpoint",
-      "API Calls",
-      "Dominant Language Detection"
-    ]
-  },
-  {
-    "_id": "Activities",
-    "productFamilies": [
-      "AWSMobile-Analytics"
-    ]
-  },
-  {
-    "_id": "Traces",
-    "productFamilies": [
-      "Developer Tools"
-    ]
-  },
-  {
-    "_id": "Notifications",
-    "productFamilies": [
-      "AmazonChime",
-      "AWS Systems Manager",
-      "Bundle",
-      "AWSMobile-AmazonPinpoint",
-      "Simple Messaging Service",
-      "Message Delivery"
-    ]
-  },
-  {
-    "_id": "IdleLCU-Hr",
-    "productFamilies": [
-      "Load Balancer-Application"
-    ]
-  },
-  {
-    "_id": "Keys",
-    "productFamilies": [
-      "Encryption Key"
-    ]
-  },
-  {
-    "_id": "Gbps-hrs",
-    "productFamilies": [
-      "NAT Gateway"
-    ]
-  },
-  {
-    "_id": "Position",
-    "productFamilies": [
-      "AmazonLocationService"
-    ]
-  },
-  {
-    "_id": "Metric Update",
-    "productFamilies": [
-      "Metric Streams"
-    ]
-  },
-  {
-    "_id": "mebibyte second",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "gibibyte hour",
-    "productFamilies": [
-      "License",
-      "ApplicationServices",
-      "Storage",
-      "Compute"
-    ]
-  },
-  {
-    "_id": "IOs",
-    "productFamilies": [
-      "",
-      "VMwareCloudOnAWS",
-      "Aurora Global Database",
-      "System Operation",
-      "Neptune ReplicatedWrite",
-      "QLDB IOs"
-    ]
-  },
-  {
-    "_id": "Second",
-    "productFamilies": [
-      "",
-      "Transcription Job"
-    ]
-  },
-  {
-    "_id": "Quantum-Task",
-    "productFamilies": [
-      "Braket Managed Jobs QPU Task",
-      "Quantum Task"
-    ]
-  },
-  {
-    "_id": "Records",
-    "productFamilies": [
-      "AWS Entity Resolution"
-    ]
-  },
-  {
-    "_id": "Hourly",
-    "productFamilies": [
-      "AmazonConnect",
-      "Amazon Inspector",
-      "",
-      "AWS Transfer for SFTP",
-      "AWS Transfer Family",
-      "AWS Firewall",
-      "Private Networks"
-    ]
-  },
-  {
-    "_id": "ACU-Hr",
-    "productFamilies": [
-      "Serverless",
-      "ServerlessV2",
-      "RDSProxy"
-    ]
-  },
-  {
-    "_id": "MBPS-Mo",
-    "productFamilies": [
-      "Provisioned Throughput"
-    ]
-  },
-  {
-    "_id": "OCU-hours",
-    "productFamilies": [
-      "Amazon OpenSearch Service Ingestion",
-      "Amazon OpenSearch Service Serverless"
-    ]
-  },
-  {
-    "_id": "Executions",
-    "productFamilies": [
-      "AWS Transfer Family"
-    ]
-  },
-  {
-    "_id": "sms-message",
-    "productFamilies": [
-      "AmazonChimeBusinessCalling",
-      "AmazonChimeVoiceConnector"
-    ]
-  },
-  {
-    "_id": "WriteCapacityUnit-Hrs",
-    "productFamilies": [
-      "Provisioned IOPS"
-    ]
-  },
-  {
-    "_id": "100K-LinesofCode",
-    "productFamilies": [
-      "Machine Learning"
-    ]
-  },
-  {
-    "_id": "64K-Chunks",
-    "productFamilies": [
-      "CloudWatch Events",
-      "EventBridge"
-    ]
-  },
-  {
-    "_id": "Request",
-    "productFamilies": [
-      "Blockchain Request",
-      "Web Application Firewall",
-      "API Request",
-      "AWS Glue",
-      "Storage",
-      "Serverless"
-    ]
-  },
-  {
-    "_id": "UGW1-AmazonApiGatewayRequest",
-    "productFamilies": [
-      "API Calls"
-    ]
-  },
-  {
-    "_id": "Tag-Mo",
-    "productFamilies": [
-      "Storage"
-    ]
-  },
-  {
-    "_id": "1 Month",
-    "productFamilies": [
-      "Compute",
-      "Telecommunications",
-      "Internet of Things"
-    ]
-  },
-  {
-    "_id": "OnPremUpdates",
-    "productFamilies": [
-      "CodeDeploy"
-    ]
-  },
-  {
-    "_id": "tebibyte hour",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "TrainingHour",
-    "productFamilies": [
-      "",
-      "AutoML Jobs"
-    ]
-  },
-  {
-    "_id": "URLs",
-    "productFamilies": [
-      "Alexa Top Sites"
-    ]
-  },
-  {
-    "_id": "1 API Calls",
-    "productFamilies": [
-      "Analytics"
-    ]
-  },
-  {
-    "_id": "days",
-    "productFamilies": [
-      "",
-      "Amazon Macie"
-    ]
-  },
-  {
-    "_id": "Internet Monitor - Monitored Resource",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "1 MB/Day",
-    "productFamilies": [
-      "Developer Tools"
-    ]
-  },
-  {
-    "_id": "WriteRequestUnits",
-    "productFamilies": [
-      "Amazon DynamoDB PayPerRequest Throughput",
-      "PayPerRequest Throughput",
-      "FeatureStore PayPerRequestThroughput"
-    ]
-  },
-  {
-    "_id": "Resource-assessment",
-    "productFamilies": [
-      "Amazon Inspector"
-    ]
-  },
-  {
-    "_id": "Recommender Hours",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "Host-hour",
-    "productFamilies": [
-      "VMwareCloudOnAWS"
-    ]
-  },
-  {
-    "_id": "Dollars",
-    "productFamilies": [
-      "Simple Messaging Service",
-      "AWSMobile-AmazonPinpoint"
-    ]
-  },
-  {
-    "_id": "vCPU-Hours",
-    "productFamilies": [
-      "Compute Metering",
-      "",
-      "CPU Credits"
-    ]
-  },
-  {
-    "_id": "Message",
-    "productFamilies": [
-      "AWS Transfer Family",
-      "Receiving Email",
-      "AmazonConnect",
-      "Bundle"
-    ]
-  },
-  {
-    "_id": "tebibyte",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "1 Minute",
-    "productFamilies": [
-      "Blockchain",
-      "Mixed Reality",
-      "Azure Communication Services",
-      "AI + Machine Learning",
-      "Management and Governance",
-      "Developer Tools"
-    ]
-  },
-  {
-    "_id": "LCU-Hrs",
-    "productFamilies": [
-      "Load Balancer-Network",
-      "Load Balancer-Application"
-    ]
-  },
-  {
-    "_id": "rule",
-    "productFamilies": [
-      "Contributor Insights"
-    ]
-  },
-  {
-    "_id": "API Requests",
-    "productFamilies": [
-      "AWS Systems Manager",
-      "Verified Permissions",
-      "API Request",
-      ""
-    ]
-  },
-  {
-    "_id": "StateTransitions",
-    "productFamilies": [
-      "AWS Step Functions"
-    ]
-  },
-  {
-    "_id": "hour",
-    "productFamilies": [
-      "IP Address",
-      "Streaming Instance",
-      "ApplicationServices",
-      "Storage",
-      "",
-      "License",
-      "Stopped Instance",
-      "SimSpace Weaver Compute Instance",
-      "Enterprise Applications",
-      "Network",
-      "Compute"
-    ]
-  },
-  {
-    "_id": "cases",
-    "productFamilies": [
-      "AmazonConnect"
-    ]
-  },
-  {
-    "_id": "Tasks-signals-markers-timers",
-    "productFamilies": [
-      "Amazon Simple Workflow"
-    ]
-  },
-  {
-    "_id": "Matchmaking Hours",
-    "productFamilies": [
-      "GameLift FlexMatch Standalone"
-    ]
-  },
-  {
-    "_id": "users",
-    "productFamilies": [
-      "User Fees"
-    ]
-  },
-  {
-    "_id": "second",
-    "productFamilies": [
-      "Transcription Job",
-      "ApplicationServices",
-      "Streaming",
-      "Storage"
-    ]
-  },
-  {
-    "_id": "Processing-Bytes",
-    "productFamilies": [
-      "API Calls"
-    ]
-  },
-  {
-    "_id": "user",
-    "productFamilies": [
-      "User Fees"
-    ]
-  },
-  {
-    "_id": "USW2-AmazonApiGatewayRequest",
-    "productFamilies": [
-      "API Calls"
-    ]
-  },
-  {
-    "_id": "Attachment-hour",
-    "productFamilies": [
-      "VMwareCloudOnAWS"
-    ]
-  },
-  {
-    "_id": "ActionsExecuted",
-    "productFamilies": [
-      "AWSIoT"
-    ]
-  },
-  {
-    "_id": "gibibyte second",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "Gigabase-month",
-    "productFamilies": [
-      "Storage"
-    ]
-  },
-  {
-    "_id": "GB-Mp",
-    "productFamilies": [
-      "Amazon OpenSearch Service Volume"
-    ]
-  },
-  {
-    "_id": "month",
-    "productFamilies": [
-      "ApplicationServices",
-      "Storage",
-      "Web Application Firewall",
-      "Compute",
-      "Network"
-    ]
-  },
-  {
-    "_id": "RulesTriggered",
-    "productFamilies": [
-      "AWSIoT"
-    ]
-  },
-  {
-    "_id": "Users-Mo",
-    "productFamilies": [
-      "Rekognition Storage"
-    ]
-  },
-  {
-    "_id": "Player Packages",
-    "productFamilies": [
-      "GameLift FlexMatch Standalone"
-    ]
-  },
-  {
-    "_id": "Host",
-    "productFamilies": [
-      "VMwareCloudOnAWS"
-    ]
-  },
-  {
-    "_id": "CognitoSyncOp-Mo",
-    "productFamilies": [
-      "Sync Operation"
-    ]
-  },
-  {
-    "_id": "Tasks,signals,markers,timers",
-    "productFamilies": [
-      "Amazon Simple Workflow"
-    ]
-  },
-  {
-    "_id": "ReceivedChunk",
-    "productFamilies": [
-      "Receiving Email"
-    ]
-  },
-  {
-    "_id": "Quantity",
-    "productFamilies": [
-      "Amazon OpenSearch Service Instance",
-      "Compute Instance",
-      "Provisioned IOPS",
-      "Database Instance",
-      "Dedicated Host",
-      "Cache Instance",
-      "Compute Instance (bare metal)",
-      "Amazon MemoryDB"
-    ]
-  },
-  {
-    "_id": "1M",
-    "productFamilies": [
-      "Compute",
-      "Databases",
-      "Internet of Things",
-      "Storage",
-      "Other",
-      "Networking",
-      "Developer Tools",
-      "Management and Governance",
-      "Integration",
-      "Analytics",
-      "Security",
-      "AI + Machine Learning"
-    ]
-  },
-  {
-    "_id": "MB",
-    "productFamilies": [
-      "Topic Modeling"
-    ]
-  },
-  {
-    "_id": "ForecastDataPoints_in_Thousands",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "APS2-WAM-STD",
-    "productFamilies": [
-      "WorkSpaces Application Manager"
-    ]
-  },
-  {
-    "_id": "1 GiB/Day",
-    "productFamilies": [
-      "Compute"
-    ]
-  },
-  {
-    "_id": "ReplicatedWriteCapacityUnit-Hrs",
-    "productFamilies": [
-      "DDB-Operation-ReplicatedWrite"
-    ]
-  },
-  {
-    "_id": "1 GB/Day",
-    "productFamilies": [
-      "Management and Governance",
-      "Microsoft Syntex"
-    ]
-  },
-  {
-    "_id": "seconds",
-    "productFamilies": [
-      "Custom Classification",
-      "Custom Entities",
-      "",
-      "Streaming",
-      "Redshift Concurrency Scaling",
-      "ML Serverless",
-      "Transcription Job"
-    ]
-  },
-  {
-    "_id": "Bundles",
-    "productFamilies": [
-      "Lightsail Storage",
-      "Lightsail Networking"
-    ]
-  },
-  {
-    "_id": "Quantum-Shot",
-    "productFamilies": [
-      "Quantum Task-Shot",
-      "Braket Managed Jobs QPU Task Shot"
-    ]
-  },
-  {
-    "_id": "M-DPU-Hour",
-    "productFamilies": [
-      "AWS Glue"
-    ]
-  },
-  {
-    "_id": "TTLDeletes",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "MiBps-Mo",
-    "productFamilies": [
-      "Managed Streaming for Apache Kafka (MSK)",
-      "Provisioned Throughput",
-      "Amazon OpenSearch Service Volume"
-    ]
-  },
-  {
-    "_id": "kibibyte",
-    "productFamilies": [
-      "ApplicationServices"
-    ]
-  },
-  {
-    "_id": "CRPU-Hr",
-    "productFamilies": [
-      "AWS Clean Rooms"
-    ]
-  },
-  {
-    "_id": "1 GiB",
-    "productFamilies": [
-      "Storage",
-      "Developer Tools"
-    ]
-  },
-  {
-    "_id": "SnapshotAPIUnits",
-    "productFamilies": [
-      "EBS direct API Requests"
-    ]
-  },
-  {
-    "_id": "InstanceAssessments",
-    "productFamilies": [
-      "Amazon Inspector Network Assessment"
-    ]
-  },
-  {
-    "_id": "TB",
-    "productFamilies": [
-      "IoTAnalytics"
-    ]
-  },
-  {
-    "_id": "Forecast",
-    "productFamilies": [
-      ""
-    ]
-  },
-  {
-    "_id": "GigaBytes",
-    "productFamilies": [
-      "CloudWatch Events",
-      "AWS Amplify",
-      "",
-      "AmazonChime",
-      "Amazon ElastiCache Global Datastore",
-      "AWS Transfer Family",
-      "Amazon OpenSearch Service Volume",
-      "AWS Lake Formation",
-      "AWS Global Accelerator"
-    ]
-  },
-  {
-    "_id": "gibibyte month",
-    "productFamilies": [
-      "Compute",
-      "ApplicationServices",
-      "Storage"
-    ]
-  },
-  {
-    "_id": "Gigabyte Month",
-    "productFamilies": [
-      "Storage",
-      ""
-    ]
-  },
-  {
-    "_id": "USD",
-    "productFamilies": [
-      "Storage Device"
-    ]
-  }
+    {
+        "_id": "EUC1-ConfigurationItemRecorded",
+        "productFamilies": ["Management Tools - AWS Config"]
+    },
+    {
+        "_id": "NumberMonths",
+        "productFamilies": ["AmazonChimeVoiceConnector", "AmazonChimeBusinessCalling"]
+    },
+    {
+        "_id": "Terabytes",
+        "productFamilies": ["Redshift Data Scan", "Athena Queries"]
+    },
+    {
+        "_id": "1 GiB Second",
+        "productFamilies": ["Compute"]
+    },
+    {
+        "_id": "Hrs",
+        "productFamilies": [
+            "Compute",
+            "Fee",
+            "ML Instance",
+            "Kinesis Firehose",
+            "Lightsail Networking",
+            "AWS Systems Manager",
+            "Lightsail Load Balancing",
+            "Load Balancer-Application",
+            "StorageGateway-Instance",
+            "Elastic Map Reduce Instance",
+            "Lightsail Containers",
+            "IP Address",
+            "API Calls",
+            "Streaming Instance",
+            "RDSProxy",
+            "Amazon OpenSearch Service Instance",
+            "Compute Instance",
+            "Data Transfer",
+            "Load Balancer",
+            "Machine Learning",
+            "NAT Gateway",
+            "Cloud Connectivity",
+            "Cache Instance",
+            "DAX",
+            "Lightsail Instance",
+            "AWS Directory Service",
+            "Transcode minute",
+            "Load Balancer-Network",
+            "Replication Server",
+            "Amazon API Gateway Cache",
+            "Search Instance",
+            "VpcEndpoint",
+            "Dedicated Host",
+            "Elastic Graphics",
+            "AutoML Jobs",
+            "Load Balancer-Gateway",
+            "VMwareCloudOnAWS",
+            "ML Elastic Inference",
+            "GameLift EC2 Instance",
+            "Blockchain Instance",
+            "Blockchain Member",
+            "Broker Instances",
+            "Bundle",
+            "Amazon MemoryDB",
+            "Compute Instance (bare metal)",
+            "Database Instance",
+            "",
+            "EMR Containers",
+            "OpsWorks",
+            "Lightsail Database"
+        ]
+    },
+    {
+        "_id": "hours",
+        "productFamilies": [
+            "Fast Snapshot Restore",
+            "Streaming Instance",
+            "AWS Outposts Subscription",
+            "Managed Streaming for Apache Kafka (MSK)",
+            "Machine Learning",
+            "DNS Query",
+            "AWS Supply Chain",
+            "AWS Managed Services",
+            "Streaming",
+            "Direct Connect",
+            "Dedicated-Host",
+            "",
+            "Transcode minute",
+            "Fee",
+            "Compute",
+            "Kinesis Firehose",
+            "Elastic Inference"
+        ]
+    },
+    {
+        "_id": "dollars",
+        "productFamilies": ["", "Simple Messaging Service", "Compute", "AWSMobile-AmazonPinpoint"]
+    },
+    {
+        "_id": "1K",
+        "productFamilies": [
+            "Analytics",
+            "Other",
+            "Internet of Things",
+            "AI + Machine Learning",
+            "Management and Governance",
+            "Web"
+        ]
+    },
+    {
+        "_id": "mebibyte hour",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "Game Sessions Placed",
+        "productFamilies": ["GameLift Anywhere"]
+    },
+    {
+        "_id": "Characters",
+        "productFamilies": ["Synthesize Speech", "AmazonPolly"]
+    },
+    {
+        "_id": "Rule Evaluation Event",
+        "productFamilies": ["AWS Security Hub - Automation"]
+    },
+    {
+        "_id": "NetworkInterface-Assessment",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "Month",
+        "productFamilies": [
+            "Web Application Firewall",
+            "FinSpace",
+            "User Fees",
+            "Firewall Manager Policy",
+            "AWSMobile-AmazonPinpoint",
+            "Enterprise Applications",
+            "Business Analytics",
+            "AWSIoTTwinMaker"
+        ]
+    },
+    {
+        "_id": "GB",
+        "productFamilies": [
+            "DT-Data Transfer",
+            "Fee",
+            "Security Lake",
+            "AWS Backup Restore Data Size EFS",
+            "AWS DataSync",
+            "AWS Systems Manager",
+            "GuardDuty",
+            "Kinesis Firehose",
+            "Management Tools - AWS CloudTrail",
+            "System Operation",
+            "Lightsail Networking",
+            "Shield-DataTransfer",
+            "Amazon Detective",
+            "AR & VR",
+            "Storage Snapshot",
+            "Packaging Data Transfer",
+            "Load Balancer",
+            "Managed Streaming for Apache Kafka (MSK)",
+            "Blockchain Data Written",
+            "Data Transfer",
+            "Data Payload",
+            "Machine Learning",
+            "Amazon DynamoDB Restore Data Size",
+            "NAT Gateway",
+            "Direct Connect",
+            "Amazon Macie",
+            "Kinesis Streams",
+            "AWS Backup Storage",
+            "IoTAnalytics",
+            "Database Utilization",
+            "AWS Transfer Family",
+            "Amazon DynamoDB Import Data Size",
+            "AWS Security Services - Macie Content Processing",
+            "AWS Transfer for SFTP",
+            "Kinesis Video",
+            "AWS Backup Restore Data Size",
+            "AWS Firewall",
+            "VMwareCloudOnAWS",
+            "Snowball Device",
+            "StorageGateway-Fee",
+            "Sending Attachments",
+            "Amazon DynamoDB Export Data Size",
+            "Amazon MemoryDB",
+            "",
+            "API Request",
+            "Redshift Inter Region Data Transfer",
+            "Storage",
+            "StorageGateway-Deep Archive-Fee"
+        ]
+    },
+    {
+        "_id": "1 Rotation",
+        "productFamilies": ["Security"]
+    },
+    {
+        "_id": "Workflow-days",
+        "productFamilies": ["Amazon Simple Workflow"]
+    },
+    {
+        "_id": "GiBps-mo",
+        "productFamilies": ["Provisioned Throughput"]
+    },
+    {
+        "_id": "10M",
+        "productFamilies": ["Management and Governance"]
+    },
+    {
+        "_id": "Metric Datapoints",
+        "productFamilies": ["AWSIoT", "Metric", "API Request"]
+    },
+    {
+        "_id": "1 IOPS/Month",
+        "productFamilies": ["Databases"]
+    },
+    {
+        "_id": "ChangeDataCaptureUnits",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "kilometric",
+        "productFamilies": ["Business Analytics"]
+    },
+    {
+        "_id": "usagehours",
+        "productFamilies": ["Machine Learning"]
+    },
+    {
+        "_id": "Gigabyte",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "VM-hour",
+        "productFamilies": ["VMwareCloudOnAWS"]
+    },
+    {
+        "_id": "gibibyte day",
+        "productFamilies": ["Storage", "ApplicationServices"]
+    },
+    {
+        "_id": "GB-month",
+        "productFamilies": [
+            "AWS Backup Storage",
+            "Kinesis Streams",
+            "Storage",
+            "QLDB Storage",
+            "AWS Supply Chain",
+            "AWS Backup Early Delete Size",
+            "Amazon OpenSearch Service Serverless",
+            "FinSpace",
+            "StorageGateway-Storage",
+            "Kinesis Analytics",
+            "StorageGateway-Fee",
+            "Machine Learning",
+            "VMwareCloudOnAWS"
+        ]
+    },
+    {
+        "_id": "Pages",
+        "productFamilies": ["API Request"]
+    },
+    {
+        "_id": "1 GB Second",
+        "productFamilies": ["Compute", "Containers", "Azure Stack"]
+    },
+    {
+        "_id": "Certificates",
+        "productFamilies": ["AWS Certificate Manager"]
+    },
+    {
+        "_id": "ShardHour",
+        "productFamilies": ["Kinesis Streams"]
+    },
+    {
+        "_id": "Workflow executions",
+        "productFamilies": ["Amazon Simple Workflow"]
+    },
+    {
+        "_id": "100 Hours",
+        "productFamilies": ["Integration"]
+    },
+    {
+        "_id": "MAU",
+        "productFamilies": ["Enterprise Applications"]
+    },
+    {
+        "_id": "pipelines",
+        "productFamilies": ["Active Pipeline"]
+    },
+    {
+        "_id": "OpsItems",
+        "productFamilies": ["AWS Systems Manager"]
+    },
+    {
+        "_id": "AmazonChime_Meetings_Active_Host_Days",
+        "productFamilies": ["AmazonChime", ""]
+    },
+    {
+        "_id": "Preconditions",
+        "productFamilies": ["Active Pipeline"]
+    },
+    {
+        "_id": "Messages",
+        "productFamilies": [
+            "WebSocket",
+            "AmazonConnect",
+            "RealTime",
+            "",
+            "Kinesis Video",
+            "AmazonChime",
+            "AWSIoT",
+            "AWSMobile-AmazonPinpoint",
+            "Message Delivery"
+        ]
+    },
+    {
+        "_id": "CloudMapResource",
+        "productFamilies": ["AWS Cloud Map"]
+    },
+    {
+        "_id": "Computations",
+        "productFamilies": ["AWSIoTSiteWise"]
+    },
+    {
+        "_id": "minutes",
+        "productFamilies": [
+            "CloudWatch Events",
+            "Braket Managed Jobs Instance",
+            "AmazonChimeVoiceConnector",
+            "Audio",
+            "Standard Definition",
+            "Data Payload",
+            "AmazonChimeDialinProductFamily",
+            "Machine Learning",
+            "AmazonChime",
+            "FinSpace",
+            "",
+            "Transcode minute",
+            "WebSocket",
+            "Amazon Lex",
+            "Compute",
+            "Reserved Transcoding",
+            "High Definition",
+            "Simulator Task",
+            "Developer Tools",
+            "Braket Managed Jobs Simulator Task",
+            "Kinesis Video",
+            "AWS Amplify",
+            "Rekognition API",
+            "AmazonChimeBusinessCalling"
+        ]
+    },
+    {
+        "_id": "1 GiB Hour",
+        "productFamilies": ["Integration", "Compute", "Other"]
+    },
+    {
+        "_id": "1 Hour",
+        "productFamilies": [
+            "Azure Stack",
+            "Databases",
+            "AI + Machine Learning",
+            "Networking",
+            "Other",
+            "Telecommunications",
+            "Compute",
+            "Containers",
+            "Internet of Things",
+            "Analytics",
+            "Security",
+            "Integration",
+            "Azure Arc",
+            "Developer Tools",
+            "Web",
+            "Data",
+            "Management and Governance",
+            "Mixed Reality",
+            "Quantum Computing"
+        ]
+    },
+    {
+        "_id": "InferenceUnits",
+        "productFamilies": ["Machine Learning"]
+    },
+    {
+        "_id": "100 Seconds",
+        "productFamilies": ["Containers"]
+    },
+    {
+        "_id": "1B",
+        "productFamilies": ["Management and Governance"]
+    },
+    {
+        "_id": "CreateModelRequest",
+        "productFamilies": ["AutoML Jobs"]
+    },
+    {
+        "_id": "Deployments",
+        "productFamilies": ["AWSIoT"]
+    },
+    {
+        "_id": "mebibyte",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "1 TB/Month",
+        "productFamilies": ["Analytics", "Compute"]
+    },
+    {
+        "_id": "Address",
+        "productFamilies": ["AmazonLocationService"]
+    },
+    {
+        "_id": "Secrets",
+        "productFamilies": ["Secret"]
+    },
+    {
+        "_id": "byte",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "Instance-hrs",
+        "productFamilies": ["Compute", "Amazon Inspector"]
+    },
+    {
+        "_id": "GB-Seconds",
+        "productFamilies": ["AWS Step Functions", "AWS Amplify", "Serverless"]
+    },
+    {
+        "_id": "AgentAssessments",
+        "productFamilies": ["Agent Assessments"]
+    },
+    {
+        "_id": "IOPS-Mo",
+        "productFamilies": ["Provisioned IOPS", "System Operation", "Amazon OpenSearch Service Volume"]
+    },
+    {
+        "_id": "5/Month",
+        "productFamilies": ["Other"]
+    },
+    {
+        "_id": "Configuration Requests",
+        "productFamilies": ["AWS Systems Manager"]
+    },
+    {
+        "_id": "recipients",
+        "productFamilies": ["AmazonChime"]
+    },
+    {
+        "_id": "Instance - Months",
+        "productFamilies": ["AWS Supply Chain"]
+    },
+    {
+        "_id": "message",
+        "productFamilies": ["Business Analytics"]
+    },
+    {
+        "_id": "ReplicatedWriteRequestUnits",
+        "productFamilies": ["Amazon DynamoDB PayPerRequest Throughput"]
+    },
+    {
+        "_id": "Transaction",
+        "productFamilies": ["AmazonLocationService"]
+    },
+    {
+        "_id": "callme-minutes",
+        "productFamilies": ["AmazonChimeCallMeProductFamily"]
+    },
+    {
+        "_id": "Map Tile",
+        "productFamilies": ["AmazonLocationService"]
+    },
+    {
+        "_id": "minute",
+        "productFamilies": ["ContactCenterTelecomm", "ApplicationServices", "Business Analytics"]
+    },
+    {
+        "_id": "tebibyte month",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "Geofence",
+        "productFamilies": ["AmazonLocationService"]
+    },
+    {
+        "_id": "Security Checks",
+        "productFamilies": ["AWS Security Hub - Standards"]
+    },
+    {
+        "_id": "gigabyte",
+        "productFamilies": ["ApplicationServices", "Network"]
+    },
+    {
+        "_id": "100K",
+        "productFamilies": ["Internet of Things", "Other"]
+    },
+    {
+        "_id": "1 GiB/Month",
+        "productFamilies": ["Databases", "Storage", "Developer Tools"]
+    },
+    {
+        "_id": "Runs",
+        "productFamilies": ["Canaries"]
+    },
+    {
+        "_id": "1 GB Hour",
+        "productFamilies": ["Other", "Containers"]
+    },
+    {
+        "_id": "10K",
+        "productFamilies": [
+            "Storage",
+            "Other",
+            "Developer Tools",
+            "Blockchain",
+            "Networking",
+            "Security",
+            "Analytics",
+            "Integration",
+            "Databases"
+        ]
+    },
+    {
+        "_id": "Active-GGC-Devices",
+        "productFamilies": ["AWSGreengrass"]
+    },
+    {
+        "_id": "API Request",
+        "productFamilies": ["AWS Migration Hub", "AmazonLocationService", "API Request"]
+    },
+    {
+        "_id": "Index Updates",
+        "productFamilies": ["IoTDeviceManagement"]
+    },
+    {
+        "_id": "Lambda-GB-Second",
+        "productFamilies": ["Serverless"]
+    },
+    {
+        "_id": "count",
+        "productFamilies": [
+            "ContactCenterTelecomm",
+            "Utility",
+            "Storage",
+            "ApplicationServices",
+            "Search",
+            "Network",
+            "Compute"
+        ]
+    },
+    {
+        "_id": "ACU-Months",
+        "productFamilies": ["Performance Insights", "GuardDuty"]
+    },
+    {
+        "_id": "RPU-Hr",
+        "productFamilies": ["Serverless"]
+    },
+    {
+        "_id": "Steps",
+        "productFamilies": ["AWSIoT"]
+    },
+    {
+        "_id": "Replication-hour",
+        "productFamilies": ["Server Migration", "Server DR"]
+    },
+    {
+        "_id": "Prediction",
+        "productFamilies": ["Machine Learning"]
+    },
+    {
+        "_id": "1/Year",
+        "productFamilies": ["AI + Machine Learning", "Compute", "Azure Stack"]
+    },
+    {
+        "_id": "ConfigurationItemRecorded",
+        "productFamilies": ["Management Tools - AWS Config"]
+    },
+    {
+        "_id": "Recommendations",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "GB-Mo",
+        "productFamilies": [
+            "Database Storage",
+            "Managed Streaming for Apache Kafka (MSK)",
+            "StorageGateway-Deep Archive",
+            "Machine Learning",
+            "Amazon OpenSearch Service Volume",
+            "Amazon MemoryDB",
+            "Business Analytics",
+            "",
+            "Braket Managed Jobs Volume",
+            "Storage",
+            "StorageGateway-Deep Archive-Fee",
+            "Redshift Managed Storage",
+            "Sync Storage",
+            "Fee",
+            "Blockchain Node Storage",
+            "Broker Storage",
+            "Replication Storage",
+            "Enterprise Applications",
+            "Lightsail Snapshot",
+            "Lightsail Storage",
+            "FeatureStore Storage",
+            "StorageGateway-Storage",
+            "AWS Systems Manager",
+            "EC2 Container Registry",
+            "Storage Snapshot"
+        ]
+    },
+    {
+        "_id": "1/Hour",
+        "productFamilies": [
+            "AI + Machine Learning",
+            "Databases",
+            "Networking",
+            "Storage",
+            "Other",
+            "Telecommunications",
+            "Internet of Things",
+            "Mixed Reality",
+            "Analytics",
+            "Security",
+            "Integration",
+            "Web",
+            "Management and Governance",
+            "Developer Tools",
+            "Blockchain",
+            "Windows Virtual Desktop"
+        ]
+    },
+    {
+        "_id": "Rule-Hour",
+        "productFamilies": ["Contributor Insights", ""]
+    },
+    {
+        "_id": "1",
+        "productFamilies": [
+            "Blockchain",
+            "Azure Communication Services",
+            "AI + Machine Learning",
+            "Machine Learning",
+            "Storage",
+            "Telecommunications",
+            "Microsoft Syntex",
+            "Networking",
+            "Gaming",
+            "Security",
+            "Analytics",
+            "Integration",
+            "Mixed Reality",
+            "Compute",
+            "Internet of Things",
+            "Power Platform",
+            "AWS Systems Manager",
+            "Azure Stack",
+            "Management and Governance",
+            "Web",
+            "Developer Tools"
+        ]
+    },
+    {
+        "_id": "Run",
+        "productFamilies": ["Compute"]
+    },
+    {
+        "_id": "Blocks",
+        "productFamilies": ["Machine Learning"]
+    },
+    {
+        "_id": "GiB",
+        "productFamilies": ["Image Fees"]
+    },
+    {
+        "_id": "Internet Monitor - City-Network",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "Tasks",
+        "productFamilies": ["AmazonConnect", "Machine Learning"]
+    },
+    {
+        "_id": "GB-Month",
+        "productFamilies": ["Amazon DynamoDB On-Demand Backup Storage", "Kinesis Video"]
+    },
+    {
+        "_id": "Sessions",
+        "productFamilies": ["", "AWS Glue", "AmazonChime", "Business Analytics"]
+    },
+    {
+        "_id": "year",
+        "productFamilies": ["Network", "ApplicationServices"]
+    },
+    {
+        "_id": "Geofence-month",
+        "productFamilies": ["AmazonLocationService"]
+    },
+    {
+        "_id": "1/Day",
+        "productFamilies": [
+            "Containers",
+            "Storage",
+            "Azure Stack",
+            "Compute",
+            "Web",
+            "Management and Governance",
+            "Developer Tools",
+            "Analytics",
+            "AI + Machine Learning",
+            "Databases",
+            "Internet of Things"
+        ]
+    },
+    {
+        "_id": "BH_Team_Paid_Members_Monthly",
+        "productFamilies": ["BH-TEAM"]
+    },
+    {
+        "_id": "Minutes",
+        "productFamilies": ["RealTime", "AmazonConnect"]
+    },
+    {
+        "_id": "HSM",
+        "productFamilies": ["Dedicated-Host"]
+    },
+    {
+        "_id": "GB-Hours",
+        "productFamilies": ["AWSIoTSiteWise", "Database Storage", "Compute", "Compute Metering", ""]
+    },
+    {
+        "_id": "PutRequest",
+        "productFamilies": ["Kinesis Streams"]
+    },
+    {
+        "_id": "millisecond",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "User-Mo",
+        "productFamilies": ["Enterprise Applications", "WorkSpaces Application Manager", "FinSpace"]
+    },
+    {
+        "_id": "MillionCells",
+        "productFamilies": ["AutoML Jobs"]
+    },
+    {
+        "_id": "Images Processed",
+        "productFamilies": ["Kinesis Video", "Rekognition Image API"]
+    },
+    {
+        "_id": "10K/Month",
+        "productFamilies": ["Storage"]
+    },
+    {
+        "_id": "1 GB/Month",
+        "productFamilies": [
+            "Compute",
+            "Storage",
+            "Azure Stack",
+            "Other",
+            "Developer Tools",
+            "Management and Governance",
+            "Blockchain",
+            "Networking",
+            "Analytics",
+            "Security",
+            "Integration",
+            "Internet of Things",
+            "Databases",
+            "Containers"
+        ]
+    },
+    {
+        "_id": "world",
+        "productFamilies": ["RoboMaker Simulation"]
+    },
+    {
+        "_id": "API Calls",
+        "productFamilies": [
+            "API Calls",
+            "AWSIoTTwinMaker",
+            "Machine Learning",
+            "Enterprise Applications",
+            "Performance Insights"
+        ]
+    },
+    {
+        "_id": "1/Month",
+        "productFamilies": [
+            "AI + Machine Learning",
+            "Databases",
+            "Azure Communication Services",
+            "Networking",
+            "Storage",
+            "Other",
+            "Telecommunications",
+            "Internet of Things",
+            "Compute",
+            "Azure Arc",
+            "Security",
+            "Analytics",
+            "Integration",
+            "Web",
+            "Management and Governance",
+            "Developer Tools",
+            "Blockchain",
+            "Windows Virtual Desktop",
+            "Azure Stack"
+        ]
+    },
+    {
+        "_id": "Count",
+        "productFamilies": [
+            "Sending Email",
+            "VMwareCloudOnAWS",
+            "Machine Learning",
+            "Receiving Email",
+            "AWSMobile-AmazonPinpoint",
+            "Bundle",
+            "",
+            "API Request",
+            "AmazonConnect",
+            "AWS Backup Storage",
+            "Fee",
+            "ContactCenterTelecomm",
+            "Kinesis Video",
+            "IoTDeviceManagement",
+            "IP Address"
+        ]
+    },
+    {
+        "_id": "1 GB",
+        "productFamilies": [
+            "AI + Machine Learning",
+            "Databases",
+            "Azure Communication Services",
+            "Microsoft Syntex",
+            "Networking",
+            "Other",
+            "Storage",
+            "Internet of Things",
+            "Compute",
+            "Security",
+            "Analytics",
+            "Integration",
+            "Web",
+            "Management and Governance",
+            "Developer Tools",
+            "Blockchain"
+        ]
+    },
+    {
+        "_id": "TIB-hour",
+        "productFamilies": ["VMwareCloudOnAWS"]
+    },
+    {
+        "_id": "ReadRequestUnits",
+        "productFamilies": [
+            "FeatureStore PayPerRequestThroughput",
+            "Amazon DynamoDB PayPerRequest Throughput",
+            "PayPerRequest Throughput"
+        ]
+    },
+    {
+        "_id": "Remote Actions",
+        "productFamilies": ["IoTDeviceManagement"]
+    },
+    {
+        "_id": "DCU-Hr",
+        "productFamilies": ["Replication Server"]
+    },
+    {
+        "_id": "Minutes Processed",
+        "productFamilies": ["Rekognition Video API - Live Streams", "Rekognition Video API - Archived Content"]
+    },
+    {
+        "_id": "sessions",
+        "productFamilies": ["Business Analytics"]
+    },
+    {
+        "_id": "Dashboards",
+        "productFamilies": ["Dashboard"]
+    },
+    {
+        "_id": "Bucket-days",
+        "productFamilies": ["Amazon Macie"]
+    },
+    {
+        "_id": "Jobs",
+        "productFamilies": ["Snowball Device", ""]
+    },
+    {
+        "_id": "25K",
+        "productFamilies": ["Security"]
+    },
+    {
+        "_id": "StreamHr",
+        "productFamilies": ["Kinesis Streams"]
+    },
+    {
+        "_id": "GU-Hour",
+        "productFamilies": ["RoboMaker Simulation"]
+    },
+    {
+        "_id": "Explanations_in_Thousands",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "Batch Recommendations",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "DPU-Hour",
+        "productFamilies": ["AWS Glue", "Athena Spark", "Athena Queries"]
+    },
+    {
+        "_id": "CognitoUserPoolsMAU",
+        "productFamilies": ["User Pool Enterprise MAU", "User Pool ASF MAU", "User Pool MAU"]
+    },
+    {
+        "_id": "Application",
+        "productFamilies": ["AWS Resilience Hub"]
+    },
+    {
+        "_id": "1 Second",
+        "productFamilies": ["Compute", "Containers"]
+    },
+    {
+        "_id": "PIOPS-Mo",
+        "productFamilies": ["Amazon OpenSearch Service Volume"]
+    },
+    {
+        "_id": "NCU-hr",
+        "productFamilies": ["Serverless"]
+    },
+    {
+        "_id": "Mo",
+        "productFamilies": ["", "DNS Health Check", "DNS Domain Names", "Fee", "Sending Email"]
+    },
+    {
+        "_id": "GB-mo",
+        "productFamilies": ["AR & VR"]
+    },
+    {
+        "_id": "Obj-Month",
+        "productFamilies": ["AWS Glue"]
+    },
+    {
+        "_id": "Job",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "50K",
+        "productFamilies": ["Analytics"]
+    },
+    {
+        "_id": "Requests",
+        "productFamilies": [
+            "API Calls",
+            "User Pool ASF MAU",
+            "Serverless",
+            "Lex Text Request",
+            "AWSMobile-AmazonPinpoint",
+            "",
+            "API Request",
+            "Request",
+            "Blockchain Request",
+            "AWS Backup Storage",
+            "AWS Systems Manager",
+            "User Pool Enterprise MAU",
+            "User Pool MAU",
+            "Fee",
+            "EBS direct API Requests",
+            "AWS Step Functions",
+            "Lex Speech Request",
+            "AWS Backup Restore Data Size",
+            "Web Application Firewall"
+        ]
+    },
+    {
+        "_id": "ReachabilityAnalyses",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "10",
+        "productFamilies": ["Compute", "Management and Governance", "Azure Stack"]
+    },
+    {
+        "_id": "OSI-hour",
+        "productFamilies": ["VMwareCloudOnAWS"]
+    },
+    {
+        "_id": "Server Process Conn Minutes",
+        "productFamilies": ["GameLift Anywhere"]
+    },
+    {
+        "_id": "User",
+        "productFamilies": ["Business Analytics"]
+    },
+    {
+        "_id": "100",
+        "productFamilies": ["Web", "Storage", "AI + Machine Learning"]
+    },
+    {
+        "_id": "job",
+        "productFamilies": ["Snowball Device", ""]
+    },
+    {
+        "_id": "Predictions",
+        "productFamilies": ["Machine Learning"]
+    },
+    {
+        "_id": "1 GB/Hour",
+        "productFamilies": ["Storage", "Compute", "Azure Stack"]
+    },
+    {
+        "_id": "Batch Segment",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "1 GiB/Hour",
+        "productFamilies": ["Storage"]
+    },
+    {
+        "_id": "Users",
+        "productFamilies": [
+            "User Fees",
+            "AWSMobile-AmazonPinpoint",
+            "Business Analytics",
+            "Wickr",
+            "Enterprise Applications",
+            "AWSIoTSiteWise"
+        ]
+    },
+    {
+        "_id": "Configuration Received",
+        "productFamilies": ["AWS Systems Manager"]
+    },
+    {
+        "_id": "100 GB Seconds",
+        "productFamilies": ["Containers"]
+    },
+    {
+        "_id": "Events",
+        "productFamilies": [
+            "AWSMobile-Analytics",
+            "GuardDuty",
+            "AWS Security Services - Macie Log Processing",
+            "",
+            "Management Tools - AWS CloudTrail Data Events Recorded",
+            "AWSMobile-AmazonPinpoint",
+            "Management Tools - AWS CloudTrail Free Events Recorded",
+            "Management Tools - AWS CloudTrail Insights Events",
+            "Management Tools - AWS CloudTrail Paid Events Recorded"
+        ]
+    },
+    {
+        "_id": "1M/Month",
+        "productFamilies": ["Networking"]
+    },
+    {
+        "_id": "Hour",
+        "productFamilies": ["Enterprise Applications", "AWS Systems Manager"]
+    },
+    {
+        "_id": "Node-hour",
+        "productFamilies": ["FinSpace"]
+    },
+    {
+        "_id": "Queries",
+        "productFamilies": ["Machine Learning", "IoTDeviceManagement", "Business Analytics", "DNS Query"]
+    },
+    {
+        "_id": "Object-days",
+        "productFamilies": ["Amazon Macie"]
+    },
+    {
+        "_id": "traces",
+        "productFamilies": ["Developer Tools"]
+    },
+    {
+        "_id": "KPU-Hour",
+        "productFamilies": ["Kinesis Analytics"]
+    },
+    {
+        "_id": "inbound_minutes",
+        "productFamilies": ["AmazonChimeVoiceConnector", "AmazonChimeBusinessCalling"]
+    },
+    {
+        "_id": "Devices",
+        "productFamilies": ["AmazonLocationService", "Enterprise Applications", "Storage Device"]
+    },
+    {
+        "_id": "ReadCapacityUnit-Hrs",
+        "productFamilies": ["Provisioned IOPS"]
+    },
+    {
+        "_id": "ActivePortfolios",
+        "productFamilies": ["Portfolio"]
+    },
+    {
+        "_id": "Metrics",
+        "productFamilies": ["Metric", "API Request", "Machine Learning"]
+    },
+    {
+        "_id": "1 MB",
+        "productFamilies": ["Azure Communication Services", "Storage", "Internet of Things"]
+    },
+    {
+        "_id": "Report",
+        "productFamilies": ["Business Analytics"]
+    },
+    {
+        "_id": "Minute",
+        "productFamilies": [
+            "AWS Ground Station Contact",
+            "AmazonChimeDialinProductFamily",
+            "AWSMobile-AmazonPinpoint",
+            "AmazonConnect",
+            "ContactCenterTelecomm",
+            ""
+        ]
+    },
+    {
+        "_id": "Pack",
+        "productFamilies": ["AWSIoTSiteWise"]
+    },
+    {
+        "_id": "Character",
+        "productFamilies": ["Text Translation"]
+    },
+    {
+        "_id": "Route",
+        "productFamilies": ["AmazonLocationService"]
+    },
+    {
+        "_id": "Alarms",
+        "productFamilies": ["Bundle", "AWSIoTEvents", "Alarm"]
+    },
+    {
+        "_id": "Finding Ingestion Events",
+        "productFamilies": ["AWS Security Hub - Findings"]
+    },
+    {
+        "_id": "CertificateAuthorities",
+        "productFamilies": ["AWS Certificate Manager"]
+    },
+    {
+        "_id": "1 MB/Month",
+        "productFamilies": ["Internet of Things"]
+    },
+    {
+        "_id": "Objects",
+        "productFamilies": ["Fee", "AWSIoTSiteWise", "Machine Learning", "", "Kinesis Firehose", "AWS Lake Formation"]
+    },
+    {
+        "_id": "1K/Month",
+        "productFamilies": ["Security"]
+    },
+    {
+        "_id": "Months",
+        "productFamilies": ["Encryption Key", "Firewall Manager Policy"]
+    },
+    {
+        "_id": "Dollar",
+        "productFamilies": ["AWSMobile-AmazonPinpoint"]
+    },
+    {
+        "_id": "RealTimeLogLines",
+        "productFamilies": ["RealTime"]
+    },
+    {
+        "_id": "Things Registered",
+        "productFamilies": ["IoTDeviceManagement"]
+    },
+    {
+        "_id": "Mins",
+        "productFamilies": ["Compute"]
+    },
+    {
+        "_id": "ConsumerShardHour",
+        "productFamilies": ["Kinesis Streams"]
+    },
+    {
+        "_id": "vCPU-Months",
+        "productFamilies": ["Performance Insights", "GuardDuty"]
+    },
+    {
+        "_id": "ConfigRuleEvaluations",
+        "productFamilies": ["Management Tools - AWS Config Rules"]
+    },
+    {
+        "_id": "100/Month",
+        "productFamilies": ["Security", "Storage"]
+    },
+    {
+        "_id": "Processed-Gigabytes",
+        "productFamilies": ["Serverless"]
+    },
+    {
+        "_id": "CloudMapAPICall",
+        "productFamilies": ["AWS Cloud Map"]
+    },
+    {
+        "_id": "TPS-hours",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "DAU",
+        "productFamilies": ["Daily Active Users"]
+    },
+    {
+        "_id": "BH_Team_Base_Monthly",
+        "productFamilies": ["BH-TEAM"]
+    },
+    {
+        "_id": "Accounts",
+        "productFamilies": ["AWS Billing Conductor"]
+    },
+    {
+        "_id": "gibibyte",
+        "productFamilies": ["Storage", "Network", "Compute", "ApplicationServices"]
+    },
+    {
+        "_id": "day",
+        "productFamilies": ["ApplicationServices", "Network", "", "Extra Days"]
+    },
+    {
+        "_id": "UsersPerMonth",
+        "productFamilies": ["AmazonConnect"]
+    },
+    {
+        "_id": "Units",
+        "productFamilies": [
+            "Entity Detection",
+            "Fee",
+            "Interactive Video Service - Live",
+            "AWSMobile-AmazonPinpoint",
+            "",
+            "Machine Learning"
+        ]
+    },
+    {
+        "_id": "CR-Hr",
+        "productFamilies": ["System Operation"]
+    },
+    {
+        "_id": "1 TB",
+        "productFamilies": ["Analytics"]
+    },
+    {
+        "_id": "vCPU-hour",
+        "productFamilies": ["VMwareCloudOnAWS", "Compute", "Database Utilization"]
+    },
+    {
+        "_id": "MONTH",
+        "productFamilies": ["Enterprise Applications"]
+    },
+    {
+        "_id": "Hours",
+        "productFamilies": [
+            "Compute Instance",
+            "Compute Instance (bare metal)",
+            "DNS Query",
+            "Transcode minute",
+            "Elastic Inference",
+            "Compute",
+            "Storage Device"
+        ]
+    },
+    {
+        "_id": "1 Day",
+        "productFamilies": ["Analytics", "Compute", "Storage"]
+    },
+    {
+        "_id": "Numbers",
+        "productFamilies": ["AWSMobile-AmazonPinpoint"]
+    },
+    {
+        "_id": "Operations",
+        "productFamilies": ["", "Request", "AWSIoT"]
+    },
+    {
+        "_id": "Unit",
+        "productFamilies": [
+            "Custom Entities",
+            "Custom Classification",
+            "AWSMobile-AmazonPinpoint",
+            "API Calls",
+            "Dominant Language Detection"
+        ]
+    },
+    {
+        "_id": "Activities",
+        "productFamilies": ["AWSMobile-Analytics"]
+    },
+    {
+        "_id": "Traces",
+        "productFamilies": ["Developer Tools"]
+    },
+    {
+        "_id": "Notifications",
+        "productFamilies": [
+            "AmazonChime",
+            "AWS Systems Manager",
+            "Bundle",
+            "AWSMobile-AmazonPinpoint",
+            "Simple Messaging Service",
+            "Message Delivery"
+        ]
+    },
+    {
+        "_id": "IdleLCU-Hr",
+        "productFamilies": ["Load Balancer-Application"]
+    },
+    {
+        "_id": "Keys",
+        "productFamilies": ["Encryption Key"]
+    },
+    {
+        "_id": "Gbps-hrs",
+        "productFamilies": ["NAT Gateway"]
+    },
+    {
+        "_id": "Position",
+        "productFamilies": ["AmazonLocationService"]
+    },
+    {
+        "_id": "Metric Update",
+        "productFamilies": ["Metric Streams"]
+    },
+    {
+        "_id": "mebibyte second",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "gibibyte hour",
+        "productFamilies": ["License", "ApplicationServices", "Storage", "Compute"]
+    },
+    {
+        "_id": "IOs",
+        "productFamilies": [
+            "",
+            "VMwareCloudOnAWS",
+            "Aurora Global Database",
+            "System Operation",
+            "Neptune ReplicatedWrite",
+            "QLDB IOs"
+        ]
+    },
+    {
+        "_id": "Second",
+        "productFamilies": ["", "Transcription Job"]
+    },
+    {
+        "_id": "Quantum-Task",
+        "productFamilies": ["Braket Managed Jobs QPU Task", "Quantum Task"]
+    },
+    {
+        "_id": "Records",
+        "productFamilies": ["AWS Entity Resolution"]
+    },
+    {
+        "_id": "Hourly",
+        "productFamilies": [
+            "AmazonConnect",
+            "Amazon Inspector",
+            "",
+            "AWS Transfer for SFTP",
+            "AWS Transfer Family",
+            "AWS Firewall",
+            "Private Networks"
+        ]
+    },
+    {
+        "_id": "ACU-Hr",
+        "productFamilies": ["Serverless", "ServerlessV2", "RDSProxy"]
+    },
+    {
+        "_id": "MBPS-Mo",
+        "productFamilies": ["Provisioned Throughput"]
+    },
+    {
+        "_id": "OCU-hours",
+        "productFamilies": ["Amazon OpenSearch Service Ingestion", "Amazon OpenSearch Service Serverless"]
+    },
+    {
+        "_id": "Executions",
+        "productFamilies": ["AWS Transfer Family"]
+    },
+    {
+        "_id": "sms-message",
+        "productFamilies": ["AmazonChimeBusinessCalling", "AmazonChimeVoiceConnector"]
+    },
+    {
+        "_id": "WriteCapacityUnit-Hrs",
+        "productFamilies": ["Provisioned IOPS"]
+    },
+    {
+        "_id": "100K-LinesofCode",
+        "productFamilies": ["Machine Learning"]
+    },
+    {
+        "_id": "64K-Chunks",
+        "productFamilies": ["CloudWatch Events", "EventBridge"]
+    },
+    {
+        "_id": "Request",
+        "productFamilies": [
+            "Blockchain Request",
+            "Web Application Firewall",
+            "API Request",
+            "AWS Glue",
+            "Storage",
+            "Serverless"
+        ]
+    },
+    {
+        "_id": "UGW1-AmazonApiGatewayRequest",
+        "productFamilies": ["API Calls"]
+    },
+    {
+        "_id": "Tag-Mo",
+        "productFamilies": ["Storage"]
+    },
+    {
+        "_id": "1 Month",
+        "productFamilies": ["Compute", "Telecommunications", "Internet of Things"]
+    },
+    {
+        "_id": "OnPremUpdates",
+        "productFamilies": ["CodeDeploy"]
+    },
+    {
+        "_id": "tebibyte hour",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "TrainingHour",
+        "productFamilies": ["", "AutoML Jobs"]
+    },
+    {
+        "_id": "URLs",
+        "productFamilies": ["Alexa Top Sites"]
+    },
+    {
+        "_id": "1 API Calls",
+        "productFamilies": ["Analytics"]
+    },
+    {
+        "_id": "days",
+        "productFamilies": ["", "Amazon Macie"]
+    },
+    {
+        "_id": "Internet Monitor - Monitored Resource",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "1 MB/Day",
+        "productFamilies": ["Developer Tools"]
+    },
+    {
+        "_id": "WriteRequestUnits",
+        "productFamilies": [
+            "Amazon DynamoDB PayPerRequest Throughput",
+            "PayPerRequest Throughput",
+            "FeatureStore PayPerRequestThroughput"
+        ]
+    },
+    {
+        "_id": "Resource-assessment",
+        "productFamilies": ["Amazon Inspector"]
+    },
+    {
+        "_id": "Recommender Hours",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "Host-hour",
+        "productFamilies": ["VMwareCloudOnAWS"]
+    },
+    {
+        "_id": "Dollars",
+        "productFamilies": ["Simple Messaging Service", "AWSMobile-AmazonPinpoint"]
+    },
+    {
+        "_id": "vCPU-Hours",
+        "productFamilies": ["Compute Metering", "", "CPU Credits"]
+    },
+    {
+        "_id": "Message",
+        "productFamilies": ["AWS Transfer Family", "Receiving Email", "AmazonConnect", "Bundle"]
+    },
+    {
+        "_id": "tebibyte",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "1 Minute",
+        "productFamilies": [
+            "Blockchain",
+            "Mixed Reality",
+            "Azure Communication Services",
+            "AI + Machine Learning",
+            "Management and Governance",
+            "Developer Tools"
+        ]
+    },
+    {
+        "_id": "LCU-Hrs",
+        "productFamilies": ["Load Balancer-Network", "Load Balancer-Application"]
+    },
+    {
+        "_id": "rule",
+        "productFamilies": ["Contributor Insights"]
+    },
+    {
+        "_id": "API Requests",
+        "productFamilies": ["AWS Systems Manager", "Verified Permissions", "API Request", ""]
+    },
+    {
+        "_id": "StateTransitions",
+        "productFamilies": ["AWS Step Functions"]
+    },
+    {
+        "_id": "hour",
+        "productFamilies": [
+            "IP Address",
+            "Streaming Instance",
+            "ApplicationServices",
+            "Storage",
+            "",
+            "License",
+            "Stopped Instance",
+            "SimSpace Weaver Compute Instance",
+            "Enterprise Applications",
+            "Network",
+            "Compute"
+        ]
+    },
+    {
+        "_id": "cases",
+        "productFamilies": ["AmazonConnect"]
+    },
+    {
+        "_id": "Tasks-signals-markers-timers",
+        "productFamilies": ["Amazon Simple Workflow"]
+    },
+    {
+        "_id": "Matchmaking Hours",
+        "productFamilies": ["GameLift FlexMatch Standalone"]
+    },
+    {
+        "_id": "users",
+        "productFamilies": ["User Fees"]
+    },
+    {
+        "_id": "second",
+        "productFamilies": ["Transcription Job", "ApplicationServices", "Streaming", "Storage"]
+    },
+    {
+        "_id": "Processing-Bytes",
+        "productFamilies": ["API Calls"]
+    },
+    {
+        "_id": "user",
+        "productFamilies": ["User Fees"]
+    },
+    {
+        "_id": "USW2-AmazonApiGatewayRequest",
+        "productFamilies": ["API Calls"]
+    },
+    {
+        "_id": "Attachment-hour",
+        "productFamilies": ["VMwareCloudOnAWS"]
+    },
+    {
+        "_id": "ActionsExecuted",
+        "productFamilies": ["AWSIoT"]
+    },
+    {
+        "_id": "gibibyte second",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "Gigabase-month",
+        "productFamilies": ["Storage"]
+    },
+    {
+        "_id": "GB-Mp",
+        "productFamilies": ["Amazon OpenSearch Service Volume"]
+    },
+    {
+        "_id": "month",
+        "productFamilies": ["ApplicationServices", "Storage", "Web Application Firewall", "Compute", "Network"]
+    },
+    {
+        "_id": "RulesTriggered",
+        "productFamilies": ["AWSIoT"]
+    },
+    {
+        "_id": "Users-Mo",
+        "productFamilies": ["Rekognition Storage"]
+    },
+    {
+        "_id": "Player Packages",
+        "productFamilies": ["GameLift FlexMatch Standalone"]
+    },
+    {
+        "_id": "Host",
+        "productFamilies": ["VMwareCloudOnAWS"]
+    },
+    {
+        "_id": "CognitoSyncOp-Mo",
+        "productFamilies": ["Sync Operation"]
+    },
+    {
+        "_id": "Tasks,signals,markers,timers",
+        "productFamilies": ["Amazon Simple Workflow"]
+    },
+    {
+        "_id": "ReceivedChunk",
+        "productFamilies": ["Receiving Email"]
+    },
+    {
+        "_id": "Quantity",
+        "productFamilies": [
+            "Amazon OpenSearch Service Instance",
+            "Compute Instance",
+            "Provisioned IOPS",
+            "Database Instance",
+            "Dedicated Host",
+            "Cache Instance",
+            "Compute Instance (bare metal)",
+            "Amazon MemoryDB"
+        ]
+    },
+    {
+        "_id": "1M",
+        "productFamilies": [
+            "Compute",
+            "Databases",
+            "Internet of Things",
+            "Storage",
+            "Other",
+            "Networking",
+            "Developer Tools",
+            "Management and Governance",
+            "Integration",
+            "Analytics",
+            "Security",
+            "AI + Machine Learning"
+        ]
+    },
+    {
+        "_id": "MB",
+        "productFamilies": ["Topic Modeling"]
+    },
+    {
+        "_id": "ForecastDataPoints_in_Thousands",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "APS2-WAM-STD",
+        "productFamilies": ["WorkSpaces Application Manager"]
+    },
+    {
+        "_id": "1 GiB/Day",
+        "productFamilies": ["Compute"]
+    },
+    {
+        "_id": "ReplicatedWriteCapacityUnit-Hrs",
+        "productFamilies": ["DDB-Operation-ReplicatedWrite"]
+    },
+    {
+        "_id": "1 GB/Day",
+        "productFamilies": ["Management and Governance", "Microsoft Syntex"]
+    },
+    {
+        "_id": "seconds",
+        "productFamilies": [
+            "Custom Classification",
+            "Custom Entities",
+            "",
+            "Streaming",
+            "Redshift Concurrency Scaling",
+            "ML Serverless",
+            "Transcription Job"
+        ]
+    },
+    {
+        "_id": "Bundles",
+        "productFamilies": ["Lightsail Storage", "Lightsail Networking"]
+    },
+    {
+        "_id": "Quantum-Shot",
+        "productFamilies": ["Quantum Task-Shot", "Braket Managed Jobs QPU Task Shot"]
+    },
+    {
+        "_id": "M-DPU-Hour",
+        "productFamilies": ["AWS Glue"]
+    },
+    {
+        "_id": "TTLDeletes",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "MiBps-Mo",
+        "productFamilies": [
+            "Managed Streaming for Apache Kafka (MSK)",
+            "Provisioned Throughput",
+            "Amazon OpenSearch Service Volume"
+        ]
+    },
+    {
+        "_id": "kibibyte",
+        "productFamilies": ["ApplicationServices"]
+    },
+    {
+        "_id": "CRPU-Hr",
+        "productFamilies": ["AWS Clean Rooms"]
+    },
+    {
+        "_id": "1 GiB",
+        "productFamilies": ["Storage", "Developer Tools"]
+    },
+    {
+        "_id": "SnapshotAPIUnits",
+        "productFamilies": ["EBS direct API Requests"]
+    },
+    {
+        "_id": "InstanceAssessments",
+        "productFamilies": ["Amazon Inspector Network Assessment"]
+    },
+    {
+        "_id": "TB",
+        "productFamilies": ["IoTAnalytics"]
+    },
+    {
+        "_id": "Forecast",
+        "productFamilies": [""]
+    },
+    {
+        "_id": "GigaBytes",
+        "productFamilies": [
+            "CloudWatch Events",
+            "AWS Amplify",
+            "",
+            "AmazonChime",
+            "Amazon ElastiCache Global Datastore",
+            "AWS Transfer Family",
+            "Amazon OpenSearch Service Volume",
+            "AWS Lake Formation",
+            "AWS Global Accelerator"
+        ]
+    },
+    {
+        "_id": "gibibyte month",
+        "productFamilies": ["Compute", "ApplicationServices", "Storage"]
+    },
+    {
+        "_id": "Gigabyte Month",
+        "productFamilies": ["Storage", ""]
+    },
+    {
+        "_id": "USD",
+        "productFamilies": ["Storage Device"]
+    }
 ]
