@@ -1,10 +1,15 @@
 import { InputType, UnitCategorisation } from "./units";
 import { isNil } from "lodash";
+import { NumberUnitCategorisation } from "./numberunitcategorisation";
+import { StorageUnitCategorisation } from "./storageunitcategorisation";
+import { DivisionUnitCategorisation } from "./divisionunitcategorisation";
+import { CustomUnitCategorisation } from "./customunitcategorisation";
+import { DefaultUnitCategorisation } from "./defaultunitcategorisation";
 
 export class TimeUnitCategorisation implements UnitCategorisation {
-    public name = "TimeUnitCategorisation";
-    public token: string;
-    public milliseconds: number;
+    unitName = "TimeUnitCategorisation";
+    token: string;
+    milliseconds: number;
     type: string = "number";
     options: any[] | null = ["millisecond", "second", "minute", "hour", "day", "week", "month", "year"];
     acceptsUserInput: boolean = true;
@@ -35,6 +40,17 @@ export class TimeUnitCategorisation implements UnitCategorisation {
         week: 7 * 24 * 60 * 60 * 1000,
         month: 30 * 24 * 60 * 60 * 1000,
         year: 365 * 24 * 60 * 60 * 1000
+    };
+
+    private static backConversion: { [unit: number]: string } = {
+        1: "millisecond",
+        1000: "second",
+        60000: "minute",
+        3600000: "hour",
+        86400000: "day",
+        604800000: "week",
+        2592000000: "month",
+        31536000000: "year"
     };
 
     public static getUnit(token: string): string | null {
@@ -84,4 +100,30 @@ export class TimeUnitCategorisation implements UnitCategorisation {
     public static create(token: string): UnitCategorisation {
         return new TimeUnitCategorisation(token);
     }
+
+    expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
+        if (prevUnit == null) {
+            return [NumberUnitCategorisation.create("1"), this];
+        }
+        if (prevUnit instanceof NumberUnitCategorisation) {
+            return [this];
+        }
+
+        if (prevUnit instanceof DivisionUnitCategorisation) {
+            return [NumberUnitCategorisation.create("1"), this];
+        }
+
+        if (prevUnit instanceof StorageUnitCategorisation ||
+            prevUnit instanceof CustomUnitCategorisation ||
+            prevUnit instanceof DefaultUnitCategorisation) {
+            return [DivisionUnitCategorisation.create("/"), NumberUnitCategorisation.create("1"), this];
+        }
+        return [NumberUnitCategorisation.create("1"), this];
+    }
+
+    isCompatible(other: UnitCategorisation): boolean {
+        return other instanceof TimeUnitCategorisation;
+    }
+
+
 }

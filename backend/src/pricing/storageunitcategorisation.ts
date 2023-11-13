@@ -1,7 +1,8 @@
 import { InputType, UnitCategorisation } from "./units";
+import { NumberUnitCategorisation } from "./numberunitcategorisation";
 
 export class StorageUnitCategorisation implements UnitCategorisation {
-    name: string = "StorageUnitCategorisation";
+    unitName: string = "StorageUnitCategorisation";
     acceptsUserInput: boolean = true;
     inputType: InputType = "dropdown";
     // unit -> bit
@@ -109,5 +110,14 @@ export class StorageUnitCategorisation implements UnitCategorisation {
 
     public static create(token: string): UnitCategorisation {
         return new StorageUnitCategorisation(token);
+    }
+
+    expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
+        if (prevUnit == null) return [NumberUnitCategorisation.create("1"), this];
+        return [this];
+    }
+
+    isCompatible(other: UnitCategorisation): boolean {
+        return other instanceof StorageUnitCategorisation;
     }
 }

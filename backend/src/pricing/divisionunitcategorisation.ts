@@ -1,8 +1,9 @@
 import { InputType, UnitCategorisation } from "./units";
+import { NumberUnitCategorisation } from "./numberunitcategorisation";
 
 export class DivisionUnitCategorisation implements UnitCategorisation {
-    name: string = "DivisionUnitCategorisation";
-    options: any[] | null = ["/", "*"];
+    unitName: string = "DivisionUnitCategorisation";
+    options: any[] | null = null;
     type: string = "division";
     acceptsUserInput: boolean = false;
     inputType: InputType = null;
@@ -19,4 +20,20 @@ export class DivisionUnitCategorisation implements UnitCategorisation {
     public static create(token: string): UnitCategorisation {
         return new DivisionUnitCategorisation(token);
     }
+
+    expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
+        if (prevUnit == null) {
+            return [NumberUnitCategorisation.create("1"), this];
+        }
+        if (prevUnit instanceof DivisionUnitCategorisation) {
+            return [];
+        }
+        return [this];
+    }
+
+    isCompatible(other: UnitCategorisation): boolean {
+        return other instanceof DivisionUnitCategorisation;
+    }
+
+
 }

@@ -11,12 +11,16 @@ import { CustomUnitCategorisation } from "./customunitcategorisation";
 export type InputType = "input" | "dropdown" | null;
 
 export interface UnitCategorisation {
-    name: string;
+    unitName: string;
     token: string;
     type: string;
     options: null | any[];
     acceptsUserInput: boolean;
     inputType: InputType;
+
+    expand(prevUnit: UnitCategorisation | null): UnitCategorisation[];
+
+    isCompatible(other: UnitCategorisation): boolean;
 }
 
 export class Units {
@@ -45,8 +49,13 @@ export class Units {
         }
         let unitsByServiceFamily = await getDistinctUnitsGroupedByServiceFamily();
         let units = unitsByServiceFamily.flatMap((i) => i.units);
+        units.sort();
         let tokens = units.map((i) => i.match(Units.regex) || []);
-        tokens.forEach((i) => this.categorise(i));
+        // filter out duplicates after matching
+        tokens = [...new Set(tokens.map(i => JSON.stringify(i))).values()].map(i => JSON.parse(i));
+        tokens.forEach((token, i) => {
+            this.categorise(token);
+        });
         // this.units.push(...tokens.map(i => this.categorise(i)));
         console.log({
             message: `loaded all units completely`,
@@ -55,15 +64,15 @@ export class Units {
         this.completedLoading = true;
     }
 
-    private joinElements: [string, string][] = [
+    private joinElements: string[][] = [
         ["vC", "PU"],
         ["On", "Prem"],
         ["I", "Os"],
         ["UR", "Ls"],
         ["Mi", "Bps"],
         ["Linesof", "Code"],
-        ["I", "/"],
-        ["I/", "O"],
+        ["I", "/", "O"],
+        ["sms", "-", "message"],
         ["IO", "Ps"],
         ["Gi", "Bps"]
     ];
@@ -91,15 +100,12 @@ export class Units {
         let _originalTokens = [...tokens];
 
         for (let i = 0; i < tokens.length; i++) {
-            for (const joinElement of this.joinElements) {
-                if (tokens[i] != joinElement[0]) {
-                    continue;
+            tokenLoop: for (const joinElements of this.joinElements) {
+                for (let j = 0; j < joinElements.length; j++) {
+                    if (tokens[i + j] != joinElements[j]) continue tokenLoop;
                 }
-                if (tokens[i + 1] != joinElement[1]) {
-                    continue;
-                }
-                tokens[i] = tokens[i] + tokens[i + 1];
-                tokens.splice(i + 1, 1);
+                tokens[i] = joinElements.join("");
+                tokens.splice(i + 1, joinElements.length - 1);
             }
 
             for (const expandElement of this.expandElements) {
@@ -114,6 +120,7 @@ export class Units {
             tokens,
             tokens.map((token) => this.findUnitCategorisation(token, tokens))
         );
+
         this.rawUnits[Units.computeTokenHash(_originalTokens)] = unit;
         this.processedUnits[Units.computeTokenHash(tokens)] = unit;
     }

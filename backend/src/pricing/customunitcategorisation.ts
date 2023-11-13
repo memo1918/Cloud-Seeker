@@ -1,10 +1,10 @@
 import { InputType, UnitCategorisation } from "./units";
+import { NumberUnitCategorisation } from "./numberunitcategorisation";
 
 type CustomUnits =
     | "user"
     | "account"
     | "message"
-    | "api"
     | "storageunit"
     | "request"
     | "job"
@@ -14,7 +14,7 @@ type CustomUnits =
     | "ambiguous";
 
 export class CustomUnitCategorisation implements UnitCategorisation {
-    public name: string = "CustomUnitCategorisation";
+    public unitName: string = "CustomUnitCategorisation";
     public options: any[] | null = null;
     public type: string = "string";
     public value: string;
@@ -27,8 +27,8 @@ export class CustomUnitCategorisation implements UnitCategorisation {
         play: "user",
         acc: "account",
         message: "message",
+        sms: "message",
         msg: "message",
-        api: "api",
         bucket: "storageunit",
         chunk: "storageunit",
         quan: "storageunit",
@@ -43,6 +43,7 @@ export class CustomUnitCategorisation implements UnitCategorisation {
         queries: "request",
         query: "request",
         call: "request",
+        api: "request",
         ev: "request",
         noti: "request",
         op: "job",
@@ -88,5 +89,25 @@ export class CustomUnitCategorisation implements UnitCategorisation {
 
     public static create(token: string): UnitCategorisation {
         return new CustomUnitCategorisation(token);
+    }
+
+    expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
+        if (prevUnit != null && prevUnit instanceof CustomUnitCategorisation && prevUnit.value == this.value) {
+            prevUnit.token = `${prevUnit.token} ${this.token}`;
+            return [];
+        }
+
+        if (prevUnit != null && prevUnit instanceof NumberUnitCategorisation) {
+            return [this];
+
+        }
+        return [NumberUnitCategorisation.create("1"), this];
+    }
+
+    isCompatible(other: UnitCategorisation): boolean {
+        if (!(other instanceof CustomUnitCategorisation)) {
+            return false;
+        }
+        return other.value == this.value;
     }
 }

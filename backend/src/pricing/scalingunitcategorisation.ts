@@ -1,7 +1,8 @@
 import { InputType, UnitCategorisation } from "./units";
+import { NumberUnitCategorisation } from "./numberunitcategorisation";
 
 export class ScalingUnitCategorisation implements UnitCategorisation {
-    name: string = "ScalingUnitCategorisation";
+    unitName: string = "ScalingUnitCategorisation";
     public factor: number;
     acceptsUserInput: boolean = true;
     inputType: InputType = "dropdown";
@@ -17,16 +18,6 @@ export class ScalingUnitCategorisation implements UnitCategorisation {
         E: 10 ** 8,
         Thousands: 10 ** 3
     };
-    private convert(size: number, fromUnit: string, toUnit: string): number {
-        try {
-            const sizeInBits = size * ScalingUnitCategorisation.unitTable[fromUnit];
-            return sizeInBits / ScalingUnitCategorisation.unitTable[toUnit];
-        } catch (error) {
-            throw new Error(
-                "Invalid unit. Supported units: " + Object.keys(ScalingUnitCategorisation.unitTable).join(", ")
-            );
-        }
-    }
 
     private parse(unit: string): number {
         if (ScalingUnitCategorisation.unitTable[unit] == undefined) {
@@ -49,5 +40,19 @@ export class ScalingUnitCategorisation implements UnitCategorisation {
 
     public static create(token: string): UnitCategorisation {
         return new ScalingUnitCategorisation(token);
+    }
+
+    expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
+
+        if (prevUnit != null && prevUnit instanceof NumberUnitCategorisation) {
+            prevUnit.multiply(this.factor);
+            return [];
+        }
+
+        return [NumberUnitCategorisation.create(this.factor.toString())];
+    }
+
+    isCompatible(other: UnitCategorisation): boolean {
+        return other instanceof ScalingUnitCategorisation;
     }
 }
