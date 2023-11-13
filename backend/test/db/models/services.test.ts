@@ -1,10 +1,10 @@
 import {
+    _getDistinctUnitsGroupedByServiceFamily,
     collectionName,
     createServicesIndex,
     dbName,
     dropServices,
     findServices,
-    getDistinctUnitsGroupedByServiceFamily,
     insertServicesData,
     IService
 } from "../../../src/db/models/services";
@@ -15,7 +15,7 @@ import { Collection, Document, MongoClient } from "mongodb";
 
 import { distinctSkus, skuFixture } from "./skuFixture";
 import { getCollection } from "../../../src/db/schema";
-import _ from "lodash";
+import * as _ from "lodash";
 
 jest.mock("../../../src/db/schema");
 
@@ -98,7 +98,7 @@ describe("services db", () => {
 
         await expect(
             (async () => {
-                let data = await getDistinctUnitsGroupedByServiceFamily(client);
+                let data = await _getDistinctUnitsGroupedByServiceFamily(client);
                 // data[0].
                 data = data.sort((a, b) => a._id.localeCompare(b._id));
                 data[0].units = data[0].units.sort();

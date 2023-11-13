@@ -13,9 +13,12 @@ export default class Root implements Route {
         next: NextFunction,
         error: ErrorCallback
     ): Promise<any> {
+        let unitConverter = Units.getInstance();
+        await unitConverter.ensureLoadAllUnits();
+
         res.contentType("application/json")
             .json({
-                data: Units.getInstance().getUnits()
+                data: unitConverter.getUnits()
             })
             .end();
 
