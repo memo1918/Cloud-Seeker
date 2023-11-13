@@ -1,8 +1,9 @@
-import { UnitCategorisation } from "./units";
+import { InputType, UnitCategorisation } from "./units";
 
 export class StorageUnitCategorisation implements UnitCategorisation {
     name: string = "StorageUnitCategorisation";
-
+    acceptsUserInput: boolean = true;
+    inputType: InputType = "dropdown";
     // unit -> bit
     private static units: { [key: string]: number } = {
         B: 8,
@@ -78,6 +79,8 @@ export class StorageUnitCategorisation implements UnitCategorisation {
     };
 
     public value: number;
+    public type = "string";
+    public options = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB"];
 
     private convert(size: number, fromUnit: string, toUnit: string): number | string {
         try {

@@ -1,8 +1,13 @@
-import { UnitCategorisation } from "./units";
+import { InputType, UnitCategorisation } from "./units";
 
 export class ScalingUnitCategorisation implements UnitCategorisation {
     name: string = "ScalingUnitCategorisation";
-    public factor: number = 0;
+    public factor: number;
+    acceptsUserInput: boolean = true;
+    inputType: InputType = "dropdown";
+    options: any[] | null = ["K", "M", "G", "T", "E", "P"];
+    type: string = "string";
+
     private static unitTable: { [key: string]: number } = {
         K: 10 ** 3,
         M: 10 ** 4,
@@ -12,7 +17,6 @@ export class ScalingUnitCategorisation implements UnitCategorisation {
         E: 10 ** 8,
         Thousands: 10 ** 3
     };
-
     private convert(size: number, fromUnit: string, toUnit: string): number {
         try {
             const sizeInBits = size * ScalingUnitCategorisation.unitTable[fromUnit];

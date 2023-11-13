@@ -1,8 +1,8 @@
 import { IService } from "../db/models/services";
 
 export interface PriceInformation {
-    value: number,
-    unit: string
+    value: number;
+    unit: string;
 }
 
 export interface BaseApi {

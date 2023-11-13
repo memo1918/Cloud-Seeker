@@ -27,7 +27,6 @@ module.exports = {
                     fullySpecified: false // resolves .mjs and .js files without specifying the whole path
                 },
                 exclude: [path.resolve("./test")]
-
             },
             {
                 test: /\.ts$/,

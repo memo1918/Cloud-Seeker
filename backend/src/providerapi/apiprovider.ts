@@ -27,7 +27,9 @@ export class ApiProvider {
 
     getProvider(instance: IService) {
         if (_.isNil(this.apis[instance.name]))
-            throw new UnknownProviderError(`Provider ${instance.name} is not available. Options: ${JSON.stringify(Object.keys(this.apis))}`);
+            throw new UnknownProviderError(
+                `Provider ${instance.name} is not available. Options: ${JSON.stringify(Object.keys(this.apis))}`
+            );
         return this.apis[instance.name];
     }
 }

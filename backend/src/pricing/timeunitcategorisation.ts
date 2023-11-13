@@ -1,10 +1,14 @@
-import { UnitCategorisation } from "./units";
+import { InputType, UnitCategorisation } from "./units";
 import { isNil } from "lodash";
 
 export class TimeUnitCategorisation implements UnitCategorisation {
     public name = "TimeUnitCategorisation";
     public token: string;
     public milliseconds: number;
+    type: string = "number";
+    options: any[] | null = ["millisecond", "second", "minute", "hour", "day", "week", "month", "year"];
+    acceptsUserInput: boolean = true;
+    inputType: InputType = "dropdown";
 
     constructor(token: string) {
         this.token = TimeUnitCategorisation.getUnit(token) || "";

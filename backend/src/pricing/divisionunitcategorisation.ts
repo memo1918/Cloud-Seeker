@@ -1,7 +1,11 @@
-import { UnitCategorisation } from "./units";
+import { InputType, UnitCategorisation } from "./units";
 
 export class DivisionUnitCategorisation implements UnitCategorisation {
     name: string = "DivisionUnitCategorisation";
+    options: any[] | null = ["/", "*"];
+    type: string = "division";
+    acceptsUserInput: boolean = false;
+    inputType: InputType = null;
 
     constructor(public token: string) {}
 

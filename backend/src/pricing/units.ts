@@ -8,14 +8,20 @@ import { ScalingUnitCategorisation } from "./scalingunitcategorisation";
 import { DefaultUnitCategorisation } from "./defaultunitcategorisation";
 import { CustomUnitCategorisation } from "./customunitcategorisation";
 
+export type InputType = "input" | "dropdown" | null;
+
 export interface UnitCategorisation {
     name: string;
     token: string;
+    type: string;
+    options: null | any[];
+    acceptsUserInput: boolean;
+    inputType: InputType;
 }
 
 export class Units {
     private constructor() {
-        this.loadAllUnits();
+        // this.ensureLoadAllUnits();
     }
 
     private static instance: Units;
@@ -31,8 +37,12 @@ export class Units {
 
     private rawUnits: { [hash: string]: Unit } = {};
     private processedUnits: { [hash: string]: Unit } = {};
+    private completedLoading: boolean = false;
 
-    public async loadAllUnits() {
+    public async ensureLoadAllUnits() {
+        if (this.completedLoading) {
+            return Promise.resolve();
+        }
         let unitsByServiceFamily = await getDistinctUnitsGroupedByServiceFamily();
         let units = unitsByServiceFamily.flatMap((i) => i.units);
         let tokens = units.map((i) => i.match(Units.regex) || []);
@@ -42,6 +52,7 @@ export class Units {
             message: `loaded all units completely`,
             __filename
         });
+        this.completedLoading = true;
     }
 
     private joinElements: [string, string][] = [
@@ -117,7 +128,6 @@ export class Units {
         [NumberUnitCategorisation.match, NumberUnitCategorisation.create],
         [DivisionUnitCategorisation.match, DivisionUnitCategorisation.create],
         [CustomUnitCategorisation.match, CustomUnitCategorisation.create]
-        // [DefaultUnitCategorisation.match, DefaultUnitCategorisation.create]
     ];
 
     public findUnitCategorisation(token: string, tokens: string[]): UnitCategorisation {

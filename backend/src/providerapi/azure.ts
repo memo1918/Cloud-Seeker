@@ -12,5 +12,4 @@ export class AzureApi implements BaseApi {
     convert(instance: IService, category: any, unit: any): PriceInformation {
         return {} as PriceInformation;
     }
-
 }

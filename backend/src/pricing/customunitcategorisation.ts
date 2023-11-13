@@ -1,4 +1,4 @@
-import { UnitCategorisation } from "./units";
+import { InputType, UnitCategorisation } from "./units";
 
 type CustomUnits =
     | "user"
@@ -14,7 +14,12 @@ type CustomUnits =
     | "ambiguous";
 
 export class CustomUnitCategorisation implements UnitCategorisation {
-    name: string = "CustomUnitCategorisation";
+    public name: string = "CustomUnitCategorisation";
+    public options: any[] | null = null;
+    public type: string = "string";
+    public value: string;
+    acceptsUserInput: boolean = false;
+    inputType: InputType = null;
 
     private static table: { [name: string]: CustomUnits } = {
         use: "user",
@@ -65,8 +70,6 @@ export class CustomUnitCategorisation implements UnitCategorisation {
         unit: "ambiguous",
         count: "ambiguous"
     };
-
-    public value: string;
 
     constructor(public token: string) {
         this.value = CustomUnitCategorisation.parse(token);
