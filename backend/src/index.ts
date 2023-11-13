@@ -14,9 +14,10 @@ async function start() {
     registerRoutes();
     setupDB(process.env["DB_CONNECTION_STRING"]);
     startServer();
-    await loadinfracostdumpindb();
-    let unitConverter = Units.getInstance();
-    await unitConverter.loadAllUnits();
+    loadinfracostdumpindb().then(() => {
+        let unitConverter = Units.getInstance();
+        unitConverter.loadAllUnits();
+    });
 }
 
 start();
@@ -44,8 +45,6 @@ start();
 //     let r = i.match(regex);
 //     console.log(r);
 // });
-
-
 
 // let distinctByGroup: {
 //     "_id": string,

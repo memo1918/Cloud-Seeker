@@ -7,6 +7,8 @@ export class StorageUnitCategorisation implements UnitCategorisation {
     private static units: { [key: string]: number } = {
         B: 8,
         Bytes: 8,
+        bytes: 8,
+        byte: 8,
         KB: 8 * 1024 ** 1,
         MB: 8 * 1024 ** 2,
         GB: 8 * 1024 ** 3,
@@ -16,7 +18,8 @@ export class StorageUnitCategorisation implements UnitCategorisation {
         Kilo: 1024 ** 1,
         Mega: 1024 ** 2,
         Giga: 1024 ** 3,
-        Terra: 1024 ** 4,
+        Tera: 1024 ** 4,
+        Terabytes: 8 * 1024 ** 4,
         Peta: 1024 ** 5,
         Exa: 1024 ** 6,
         kilo: 1024 ** 1,
@@ -61,7 +64,17 @@ export class StorageUnitCategorisation implements UnitCategorisation {
         MIB: 2 ** 20 / 8,
         TIB: 2 ** 40 / 8,
         PIB: 2 ** 50 / 8,
-        EIB: 2 ** 60 / 8
+        EIB: 2 ** 60 / 8,
+        KiB: 2 ** 10 / 8,
+        MeB: 2 ** 20 / 8,
+        GiB: 2 ** 30 / 8,
+        TeB: 2 ** 40 / 8,
+        PeB: 2 ** 50 / 8,
+        ExB: 2 ** 60 / 8,
+        MiB: 2 ** 20 / 8,
+        TiB: 2 ** 40 / 8,
+        PiB: 2 ** 50 / 8,
+        EiB: 2 ** 60 / 8
     };
 
     public value: number;
@@ -71,7 +84,9 @@ export class StorageUnitCategorisation implements UnitCategorisation {
             const sizeInBits = size * StorageUnitCategorisation.units[fromUnit];
             return sizeInBits / StorageUnitCategorisation.units[toUnit];
         } catch (error) {
-            throw new Error("Invalid unit. supported units: " + Object.keys(StorageUnitCategorisation.units).join(", "));
+            throw new Error(
+                "Invalid unit. supported units: " + Object.keys(StorageUnitCategorisation.units).join(", ")
+            );
         }
     }
 
@@ -82,7 +97,7 @@ export class StorageUnitCategorisation implements UnitCategorisation {
 
     public static parse(token: string) {
         token = token.trim();
-        return Object.keys(StorageUnitCategorisation.units).find(i => token == i) || "";
+        return Object.keys(StorageUnitCategorisation.units).find((i) => token == i) || "";
     }
 
     public static match(token: string): boolean {

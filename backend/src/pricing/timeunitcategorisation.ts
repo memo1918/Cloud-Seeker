@@ -4,29 +4,33 @@ import { isNil } from "lodash";
 export class TimeUnitCategorisation implements UnitCategorisation {
     public name = "TimeUnitCategorisation";
     public token: string;
+    public milliseconds: number;
 
     constructor(token: string) {
         this.token = TimeUnitCategorisation.getUnit(token) || "";
+        this.milliseconds = TimeUnitCategorisation.conversion[this.token];
     }
 
     private static patterns: { [unit: string]: RegExp } = {
-        s: /^(s(ec(ond(s)?)?)?)$/i,
-        min: /^(m(in(ute)?)?(s)?)$/i,
-        h: /^(h(our(s)?)?|Hrs)$/i,
-        d: /^(d(ay(s)?)?)$/i,
-        w: /^(w(eek(s)?)?|wks)$/i,
-        m: /^(m(o(nth(s)?)?)?)$/i,
-        y: /^(y(ear(s)?)?|yrs)$/i
+        millisecond: /^(m(illi)?(s(ec(ond(s)?)?)?))$/i,
+        second: /^(s(ec(ond(s)?)?)?)$/i,
+        minute: /^(m(in(ute)?)?(s)?)$/i,
+        hour: /^(usage)?(h((ou)?r(s)?)?(ly)?|hr(s)?)$/i,
+        day: /^(d(ay(s)?)?)$/i,
+        week: /^(w(eek(s)?)?|wks)$/i,
+        month: /^(m(o(nth(s)?(ly)?)?)?)$/i,
+        year: /^(y(ear(s)?)?|yr(s)?)$/i
     };
 
     private static conversion: { [unit: string]: number } = {
-        s: 1,
-        min: 60,
-        h: 60 * 60,
-        d: 24 * 60 * 60,
-        w: 7 * 24 * 60 * 60,
-        m: 30 * 24 * 60 * 60,
-        y: 365 * 24 * 60 * 60
+        millisecond: 1,
+        second: 1000,
+        minute: 60 * 1000,
+        hour: 60 * 60 * 1000,
+        day: 24 * 60 * 60 * 1000,
+        week: 7 * 24 * 60 * 60 * 1000,
+        month: 30 * 24 * 60 * 60 * 1000,
+        year: 365 * 24 * 60 * 60 * 1000
     };
 
     public static getUnit(token: string): string | null {
