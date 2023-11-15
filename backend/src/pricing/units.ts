@@ -1,4 +1,3 @@
-import { getDistinctUnitsGroupedByServiceFamily } from "../layer/services";
 import { Unit } from "./unit";
 import { TimeUnitCategorisation } from "./timeunitcategorisation";
 import { NumberUnitCategorisation } from "./numberunitcategorisation";
@@ -24,47 +23,47 @@ export interface UnitCategorisation {
 }
 
 export class Units {
-    private constructor() {
-        // this.ensureLoadAllUnits();
-    }
+    // private constructor() {
+    //     // this.ensureLoadAllUnits();
+    // }
 
-    private static instance: Units;
-
-    public static getInstance(): Units {
-        if (!Units.instance) {
-            Units.instance = new Units();
-        }
-        return Units.instance;
-    }
+    // private static instance: Units;
+    //
+    // public static getInstance(): Units {
+    //     if (!Units.instance) {
+    //         Units.instance = new Units();
+    //     }
+    //     return Units.instance;
+    // }
 
     private static regex = /[0-9]+(?:\.[0-9]+)?|\/|-|([A-Z][a-z]+)|[A-Z]+(?![a-z])|[a-z]+[A-Z]|[a-z]+/g;
 
-    private rawUnits: { [hash: string]: Unit } = {};
-    private processedUnits: { [hash: string]: Unit } = {};
-    private completedLoading: boolean = false;
+    // private rawUnits: { [hash: string]: Unit } = {};
+    // private processedUnits: { [hash: string]: Unit } = {};
+    // private completedLoading: boolean = false;
 
-    public async ensureLoadAllUnits() {
-        if (this.completedLoading) {
-            return Promise.resolve();
-        }
-        let unitsByServiceFamily = await getDistinctUnitsGroupedByServiceFamily();
-        let units = unitsByServiceFamily.flatMap((i) => i.units);
-        units.sort();
-        let tokens = units.map((i) => i.match(Units.regex) || []);
-        // filter out duplicates after matching
-        tokens = [...new Set(tokens.map((i) => JSON.stringify(i))).values()].map((i) => JSON.parse(i));
-        tokens.forEach((token, i) => {
-            this.categorise(token);
-        });
-        // this.units.push(...tokens.map(i => this.categorise(i)));
-        console.log({
-            message: `loaded all units completely`,
-            __filename
-        });
-        this.completedLoading = true;
-    }
+    // public async ensureLoadAllUnits() {
+    //     if (this.completedLoading) {
+    //         return Promise.resolve();
+    //     }
+    //     let unitsByServiceFamily = await getDistinctUnitsGroupedByServiceFamily();
+    //     let units = unitsByServiceFamily.flatMap((i) => i.units);
+    //     units.sort();
+    //     let tokens = units.map((i) => i.match(Units.regex) || []);
+    //     // filter out duplicates after matching
+    //     tokens = [...new Set(tokens.map((i) => JSON.stringify(i))).values()].map((i) => JSON.parse(i));
+    //     tokens.forEach((token, i) => {
+    //         this.categorise(token);
+    //     });
+    //     // this.units.push(...tokens.map(i => this.categorise(i)));
+    //     console.log({
+    //         message: `loaded all units completely`,
+    //         __filename
+    //     });
+    //     this.completedLoading = true;
+    // }
 
-    private joinElements: string[][] = [
+    private static joinElements: string[][] = [
         ["vC", "PU"],
         ["On", "Prem"],
         ["I", "Os"],
@@ -77,7 +76,7 @@ export class Units {
         ["Gi", "Bps"]
     ];
 
-    private expandElements: [string, string[]][] = [
+    private static expandElements: [string, string[]][] = [
         ["MiBps", ["MiB", "p", "s"]],
         ["GiBps", ["GiB", "p", "s"]],
         ["PIOPS", ["IOp", "s"]],
@@ -88,19 +87,24 @@ export class Units {
         ["MBPS", ["Mbit", "p", "s"]]
     ];
 
-    private static computeTokenHash(tokens: string[]) {
-        return tokens
-            .map((v, i) => {
-                return "" + i + v + i;
-            })
-            .join("🪢");
+    // private static computeTokenHash(tokens: string[]) {
+    //     return tokens
+    //         .map((v, i) => {
+    //             return "" + i + v + i;
+    //         })
+    //         .join("🪢");
+    // }
+
+    public static categorise(unitText: string) {
+        let tokens = unitText.match(Units.regex) || [];
+        return this.categoriseTokens(tokens);
     }
 
-    public categorise(tokens: string[]) {
+    private static categoriseTokens(tokens: string[]) {
         let _originalTokens = [...tokens];
 
         for (let i = 0; i < tokens.length; i++) {
-            tokenLoop: for (const joinElements of this.joinElements) {
+            tokenLoop: for (const joinElements of Units.joinElements) {
                 for (let j = 0; j < joinElements.length; j++) {
                     if (tokens[i + j] != joinElements[j]) continue tokenLoop;
                 }
@@ -108,7 +112,7 @@ export class Units {
                 tokens.splice(i + 1, joinElements.length - 1);
             }
 
-            for (const expandElement of this.expandElements) {
+            for (const expandElement of Units.expandElements) {
                 if (tokens[i] != expandElement[0]) {
                     continue;
                 }
@@ -121,8 +125,9 @@ export class Units {
             tokens.map((token) => this.findUnitCategorisation(token, tokens))
         );
 
-        this.rawUnits[Units.computeTokenHash(_originalTokens)] = unit;
-        this.processedUnits[Units.computeTokenHash(tokens)] = unit;
+        return unit;
+        // this.rawUnits[Units.computeTokenHash(_originalTokens)] = unit;
+        // this.processedUnits[Units.computeTokenHash(tokens)] = unit;
     }
 
     private static categorisations: [
@@ -137,7 +142,7 @@ export class Units {
         [CustomUnitCategorisation.match, CustomUnitCategorisation.create]
     ];
 
-    public findUnitCategorisation(token: string, tokens: string[]): UnitCategorisation {
+    private static findUnitCategorisation(token: string, tokens: string[]): UnitCategorisation {
         for (const categorisation of Units.categorisations) {
             const [mapping, creation] = categorisation;
             if (mapping(token)) {
@@ -155,7 +160,7 @@ export class Units {
         return DefaultUnitCategorisation.create(token);
     }
 
-    public getUnits() {
-        return Object.values(this.processedUnits);
-    }
+    // public getUnits() {
+    //     return Object.values(this.processedUnits);
+    // }
 }

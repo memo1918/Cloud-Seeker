@@ -1,4 +1,5 @@
 import { InputType, UnitCategorisation } from "./units";
+import { NumberUnitCategorisation } from "./numberunitcategorisation";
 
 export class DefaultUnitCategorisation implements UnitCategorisation {
     unitName: string = "DefaultUnitCategorisation";
@@ -18,7 +19,11 @@ export class DefaultUnitCategorisation implements UnitCategorisation {
     }
 
     expand(prevUnit: UnitCategorisation | null): UnitCategorisation[] {
-        if (prevUnit != null && prevUnit instanceof DefaultUnitCategorisation) {
+        if (prevUnit == null) {
+            return [NumberUnitCategorisation.create("1"), this];
+        }
+
+        if (prevUnit instanceof DefaultUnitCategorisation) {
             prevUnit.token = `${prevUnit.token} ${this.token}`;
             return [];
         }

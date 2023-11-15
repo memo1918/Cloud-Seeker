@@ -6,24 +6,17 @@ export class ScalingUnitCategorisation implements UnitCategorisation {
     public factor: number;
     acceptsUserInput: boolean = true;
     inputType: InputType = "dropdown";
-    options: any[] | null = ["K", "M", "G", "T", "E", "P"];
+    options: any[] | null = ["K", "M"];
     type: string = "string";
 
     private static unitTable: { [key: string]: number } = {
         K: 10 ** 3,
-        M: 10 ** 4,
-        G: 10 ** 5,
-        T: 10 ** 6,
-        P: 10 ** 7,
-        E: 10 ** 8,
+        M: 10 ** 6,
+        Thousand: 10 ** 3,
         Thousands: 10 ** 3
     };
 
     private parse(unit: string): number {
-        if (ScalingUnitCategorisation.unitTable[unit] == undefined) {
-            unit = Object.keys(ScalingUnitCategorisation.unitTable).find((i) => unit == i) || "";
-        }
-
         return ScalingUnitCategorisation.unitTable[unit];
     }
 

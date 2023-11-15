@@ -42,9 +42,9 @@ export class NumberUnitCategorisation implements UnitCategorisation {
             return [];
         }
 
-        if (prevUnit != null && !(prevUnit instanceof NumberUnitCategorisation)) {
-            return [NumberUnitCategorisation.create("1"), this];
-        }
+        // if (prevUnit != null && !(prevUnit instanceof NumberUnitCategorisation)) {
+        //     return [NumberUnitCategorisation.create("1"), this];
+        // }
 
         return [this];
     }

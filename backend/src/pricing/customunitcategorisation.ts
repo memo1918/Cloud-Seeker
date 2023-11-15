@@ -11,7 +11,8 @@ type CustomUnits =
     | "rw"
     | "currency"
     | "configuration"
-    | "ambiguous";
+    | "ambiguous"
+    | "classification";
 
 export class CustomUnitCategorisation implements UnitCategorisation {
     public unitName: string = "CustomUnitCategorisation";
@@ -52,12 +53,15 @@ export class CustomUnitCategorisation implements UnitCategorisation {
         job: "job",
         calc: "job",
         pipe: "job",
+        lambda: "job",
         tas: "job",
         invocations: "job",
         trigger: "job",
         executed: "job",
+        comput: "job",
         run: "job",
         executions: "job",
+        transaction: "job",
         read: "rw",
         io: "rw",
         iop: "rw",
@@ -69,7 +73,8 @@ export class CustomUnitCategorisation implements UnitCategorisation {
         euro: "currency",
         config: "configuration",
         unit: "ambiguous",
-        count: "ambiguous"
+        count: "ambiguous",
+        prediction: "job"
     };
 
     constructor(public token: string) {

@@ -1,5 +1,4 @@
 import { InputType, UnitCategorisation } from "./units";
-import { isNil } from "lodash";
 import { NumberUnitCategorisation } from "./numberunitcategorisation";
 import { StorageUnitCategorisation } from "./storageunitcategorisation";
 import { DivisionUnitCategorisation } from "./divisionunitcategorisation";
@@ -72,30 +71,30 @@ export class TimeUnitCategorisation implements UnitCategorisation {
         return TimeUnitCategorisation.getUnit(token) != null;
     }
 
-    categorizeTime(token: string) {
-        // Convert the token to lowercase for case-insensitivity
-        const lowerToken = token.toLowerCase();
-
-        // Check for each time unit and return the corresponding category
-        for (const unit in TimeUnitCategorisation.patterns) {
-            if (TimeUnitCategorisation.patterns[unit].test(lowerToken)) {
-                return unit;
-            }
-        }
-
-        // If no match is found, return null or handle it as needed
-        throw new Error("Invalid time unit");
-    }
-
-    getFactor(token: string) {
-        let factor: number = TimeUnitCategorisation.conversion[token];
-
-        if (isNil(factor)) {
-            throw new Error("Unsupported time unit");
-        }
-
-        return factor;
-    }
+    // categorizeTime(token: string) {
+    //     // Convert the token to lowercase for case-insensitivity
+    //     const lowerToken = token.toLowerCase();
+    //
+    //     // Check for each time unit and return the corresponding category
+    //     for (const unit in TimeUnitCategorisation.patterns) {
+    //         if (TimeUnitCategorisation.patterns[unit].test(lowerToken)) {
+    //             return unit;
+    //         }
+    //     }
+    //
+    //     // If no match is found, return null or handle it as needed
+    //     throw new Error("Invalid time unit");
+    // }
+    //
+    // getFactor(token: string) {
+    //     let factor: number = TimeUnitCategorisation.conversion[token];
+    //
+    //     if (isNil(factor)) {
+    //         throw new Error("Unsupported time unit");
+    //     }
+    //
+    //     return factor;
+    // }
 
     public static create(token: string): UnitCategorisation {
         return new TimeUnitCategorisation(token);

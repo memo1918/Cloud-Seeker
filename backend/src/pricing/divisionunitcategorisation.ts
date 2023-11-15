@@ -28,6 +28,9 @@ export class DivisionUnitCategorisation implements UnitCategorisation {
         if (prevUnit instanceof DivisionUnitCategorisation) {
             return [];
         }
+        if (prevUnit instanceof NumberUnitCategorisation) {
+            return [this];
+        }
         return [this];
     }
 
