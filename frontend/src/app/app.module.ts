@@ -11,6 +11,7 @@ import {MatTableModule} from "@angular/material/table";
 import {RemoveInstanceComponent} from "./remove-instance/remove-instance.component";
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {MatBadgeModule} from "@angular/material/badge";
 
 @NgModule({
     declarations: [
@@ -20,15 +21,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
         RemoveInstanceComponent,
         HeaderComponent
     ],
-    imports: [
-        BrowserModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatTabsModule,
-        MatTableModule,
-        MatToolbarModule
-    ],
+  imports: [
+    BrowserModule,
+    MatExpansionModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatTabsModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatBadgeModule
+  ],
     providers: [],
     bootstrap: [AppComponent]
 })
