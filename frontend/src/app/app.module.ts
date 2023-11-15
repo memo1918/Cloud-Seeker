@@ -12,6 +12,8 @@ import {RemoveInstanceComponent} from "./remove-instance/remove-instance.compone
 import { HeaderComponent } from './header/header.component';
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatBadgeModule} from "@angular/material/badge";
+import { FilterComponent } from './filter/filter.component';
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
     declarations: [
@@ -19,18 +21,20 @@ import {MatBadgeModule} from "@angular/material/badge";
         CategoryComponent,
         ComparisonComponent,
         RemoveInstanceComponent,
-        HeaderComponent
+        HeaderComponent,
+        FilterComponent
     ],
-  imports: [
-    BrowserModule,
-    MatExpansionModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatTabsModule,
-    MatTableModule,
-    MatToolbarModule,
-    MatBadgeModule
-  ],
+    imports: [
+        BrowserModule,
+        MatExpansionModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatTabsModule,
+        MatTableModule,
+        MatToolbarModule,
+        MatBadgeModule,
+        MatListModule
+    ],
     providers: [],
     bootstrap: [AppComponent]
 })
