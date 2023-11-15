@@ -1,0 +1,84 @@
+<form class="instance-configuration-form" (ngSubmit)="onSubmit($event)">
+
+    <div class="dialog-section">
+        <h1 class="headline-5">{{configuration.instanceComparison.name}}</h1>
+        <p class="caption">Please fill out the fields below to configure your instance for the different cloud
+            providers.</p>
+        <p class="caption">The usage amounts should be equivalent across the cloud providers.</p>
+    </div>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <div class="dialog-section">
+        <p>Properties</p>
+        <div class="field-display">
+            <app-field-display *ngFor="let field of getFields()" [name]="field.name" [value]="field.value" />
+        </div>
+    </div>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <div class="dialog-section">
+        <div class="notes-input">
+            <mat-form-field class="notes-full-width">
+                <mat-label>Notes</mat-label>
+                <textarea matInput placeholder="Enter notes" [value]="noteText"></textarea>
+                <mat-hint align="start">Add additional information to be reflected in your configuration summary.
+                </mat-hint>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <div class="dialog-section">
+        <div *ngFor="let supplier of displayPricingConfigurations; let last = last">
+            <p>{{supplier.providerName}}</p>
+
+            <div class="unit-display">
+                <div *ngFor="let category of supplier.configuration.categories; index as i"
+                     [ngSwitch]="category.unitName">
+                    <app-unit-display *ngSwitchCase="'CustomUnitCategorisation'" [unit]="category" />
+                    <app-unit-display *ngSwitchCase="'DefaultUnitCategorisation'" [unit]="category" />
+                    <app-unit-division *ngSwitchCase="'DivisionUnitCategorisation'" [unit]="category"
+                                       [name]="supplier.providerName+i" />
+                    <app-unit-dropdown *ngSwitchCase="'StorageUnitCategorisation'" [unit]="category"
+                                       [name]="supplier.providerName+i" />
+                    <app-unit-dropdown *ngSwitchCase="'TimeUnitCategorisation'" [unit]="category"
+                                       [name]="supplier.providerName+i" />
+                    <app-unit-number *ngSwitchCase="'NumberUnitCategorisation'" [unit]="category"
+                                     [name]="supplier.providerName+i" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <mat-divider class="divider"></mat-divider>
+
+    <div class="dialog-section">
+        <p>Select the number of instances to add</p>
+
+        <div class="final-section">
+            <div class="instance-count-input">
+                <mat-form-field class="instance-count-full-width">
+                    <mat-label>Number of instances</mat-label>
+                    <input type="number" matInput placeholder="Enter a number"
+                           [formControl]="instanceCountFormControl">
+                </mat-form-field>
+            </div>
+            <div>
+                <button mat-fab extended color="primary" type="button">
+                    <mat-icon>arrow_back</mat-icon>
+                    Instance selection
+                </button>
+            </div>
+            <div>
+                <button mat-fab extended color="primary" type="submit">
+                    <mat-icon>add</mat-icon>
+                    Add to cart
+                </button>
+            </div>
+        </div>
+    </div>
+
+</form>

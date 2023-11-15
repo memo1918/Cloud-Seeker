@@ -16,7 +16,7 @@ export default class Root implements Route {
         next: NextFunction,
         error: ErrorCallback
     ): Promise<any> {
-        let path = "../backend/src/dummyCsvImport.csv";
+        let path = process.env["MY_ENV_VARIABLE"];
         let MS = new MappingService(new CategoryProvider(), new MappingMongoDB(), new ReadCSV(path));
 
         await MS.start();
