@@ -55,7 +55,7 @@ export class MappingService {
                 continue;
             }
         }
-        await this.createInstanceCompare(instanceArr, attributes,category);
+        await this.createInstanceCompare(instanceArr, attributes, category);
     }
 
     getAttributesForInstance(instance: Instance, category: Category): Attributes {

@@ -1,8 +1,7 @@
 import { readFileSync } from "fs";
-
 import { Category } from "../interfaces/category.interface";
 
-let defpath = "C:\\Users\\mehme\\Downloads\\School\\SoftwareLAB\\cloud-seeker\\schema\\samplecategory.json";
+let defpath = process.env.CATEGORY_TEMPLATES || "";
 
 export function getCategoryTemplate(readFileFn = readFileSync, path: string = defpath) {
     let data: Category[];
