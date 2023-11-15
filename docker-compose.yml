@@ -8,9 +8,13 @@ services:
     image: cloudseeker/backend
     build:
       context: backend
+    volumes:
+      - /configuration:/cloudseeker/configuration
     environment:
       - DB_CONNECTION_STRING=mongodb://mongodb:27017
       - INFRACOST_API_KEY=ico-L0D8qyYQ38KgwpHmuujgj4AxWtfZR9CD
+      - CATEGORY_TEMPLATES=/configuration/samplecategory.json
+      - DUMMY_CSV_IMPORT=/configuration/dummyCsvImport.csv
 
   reverseproxy:
     image: cloudseeker/reverseproxy
