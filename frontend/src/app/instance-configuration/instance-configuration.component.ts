@@ -76,7 +76,12 @@ export class InstanceConfigurationComponent {
         console.log(this.pricingConfigurations);
 
         console.log(this.pricingConfigurations.map(i => {
-            return { providerName: i.providerName, factor: i.providerDefault.getFactorForConversion(i.configuration) };
+            let factor = i.providerDefault.getFactorForConversion(i.configuration);
+            return {
+                providerName: i.providerName,
+                factor,
+                price: Number(this.configuration.instanceComparison.price[i.providerName].value) * factor
+            };
         }));
     }
 }
