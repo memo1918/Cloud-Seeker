@@ -9,13 +9,16 @@ import {ComparisonComponent} from './comparison/comparison.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTableModule} from "@angular/material/table";
 import {RemoveInstanceComponent} from "./remove-instance/remove-instance.component";
+import { HeaderComponent } from './header/header.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
 
 @NgModule({
     declarations: [
         AppComponent,
         CategoryComponent,
         ComparisonComponent,
-        RemoveInstanceComponent
+        RemoveInstanceComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,
@@ -23,7 +26,8 @@ import {RemoveInstanceComponent} from "./remove-instance/remove-instance.compone
         BrowserAnimationsModule,
         MatIconModule,
         MatTabsModule,
-        MatTableModule
+        MatTableModule,
+        MatToolbarModule
     ],
     providers: [],
     bootstrap: [AppComponent]
