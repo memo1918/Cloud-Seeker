@@ -47,16 +47,15 @@ export class MappingService {
     async forEachSku(skuArr: string[]) {
         let instanceArr = (await this.mappingdb.findSkus(skuArr)) as Instance[];
         let attributes: { [attributeName: string]: string } = {};
-
+        let category = await this.categoryprovider.findCategory(instanceArr[0]);
         for (let instance of instanceArr) {
             try {
-                let category = await this.categoryprovider.findCategory(instance);
                 attributes = { ...attributes, ...this.getAttributesForInstance(instance, category) };
             } catch (error) {
                 continue;
             }
         }
-        await this.createInstanceCompare(instanceArr, attributes);
+        await this.createInstanceCompare(instanceArr, attributes,category);
     }
 
     getAttributesForInstance(instance: Instance, category: Category): Attributes {
@@ -80,9 +79,10 @@ export class MappingService {
         return attributes;
     }
 
-    async createInstanceCompare(instanceArr: Instance[], attributes: Attributes) {
+    async createInstanceCompare(instanceArr: Instance[], attributes: Attributes, category: Category) {
         let newInstanceComparison: InstanceComparison = {
             name: instanceArr[0].productFamily, //TODO: Name should be proper
+            categoryName: category.name,
             price: {},
             fields: {},
             skus: [] as any[]

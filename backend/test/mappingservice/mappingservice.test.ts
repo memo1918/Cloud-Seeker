@@ -103,7 +103,7 @@ describe("MappingService class test", () => {
     test("test function createInstanceCompare ", async () => {
         let instance = new MappingService(new MockCategoryProvider(), new MockMappingDB(), new MockReadCSV());
         expect(() =>
-            instance.createInstanceCompare([SAMPE_INSTANCE, SAMPE_INSTANCE], SAMPLE_ATTRIBUTES)
+            instance.createInstanceCompare([SAMPE_INSTANCE, SAMPE_INSTANCE], SAMPLE_ATTRIBUTES, SAMPLE_CATEGORY)
         ).not.toThrowError();
     });
 });

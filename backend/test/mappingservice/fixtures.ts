@@ -182,6 +182,7 @@ export const SAMPLE_ATTRIBUTES: Attributes = {
 
 export const SAMPLE_INSTANCECOMPARISON: InstanceComparison = {
     name: "Instancename",
+    categoryName: "Compute",
     price: {
         aws: {
             value: 0.494,
