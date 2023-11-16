@@ -12,14 +12,16 @@ import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
+import { Component } from "@angular/core";
+import { DivisionUnitCategorisation } from "../../pricing/divisionunitcategorisation";
 
 describe("UnitDivisionComponent", () => {
-  let component: UnitDivisionComponent;
-  let fixture: ComponentFixture<UnitDivisionComponent>;
+  let component: TestComponentWrapper;
+  let fixture: ComponentFixture<TestComponentWrapper>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UnitDivisionComponent],
+      declarations: [UnitDivisionComponent, TestComponentWrapper],
       imports: [
         BrowserModule,
         MatExpansionModule,
@@ -35,12 +37,22 @@ describe("UnitDivisionComponent", () => {
         MatSelectModule
       ]
     });
-    fixture = TestBed.createComponent(UnitDivisionComponent);
+    fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it("should create", () => {
     expect(component).toBeTruthy();
+    let element = fixture.nativeElement as HTMLElement;
+    expect(element.innerText.trim()).toBe("per");
   });
 });
+
+@Component({
+  selector: "test-component-wrapper",
+  template: "<app-unit-division [unit]=\"unit\"></app-unit-division>"
+})
+class TestComponentWrapper {
+  unit = DivisionUnitCategorisation.create("/");
+}

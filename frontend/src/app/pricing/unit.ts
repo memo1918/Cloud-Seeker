@@ -46,7 +46,7 @@ export class Unit {
         for (let i = 0; i < this.categories.length; i++) {
             let thisCategorisation = this.categories[i];
             let targetCategorisation = target.categories[i];
-            if (thisCategorisation instanceof DivisionUnitCategorisation) {
+          if (thisCategorisation instanceof DivisionUnitCategorisation && thisCategorisation.token == "-") {
                 factors.push(1);
             }
             factors[factors.length - 1] *= thisCategorisation.getConversionFactor(targetCategorisation);
@@ -55,7 +55,7 @@ export class Unit {
 
         if (factors.length > 1) {
             for (let i = 1; i < factors.length; i++) {
-                factor /= factors[i];
+              factor *= factors[i];
             }
         }
 

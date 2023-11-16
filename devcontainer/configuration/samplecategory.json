@@ -1,7 +1,7 @@
 [
   {
     "name": "Compute",
-    "icon": "Computer",
+    "icon": "computer",
     "description": "test",
     "vendors": [
       {
@@ -52,17 +52,20 @@
       {
         "name": "cores",
         "options": [],
-        "unit": "Cores"
+        "unit": "Cores",
+        "type": "number"
       },
       {
         "name": "regionCode",
         "options": [],
-        "unit": "text"
+        "unit": "text",
+        "type": "dropdown"
       },
       {
         "name": "memory",
         "options": [],
-        "unit": "GB"
+        "unit": "GB",
+        "type": "checkboxlist"
       },
       {
         "name": "storage",
@@ -99,7 +102,7 @@
   },
   {
     "name": "Storage",
-    "icon": "Storage",
+    "icon": "storage",
     "description": "test",
     "vendors": [
       {

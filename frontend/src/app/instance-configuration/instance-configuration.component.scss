@@ -40,5 +40,22 @@
 
 .final-section {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
+  align-items: baseline;
+
+}
+
+.dialog-buttons {
+  //display: inline-block;
+  display: flex;
+  gap: 5px;
+  width: max-content;
+
+  button {
+    //display: inline;
+    //word-break-inside: keep-all;
+    //word-break: keep-all;
+    //break-inside: avoid;
+    width: max-content;
+  }
 }

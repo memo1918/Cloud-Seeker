@@ -12,7 +12,7 @@ import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
-import { Component } from "@angular/core";
+import { Component, ViewChild } from "@angular/core";
 import { NumberUnitCategorisation } from "../../pricing/numberunitcategorisation";
 
 describe("UnitNumberComponent", () => {
@@ -45,12 +45,24 @@ describe("UnitNumberComponent", () => {
   it("should create", () => {
     expect(component).toBeTruthy();
   });
+  it("should render the number", () => {
+    let input = document.querySelector("[data-unit-number]") as HTMLInputElement;
+    expect(input.value).toBe((component.unit as NumberUnitCategorisation).value + "");
+  });
+  it("should update the unit", () => {
+    let input = document.querySelector("[data-unit-number]") as HTMLInputElement;
+    input.value = "5678";
+    input.dispatchEvent(new Event("input"));
+    fixture.detectChanges();
+    expect(component.unitNumberComponent.numberFormControl.value as any).toBe(5678);
+  });
 });
 
 @Component({
   selector: "test-component-wrapper",
-  template: "<app-unit-number [unit]=\"unit\"></app-unit-number>"
+  template: "<app-unit-number #unitnumber [unit]=\"unit\"></app-unit-number>"
 })
 class TestComponentWrapper {
   unit = NumberUnitCategorisation.create("1");
+  @ViewChild("unitnumber") unitNumberComponent!: UnitNumberComponent;
 }

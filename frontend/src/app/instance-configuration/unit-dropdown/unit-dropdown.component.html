@@ -1,5 +1,5 @@
-<mat-form-field>
-    <mat-select required [(ngModel)]="unit.selected" [name]="name">
+<mat-form-field appearance="outline">
+  <mat-select required [(ngModel)]="unit.selected">
         <mat-option *ngFor="let option of unit.options" [value]="option">{{option}}</mat-option>
     </mat-select>
 </mat-form-field>

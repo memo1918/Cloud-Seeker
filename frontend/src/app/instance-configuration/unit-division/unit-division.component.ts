@@ -8,5 +8,5 @@ import { UnitCategorisation } from "../../pricing/units";
 })
 export class UnitDivisionComponent {
   @Input({ required: true }) unit!: UnitCategorisation;
-  @Input({ required: true }) name!: string;
+  // @Input({ required: true }) name!: string;
 }

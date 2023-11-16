@@ -2,7 +2,7 @@ import { beforeEach, describe, expect, jest, test } from "@jest/globals";
 import { MappingMongoDB } from "../../src/mappingservice/mappingdb";
 import { execQuery } from "../../src/db";
 import { SAMPLE_CATEGORY, SAMPLE_INSTANCECOMPARISON } from "./fixtures";
-import exp from "constants";
+
 jest.mock("../../src/db");
 jest.mock("../../src/db/models/services");
 
