@@ -1,7 +1,7 @@
 [
 {
   "name": "Compute",
-  "icon": "Computer",
+  "icon": "computer",
   "description": "test",
   "vendors": [
     {
@@ -42,22 +42,26 @@
     {
       "name": "cores",
       "options": [],
-      "unit": "Cores"
+      "unit": "Cores",
+      "type": "number"
     },
     {
       "name": "regionCode",
       "options": [],
-      "unit": "text"
+      "unit": "text",
+      "type": "dropdown"
     },
     {
       "name": "memory",
       "options": [],
-      "unit": "GB"
+      "unit": "GB",
+      "type": "number"
     },
     {
       "name": "storage",
       "options": [],
-      "unit": "GB"
+      "unit": "GB",
+      "type": "number"
     }
   ],
   "discovery": {
@@ -84,7 +88,7 @@
 
   {
   "name": "Storage",
-  "icon": "Storage",
+  "icon": "storage",
   "description": "test",
   "vendors": [
     {
@@ -118,12 +122,14 @@
     {
       "name": "regionCode",
       "options": [],
-      "unit": ""
+      "unit": "",
+      "type": "dropdown"
     },
     {
       "name": "storageClass",
       "options": [],
-      "unit": ""
+      "unit": "",
+      "type": "radiobutton"
     }
   ],
   "discovery": {

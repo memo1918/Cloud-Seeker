@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {FilterService} from "./filter.service";
 
 @Component({
   selector: 'app-filter',
@@ -8,4 +9,6 @@ import {Component} from '@angular/core';
 export class FilterComponent {
   title: string = 'Filter';
 
+  constructor(public filterService: FilterService) {
+  }
 }

@@ -44,22 +44,26 @@ export const SAMPLE_CATEGORY: Category = {
         {
             name: "cores",
             options: [],
-            unit: "Cores"
+            unit: "Cores",
+            type: ""
         },
         {
             name: "regionCode",
             options: [],
-            unit: "text"
+            unit: "text",
+            type: ""
         },
         {
             name: "memory",
             options: [],
-            unit: "GB"
+            unit: "GB",
+            type: ""
         },
         {
             name: "storage",
             options: [],
-            unit: "GB"
+            unit: "GB",
+            type: ""
         }
     ],
     discovery: {

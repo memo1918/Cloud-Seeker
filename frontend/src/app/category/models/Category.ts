@@ -6,5 +6,6 @@ export interface Category {
         name: string;
         options: (string | number)[];
         unit: string;
+        type: string;
     }[];
 }
