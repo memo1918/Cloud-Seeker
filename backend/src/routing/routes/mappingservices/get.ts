@@ -16,20 +16,13 @@ export default class Root implements Route {
         next: NextFunction,
         error: ErrorCallback
     ): Promise<any> {
-        let path = "../backend/src/dummyCsvImport.csv";
+        let path = process.env.DUMMY_CSV_IMPORT || "";
         let MS = new MappingService(new CategoryProvider(), new MappingMongoDB(), new ReadCSV(path));
-
         await MS.start();
-
-        // let data = await MS.addMappings([
-        //     "S2REJSCA5SBH5RBY",
-        //     "G65W9N34BXHEE7X5",
-        //     "DZH318Z0CSHB/Standard_E16-4ds_v4/b79c3e44-d17d-58a9-b1eb-da09ed48af83"
-        // ]);
 
         res.contentType("application/json")
             .json({
-                data: {}
+                Status: "Done"
             })
             .end();
 
