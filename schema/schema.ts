@@ -51,7 +51,7 @@ interface CategoryField {
 
 // process of constructing the category
 // read in predefined information like name, icon, description, vendors, fields and discovery these must be statically defined in a json config file
-// read in all instances and get the category of that instance
+// read in all instancecomparisons and get the category of that instance
 // then convert fields of that instance via the provider api into the unit of the field
 // the fill out the options in the category field
 // in the frontend we only need: name, icon, description, fields

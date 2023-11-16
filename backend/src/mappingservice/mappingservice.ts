@@ -97,7 +97,9 @@ export class MappingService {
                 unit: instance.prices[0].unit.toString()
             };
 
-            newInstanceComparison.skus.push(instance.sku);
+            newInstanceComparison.skus.indexOf(instance.sku) === -1
+                ? newInstanceComparison.skus.push(instance.sku)
+                : "";
         }
 
         for (let columnName in attributes) {
