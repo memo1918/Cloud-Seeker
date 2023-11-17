@@ -1,5 +1,5 @@
 import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../../route";
-import { NextFunction } from "express";
+import express, { NextFunction } from "express";
 import { getAllCategories } from "../../../businesslayer/category";
 
 export default class Root implements Route {

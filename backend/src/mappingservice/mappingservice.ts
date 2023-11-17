@@ -27,7 +27,16 @@ export class MappingService {
             }
         }
 
+        this.cleanOptions();
         await this.mappingdb.pushCategories(this.categoryprovider.categories);
+    }
+
+    private cleanOptions() {
+        for (let category of this.categoryprovider.categories) {
+            for (let field of category.fields) {
+                field.options = [...new Set(field.options).values()].sort();
+            }
+        }
     }
 
     async getNextLine() {
@@ -47,7 +56,7 @@ export class MappingService {
     async forEachSku(skuArr: string[]) {
         let instanceArr = (await this.mappingdb.findSkus(skuArr)) as Instance[];
         let attributes: { [attributeName: string]: string } = {};
-        let category = await this.categoryprovider.findCategory(instanceArr[0]);
+        let category = await this.categoryprovider.findCategory(instanceArr[1]);
         for (let instance of instanceArr) {
             try {
                 attributes = { ...attributes, ...this.getAttributesForInstance(instance, category) };
@@ -55,6 +64,7 @@ export class MappingService {
                 continue;
             }
         }
+
         await this.createInstanceCompare(instanceArr, attributes, category);
     }
 
@@ -91,13 +101,24 @@ export class MappingService {
         for (let instance of instanceArr) {
             //TODO There is going to be a "service", so we can pass the instance and
             // get the correct price and unit.
-
             newInstanceComparison.price[instance.vendorName] = {
-                value: instance.prices[0].USD.toString(),
-                unit: instance.prices[0].unit.toString()
+                value: "0",
+                unit: ""
             };
 
-            newInstanceComparison.skus.push(instance.sku);
+            for (let i = 0; i < instance.prices.length; i++) {
+                let price = parseFloat(instance.prices[i].USD);
+                if (price != 0) {
+                    newInstanceComparison.price[instance.vendorName] = {
+                        value: instance.prices[i].USD.toString(),
+                        unit: instance.prices[i].unit.toString()
+                    };
+                }
+            }
+
+            newInstanceComparison.skus.indexOf(instance.sku) === -1
+                ? newInstanceComparison.skus.push(instance.sku)
+                : "";
         }
 
         for (let columnName in attributes) {
