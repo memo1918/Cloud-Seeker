@@ -1,6 +1,5 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { NumberRegulatorComponent } from './number-regulator.component';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
+import {NumberRegulatorComponent} from './number-regulator.component';
 
 describe('PriceRegulatorComponent', () => {
   let component: NumberRegulatorComponent;

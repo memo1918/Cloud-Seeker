@@ -2,17 +2,16 @@
   font-size: 20px;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-areas: "filter categories";
-  grid-template-columns: 1fr 2.5fr;
+.wrapper {
+  width: 80%;
+  overflow: hidden; /* will contain if #first is longer than #second */
 }
 
-app-pippelaars {
-  grid-area: filter
+.first {
+  width: 30%;
+  float: left; /* add this */
 }
 
-app-playing-table {
-  grid-area: categories
+.second {
+  overflow: hidden; /* if you don't want #second to wrap below #first */
 }
-

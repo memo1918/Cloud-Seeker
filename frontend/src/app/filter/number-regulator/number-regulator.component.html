@@ -1,11 +1,11 @@
-<h2 class="header">Price</h2>
+<h2 class="header">{{field.name}}</h2>
 <div>
   <mat-form-field class="formFieldBox" color="accent" appearance="outline">
-    <mat-label>min price</mat-label>
+    <mat-label>{{field.unit}}</mat-label>
     <input matInput type="number" [(ngModel)]="minNumber">
   </mat-form-field>
   <mat-form-field class="formFieldBox" color="accent" appearance="outline">
-    <mat-label>max price</mat-label>
+    <mat-label>{{field.unit}}</mat-label>
     <input matInput type="number" [(ngModel)]="maxNumber">
   </mat-form-field>
 </div>
@@ -15,4 +15,3 @@
     <input matSliderEndThumb [(ngModel)]="maxNumber">
   </mat-slider>
 </div>
-<div>{{unitName}}</div>

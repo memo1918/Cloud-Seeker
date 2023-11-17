@@ -129,7 +129,7 @@
       "name": "storageClass",
       "options": [],
       "unit": "",
-      "type": "radiobutton"
+      "type": "radio"
     }
   ],
   "discovery": {

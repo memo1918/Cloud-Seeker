@@ -18,6 +18,9 @@ import {MatInputModule} from "@angular/material/input";
 import {FormsModule} from "@angular/forms";
 import {MatSliderModule} from "@angular/material/slider";
 import {NumberRegulatorComponent} from "./filter/number-regulator/number-regulator.component";
+import {MatRippleModule} from "@angular/material/core";
+import { DropdownRegulatorComponent } from './filter/dropdown-regulator/dropdown-regulator.component';
+import { RadioRegulatorComponent } from './filter/radio-regulator/radio-regulator.component';
 
 @NgModule({
   declarations: [
@@ -27,22 +30,25 @@ import {NumberRegulatorComponent} from "./filter/number-regulator/number-regulat
     RemoveInstanceComponent,
     HeaderComponent,
     FilterComponent,
-    NumberRegulatorComponent
+    NumberRegulatorComponent,
+    DropdownRegulatorComponent,
+    RadioRegulatorComponent
   ],
-  imports: [
-    BrowserModule,
-    MatExpansionModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatTabsModule,
-    MatTableModule,
-    MatToolbarModule,
-    MatBadgeModule,
-    MatListModule,
-    MatInputModule,
-    FormsModule,
-    MatSliderModule
-  ],
+    imports: [
+        BrowserModule,
+        MatExpansionModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatTabsModule,
+        MatTableModule,
+        MatToolbarModule,
+        MatBadgeModule,
+        MatListModule,
+        MatInputModule,
+        FormsModule,
+        MatSliderModule,
+        MatRippleModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

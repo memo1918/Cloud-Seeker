@@ -7,29 +7,17 @@ import {Field} from "./models/Field";
 })
 export class FilterService {
 
-  public currentFilters: { name: string; options: (string | number)[]; unit: string; type: string }[] | undefined;
-
-  public numberTypesArray: Field[];
-  public dropdownTypesArray: Field[];
-  public radiobuttonTypesArray: Field[];
+  public currentCategoryFields: Field[] | undefined;
 
   constructor(public categoryService: CategoryService) {
-    this.currentFilters = categoryService.selectedCategory?.fields;
-
-    this.numberTypesArray = this.mapCurrentFiltersToField("number");
-    this.dropdownTypesArray = this.mapCurrentFiltersToField("dropdown");
-    this.radiobuttonTypesArray = this.mapCurrentFiltersToField("radiobutton");
+    this.currentCategoryFields = categoryService.selectedCategory?.fields;
   }
 
-  mapCurrentFiltersToField(targetType: string): Field[] {
-    return (this.currentFilters || [])
-      .filter(field => field.type === targetType) // Adjust the type as needed
-      .map(filteredField => ({
-        name: filteredField.name,
-        options: filteredField.options,
-        unit: filteredField.unit,
-        type: filteredField.type,
-      }));
+  getTypeOfFieldAtIndex(index: number): any {
+    if (this.currentCategoryFields) {
+      if (index >= 0 && index < this.currentCategoryFields.length) {
+        return this.currentCategoryFields[index].type;
+      }
+    }
   }
-
 }

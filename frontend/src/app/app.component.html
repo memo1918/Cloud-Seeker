@@ -4,11 +4,15 @@
   <span>{{this.title + ", "}}</span>
   <!-- showcasing currently selected category -->
   <span>{{"Category: " + this.categoryService.selectedCategory?.name}}</span>
+  <span>{{this.filterService.currentCategoryFields}}</span>
 </div>
 <app-header></app-header>
-<div class="grid-container">
-  <app-filter></app-filter>
-  <app-category></app-category>
+<div class="wrapper">
+  <div class="first">
+    <app-filter></app-filter>
+  </div>
+  <div class="second">
+    <app-category></app-category>
+  </div>
 </div>
-<app-number-regulator></app-number-regulator>
 <!--<app-comparison class="font"></app-comparison>-->

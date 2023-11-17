@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FilterService} from "./filter.service";
+import {Field} from "./models/Field";
 
 @Component({
   selector: 'app-filter',
@@ -7,7 +8,18 @@ import {FilterService} from "./filter.service";
   styleUrls: ['./filter.component.scss']
 })
 export class FilterComponent {
-  title: string = 'Filter';
+  title: string = 'Filters';
+
+  numberComponent: string = "number";
+  dropdownComponent: string = "dropdown";
+  radioComponent: string = "radio"
+
+  testField: Field = {
+    "name": "cores",
+    "options": [],
+    "unit": "Cores",
+    "type": "number"
+  }
 
   constructor(public filterService: FilterService) {
   }
