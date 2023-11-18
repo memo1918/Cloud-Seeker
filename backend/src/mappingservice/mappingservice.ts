@@ -22,8 +22,9 @@ export class MappingService {
             try {
                 skuArr = await this.getNextLine();
                 await this.forEachSku(skuArr as string[]);
-            } catch (error) {
-                break;
+            } catch (error: any) {
+                if (error.message === "instance problem") continue;
+                else break;
             }
         }
 
@@ -54,18 +55,22 @@ export class MappingService {
     }
 
     async forEachSku(skuArr: string[]) {
-        let instanceArr = (await this.mappingdb.findSkus(skuArr)) as Instance[];
-        let attributes: { [attributeName: string]: string } = {};
-        let category = await this.categoryprovider.findCategory(instanceArr[1]);
-        for (let instance of instanceArr) {
-            try {
-                attributes = { ...attributes, ...this.getAttributesForInstance(instance, category) };
-            } catch (error) {
-                continue;
+        try {
+            let instanceArr = (await this.mappingdb.findSkus(skuArr)) as Instance[];
+            let attributes: { [attributeName: string]: string } = {};
+            let category = await this.categoryprovider.findCategory(instanceArr[1]);
+            for (let instance of instanceArr) {
+                try {
+                    attributes = { ...attributes, ...this.getAttributesForInstance(instance, category) };
+                } catch (error) {
+                    continue;
+                }
             }
-        }
 
-        await this.createInstanceCompare(instanceArr, attributes, category);
+            await this.createInstanceCompare(instanceArr, attributes, category);
+        } catch (error) {
+            throw new Error("instance problem");
+        }
     }
 
     getAttributesForInstance(instance: Instance, category: Category): Attributes {
