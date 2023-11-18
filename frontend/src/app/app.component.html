@@ -1,9 +1,10 @@
 <div class="primary-background">Visits:
-    <ng-container *ngIf="api.counterLoading">loading...</ng-container>
-    <ng-container *ngIf="!api.counterLoading">{{api.counter + ", "}}</ng-container>
-    <span>{{this.title + ", "}}</span>
-    <!-- showcasing currently selected category -->
-    <span>{{"Category: " + this.categoryService.selectedCategory?.name}}</span>
+  <ng-container *ngIf="api.counterLoading">loading...</ng-container>
+  <ng-container *ngIf="!api.counterLoading">{{api.counter + ", "}}</ng-container>
+  <span>{{this.title + ", "}}</span>
+  <!-- showcasing currently selected category -->
+  <span>{{"Category: " + this.categoryService.selectedCategory?.name}}</span>
 </div>
 <app-category></app-category>
 <app-comparison class="font"></app-comparison>
+<app-instance-configuration-dialog />

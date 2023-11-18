@@ -31,11 +31,11 @@ export async function findServices(client: MongoClient, sku: string[]) {
                 }
             ];
 
-            return (await serviceCollection.aggregate(query).toArray())[0] as any;
+            return (await serviceCollection.aggregate(query).toArray()) as any[];
         })
     );
     console.timeEnd("findServices" + sku.join());
-    return result;
+    return result.flat();
     // return serviceCollection.find()
 }
 

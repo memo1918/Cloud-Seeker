@@ -2,7 +2,6 @@ import { afterEach, beforeEach, describe, expect, test } from "@jest/globals";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { MongoClient } from "mongodb";
 import { IInstanceComparison } from "../../../src/db/models/instancecomparison";
-import exp from "constants";
 
 let dbName = "cloud-seeker";
 let collectionName = "instancecomparison";
