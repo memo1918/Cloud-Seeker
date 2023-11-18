@@ -44,22 +44,26 @@ export const SAMPLE_CATEGORY: Category = {
         {
             name: "cores",
             options: [],
-            unit: "Cores"
+            unit: "Cores",
+            type: "number"
         },
         {
             name: "regionCode",
             options: [],
-            unit: "text"
+            unit: "text",
+            type: "number"
         },
         {
             name: "memory",
             options: [],
-            unit: "GB"
+            unit: "GB",
+            type: "number"
         },
         {
             name: "storage",
             options: [],
-            unit: "GB"
+            unit: "GB",
+            type: "number"
         }
     ],
     discovery: {
@@ -219,12 +223,24 @@ export const SAMPLE_CATEGORY_TEMPLATE = [
                         path: ["attributes", "vcpu"],
                         conversion: {}
                     },
+                    gpuMemory: {
+                        path: ["attributes", "gpuMemory"],
+                        conversion: {}
+                    },
+                    clockSpeed: {
+                        path: ["attributes", "clockSpeed"],
+                        conversion: {}
+                    },
                     memory: {
                         path: ["attributes", "memory"],
                         conversion: {}
                     },
                     regionCode: {
                         path: ["attributes", "regionCode"],
+                        conversion: {}
+                    },
+                    operatingSystem: {
+                        path: ["attributes", "operatingSystem"],
                         conversion: {}
                     },
                     storage: {
@@ -246,22 +262,44 @@ export const SAMPLE_CATEGORY_TEMPLATE = [
             {
                 name: "cores",
                 options: [],
-                unit: "Cores"
+                unit: "Cores",
+                type: "number"
             },
             {
                 name: "regionCode",
                 options: [],
-                unit: "text"
+                unit: "text",
+                type: "dropdown"
+            },
+            {
+                name: "gpuMemory",
+                options: [],
+                unit: "GB",
+                type: "number"
+            },
+            {
+                name: "clockSpeed",
+                options: [],
+                unit: "GHz",
+                type: "number"
+            },
+            {
+                name: "operatingSystem",
+                options: [],
+                unit: "text",
+                type: "dropdown"
             },
             {
                 name: "memory",
                 options: [],
-                unit: "GB"
+                unit: "GB",
+                type: "number"
             },
             {
                 name: "storage",
                 options: [],
-                unit: "GB"
+                unit: "GB",
+                type: "number"
             }
         ],
         discovery: {
@@ -279,7 +317,6 @@ export const SAMPLE_CATEGORY_TEMPLATE = [
             }
         }
     },
-
     {
         name: "Storage",
         icon: "Storage",
@@ -311,12 +348,14 @@ export const SAMPLE_CATEGORY_TEMPLATE = [
             {
                 name: "regionCode",
                 options: [],
-                unit: ""
+                unit: "text",
+                type: "dropdown"
             },
             {
                 name: "storageClass",
                 options: [],
-                unit: ""
+                unit: "text",
+                type: "dropdown"
             }
         ],
         discovery: {

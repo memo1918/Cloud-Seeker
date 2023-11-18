@@ -1,6 +1,7 @@
 import { getCategoryTemplate } from "./categorytemplateread";
 import { Category } from "../interfaces/category.interface";
 import { Instance } from "../interfaces/instance.interface";
+import { result } from "lodash";
 
 export class CategoryProvider {
     public categories: Category[];
@@ -15,7 +16,10 @@ export class CategoryProvider {
                 throw new Error("UwU, didn't find the vendor :/ ");
             }
 
-            if (category.discovery[instance.vendorName].value.indexOf(instance.productFamily) != -1) {
+            let path = category.discovery[instance.vendorName].key;
+            let value = result(instance, path, "");
+
+            if (category.discovery[instance.vendorName].value.indexOf(value) != -1) {
                 return category;
             }
         }

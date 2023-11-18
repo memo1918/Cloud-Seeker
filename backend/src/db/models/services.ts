@@ -12,7 +12,31 @@ export const collectionName = "services";
 
 export async function findServices(client: MongoClient, sku: string[]) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
-    return serviceCollection.find({ sku: { $in: sku } }).toArray();
+    console.time("findServices" + sku.join());
+    // let result= await serviceCollection.find({ sku: { $in: sku } }).toArray();
+    let result = await Promise.all(
+        sku.map(async (i) => {
+            const query = [
+                {
+                    $match: {
+                        $text: {
+                            $search: i
+                        }
+                    }
+                },
+                {
+                    $match: {
+                        sku: i
+                    }
+                }
+            ];
+
+            return (await serviceCollection.aggregate(query).toArray())[0] as any;
+        })
+    );
+    console.timeEnd("findServices" + sku.join());
+    return result;
+    // return serviceCollection.find()
 }
 
 export async function getUniqueVendors(client: MongoClient) {
