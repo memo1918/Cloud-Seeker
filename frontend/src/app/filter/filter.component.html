@@ -1,0 +1,8 @@
+<div class="filter-background">
+  <h3 class="header-content">{{title}}</h3>
+  <mat-grid-list cols="1" *ngFor="let field of this.filterService.currentCategoryFields" [ngSwitch]="field.type">
+    <mat-list-item *ngSwitchCase="numberComponent">
+      <app-number-regulator [field]="field"></app-number-regulator>
+    </mat-list-item>
+  </mat-grid-list>
+</div>
