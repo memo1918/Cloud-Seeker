@@ -1,20 +1,12 @@
 import { Injectable } from "@angular/core";
+import { InstanceComparison } from "./instance-comparison";
 
 @Injectable({
     providedIn: "root"
 })
 export class ConfigurationService {
 
-    public instanceComparison: {
-        name: string,
-        price: {
-            [name: string]: any
-        },
-        fields: {
-            [name: string]: { value: string, unit: string }
-        },
-        skus: string[]
-    } = {
+  public instanceComparison: InstanceComparison = {
         "name": "Storage",
         "price": {
             "aws": {
@@ -47,6 +39,4 @@ export class ConfigurationService {
         ]
     };
 
-    constructor() {
-    }
 }

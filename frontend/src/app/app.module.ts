@@ -20,6 +20,8 @@ import { UnitDivisionComponent } from "./instance-configuration/unit-division/un
 import { UnitDisplayComponent } from "./instance-configuration/unit-display/unit-display.component";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
+import { DialogComponent } from "./instance-configuration/dialog/dialog.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 @NgModule({
     declarations: [
@@ -32,7 +34,8 @@ import { MatSelectModule } from "@angular/material/select";
         UnitNumberComponent,
         UnitDropdownComponent,
         UnitDivisionComponent,
-        UnitDisplayComponent
+      UnitDisplayComponent,
+      DialogComponent
     ],
     imports: [
         BrowserModule,
@@ -46,7 +49,8 @@ import { MatSelectModule } from "@angular/material/select";
         ReactiveFormsModule,
         FormsModule,
         MatButtonModule,
-        MatSelectModule
+      MatSelectModule,
+      MatDialogModule
     ],
     providers: [],
     bootstrap: [AppComponent]

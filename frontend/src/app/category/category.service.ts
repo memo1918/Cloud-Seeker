@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {APIService} from "../api.service";
-import {Category} from "./models/Category";
-import {MatTabChangeEvent} from "@angular/material/tabs";
+import { Injectable } from "@angular/core";
+import { APIService } from "../api.service";
+import { Category } from "./models/Category";
+import { MatTabChangeEvent } from "@angular/material/tabs";
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +10,8 @@ export class CategoryService {
     selectedIndex: number = 0;
     selectedCategory: Category | undefined;
 
-    constructor(public api: APIService) {
+
+  constructor(public api: APIService) {
         this.api.loadCategories();
         this.selectedCategory = this.getCategories()[0];
     }

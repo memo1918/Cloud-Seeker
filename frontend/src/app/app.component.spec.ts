@@ -19,6 +19,8 @@ import { UnitDropdownComponent } from "./instance-configuration/unit-dropdown/un
 import { UnitDivisionComponent } from "./instance-configuration/unit-division/unit-division.component";
 import { UnitDisplayComponent } from "./instance-configuration/unit-display/unit-display.component";
 import { FieldDisplayComponent } from "./instance-configuration/field-display/field-display.component";
+import { DialogComponent } from "./instance-configuration/dialog/dialog.component";
+import { MatDialogModule } from "@angular/material/dialog";
 
 describe("AppComponent", () => {
     beforeEach(() => TestBed.configureTestingModule({
@@ -31,7 +33,8 @@ describe("AppComponent", () => {
                 UnitDropdownComponent,
                 UnitDivisionComponent,
                 UnitDisplayComponent,
-                FieldDisplayComponent
+              FieldDisplayComponent,
+              DialogComponent
             ],
             imports: [
                 BrowserModule,
@@ -45,7 +48,8 @@ describe("AppComponent", () => {
                 ReactiveFormsModule,
                 FormsModule,
                 MatButtonModule,
-                MatSelectModule
+              MatSelectModule,
+              MatDialogModule
             ]
         }
     ).compileComponents());
