@@ -21,6 +21,7 @@ import {NumberRegulatorComponent} from "./filter/number-regulator/number-regulat
 import {MatRippleModule} from "@angular/material/core";
 import { DropdownRegulatorComponent } from './filter/dropdown-regulator/dropdown-regulator.component';
 import { RadioRegulatorComponent } from './filter/radio-regulator/radio-regulator.component';
+import {MatGridListModule} from "@angular/material/grid-list";
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { RadioRegulatorComponent } from './filter/radio-regulator/radio-regulato
         MatInputModule,
         FormsModule,
         MatSliderModule,
-        MatRippleModule
+        MatRippleModule,
+        MatGridListModule
     ],
   providers: [],
   bootstrap: [AppComponent]

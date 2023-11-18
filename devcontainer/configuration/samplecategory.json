@@ -1,7 +1,7 @@
 [
   {
     "name": "Compute",
-    "icon": "Computer",
+    "icon": "computer",
     "description": "test",
     "vendors": [
       {
@@ -142,7 +142,7 @@
   },
   {
     "name": "Storage",
-    "icon": "Storage",
+    "icon": "storage",
     "description": "test",
     "vendors": [
       {
@@ -218,7 +218,7 @@
   },
   {
     "name": "Relational Database",
-    "icon": "database",
+    "icon": "save",
     "description": "test",
     "vendors": [
       {
