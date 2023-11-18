@@ -7,8 +7,7 @@ jest.mock("../../../../../src/businesslayer/instancecomparisons");
 
 describe("root route", () => {
     const { res, next, clearMockRes } = getMockRes();
-    const errorMock = jest.fn(() => {
-    });
+    const errorMock = jest.fn(() => {});
 
     afterEach(() => {
         clearMockRes();
