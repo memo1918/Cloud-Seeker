@@ -65,7 +65,7 @@ describe("services db", () => {
         } catch (e) {}
     });
 
-    test("find instances in collection services", async () => {
+    test("find instancecomparisons in collection services", async () => {
         await client.db(dbName).collection(collectionName).insertMany(fixtureServices);
         await expect(findServices(client, ["123", "321"])).resolves.toMatchObject(fixtureServices);
     });

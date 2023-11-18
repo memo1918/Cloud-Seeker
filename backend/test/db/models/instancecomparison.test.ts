@@ -9,10 +9,12 @@ describe("instancecomparison db", () => {
     let mongoServer: MongoMemoryServer;
     let fixtureInstanceComparison: Partial<IInstanceComparison>[] = [
         {
-            name: "test1"
+            name: "test1",
+            categoryName: "Compute"
         },
         {
-            name: "test2"
+            name: "test2",
+            categoryName: "Storage"
         }
     ];
 
@@ -88,5 +90,15 @@ describe("instancecomparison db", () => {
         await expect(removeInstanceComparison(client, ["test1"])).resolves.not.toThrow();
 
         await expect(client.db(dbName).collection(collectionName).findOne({ name: "test1" })).resolves.toBe(null);
+    });
+
+    test("find InstanceComparisons based on category", async () => {
+        const { setURI } = await import("../../../src/db");
+        const { _findInstanceComparisons } = await import("../../../src/db/models/instancecomparison");
+        setURI(mongoServer.getUri());
+
+        let client = await new MongoClient(mongoServer.getUri()).connect();
+
+        await expect(_findInstanceComparisons(client, "Compute")).resolves.toEqual([fixtureInstanceComparison[0]]);
     });
 });

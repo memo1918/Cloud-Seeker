@@ -1,9 +1,11 @@
 import { getCollection } from "../schema";
 import { Document, MongoClient, WithId } from "mongodb";
 import { Category } from "../../interfaces/category.interface";
+import { InstanceComparison } from "../../interfaces/instancecomparison.interface";
 
 export interface IInstanceComparison extends WithId<Document> {
     name: string;
+    categoryName: string;
     price: {};
     fields: {};
     skus: string[];
@@ -22,7 +24,6 @@ export async function addOneInstanceComparison(client: MongoClient, instanceComp
     await instanceComparisonCollection.insertOne(instanceComparison);
     return;
 }
-
 export async function dropInstanceComparion(client: MongoClient) {
     return client.db(dbName).dropCollection(collectionName);
 }
@@ -30,4 +31,11 @@ export async function removeInstanceComparison(client: MongoClient, instanceComp
     let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
     await instanceComparisonCollection.deleteMany({ $or: [...instanceComparison.map((name) => ({ name }))] });
     return;
+}
+
+export async function _findInstanceComparisons(client: MongoClient, categoryname: string) {
+    let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
+    return (await instanceComparisonCollection
+        .find({ categoryName: { $eq: categoryname } })
+        .toArray()) as any as InstanceComparison[];
 }
