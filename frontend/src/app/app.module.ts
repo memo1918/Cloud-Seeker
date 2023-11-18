@@ -9,22 +9,30 @@ import {ComparisonComponent} from './comparison/comparison.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatTableModule} from "@angular/material/table";
 import {RemoveInstanceComponent} from "./remove-instance/remove-instance.component";
+import { InstancePreviewComponent } from './instance-preview/instance-preview.component';
+import { MatSliderModule } from "@angular/material/slider";
+import { MatInputModule } from "@angular/material/input";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
     declarations: [
         AppComponent,
         CategoryComponent,
         ComparisonComponent,
-        RemoveInstanceComponent
+        RemoveInstanceComponent,
+        InstancePreviewComponent
     ],
-    imports: [
-        BrowserModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatTabsModule,
-        MatTableModule
-    ],
+  imports: [
+    BrowserModule,
+    MatExpansionModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatTabsModule,
+    MatTableModule,
+    MatSliderModule,
+    MatInputModule,
+    FormsModule
+  ],
     providers: [],
     bootstrap: [AppComponent]
 })

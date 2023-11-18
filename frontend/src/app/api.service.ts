@@ -1,6 +1,8 @@
 import {Injectable} from '@angular/core';
 import {Category} from "./category/models/Category";
 
+
+
 @Injectable({
     providedIn: 'root'
 })
@@ -35,5 +37,15 @@ export class APIService {
         } catch (err) {
             console.error(err);
         }
+    }
+
+    public async loadInstances(categoryName:string) {
+      try {
+        let response = await fetch(`${this.baseLocation}/categories/instancecomparisons?categoryname=${categoryName}`);
+        let {data}: { "data": any } = await response.json();
+        return data;
+      } catch (err) {
+          console.error(err);
+      }
     }
 }

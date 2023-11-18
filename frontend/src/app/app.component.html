@@ -3,7 +3,7 @@
     <ng-container *ngIf="!api.counterLoading">{{api.counter + ", "}}</ng-container>
     <span>{{this.title + ", "}}</span>
     <!-- showcasing currently selected category -->
-    <span>{{"Category: " + this.categoryService.selectedCategory?.name}}</span>
+    <span>{{"Category: " + (this.categoryService.getCategory() | async)?.name}}</span>
 </div>
 <app-category></app-category>
-<app-comparison class="font"></app-comparison>
+<app-instance-preview></app-instance-preview>
