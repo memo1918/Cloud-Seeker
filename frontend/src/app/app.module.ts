@@ -9,9 +9,11 @@ import { ComparisonComponent } from "./comparison/comparison.component";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatTableModule } from "@angular/material/table";
 import { RemoveInstanceComponent } from "./remove-instance/remove-instance.component";
+import { InstancePreviewComponent } from "./instance-preview/instance-preview.component";
+import { MatSliderModule } from "@angular/material/slider";
+import { MatInputModule } from "@angular/material/input";
 import { InstanceConfigurationComponent } from "./instance-configuration/instance-configuration.component";
 import { FieldDisplayComponent } from "./instance-configuration/field-display/field-display.component";
-import { MatInputModule } from "@angular/material/input";
 import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { UnitNumberComponent } from "./instance-configuration/unit-number/unit-number.component";
@@ -22,42 +24,43 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
 import { DialogComponent } from "./instance-configuration/dialog/dialog.component";
 import { MatDialogModule } from "@angular/material/dialog";
-import {MatChipsModule} from "@angular/material/chips";
-import {MatRadioModule} from "@angular/material/radio";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatRadioModule } from "@angular/material/radio";
 
 
 @NgModule({
     declarations: [
-        AppComponent,
-        CategoryComponent,
-        ComparisonComponent,
-        RemoveInstanceComponent,
-        InstanceConfigurationComponent,
-        FieldDisplayComponent,
-        UnitNumberComponent,
-        UnitDropdownComponent,
-        UnitDivisionComponent,
+      AppComponent,
+      CategoryComponent,
+      ComparisonComponent,
+      RemoveInstanceComponent,
+      InstancePreviewComponent,
+      InstanceConfigurationComponent,
+      FieldDisplayComponent,
+      UnitNumberComponent,
+      UnitDropdownComponent,
+      UnitDivisionComponent,
       UnitDisplayComponent,
       DialogComponent
     ],
-    imports: [
-        BrowserModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatTabsModule,
-        MatTableModule,
-        MatInputModule,
-        MatDividerModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatButtonModule,
-      MatSelectModule,
-      MatDialogModule,
-      MatChipsModule,
-      MatRadioModule,
-      FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    MatExpansionModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatTabsModule,
+    MatTableModule,
+    MatSliderModule,
+    MatInputModule,
+    MatDividerModule,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatSelectModule,
+    MatDialogModule,
+    MatChipsModule,
+    MatRadioModule,
+    FormsModule
+  ],
     providers: [],
     bootstrap: [AppComponent]
 })

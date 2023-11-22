@@ -3,10 +3,11 @@
   <ng-container *ngIf="!api.counterLoading">{{api.counter + ", "}}</ng-container>
   <span>{{this.title + ", "}}</span>
   <!-- showcasing currently selected category -->
-  <span>{{"Category: " + this.categoryService.selectedCategory?.name}}</span>
+  <span>{{"Category: " + (this.categoryService.getCategory() | async)?.name}}</span>
 </div>
 <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
   <app-category></app-category>
+  <app-instance-preview></app-instance-preview>
   <app-instance-configuration-dialog />
   <a (click)="routingService.setDestination('/comparison')">Cart</a>
 </ng-container>
