@@ -22,6 +22,9 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
 import { DialogComponent } from "./instance-configuration/dialog/dialog.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import {MatChipsModule} from "@angular/material/chips";
+import {MatRadioModule} from "@angular/material/radio";
+
 
 @NgModule({
     declarations: [
@@ -50,7 +53,10 @@ import { MatDialogModule } from "@angular/material/dialog";
         FormsModule,
         MatButtonModule,
       MatSelectModule,
-      MatDialogModule
+      MatDialogModule,
+      MatChipsModule,
+      MatRadioModule,
+      FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
