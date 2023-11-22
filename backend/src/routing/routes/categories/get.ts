@@ -1,7 +1,6 @@
 import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../../route";
 import { NextFunction } from "express";
-import { execQuery } from "../../../db";
-import { getAllCategories, ICategory } from "../../../db/models/categories";
+import { getAllCategories } from "../../../businesslayer/category";
 
 export default class Root implements Route {
     getFileName(): string {
@@ -14,12 +13,12 @@ export default class Root implements Route {
         next: NextFunction,
         error: ErrorCallback
     ): Promise<any> {
-        let categories = await execQuery<ICategory[]>(getAllCategories);
+        let categories = await getAllCategories();
 
         res.contentType("application/json")
             .json({
                 data: {
-                    categories
+                    categories: categories
                 }
             })
             .end();

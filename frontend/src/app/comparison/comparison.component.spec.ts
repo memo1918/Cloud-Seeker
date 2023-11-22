@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComparisonComponent } from './comparison.component';
 import {BrowserModule} from "@angular/platform-browser";
-import {AppRoutingModule} from "../app-routing.module";
 import {MatExpansionModule} from "@angular/material/expansion";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {MatTableModule} from "@angular/material/table";
@@ -14,7 +13,6 @@ describe('ComparisonComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         BrowserModule,
-        AppRoutingModule,
         MatExpansionModule,
         BrowserAnimationsModule,
         MatTableModule

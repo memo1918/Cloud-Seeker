@@ -18,6 +18,5 @@ export function countLinesInCSV(csvFilePath: string): Promise<number> {
                 // Reject the promise if an error occurs
                 reject(error);
             });
-        lineCount++;
     });
 }

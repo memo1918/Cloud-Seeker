@@ -1,0 +1,1530 @@
+[
+    {
+        "_id": "User Fees",
+        "units": ["user", "Users", "Month", "users"]
+    },
+    {
+        "_id": "Management Tools - AWS CloudTrail Data Events Recorded",
+        "units": ["Events"]
+    },
+    {
+        "_id": "Daily Active Users",
+        "units": ["DAU"]
+    },
+    {
+        "_id": "Stopped Instance",
+        "units": ["hour"]
+    },
+    {
+        "_id": "Fast Snapshot Restore",
+        "units": ["hours"]
+    },
+    {
+        "_id": "Provisioned Throughput",
+        "units": ["MBPS-Mo", "GiBps-mo", "MiBps-Mo"]
+    },
+    {
+        "_id": "Snowball Device",
+        "units": ["Jobs", "job", "GB"]
+    },
+    {
+        "_id": "Amazon DynamoDB PayPerRequest Throughput",
+        "units": ["ReplicatedWriteRequestUnits", "WriteRequestUnits", "ReadRequestUnits"]
+    },
+    {
+        "_id": "Broker Instances",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Metric",
+        "units": ["Metric Datapoints", "Metrics"]
+    },
+    {
+        "_id": "Bundle",
+        "units": ["Hrs", "Count", "Notifications", "Alarms", "Message"]
+    },
+    {
+        "_id": "ApplicationServices",
+        "units": [
+            "gibibyte month",
+            "gibibyte hour",
+            "mebibyte",
+            "mebibyte second",
+            "tebibyte hour",
+            "tebibyte month",
+            "minute",
+            "month",
+            "gibibyte",
+            "day",
+            "year",
+            "byte",
+            "gigabyte",
+            "hour",
+            "kibibyte",
+            "count",
+            "mebibyte hour",
+            "second",
+            "millisecond",
+            "gibibyte second",
+            "tebibyte",
+            "gibibyte day"
+        ]
+    },
+    {
+        "_id": "Load Balancer-Gateway",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "DNS Domain Names",
+        "units": ["Mo"]
+    },
+    {
+        "_id": "Load Balancer-Network",
+        "units": ["Hrs", "LCU-Hrs"]
+    },
+    {
+        "_id": "Broker Storage",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "Image Fees",
+        "units": ["GiB"]
+    },
+    {
+        "_id": "Rekognition Image API",
+        "units": ["Images Processed"]
+    },
+    {
+        "_id": "Quantum Task-Shot",
+        "units": ["Quantum-Shot"]
+    },
+    {
+        "_id": "Amazon ElastiCache Global Datastore",
+        "units": ["GigaBytes"]
+    },
+    {
+        "_id": "Contributor Insights",
+        "units": ["Rule-Hour", "rule"]
+    },
+    {
+        "_id": "Management Tools - AWS Config Rules",
+        "units": ["ConfigRuleEvaluations"]
+    },
+    {
+        "_id": "AWS Managed Services",
+        "units": ["hours"]
+    },
+    {
+        "_id": "Gaming",
+        "units": ["1"]
+    },
+    {
+        "_id": "AWS Billing Conductor",
+        "units": ["Accounts"]
+    },
+    {
+        "_id": "Telecommunications",
+        "units": ["1/Month", "1 Month", "1/Hour", "1", "1 Hour"]
+    },
+    {
+        "_id": "Other",
+        "units": [
+            "1 GB Hour",
+            "1/Hour",
+            "1 GiB Hour",
+            "10K",
+            "1/Month",
+            "5/Month",
+            "1 GB/Month",
+            "1M",
+            "100K",
+            "1K",
+            "1 Hour",
+            "1 GB"
+        ]
+    },
+    {
+        "_id": "Amazon OpenSearch Service Instance",
+        "units": ["Hrs", "Quantity"]
+    },
+    {
+        "_id": "Message Delivery",
+        "units": ["Notifications", "Messages"]
+    },
+    {
+        "_id": "Server DR",
+        "units": ["Replication-hour"]
+    },
+    {
+        "_id": "Amazon Simple Workflow",
+        "units": [
+            "Workflow-days",
+            "Workflow executions",
+            "Tasks-signals-markers-timers",
+            "Tasks,signals,markers,timers"
+        ]
+    },
+    {
+        "_id": "Storage Device",
+        "units": ["USD", "Devices", "Hours"]
+    },
+    {
+        "_id": "System Operation",
+        "units": ["CR-Hr", "IOs", "IOPS-Mo", "GB"]
+    },
+    {
+        "_id": "EBS direct API Requests",
+        "units": ["SnapshotAPIUnits", "Requests"]
+    },
+    {
+        "_id": "CPU Credits",
+        "units": ["vCPU-Hours"]
+    },
+    {
+        "_id": "Azure Stack",
+        "units": ["1 Hour", "1/Year", "1 GB Second", "1/Month", "1 GB/Hour", "1 GB/Month", "1", "1/Day", "10"]
+    },
+    {
+        "_id": "Management Tools - AWS CloudTrail Paid Events Recorded",
+        "units": ["Events"]
+    },
+    {
+        "_id": "CloudWatch Events",
+        "units": ["minutes", "GigaBytes", "64K-Chunks"]
+    },
+    {
+        "_id": "Entity Detection",
+        "units": ["Units"]
+    },
+    {
+        "_id": "Security Lake",
+        "units": ["GB"]
+    },
+    {
+        "_id": "AWS Cloud Map",
+        "units": ["CloudMapResource", "CloudMapAPICall"]
+    },
+    {
+        "_id": "QLDB IOs",
+        "units": ["IOs"]
+    },
+    {
+        "_id": "Web Application Firewall",
+        "units": ["Request", "Requests", "Month", "month"]
+    },
+    {
+        "_id": "Redshift Inter Region Data Transfer",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Database Instance",
+        "units": ["Hrs", "Quantity"]
+    },
+    {
+        "_id": "AWSGreengrass",
+        "units": ["Active-GGC-Devices"]
+    },
+    {
+        "_id": "ML Elastic Inference",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Aurora Global Database",
+        "units": ["IOs"]
+    },
+    {
+        "_id": "AmazonChimeDialinProductFamily",
+        "units": ["Minute", "minutes"]
+    },
+    {
+        "_id": "Databases",
+        "units": [
+            "1/Hour",
+            "1/Day",
+            "1 IOPS/Month",
+            "1/Month",
+            "1M",
+            "1 GB/Month",
+            "1 GiB/Month",
+            "1 GB",
+            "1 Hour",
+            "10K"
+        ]
+    },
+    {
+        "_id": "AWSIoTSiteWise",
+        "units": ["Pack", "Users", "Computations", "Objects", "GB-Hours"]
+    },
+    {
+        "_id": "Performance Insights",
+        "units": ["vCPU-Months", "ACU-Months", "API Calls"]
+    },
+    {
+        "_id": "Elastic Graphics",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Lex Speech Request",
+        "units": ["Requests"]
+    },
+    {
+        "_id": "AWS Security Services - Macie Content Processing",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Integration",
+        "units": ["1 GB", "1/Month", "1M", "1", "1/Hour", "1 GB/Month", "1 Hour", "1 GiB Hour", "10K", "100 Hours"]
+    },
+    {
+        "_id": "Microsoft Syntex",
+        "units": ["1", "1 GB", "1 GB/Day"]
+    },
+    {
+        "_id": "Transcription Job",
+        "units": ["Second", "second", "seconds"]
+    },
+    {
+        "_id": "Simple Messaging Service",
+        "units": ["dollars", "Notifications", "Dollars"]
+    },
+    {
+        "_id": "AmazonLocationService",
+        "units": [
+            "Map Tile",
+            "Transaction",
+            "Devices",
+            "Address",
+            "Geofence-month",
+            "Geofence",
+            "Position",
+            "API Request",
+            "Route"
+        ]
+    },
+    {
+        "_id": "Blockchain Data Written",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Load Balancer-Application",
+        "units": ["Hrs", "LCU-Hrs", "IdleLCU-Hr"]
+    },
+    {
+        "_id": "Windows Virtual Desktop",
+        "units": ["1/Month", "1/Hour"]
+    },
+    {
+        "_id": "Active Pipeline",
+        "units": ["pipelines", "Preconditions"]
+    },
+    {
+        "_id": "ContactCenterTelecomm",
+        "units": ["count", "Minute", "minute", "Count"]
+    },
+    {
+        "_id": "Synthesize Speech",
+        "units": ["Characters"]
+    },
+    {
+        "_id": "DT-Data Transfer",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Athena Queries",
+        "units": ["Terabytes", "DPU-Hour"]
+    },
+    {
+        "_id": "High Definition",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "AWS Certificate Manager",
+        "units": ["Certificates", "CertificateAuthorities"]
+    },
+    {
+        "_id": "StorageGateway-Storage",
+        "units": ["GB-Mo", "GB-month"]
+    },
+    {
+        "_id": "Dashboard",
+        "units": ["Dashboards"]
+    },
+    {
+        "_id": "API Request",
+        "units": [
+            "Metrics",
+            "API Request",
+            "GB",
+            "Request",
+            "API Requests",
+            "Metric Datapoints",
+            "Requests",
+            "Count",
+            "Pages"
+        ]
+    },
+    {
+        "_id": "Dedicated-Host",
+        "units": ["HSM", "hours"]
+    },
+    {
+        "_id": "Braket Managed Jobs Instance",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "AmazonChimeVoiceConnector",
+        "units": ["minutes", "NumberMonths", "sms-message", "inbound_minutes"]
+    },
+    {
+        "_id": "Sync Operation",
+        "units": ["CognitoSyncOp-Mo"]
+    },
+    {
+        "_id": "AWS Security Services - Macie Log Processing",
+        "units": ["Events"]
+    },
+    {
+        "_id": "Web",
+        "units": ["1 Hour", "1 GB", "1K", "1/Month", "1", "100", "1/Hour", "1/Day"]
+    },
+    {
+        "_id": "GameLift FlexMatch Standalone",
+        "units": ["Matchmaking Hours", "Player Packages"]
+    },
+    {
+        "_id": "SimSpace Weaver Compute Instance",
+        "units": ["hour"]
+    },
+    {
+        "_id": "Kinesis Video",
+        "units": ["minutes", "Images Processed", "Count", "GB", "Messages", "GB-Month"]
+    },
+    {
+        "_id": "Blockchain",
+        "units": ["10K", "1/Hour", "1", "1 GB", "1/Month", "1 Minute", "1 GB/Month"]
+    },
+    {
+        "_id": "EC2 Container Registry",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "Server Migration",
+        "units": ["Replication-hour"]
+    },
+    {
+        "_id": "Enterprise Applications",
+        "units": ["Hour", "GB-Mo", "User-Mo", "API Calls", "Month", "MONTH", "Devices", "MAU", "Users", "hour"]
+    },
+    {
+        "_id": "Analytics",
+        "units": [
+            "1 Hour",
+            "50K",
+            "1K",
+            "1M",
+            "1 Day",
+            "1/Day",
+            "1 TB",
+            "10K",
+            "1 GB",
+            "1/Month",
+            "1 TB/Month",
+            "1 GB/Month",
+            "1",
+            "1/Hour",
+            "1 API Calls"
+        ]
+    },
+    {
+        "_id": "PayPerRequest Throughput",
+        "units": ["WriteRequestUnits", "ReadRequestUnits"]
+    },
+    {
+        "_id": "Transcode minute",
+        "units": ["Hrs", "hours", "minutes", "Hours"]
+    },
+    {
+        "_id": "Redshift Managed Storage",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "RDSProxy",
+        "units": ["ACU-Hr", "Hrs"]
+    },
+    {
+        "_id": "AI + Machine Learning",
+        "units": ["1/Day", "1/Hour", "1 Minute", "1/Month", "100", "1M", "1", "1K", "1 GB", "1 Hour", "1/Year"]
+    },
+    {
+        "_id": "Machine Learning",
+        "units": [
+            "Objects",
+            "usagehours",
+            "Count",
+            "Tasks",
+            "1",
+            "Predictions",
+            "GB",
+            "API Calls",
+            "Blocks",
+            "GB-Mo",
+            "Metrics",
+            "GB-month",
+            "InferenceUnits",
+            "minutes",
+            "Prediction",
+            "Queries",
+            "100K-LinesofCode",
+            "Hrs",
+            "hours",
+            "Units"
+        ]
+    },
+    {
+        "_id": "Streaming Instance",
+        "units": ["hour", "hours", "Hrs"]
+    },
+    {
+        "_id": "Amazon OpenSearch Service Ingestion",
+        "units": ["OCU-hours"]
+    },
+    {
+        "_id": "Blockchain Request",
+        "units": ["Request", "Requests"]
+    },
+    {
+        "_id": "Amazon Inspector",
+        "units": ["Hourly", "Resource-assessment", "Instance-hrs"]
+    },
+    {
+        "_id": "Amazon DynamoDB Restore Data Size",
+        "units": ["GB"]
+    },
+    {
+        "_id": "AWSMobile-AmazonPinpoint",
+        "units": [
+            "Minute",
+            "Units",
+            "Dollars",
+            "Notifications",
+            "Dollar",
+            "Users",
+            "Count",
+            "dollars",
+            "Messages",
+            "Requests",
+            "Unit",
+            "Month",
+            "Numbers",
+            "Events"
+        ]
+    },
+    {
+        "_id": "Developer Tools",
+        "units": [
+            "1 GB",
+            "traces",
+            "1 GiB/Month",
+            "10K",
+            "1/Hour",
+            "1",
+            "1 GB/Month",
+            "1 MB/Day",
+            "1/Month",
+            "minutes",
+            "1 GiB",
+            "1 Minute",
+            "1 Hour",
+            "1/Day",
+            "1M",
+            "Traces"
+        ]
+    },
+    {
+        "_id": "Amazon OpenSearch Service Serverless",
+        "units": ["OCU-hours", "GB-month"]
+    },
+    {
+        "_id": "AmazonPolly",
+        "units": ["Characters"]
+    },
+    {
+        "_id": "AR & VR",
+        "units": ["GB-mo", "GB"]
+    },
+    {
+        "_id": "StorageGateway-Deep Archive",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "API Calls",
+        "units": [
+            "Processing-Bytes",
+            "Hrs",
+            "API Calls",
+            "Unit",
+            "USW2-AmazonApiGatewayRequest",
+            "UGW1-AmazonApiGatewayRequest",
+            "Requests"
+        ]
+    },
+    {
+        "_id": "Shield-DataTransfer",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Fee",
+        "units": ["GB-Mo", "Objects", "Units", "GB", "Hrs", "Mo", "hours", "Requests", "Count"]
+    },
+    {
+        "_id": "Utility",
+        "units": ["count"]
+    },
+    {
+        "_id": "Extra Days",
+        "units": ["day"]
+    },
+    {
+        "_id": "Networking",
+        "units": ["10K", "1/Hour", "1M/Month", "1/Month", "1 GB/Month", "1", "1M", "1 GB", "1 Hour"]
+    },
+    {
+        "_id": "Custom Entities",
+        "units": ["Unit", "seconds"]
+    },
+    {
+        "_id": "Lightsail Database",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Standard Definition",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "DNS Query",
+        "units": ["Queries", "Hours", "hours"]
+    },
+    {
+        "_id": "Blockchain Instance",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Blockchain Member",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Lex Text Request",
+        "units": ["Requests"]
+    },
+    {
+        "_id": "Data",
+        "units": ["1 Hour"]
+    },
+    {
+        "_id": "IoTAnalytics",
+        "units": ["TB", "GB"]
+    },
+    {
+        "_id": "AWS Glue",
+        "units": ["DPU-Hour", "Sessions", "Request", "Obj-Month", "M-DPU-Hour"]
+    },
+    {
+        "_id": "Replication Server",
+        "units": ["DCU-Hr", "Hrs"]
+    },
+    {
+        "_id": "Amazon Lex",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "Agent Assessments",
+        "units": ["AgentAssessments"]
+    },
+    {
+        "_id": "AWS Lake Formation",
+        "units": ["GigaBytes", "Objects"]
+    },
+    {
+        "_id": "Provisioned IOPS",
+        "units": ["ReadCapacityUnit-Hrs", "IOPS-Mo", "Quantity", "WriteCapacityUnit-Hrs"]
+    },
+    {
+        "_id": "Load Balancer",
+        "units": ["GB", "Hrs"]
+    },
+    {
+        "_id": "Data Transfer",
+        "units": ["GB", "Hrs"]
+    },
+    {
+        "_id": "AWS Supply Chain",
+        "units": ["hours", "GB-month", "Instance - Months"]
+    },
+    {
+        "_id": "Management Tools - AWS CloudTrail Free Events Recorded",
+        "units": ["Events"]
+    },
+    {
+        "_id": "Alarm",
+        "units": ["Alarms"]
+    },
+    {
+        "_id": "AWS Security Hub - Automation",
+        "units": ["Rule Evaluation Event"]
+    },
+    {
+        "_id": "AmazonChimeCallMeProductFamily",
+        "units": ["callme-minutes"]
+    },
+    {
+        "_id": "AWS Step Functions",
+        "units": ["Requests", "StateTransitions", "GB-Seconds"]
+    },
+    {
+        "_id": "Management Tools - AWS CloudTrail",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Private Networks",
+        "units": ["Hourly"]
+    },
+    {
+        "_id": "Secret",
+        "units": ["Secrets"]
+    },
+    {
+        "_id": "AmazonChimeBusinessCalling",
+        "units": ["NumberMonths", "minutes", "inbound_minutes", "sms-message"]
+    },
+    {
+        "_id": "GuardDuty",
+        "units": ["GB", "Events", "vCPU-Months", "ACU-Months"]
+    },
+    {
+        "_id": "Containers",
+        "units": [
+            "1 Hour",
+            "100 GB Seconds",
+            "1 Second",
+            "1 GB Hour",
+            "1 GB Second",
+            "1 GB/Month",
+            "1/Day",
+            "100 Seconds"
+        ]
+    },
+    {
+        "_id": "Network",
+        "units": ["hour", "month", "gibibyte", "year", "count", "day", "gigabyte"]
+    },
+    {
+        "_id": "ML Instance",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Lightsail Load Balancing",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "AWS Resilience Hub",
+        "units": ["Application"]
+    },
+    {
+        "_id": "Storage",
+        "units": [
+            "Gigabyte Month",
+            "1 GiB/Hour",
+            "1 GB",
+            "1 GiB/Month",
+            "10K",
+            "gibibyte",
+            "month",
+            "10K/Month",
+            "1 GB/Month",
+            "100",
+            "1/Month",
+            "gibibyte month",
+            "gibibyte day",
+            "1 GB/Hour",
+            "100/Month",
+            "GB-month",
+            "Tag-Mo",
+            "1 GiB",
+            "Gigabase-month",
+            "second",
+            "1/Day",
+            "Request",
+            "hour",
+            "1/Hour",
+            "GB-Mo",
+            "1",
+            "gibibyte hour",
+            "GB",
+            "1 MB",
+            "1M",
+            "1 Day",
+            "count"
+        ]
+    },
+    {
+        "_id": "AWS Security Hub - Standards",
+        "units": ["Security Checks"]
+    },
+    {
+        "_id": "AWSIoTTwinMaker",
+        "units": ["Month", "API Calls"]
+    },
+    {
+        "_id": "AWS Amplify",
+        "units": ["GigaBytes", "minutes", "GB-Seconds"]
+    },
+    {
+        "_id": "Quantum Computing",
+        "units": ["1 Hour"]
+    },
+    {
+        "_id": "ML Serverless",
+        "units": ["seconds"]
+    },
+    {
+        "_id": "AWS Transfer Family",
+        "units": ["GB", "Executions", "Message", "GigaBytes", "Hourly"]
+    },
+    {
+        "_id": "Security",
+        "units": [
+            "1 GB/Month",
+            "1",
+            "1/Month",
+            "1 Rotation",
+            "1M",
+            "25K",
+            "1/Hour",
+            "10K",
+            "1K/Month",
+            "1 Hour",
+            "1 GB",
+            "100/Month"
+        ]
+    },
+    {
+        "_id": "Amazon API Gateway Cache",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Firewall Manager Policy",
+        "units": ["Month", "Months"]
+    },
+    {
+        "_id": "DAX",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "ServerlessV2",
+        "units": ["ACU-Hr"]
+    },
+    {
+        "_id": "Redshift Data Scan",
+        "units": ["Terabytes"]
+    },
+    {
+        "_id": "Text Translation",
+        "units": ["Character"]
+    },
+    {
+        "_id": "DDB-Operation-ReplicatedWrite",
+        "units": ["ReplicatedWriteCapacityUnit-Hrs"]
+    },
+    {
+        "_id": "AWSIoTEvents",
+        "units": ["Alarms"]
+    },
+    {
+        "_id": "Receiving Email",
+        "units": ["Count", "Message", "ReceivedChunk"]
+    },
+    {
+        "_id": "AWS Security Hub - Findings",
+        "units": ["Finding Ingestion Events"]
+    },
+    {
+        "_id": "Azure Communication Services",
+        "units": ["1", "1/Month", "1 Minute", "1 MB", "1 GB"]
+    },
+    {
+        "_id": "Compute Instance",
+        "units": ["Hrs", "Quantity", "Hours"]
+    },
+    {
+        "_id": "IP Address",
+        "units": ["Hrs", "Count", "hour"]
+    },
+    {
+        "_id": "Lightsail Networking",
+        "units": ["Bundles", "Hrs", "GB"]
+    },
+    {
+        "_id": "QLDB Storage",
+        "units": ["GB-month"]
+    },
+    {
+        "_id": "Kinesis Firehose",
+        "units": ["Objects", "Hrs", "GB", "hours"]
+    },
+    {
+        "_id": "DNS Health Check",
+        "units": ["Mo"]
+    },
+    {
+        "_id": "User Pool MAU",
+        "units": ["CognitoUserPoolsMAU", "Requests"]
+    },
+    {
+        "_id": "Power Platform",
+        "units": ["1"]
+    },
+    {
+        "_id": "Compute Instance (bare metal)",
+        "units": ["Hrs", "Quantity", "Hours"]
+    },
+    {
+        "_id": "Metric Streams",
+        "units": ["Metric Update"]
+    },
+    {
+        "_id": "FinSpace",
+        "units": ["Node-hour", "User-Mo", "minutes", "GB-month", "Month"]
+    },
+    {
+        "_id": "",
+        "units": [
+            "ForecastDataPoints_in_Thousands",
+            "job",
+            "days",
+            "TrainingHour",
+            "Recommender Hours",
+            "Forecast",
+            "GigaBytes",
+            "Batch Segment",
+            "day",
+            "TPS-hours",
+            "Count",
+            "Gigabyte Month",
+            "Internet Monitor - Monitored Resource",
+            "Mo",
+            "ReachabilityAnalyses",
+            "Job",
+            "TTLDeletes",
+            "Gigabyte",
+            "GB-Hours",
+            "Requests",
+            "Rule-Hour",
+            "seconds",
+            "GB",
+            "NetworkInterface-Assessment",
+            "API Requests",
+            "Explanations_in_Thousands",
+            "GB-Mo",
+            "Objects",
+            "Hourly",
+            "Minute",
+            "Sessions",
+            "hour",
+            "Second",
+            "Internet Monitor - City-Network",
+            "ChangeDataCaptureUnits",
+            "IOs",
+            "Batch Recommendations",
+            "Messages",
+            "Hrs",
+            "vCPU-Hours",
+            "Events",
+            "AmazonChime_Meetings_Active_Host_Days",
+            "Units",
+            "minutes",
+            "hours",
+            "Recommendations",
+            "Jobs",
+            "Operations",
+            "dollars"
+        ]
+    },
+    {
+        "_id": "OpsWorks",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "StorageGateway-Deep Archive-Fee",
+        "units": ["GB-Mo", "GB"]
+    },
+    {
+        "_id": "Custom Classification",
+        "units": ["Unit", "seconds"]
+    },
+    {
+        "_id": "Management Tools - AWS CloudTrail Insights Events",
+        "units": ["Events"]
+    },
+    {
+        "_id": "Kinesis Analytics",
+        "units": ["GB-month", "KPU-Hour"]
+    },
+    {
+        "_id": "Amazon MemoryDB",
+        "units": ["Hrs", "Quantity", "GB", "GB-Mo"]
+    },
+    {
+        "_id": "Amazon DynamoDB Export Data Size",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Interactive Video Service - Live",
+        "units": ["Units"]
+    },
+    {
+        "_id": "FeatureStore Storage",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "EventBridge",
+        "units": ["64K-Chunks"]
+    },
+    {
+        "_id": "FeatureStore PayPerRequestThroughput",
+        "units": ["ReadRequestUnits", "WriteRequestUnits"]
+    },
+    {
+        "_id": "User Pool ASF MAU",
+        "units": ["Requests", "CognitoUserPoolsMAU"]
+    },
+    {
+        "_id": "Search Instance",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Cloud Connectivity",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Braket Managed Jobs Volume",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "Cache Instance",
+        "units": ["Hrs", "Quantity"]
+    },
+    {
+        "_id": "RoboMaker Simulation",
+        "units": ["world", "GU-Hour"]
+    },
+    {
+        "_id": "Portfolio",
+        "units": ["ActivePortfolios"]
+    },
+    {
+        "_id": "Request",
+        "units": ["Requests", "Operations"]
+    },
+    {
+        "_id": "Managed Streaming for Apache Kafka (MSK)",
+        "units": ["MiBps-Mo", "hours", "GB", "GB-Mo"]
+    },
+    {
+        "_id": "AWS Outposts Subscription",
+        "units": ["hours"]
+    },
+    {
+        "_id": "AWS Clean Rooms",
+        "units": ["CRPU-Hr"]
+    },
+    {
+        "_id": "AWS Global Accelerator",
+        "units": ["GigaBytes"]
+    },
+    {
+        "_id": "Amazon OpenSearch Service Volume",
+        "units": ["GB-Mo", "GigaBytes", "GB-Mp", "PIOPS-Mo", "IOPS-Mo", "MiBps-Mo"]
+    },
+    {
+        "_id": "Redshift Concurrency Scaling",
+        "units": ["seconds"]
+    },
+    {
+        "_id": "NAT Gateway",
+        "units": ["GB", "Gbps-hrs", "Hrs"]
+    },
+    {
+        "_id": "Audio",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "AWSIoT",
+        "units": [
+            "Messages",
+            "Operations",
+            "RulesTriggered",
+            "Metric Datapoints",
+            "ActionsExecuted",
+            "Deployments",
+            "Steps"
+        ]
+    },
+    {
+        "_id": "License",
+        "units": ["hour", "gibibyte hour"]
+    },
+    {
+        "_id": "RealTime",
+        "units": ["Messages", "RealTimeLogLines", "Minutes"]
+    },
+    {
+        "_id": "Rekognition Video API - Live Streams",
+        "units": ["Minutes Processed"]
+    },
+    {
+        "_id": "AWS Migration Hub",
+        "units": ["API Request"]
+    },
+    {
+        "_id": "Storage Snapshot",
+        "units": ["GB", "GB-Mo"]
+    },
+    {
+        "_id": "AWS Systems Manager",
+        "units": [
+            "API Requests",
+            "GB",
+            "Hrs",
+            "1",
+            "OpsItems",
+            "GB-Mo",
+            "Hour",
+            "Configuration Received",
+            "Notifications",
+            "Configuration Requests",
+            "Requests"
+        ]
+    },
+    {
+        "_id": "Compute",
+        "units": [
+            "hours",
+            "Hrs",
+            "1 Day",
+            "1 GB",
+            "Hours",
+            "gibibyte",
+            "month",
+            "1 Month",
+            "1 GB/Month",
+            "1 GB/Hour",
+            "1/Month",
+            "gibibyte month",
+            "GB-Hours",
+            "1 GB Second",
+            "1/Day",
+            "Mins",
+            "10",
+            "hour",
+            "1 Second",
+            "Instance-hrs",
+            "1 GiB/Day",
+            "Run",
+            "1",
+            "gibibyte hour",
+            "1 TB/Month",
+            "dollars",
+            "minutes",
+            "1 Hour",
+            "1 GiB Hour",
+            "1/Year",
+            "vCPU-hour",
+            "1M",
+            "1 GiB Second",
+            "count"
+        ]
+    },
+    {
+        "_id": "AWS Backup Restore Data Size EFS",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Internet of Things",
+        "units": [
+            "1 GB",
+            "1/Month",
+            "1",
+            "1M",
+            "100K",
+            "1/Day",
+            "1 GB/Month",
+            "1/Hour",
+            "1 Hour",
+            "1 Month",
+            "1 MB",
+            "1 MB/Month",
+            "1K"
+        ]
+    },
+    {
+        "_id": "Lightsail Containers",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Neptune ReplicatedWrite",
+        "units": ["IOs"]
+    },
+    {
+        "_id": "AmazonChime",
+        "units": [
+            "Notifications",
+            "AmazonChime_Meetings_Active_Host_Days",
+            "Sessions",
+            "GigaBytes",
+            "Messages",
+            "recipients",
+            "minutes"
+        ]
+    },
+    {
+        "_id": "Streaming",
+        "units": ["seconds", "second", "hours"]
+    },
+    {
+        "_id": "EMR Containers",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "AmazonConnect",
+        "units": ["UsersPerMonth", "Hourly", "Tasks", "Message", "cases", "Count", "Minutes", "Messages", "Minute"]
+    },
+    {
+        "_id": "Amazon DynamoDB On-Demand Backup Storage",
+        "units": ["GB-Month"]
+    },
+    {
+        "_id": "Dedicated Host",
+        "units": ["Hrs", "Quantity"]
+    },
+    {
+        "_id": "VpcEndpoint",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "AutoML Jobs",
+        "units": ["MillionCells", "CreateModelRequest", "TrainingHour", "Hrs"]
+    },
+    {
+        "_id": "IoTDeviceManagement",
+        "units": ["Queries", "Things Registered", "Index Updates", "Remote Actions", "Count"]
+    },
+    {
+        "_id": "Quantum Task",
+        "units": ["Quantum-Task"]
+    },
+    {
+        "_id": "WorkSpaces Application Manager",
+        "units": ["APS2-WAM-STD", "User-Mo"]
+    },
+    {
+        "_id": "AWS Transfer for SFTP",
+        "units": ["Hourly", "GB"]
+    },
+    {
+        "_id": "Replication Storage",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "Simulator Task",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "Amazon Inspector Network Assessment",
+        "units": ["InstanceAssessments"]
+    },
+    {
+        "_id": "Direct Connect",
+        "units": ["hours", "GB"]
+    },
+    {
+        "_id": "Rekognition Video API - Archived Content",
+        "units": ["Minutes Processed"]
+    },
+    {
+        "_id": "Blockchain Node Storage",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "Database Storage",
+        "units": ["GB-Mo", "GB-Hours"]
+    },
+    {
+        "_id": "Sending Email",
+        "units": ["Mo", "Count"]
+    },
+    {
+        "_id": "Compute Metering",
+        "units": ["vCPU-Hours", "GB-Hours"]
+    },
+    {
+        "_id": "Canaries",
+        "units": ["Runs"]
+    },
+    {
+        "_id": "AWS Directory Service",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "StorageGateway-Instance",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Management and Governance",
+        "units": [
+            "10M",
+            "1/Month",
+            "1",
+            "1 GB/Month",
+            "1/Hour",
+            "1/Day",
+            "1 GB/Day",
+            "1K",
+            "1 Hour",
+            "1 Minute",
+            "10",
+            "1B",
+            "1M",
+            "1 GB"
+        ]
+    },
+    {
+        "_id": "Elastic Map Reduce Instance",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Amazon Detective",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Rekognition Storage",
+        "units": ["Users-Mo"]
+    },
+    {
+        "_id": "Packaging Data Transfer",
+        "units": ["GB"]
+    },
+    {
+        "_id": "AWSMobile-Analytics",
+        "units": ["Activities", "Events"]
+    },
+    {
+        "_id": "Management Tools - AWS Config",
+        "units": ["ConfigurationItemRecorded", "EUC1-ConfigurationItemRecorded"]
+    },
+    {
+        "_id": "Dominant Language Detection",
+        "units": ["Unit"]
+    },
+    {
+        "_id": "Reserved Transcoding",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "Mixed Reality",
+        "units": ["1 Minute", "1 Hour", "1", "1/Hour"]
+    },
+    {
+        "_id": "Elastic Inference",
+        "units": ["hours", "Hours"]
+    },
+    {
+        "_id": "Lightsail Storage",
+        "units": ["GB-Mo", "Bundles"]
+    },
+    {
+        "_id": "VMwareCloudOnAWS",
+        "units": [
+            "OSI-hour",
+            "GB-month",
+            "vCPU-hour",
+            "VM-hour",
+            "GB",
+            "Hrs",
+            "Attachment-hour",
+            "Count",
+            "TIB-hour",
+            "IOs",
+            "Host",
+            "Host-hour"
+        ]
+    },
+    {
+        "_id": "GameLift EC2 Instance",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Sending Attachments",
+        "units": ["GB"]
+    },
+    {
+        "_id": "CodeDeploy",
+        "units": ["OnPremUpdates"]
+    },
+    {
+        "_id": "Business Analytics",
+        "units": [
+            "GB-Mo",
+            "kilometric",
+            "minute",
+            "User",
+            "sessions",
+            "Month",
+            "Queries",
+            "Users",
+            "message",
+            "Report",
+            "Sessions"
+        ]
+    },
+    {
+        "_id": "StorageGateway-Fee",
+        "units": ["GB", "GB-month"]
+    },
+    {
+        "_id": "AWS Backup Restore Data Size",
+        "units": ["GB", "Requests"]
+    },
+    {
+        "_id": "AWS Backup Early Delete Size",
+        "units": ["GB-month"]
+    },
+    {
+        "_id": "AWS Firewall",
+        "units": ["GB", "Hourly"]
+    },
+    {
+        "_id": "Rekognition API",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "Verified Permissions",
+        "units": ["API Requests"]
+    },
+    {
+        "_id": "AWS Backup Storage",
+        "units": ["Count", "GB", "GB-month", "Requests"]
+    },
+    {
+        "_id": "Database Utilization",
+        "units": ["vCPU-hour", "GB"]
+    },
+    {
+        "_id": "GameLift Anywhere",
+        "units": ["Server Process Conn Minutes", "Game Sessions Placed"]
+    },
+    {
+        "_id": "Amazon DynamoDB Import Data Size",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Azure Arc",
+        "units": ["1 Hour", "1/Month"]
+    },
+    {
+        "_id": "Lightsail Snapshot",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "Braket Managed Jobs QPU Task Shot",
+        "units": ["Quantum-Shot"]
+    },
+    {
+        "_id": "BH-TEAM",
+        "units": ["BH_Team_Base_Monthly", "BH_Team_Paid_Members_Monthly"]
+    },
+    {
+        "_id": "Braket Managed Jobs QPU Task",
+        "units": ["Quantum-Task"]
+    },
+    {
+        "_id": "Amazon Macie",
+        "units": ["days", "GB", "Bucket-days", "Object-days"]
+    },
+    {
+        "_id": "AWS Entity Resolution",
+        "units": ["Records"]
+    },
+    {
+        "_id": "Kinesis Streams",
+        "units": ["GB-month", "ShardHour", "StreamHr", "PutRequest", "GB", "ConsumerShardHour"]
+    },
+    {
+        "_id": "WebSocket",
+        "units": ["Messages", "minutes"]
+    },
+    {
+        "_id": "Alexa Top Sites",
+        "units": ["URLs"]
+    },
+    {
+        "_id": "Encryption Key",
+        "units": ["Keys", "Months"]
+    },
+    {
+        "_id": "Search",
+        "units": ["count"]
+    },
+    {
+        "_id": "Lightsail Instance",
+        "units": ["Hrs"]
+    },
+    {
+        "_id": "Data Payload",
+        "units": ["minutes", "GB"]
+    },
+    {
+        "_id": "AWS Ground Station Contact",
+        "units": ["Minute"]
+    },
+    {
+        "_id": "Braket Managed Jobs Simulator Task",
+        "units": ["minutes"]
+    },
+    {
+        "_id": "Athena Spark",
+        "units": ["DPU-Hour"]
+    },
+    {
+        "_id": "Topic Modeling",
+        "units": ["MB"]
+    },
+    {
+        "_id": "Serverless",
+        "units": [
+            "Processed-Gigabytes",
+            "GB-Seconds",
+            "ACU-Hr",
+            "RPU-Hr",
+            "Requests",
+            "Request",
+            "Lambda-GB-Second",
+            "NCU-hr"
+        ]
+    },
+    {
+        "_id": "AWS DataSync",
+        "units": ["GB"]
+    },
+    {
+        "_id": "Sync Storage",
+        "units": ["GB-Mo"]
+    },
+    {
+        "_id": "User Pool Enterprise MAU",
+        "units": ["CognitoUserPoolsMAU", "Requests"]
+    },
+    {
+        "_id": "Wickr",
+        "units": ["Users"]
+    }
+]

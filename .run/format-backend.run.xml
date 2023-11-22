@@ -6,7 +6,10 @@
       <script value="format" />
     </scripts>
     <node-interpreter value="project" />
-    <envs />
+      <envs>
+          <env name=";CATEGORY_TEMPLATES" value="../devcontainer/configuration/samplecategory.json"/>
+          <env name="DUMMY_CSV_IMPORT" value="../devcontainer/configuration/dummyCsvImport.csv"/>
+      </envs>
     <method v="2" />
   </configuration>
 </component>

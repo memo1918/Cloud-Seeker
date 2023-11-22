@@ -1,0 +1,15 @@
+<div>
+    <mat-tab-group fitInkBarToContent="true" class="mat-tabBackground" mat-stretch-tabs="false"
+                   (selectedTabChange)="categoryService.onTabChange($event)">
+        <mat-tab *ngFor="let category of this.categoryService.getCategories()"
+                 mat-align-tabs="left">
+            <ng-template mat-tab-label>
+                <div>
+                    <mat-icon aria-hidden="false" aria-label="category icon"
+                              fontIcon="{{category.icon}}"></mat-icon>
+                    <div>{{category.name}}</div>
+                </div>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</div>

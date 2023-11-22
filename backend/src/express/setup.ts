@@ -2,9 +2,9 @@ import express from "express";
 import { createServer } from "http";
 
 export const app = express();
-app.use(express.json());
-app.use(express.text());
-app.use(express.urlencoded());
+app.use(express.json({}));
+app.use(express.text({}));
+app.use(express.urlencoded({ extended: true }));
 export const server = createServer(app);
 
 export function startServer() {

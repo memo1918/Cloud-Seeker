@@ -1,3 +1,4 @@
+[
 {
   "name": "Compute",
   "icon": "Computer",
@@ -7,15 +8,19 @@
       "name": "aws",
       "columns": {
         "cores": {
-          "path": "attributes.vcpu",
-          "conversion": {}
-        },
-        "storage": {
-          "path": "attributes.storage",
+          "path": ["attributes","vcpu"],
           "conversion": {}
         },
         "memory": {
-          "path": "attributes.memory",
+          "path": ["attributes","memory"],
+          "conversion": {}
+        },
+        "regionCode": {
+          "path": ["attributes","regionCode"],
+          "conversion": {}
+        },
+        "storage": {
+          "path": ["attributes","storage"],
           "conversion": {}
         }
       }
@@ -23,35 +28,13 @@
     {
       "name": "gcp",
       "columns": {
-        "cores": {
-          "path": "attributes.machineType",
-          "conversion": "/-[1-9]*$/"
-        },
-        "storage": {
-          "path": null,
-          "conversion": "Get it from somewhere else"
-        },
-        "memory": {
-          "path": null,
-          "conversion": {}
-        }
+
       }
     },
     {
       "name": "azure",
       "columns": {
-        "cores": {
-          "path": null,
-          "conversion": {}
-        },
-        "storage": {
-          "path": null,
-          "conversion": {}
-        },
-        "memory": {
-          "path": null,
-          "conversion": {}
-        }
+
       }
     }
   ],
@@ -62,34 +45,107 @@
       "unit": "Cores"
     },
     {
-      "name": "storage",
+      "name": "regionCode",
+      "options": [],
+      "unit": "text"
+    },
+    {
+      "name": "memory",
       "options": [],
       "unit": "GB"
     },
     {
-      "name": "memory",
+      "name": "storage",
       "options": [],
       "unit": "GB"
     }
   ],
   "discovery": {
     "aws": {
-      "key": "productFamily",
+      "key": ["productFamily"],
       "value": [
         "Compute Instance"
       ]
     },
     "gcp": {
-      "key": "productFamily",
+      "key": ["productFamily"],
       "value": [
         "Compute Instance"
       ]
     },
     "azure": {
-      "key": "productFamily",
+      "key": ["productFamily"],
       "value": [
         "Compute"
       ]
+     }
+    }
+  },
+
+  {
+  "name": "Storage",
+  "icon": "Storage",
+  "description": "test",
+  "vendors": [
+    {
+      "name": "aws",
+      "columns": {
+        "regionCode": {
+          "path": ["attributes","regionCode"],
+          "conversion": {}
+        },
+        "storageClass": {
+          "path": ["attributes","storageClass"],
+          "conversion": {}
+        }
+
+      }
+    },
+    {
+      "name": "gcp",
+      "columns": {
+
+      }
+    },
+    {
+      "name": "azure",
+      "columns": {
+
+      }
+    }
+  ],
+  "fields": [
+    {
+      "name": "regionCode",
+      "options": [],
+      "unit": ""
+    },
+    {
+      "name": "storageClass",
+      "options": [],
+      "unit": ""
+    }
+  ],
+  "discovery": {
+    "aws": {
+      "key": ["productFamily"],
+      "value": [
+        "Storage"
+      ]
+    },
+    "gcp": {
+      "key": ["productFamily"],
+      "value": [
+        "Storage"
+      ]
+    },
+    "azure": {
+      "key": ["productFamily"],
+      "value": [
+        "Storage"
+      ]
     }
   }
-}
+
+
+}]

@@ -1,4 +1,5 @@
 const { resolve } = require("path");
+const path = require("path");
 
 module.exports = {
     entry: "./src/index.ts",
@@ -24,11 +25,13 @@ module.exports = {
                 test: /\.js$/, // (?<!\.test)\.m?js$ to exclude tests
                 resolve: {
                     fullySpecified: false // resolves .mjs and .js files without specifying the whole path
-                }
+                },
+                exclude: [path.resolve("./test")]
             },
             {
                 test: /\.ts$/,
-                use: ["ts-loader"]
+                use: ["ts-loader"],
+                exclude: [path.resolve("./test")]
             }
         ]
     },

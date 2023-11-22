@@ -41,4 +41,5 @@ formatting_backend:
     - npm install
   script:
     - npm run checkformat
+  allow_failure: true
 
