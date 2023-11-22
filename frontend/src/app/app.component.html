@@ -5,6 +5,12 @@
   <!-- showcasing currently selected category -->
   <span>{{"Category: " + this.categoryService.selectedCategory?.name}}</span>
 </div>
-<app-category></app-category>
-<app-comparison class="font"></app-comparison>
-<app-instance-configuration-dialog />
+<ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
+  <app-category></app-category>
+  <app-instance-configuration-dialog />
+  <a (click)="routingService.setDestination('/comparison')">Cart</a>
+</ng-container>
+<ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
+  <app-comparison class="font"></app-comparison>
+  <a (click)="routingService.setDestination('/')">Home</a>
+</ng-container>

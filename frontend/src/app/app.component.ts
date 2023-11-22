@@ -1,6 +1,7 @@
-import {Component} from '@angular/core';
-import {APIService} from "./api.service";
-import {CategoryService} from "./category/category.service";
+import { Component } from "@angular/core";
+import { APIService } from "./api.service";
+import { CategoryService } from "./category/category.service";
+import { RoutingService } from "./routing.service";
 
 @Component({
     selector: 'app-root',
@@ -10,7 +11,7 @@ import {CategoryService} from "./category/category.service";
 export class AppComponent {
     title: string = 'frontend';
 
-    constructor(public api: APIService, public categoryService: CategoryService) {
+  constructor(public api: APIService, public categoryService: CategoryService, public routingService: RoutingService) {
         this.api.loadCounter();
     }
 }
