@@ -22,6 +22,11 @@ import {MatRippleModule} from "@angular/material/core";
 import { DropdownRegulatorComponent } from './filter/dropdown-regulator/dropdown-regulator.component';
 import { RadioRegulatorComponent } from './filter/radio-regulator/radio-regulator.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import { MatButtonModule } from "@angular/material/button";
+import { PreviewPanelComponent } from "./previewpanel/preview-panel.component";
+import { MatCardModule } from "@angular/material/card";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatCheckboxModule } from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -33,7 +38,8 @@ import {MatGridListModule} from "@angular/material/grid-list";
     FilterComponent,
     NumberRegulatorComponent,
     DropdownRegulatorComponent,
-    RadioRegulatorComponent
+    RadioRegulatorComponent,
+    PreviewPanelComponent
   ],
     imports: [
         BrowserModule,
@@ -49,7 +55,11 @@ import {MatGridListModule} from "@angular/material/grid-list";
         FormsModule,
         MatSliderModule,
         MatRippleModule,
-        MatGridListModule
+        MatGridListModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatCheckboxModule
     ],
   providers: [],
   bootstrap: [AppComponent]
