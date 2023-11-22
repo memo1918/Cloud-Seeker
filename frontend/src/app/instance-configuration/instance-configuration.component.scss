@@ -1,0 +1,61 @@
+.field-display {
+  display: flex;
+  align-items: first;
+
+  > * {
+    padding: 5px;
+  }
+}
+
+.divider {
+  //margin: 10px 5px;
+}
+
+.notes-input, .notes-full-width, .instance-count-input {
+  width: 100%;
+}
+
+.instance-count-full-width {
+  width: inherit;
+  max-width: fit-content;
+}
+
+.unit-display {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  align-content: flex-start;
+  gap: 5px;
+
+  * {
+    flex: 1;
+  }
+}
+
+.dialog-section {
+  padding: 20px;
+}
+
+.final-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+
+}
+
+.dialog-buttons {
+  //display: inline-block;
+  display: flex;
+  gap: 5px;
+  width: max-content;
+
+  button {
+    //display: inline;
+    //word-break-inside: keep-all;
+    //word-break: keep-all;
+    //break-inside: avoid;
+    width: max-content;
+  }
+}
