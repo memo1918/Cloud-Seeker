@@ -47,6 +47,6 @@ describe('APIService', () => {
         spyOn(window, 'fetch').and.resolveTo(okCategory);
         expect(service.categories).toEqual([]);
         await service.loadCategories();
-        expect(service.categories).toEqual(SAMPLE_CATEGORIES);
+        expect(service.categories).toEqual(SAMPLE_CATEGORIES as any);
     });
 });
