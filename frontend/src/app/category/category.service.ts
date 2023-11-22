@@ -8,17 +8,20 @@ import {BehaviorSubject} from "rxjs";
   providedIn: 'root'
 })
 export class CategoryService {
-  selectedIndex: number = 0;
-  private selectedCategory$ = new BehaviorSubject<Category | null>(null)
 
-  constructor(public api: APIService) {
-    this.api.loadCategories();
-    this.setCategory(this.getCategories()[0]);
-  }
 
   getCategories() {
     return this.api.categories;
   }
+    selectedIndex: number = 0;
+  // selectedCategory: Category | undefined;
+  private selectedCategory$ = new BehaviorSubject<Category | null>(null);
+
+  constructor(public api: APIService) {
+        this.api.loadCategories();
+    this.setCategory(this.getCategories()[0]);
+    }
+
 
   onTabChange(tabChangeEvent: MatTabChangeEvent) {
     this.selectedIndex = tabChangeEvent.index;
@@ -32,5 +35,4 @@ export class CategoryService {
   setCategory(selectedCategory: Category) {
     this.selectedCategory$.next(selectedCategory);
   }
-
 }

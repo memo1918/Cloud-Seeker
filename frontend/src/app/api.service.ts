@@ -1,5 +1,7 @@
-import {Injectable} from '@angular/core';
-import {Category} from "./category/models/Category";
+import { Injectable } from "@angular/core";
+import { Category } from "./category/models/Category";
+import { InstanceComparisonResponse } from "./instance-preview/models/instance-comparison-response";
+
 
 @Injectable({
     providedIn: 'root'
@@ -35,5 +37,16 @@ export class APIService {
         } catch (err) {
             console.error(err);
         }
+    }
+
+  public async loadInstances(categoryName: string) {
+    try {
+      let response = await fetch(`${this.baseLocation}/categories/instancecomparisons?categoryname=${categoryName}`);
+      let { data }: InstanceComparisonResponse = await response.json();
+      return data.InstanceComparisons;
+    } catch (err) {
+      console.error(err);
+      return [];
+    }
     }
 }
