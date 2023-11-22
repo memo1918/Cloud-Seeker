@@ -12,31 +12,29 @@ export const collectionName = "services";
 
 export async function findServices(client: MongoClient, sku: string[]) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
-    console.time("findServices" + sku.join());
-    // let result= await serviceCollection.find({ sku: { $in: sku } }).toArray();
+    // console.time("findServices" + sku.join());
     let result = await Promise.all(
         sku.map(async (i) => {
-            const query = [
-                {
-                    $match: {
-                        $text: {
-                            $search: i
-                        }
-                    }
-                },
-                {
-                    $match: {
-                        sku: i
-                    }
-                }
-            ];
+            // const query = [
+            //     {
+            //         $match: {
+            //             $text: {
+            //                 $search: i
+            //             }
+            //         }
+            //     },
+            //     {
+            //         $match: {
+            //             sku: i
+            //         }
+            //     }
+            // ];
 
-            return (await serviceCollection.aggregate(query).toArray()) as any[];
+            return (await serviceCollection.find({ sku: i }).toArray()) as any[];
         })
     );
-    console.timeEnd("findServices" + sku.join());
+    // console.timeEnd("findServices" + sku.join());
     return result.flat();
-    // return serviceCollection.find()
 }
 
 export async function getUniqueVendors(client: MongoClient) {
@@ -50,6 +48,7 @@ export async function dropServices(client: MongoClient) {
 
 export async function createServicesIndex(client: MongoClient) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
+    await serviceCollection.createIndex({ sku: 1 });
     return serviceCollection.createIndex({
         sku: "text"
     });
