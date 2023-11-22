@@ -21,36 +21,74 @@ import { UnitDisplayComponent } from "./instance-configuration/unit-display/unit
 import { FieldDisplayComponent } from "./instance-configuration/field-display/field-display.component";
 import { DialogComponent } from "./instance-configuration/dialog/dialog.component";
 import { MatDialogModule } from "@angular/material/dialog";
+import { RemoveInstanceComponent } from "./remove-instance/remove-instance.component";
+import { HeaderComponent } from "./header/header.component";
+import { FilterComponent } from "./filter/filter.component";
+import { NumberRegulatorComponent } from "./filter/number-regulator/number-regulator.component";
+import { DropdownRegulatorComponent } from "./filter/dropdown-regulator/dropdown-regulator.component";
+import { RadioRegulatorComponent } from "./filter/radio-regulator/radio-regulator.component";
+import { PreviewPanelComponent } from "./previewpanel/preview-panel.component";
+import { InstancePreviewComponent } from "./instance-preview/instance-preview.component";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatListModule } from "@angular/material/list";
+import { MatSliderModule } from "@angular/material/slider";
+import { MatRippleModule } from "@angular/material/core";
+import { MatGridListModule } from "@angular/material/grid-list";
+import { MatCardModule } from "@angular/material/card";
+import { MatSidenavModule } from "@angular/material/sidenav";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatRadioModule } from "@angular/material/radio";
 
 describe("AppComponent", () => {
     beforeEach(() => TestBed.configureTestingModule({
-            declarations: [
-                CategoryComponent,
-                AppComponent,
-                ComparisonComponent,
-                InstanceConfigurationComponent,
-                UnitNumberComponent,
-                UnitDropdownComponent,
-                UnitDivisionComponent,
-                UnitDisplayComponent,
-              FieldDisplayComponent,
-              DialogComponent
-            ],
-            imports: [
-                BrowserModule,
-                MatExpansionModule,
-                BrowserAnimationsModule,
-                MatIconModule,
-                MatTabsModule,
-                MatTableModule,
-                MatInputModule,
-                MatDividerModule,
-                ReactiveFormsModule,
-                FormsModule,
-                MatButtonModule,
-              MatSelectModule,
-              MatDialogModule
-            ]
+      declarations: [
+        AppComponent,
+        CategoryComponent,
+        ComparisonComponent,
+        RemoveInstanceComponent,
+        HeaderComponent,
+        FilterComponent,
+        NumberRegulatorComponent,
+        DropdownRegulatorComponent,
+        RadioRegulatorComponent,
+        PreviewPanelComponent,
+        InstancePreviewComponent,
+        InstanceConfigurationComponent,
+        FieldDisplayComponent,
+        UnitNumberComponent,
+        UnitDropdownComponent,
+        UnitDivisionComponent,
+        UnitDisplayComponent,
+        DialogComponent
+      ],
+      imports: [
+        BrowserModule,
+        MatExpansionModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatTabsModule,
+        MatTableModule,
+        MatToolbarModule,
+        MatBadgeModule,
+        MatListModule,
+        MatInputModule,
+        MatSliderModule,
+        MatRippleModule,
+        MatGridListModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatCheckboxModule,
+        MatDividerModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        MatDialogModule,
+        MatChipsModule,
+        MatRadioModule,
+        FormsModule
+      ],
         }
     ).compileComponents());
 
