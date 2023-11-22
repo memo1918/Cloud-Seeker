@@ -1,24 +1,19 @@
-import { MatTabChangeEvent } from "@angular/material/tabs";
 import { APIService } from "../api.service";
-import { Injectable, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { CategoryService } from "../category/category.service";
 import { Category } from "../category/models/Category";
+import { InstanceComparison } from "./models/instance-comparison";
 
 
 @Injectable({
     providedIn: 'root'
 })
-export class InstancePreviewService implements OnInit {
+export class InstancePreviewService {
     title = "instance-preview service";
-    // selected category name from where I get the instances using that name
-    loadedInstances: any[] = [];
+    loadedInstances: InstanceComparison[] = [];
 
     constructor(public api: APIService, public categoryService : CategoryService) {
         this.categoryService.getCategory().subscribe((category) => this.categoryChanged(category));
-    }
-
-    ngOnInit() {
-
     }
 
     private async categoryChanged(category: Category | null) {

@@ -2,13 +2,13 @@
     <h2>{{ instanceService.title }}</h2>
     <div *ngIf="instanceService.loadedInstances">
         <div *ngFor="let instance of instanceService.loadedInstances">
-            <div> {{ instance.name }}</div>
-            <!--<div>
-            <h4>Price:</h4>
-                <div *ngFor="let priceEntry of instance.price | keyvalue">
-                    <div>{{ priceEntry.key }}: {{ priceEntry.value.value }} {{ priceEntry.value.unit }}</div>
-                </div>
-            </div>-->
+          <div><b>{{ instance.name }}</b></div>
+          <div class="fieldContainer">
+              <div *ngFor="let entry of toPairs(instance.fields); index as i" class="fieldItem" [attr.data-column]="i+1">
+                <div>{{ entry[0] }}</div>
+                <div class="instanceValue"><b>{{ entry[1].value }}</b></div>
+              </div>
+          </div>
         </div>
     </div>
 </div>

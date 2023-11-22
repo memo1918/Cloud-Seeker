@@ -1,0 +1,20 @@
+.fieldContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  justify-content: flex-start;
+  align-items: baseline;
+  gap: 5px;
+  counter-set: cloudcolumn 0;
+
+  .fieldItem {
+    counter-increment: cloudcolumn 1;
+    flex: 1;
+    border: 2px solid #000000;
+    padding: 10px;
+  }
+
+  div {
+    margin-bottom: 5px;
+  }
+}

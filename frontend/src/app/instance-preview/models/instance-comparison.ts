@@ -1,4 +1,4 @@
-export interface Instancecomparison {
+export interface InstanceComparison {
     name: string;
     price: {
         [vendor: string]: { value: number | string; unit: string };
