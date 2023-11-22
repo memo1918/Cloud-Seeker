@@ -50,6 +50,10 @@ describe("MappingService class test", () => {
         pushInstanceComparison(instanceComparison: InstanceComparison): Promise<void> {
             return Promise.resolve(undefined);
         }
+
+        createInstanceComparisonIndex(): Promise<void> {
+            return Promise.resolve(undefined);
+        }
     }
 
     class MockReadCSV implements CSVReader {
