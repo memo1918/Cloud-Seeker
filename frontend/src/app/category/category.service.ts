@@ -17,9 +17,6 @@ export class CategoryService {
         this.setCategory(this.getCategories()[0]);
     }
 
-    // setSelectedCategory(value: Category | undefined) {
-    //     this.selectedCategory = value;
-    // }
 
     getCategories() {
         return this.api.categories;

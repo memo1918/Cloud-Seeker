@@ -1,7 +1,7 @@
 [
   {
     "name": "Compute",
-    "icon": "Computer",
+    "icon": "computer",
     "description": "test",
     "vendors": [
       {
@@ -79,37 +79,37 @@
       {
         "name": "regionCode",
         "options": [],
-        "unit": "text",
+        "unit": "",
         "type": "dropdown"
       },
       {
         "name": "gpuMemory",
         "options": [],
-        "unit": "GB",
+        "unit": "",
         "type": "number"
       },
       {
         "name": "clockSpeed",
         "options": [],
-        "unit": "GHz",
+        "unit": "",
         "type": "number"
       },
       {
         "name": "operatingSystem",
         "options": [],
-        "unit": "text",
+        "unit": "",
         "type": "dropdown"
       },
       {
         "name": "memory",
         "options": [],
-        "unit": "GB",
+        "unit": "",
         "type": "number"
       },
       {
         "name": "storage",
         "options": [],
-        "unit": "GB",
+        "unit": "",
         "type": "number"
       }
     ],
@@ -142,7 +142,7 @@
   },
   {
     "name": "Storage",
-    "icon": "Storage",
+    "icon": "storage",
     "description": "test",
     "vendors": [
       {
@@ -225,34 +225,43 @@
         "name": "aws",
         "columns": {
           "cores": {
-            "path": ["attributes","vcpu"],
+            "path": [
+              "attributes",
+              "vcpu"
+            ],
             "conversion": {}
           },
           "memory": {
-            "path": ["attributes","memory"],
+            "path": [
+              "attributes",
+              "memory"
+            ],
             "conversion": {}
           },
           "storage": {
-            "path": ["attributes","storage"],
+            "path": [
+              "attributes",
+              "storage"
+            ],
             "conversion": {}
           },
           "location": {
-            "path": ["attributes","location"],
+            "path": [
+              "attributes",
+              "location"
+            ],
             "conversion": {}
           }
-
         }
       },
       {
         "name": "gcp",
         "columns": {
-
         }
       },
       {
         "name": "azure",
         "columns": {
-
         }
       }
     ],
@@ -260,7 +269,7 @@
       {
         "name": "cores",
         "options": [],
-        "unit": "cores",
+        "unit": "Cores",
         "type": "number"
       },
       {
@@ -284,19 +293,25 @@
     ],
     "discovery": {
       "aws": {
-        "key": ["service"],
+        "key": [
+          "service"
+        ],
         "value": [
           "AmazonRDS"
         ]
       },
       "gcp": {
-        "key": ["service"],
+        "key": [
+          "service"
+        ],
         "value": [
           "Cloud SQL"
         ]
       },
       "azure": {
-        "key": ["productFamily"],
+        "key": [
+          "productFamily"
+        ],
         "value": [
           "Databases"
         ]

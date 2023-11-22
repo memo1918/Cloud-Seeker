@@ -2,7 +2,6 @@ import { afterEach, beforeEach, describe, expect, test } from "@jest/globals";
 import { MongoMemoryServer } from "mongodb-memory-server";
 import { MongoClient } from "mongodb";
 import { IInstanceComparison } from "../../../src/db/models/instancecomparison";
-import exp from "constants";
 
 let dbName = "cloud-seeker";
 let collectionName = "instancecomparison";
@@ -53,12 +52,12 @@ describe("instancecomparison db", () => {
 
     test("drop collection instancomparisons", async () => {
         const { setURI } = await import("../../../src/db");
-        const { dropInstanceComparion } = await import("../../../src/db/models/instancecomparison");
+        const { dropInstanceComparison } = await import("../../../src/db/models/instancecomparison");
         setURI(mongoServer.getUri());
 
         let client = await new MongoClient(mongoServer.getUri()).connect();
 
-        await expect(dropInstanceComparion(client)).resolves.not.toThrow();
+        await expect(dropInstanceComparison(client)).resolves.not.toThrow();
 
         let collections = (await client.db(dbName).collections()).map((c) => c.collectionName);
 

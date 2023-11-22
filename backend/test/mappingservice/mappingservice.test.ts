@@ -1,20 +1,19 @@
-import { describe, expect, test, jest } from "@jest/globals";
+import { describe, expect, jest, test } from "@jest/globals";
 import { MappingService } from "../../src/mappingservice/mappingservice";
 import { CategoryProvider } from "../../src/categories/categoryprovider";
 import { MappingDB } from "../../src/mappingservice/mappingdb";
 import { CsvData, CSVReader } from "../../src/csvimport/CSVReader";
 import { Document, WithId } from "mongodb";
 import {
-    SAMPLE_CATEGORY,
-    SAMPLE_SKUARR,
     SAMPE_INSTANCE,
     SAMPLE_ATTRIBUTES,
-    SAMPLE_CATEGORY_TEMPLATE
+    SAMPLE_CATEGORY,
+    SAMPLE_CATEGORY_TEMPLATE,
+    SAMPLE_SKUARR
 } from "./fixtures";
 import { Category } from "../../src/interfaces/category.interface";
 import { InstanceComparison } from "../../src/interfaces/instancecomparison.interface";
 import { Instance } from "../../src/interfaces/instance.interface";
-import { getCategoryTemplate } from "../../src/categories/categorytemplateread";
 
 describe("MappingService class test", () => {
     class MockCategoryProvider extends CategoryProvider {
@@ -49,6 +48,10 @@ describe("MappingService class test", () => {
         }
 
         pushInstanceComparison(instanceComparison: InstanceComparison): Promise<void> {
+            return Promise.resolve(undefined);
+        }
+
+        createInstanceComparisonIndex(): Promise<void> {
             return Promise.resolve(undefined);
         }
     }

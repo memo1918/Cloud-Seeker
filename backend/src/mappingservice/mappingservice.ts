@@ -15,6 +15,7 @@ export class MappingService {
 
     async start() {
         await this.mappingdb.dropInstanceComparison();
+        await this.mappingdb.createInstanceComparisonIndex();
 
         let skuArr: string[];
 
@@ -88,6 +89,8 @@ export class MappingService {
                     let categoryField = category.fields.find((field) => field.name === columnName);
                     categoryField?.options?.push(value);
                     attributes[columnName] = value;
+                } else {
+                    attributes[columnName] = "NA";
                 }
             }
         }
