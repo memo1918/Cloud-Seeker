@@ -8,6 +8,7 @@ export class ConfigurationService {
 
   public instanceComparison: InstanceComparison = {
         "name": {aws: "awsname",gcp: "gcpname",azure: "azurename"},
+        "categoryName": "dummycategory",
         "price": {
             "aws": {
                 "value": "0.0036000000",
