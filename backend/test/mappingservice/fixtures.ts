@@ -185,7 +185,7 @@ export const SAMPLE_ATTRIBUTES: Attributes = {
 };
 
 export const SAMPLE_INSTANCECOMPARISON: InstanceComparison = {
-    name: "Instancename",
+    name: { aws: "Instancename", gcp: "Instancename", azure: "Instancename" },
     categoryName: "Compute",
     price: {
         aws: {

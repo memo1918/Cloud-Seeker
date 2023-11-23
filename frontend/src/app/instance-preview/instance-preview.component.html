@@ -1,7 +1,7 @@
 <div class="instance-preview-container">
   <div *ngIf="instanceService.loadedInstances">
     <div *ngFor="let instance of instanceService.loadedInstances">
-      <div><b>{{ instance.name }}</b></div>
+      <div><b>{{ valuesIn(instance.name).join(" / ") }}</b></div>
       <div class="fieldContainer">
         <div *ngFor="let entry of toPairs(instance.fields); index as i" class="fieldItem" [attr.data-column]="i+1">
           <div>{{ entry[0] }}</div>

@@ -1,8 +1,8 @@
 import { Component } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
-import { InstanceComparison } from "../instance-comparison";
 import { InstanceConfigurationComponent } from "../instance-configuration.component";
 import { INSTANCE_COMPARISON_FIXTURE } from "../../fixtures/instance-comparison.fixture";
+import { InstanceComparison } from "src/app/models/instance-comparison";
 
 @Component({
   selector: "app-instance-configuration-dialog",

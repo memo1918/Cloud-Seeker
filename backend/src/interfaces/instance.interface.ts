@@ -5,6 +5,7 @@ import { Price } from "./price.interface";
 export interface Instance extends WithId<Document> {
     productHash: string;
     sku: string;
+    service: string;
     vendorName: string;
     productFamily: string;
     attributes: Attributes;

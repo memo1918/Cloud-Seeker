@@ -103,7 +103,7 @@ export class MappingService {
 
     async createInstanceCompare(instanceArr: Instance[], attributes: Attributes, category: Category) {
         let newInstanceComparison: InstanceComparison = {
-            name: instanceArr[0].productFamily, //TODO: Name should be proper
+            name: {},
             categoryName: category.name,
             price: {},
             fields: {},
@@ -111,6 +111,8 @@ export class MappingService {
         } as InstanceComparison;
 
         for (let instance of instanceArr) {
+            newInstanceComparison.name[instance.vendorName] = instance.service;
+
             //TODO There is going to be a "service", so we can pass the instance and
             // get the correct price and unit.
             newInstanceComparison.price[instance.vendorName] = {
