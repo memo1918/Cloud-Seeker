@@ -28,7 +28,6 @@ async function start() {
         });
 }
 
-start()
-    .then(() => {
-        console.log({ message: "startup complete" });
-    });
+start().then(() => {
+    console.log({ message: "startup complete" });
+});
