@@ -11,6 +11,7 @@ import { downloadDump } from "./downloaddump";
 import { removeFile } from "./removefile";
 import { extractDump } from "./extractdump";
 import { shouldimportdump } from "./shouldimportdump";
+import { countlines } from "./countlines";
 
 export async function loadinfracostdumpindb() {
     if (!(await shouldimportdump())) {
@@ -32,6 +33,9 @@ export async function loadinfracostdumpindb() {
         await dropServices(client);
         await createServicesIndex(client);
     });
+
+    let numberOfRows = await countlines(extractionFile);
+    console.log({ message: `inserting ${numberOfRows} entries into the database` });
 
     // number of rows inserted
     let rows = 0;
@@ -59,8 +63,9 @@ export async function loadinfracostdumpindb() {
                         return undefined as unknown as DumpData;
                     })
                     .filter((data) => data != undefined);
-                rows += dump.length;
                 await insertServicesData(client, dump);
+                rows += dump.length;
+                console.log({ message: `inserted ${rows} of ${numberOfRows} rows` });
             } catch (e) {
                 console.error(e);
                 break;

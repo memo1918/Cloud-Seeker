@@ -4,7 +4,7 @@ import { collectionName, dbName, IService } from "../../src/db/models/services";
 import { afterEach, beforeEach, describe, expect, jest, test } from "@jest/globals";
 import { getCollection } from "../../src/db/schema";
 import { shouldimportdump } from "../../src/infracost/shouldimportdump";
-import { execQuery } from "../../src/db";
+import { execQuery, setupDB } from "../../src/db";
 
 jest.mock("../../src/db/schema");
 jest.mock("../../src/db");
@@ -32,8 +32,10 @@ describe("function to decide if the db dum should be imported", () => {
                 setTimeout(resolve, 500);
             });
             await mongoServer.ensureInstance();
+
             client = await new MongoClient(mongoServer.getUri()).connect();
             collection = await client.db(dbName).createCollection(collectionName);
+            setupDB(mongoServer.getUri());
         } catch (e) {}
 
         (execQuery as jest.Mock<any>).mockImplementation((cb: (client: MongoClient) => void) => {

@@ -109,4 +109,76 @@ describe("MappingService class test", () => {
             instance.createInstanceCompare([SAMPE_INSTANCE, SAMPE_INSTANCE], SAMPLE_ATTRIBUTES, SAMPLE_CATEGORY)
         ).not.toThrowError();
     });
+
+    test("that mapping services are run correctly", async () => {
+        jest.resetModules();
+        let startFn = jest.fn<() => Promise<void>>().mockResolvedValue(undefined);
+
+        jest.mock("../../src/categories/categoryprovider", () => {
+            const module: typeof import("../../src/categories/categoryprovider") = {
+                CategoryProvider: MockCategoryProvider
+            };
+            return {
+                __esModule: true,
+                ...module,
+                default: jest.fn().mockReturnValue({
+                    use: jest.fn().mockReturnThis()
+                })
+            };
+        });
+        jest.mock("../../src/mappingservice/mappingdb", () => {
+            const module: typeof import("../../src/mappingservice/mappingdb") = {
+                MappingMongoDB: MockMappingDB
+            };
+            return {
+                __esModule: true,
+                ...module,
+                default: jest.fn().mockReturnValue({
+                    use: jest.fn().mockReturnThis()
+                })
+            };
+        });
+        jest.mock("../../src/csvimport/readcsv", () => {
+            const module: typeof import("../../src/csvimport/readcsv") = {
+                // @ts-ignore
+                ReadCSV: class ReadCSV implements CSVReader {
+                    constructor(
+                        private csvFilePath: string,
+                        private lineCount = 1
+                    ) {
+                    }
+
+                    // readLine = jest.fn();
+                }
+            };
+            return {
+                __esModule: true,
+                ...module,
+                default: jest.fn().mockReturnValue({
+                    use: jest.fn().mockReturnThis()
+                })
+            };
+        });
+        jest.mock("../../src/mappingservice/mappingservice", () => {
+            const module: typeof import("../../src/mappingservice/mappingservice") = {
+                // @ts-ignore
+                MappingService: class MappingService {
+                    start = startFn;
+                }
+            };
+            return {
+                __esModule: true,
+                ...module,
+                default: jest.fn().mockReturnValue({
+                    use: jest.fn().mockReturnThis()
+                })
+            };
+        });
+        const { runMappingService } = await import("../../src/mappingservice/runmappingservice");
+        await expect(runMappingService()).resolves.toBe(undefined);
+
+        expect(startFn).toBeCalled();
+
+        jest.resetModules();
+    });
 });

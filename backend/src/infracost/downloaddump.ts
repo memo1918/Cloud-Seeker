@@ -3,7 +3,12 @@ import * as https from "https";
 
 export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
     return new Promise<void>((resolve, reject) => {
-        console.log({ message: "downloading dump to file", dumpUrl, targetFilePath, __filename });
+        console.log({
+            message: "downloading dump to file. this might take a while go get some coffee",
+            dumpUrl,
+            targetFilePath,
+            __filename
+        });
         const file = fs.createWriteStream(targetFilePath);
         const request = https
             .get(dumpUrl, function (response) {

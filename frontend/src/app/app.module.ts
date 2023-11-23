@@ -41,7 +41,6 @@ import { MatCardModule } from "@angular/material/card";
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 
-
 @NgModule({
   declarations: [
       AppComponent,
@@ -85,6 +84,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
         ReactiveFormsModule,
         MatSelectModule,
         MatDialogModule,
+      MatIconModule,
         MatChipsModule,
         MatRadioModule,
         FormsModule
