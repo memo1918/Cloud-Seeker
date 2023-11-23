@@ -1,5 +1,5 @@
 export interface InstanceComparison {
-    name: string;
+    name: { [vendor: string]: string };
     categoryName: string;
     price: {
         [vendor: string]: { value: number | string; unit: string };

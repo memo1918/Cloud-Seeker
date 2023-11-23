@@ -3,7 +3,8 @@ import { FormControl, Validators } from "@angular/forms";
 import { Unit } from "../pricing/unit";
 import { Units } from "../pricing/units";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { InstanceComparison } from "./instance-comparison";
+import { valuesIn } from "lodash";
+import { InstanceComparison } from "../models/instance-comparison";
 
 @Component({
   selector: "app-instance-configuration",
@@ -90,4 +91,6 @@ export class InstanceConfigurationComponent {
   onClose() {
     this.dialogRef.close(null);
   }
+
+    protected readonly valuesIn = valuesIn;
 }

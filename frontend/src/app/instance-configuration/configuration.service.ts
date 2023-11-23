@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { InstanceComparison } from "./instance-comparison";
+import { InstanceComparison } from "../models/instance-comparison";
 
 @Injectable({
     providedIn: "root"
@@ -7,7 +7,7 @@ import { InstanceComparison } from "./instance-comparison";
 export class ConfigurationService {
 
   public instanceComparison: InstanceComparison = {
-        "name": "Storage",
+        "name": {aws: "awsname",gcp: "gcpname",azure: "azurename"},
         "price": {
             "aws": {
                 "value": "0.0036000000",

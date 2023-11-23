@@ -2,7 +2,7 @@ import { APIService } from "../api.service";
 import { Injectable } from "@angular/core";
 import { CategoryService } from "../category/category.service";
 import { Category } from "../category/models/Category";
-import { InstanceComparison } from "./models/instance-comparison";
+import { InstanceComparison } from "../models/instance-comparison";
 
 
 @Injectable({

@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
 import { InstancePreviewService } from "./instance-preview.service";
-import { toPairs } from "lodash";
+import { toPairs, valuesIn } from "lodash";
 
 @Component({
   selector: "app-instance-preview",
@@ -14,6 +14,7 @@ export class InstancePreviewComponent {
   }
 
   protected readonly toPairs = toPairs;
+    protected readonly valuesIn = valuesIn;
 }
 
 /*

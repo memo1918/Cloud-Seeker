@@ -4,13 +4,7 @@ import { Category } from "../../interfaces/category.interface";
 import { InstanceComparison } from "../../interfaces/instancecomparison.interface";
 import { object } from "joi";
 
-export interface IInstanceComparison extends WithId<Document> {
-    name: string;
-    categoryName: string;
-    price: {};
-    fields: {};
-    skus: string[];
-}
+export interface IInstanceComparison extends WithId<Document>, InstanceComparison {}
 
 const dbName = "cloud-seeker";
 const collectionName = "instancecomparison";
@@ -34,7 +28,10 @@ export async function createInstanceComparisonIndex(client: MongoClient) {
     await instanceComparisonCollection.createIndex({ categoryName: 1 });
 }
 
-export async function removeInstanceComparison(client: MongoClient, instanceComparison: string[]) {
+export async function removeInstanceComparison(
+    client: MongoClient,
+    instanceComparison: { [vendor: string]: string }[]
+) {
     let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
     await instanceComparisonCollection.deleteMany({ $or: [...instanceComparison.map((name) => ({ name }))] });
     return;
