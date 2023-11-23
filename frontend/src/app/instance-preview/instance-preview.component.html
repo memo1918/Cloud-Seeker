@@ -1,5 +1,4 @@
 <div class="instance-preview-container">
-  <h2>{{ instanceService.title }}</h2>
   <div *ngIf="instanceService.loadedInstances">
     <div *ngFor="let instance of instanceService.loadedInstances">
       <div><b>{{ instance.name }}</b></div>

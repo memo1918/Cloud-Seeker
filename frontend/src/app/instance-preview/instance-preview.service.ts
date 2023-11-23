@@ -22,5 +22,6 @@ export class InstancePreviewService {
     }
     this.loadedInstances = await this.api.loadInstances(category.name);
   }
+
 }
 
