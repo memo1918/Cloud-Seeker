@@ -28,4 +28,7 @@ async function start() {
         });
 }
 
-start();
+start()
+    .then(() => {
+        console.log({ message: "startup complete" });
+    });
