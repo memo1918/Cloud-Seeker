@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { ShoppingCartService } from "../shopping-cart.service";
+import {InstanceComparison} from "../models/instance-comparison";
 
-import {CartItem} from "./cart-item";
+
 @Component({
   selector: 'app-comparison',
   templateUrl: './comparison.component.html',
@@ -16,7 +17,7 @@ export class ComparisonComponent {
     this.shoppingCart.getItemsObserver().subscribe(items=>this.newShoppingCartItems(items))
   }
   protected readonly keys = Object.keys;
-  private newShoppingCartItems(items: CartItem[]){
+  private newShoppingCartItems(items: InstanceComparison[]){
     if(items.length == 0){
       return;
     }
@@ -27,9 +28,9 @@ export class ComparisonComponent {
       let lowestPrice: number = Number.POSITIVE_INFINITY;
       let lowestVendor: string = "";
       for (const vendor of this.vendors) {
-        if (item.price[vendor].value < lowestPrice){
+        if (+item.price[vendor].value < lowestPrice){
           lowestVendor = vendor;
-          lowestPrice = item.price[vendor].value;
+          lowestPrice = +item.price[vendor].value;
         }
       }
       this.selectedOption[i] = lowestVendor;
@@ -44,7 +45,7 @@ export class ComparisonComponent {
       for (let i = 0; i < this.selectedOption.length; i++) {
       const selected = this.selectedOption[i];
       const item = cartItems[i];
-      endPrice += item.price[selected].value;
+      endPrice += +item.price[selected].value;
     }
       return endPrice;
   }
