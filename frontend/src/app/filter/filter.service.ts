@@ -11,7 +11,6 @@ export class FilterService {
   public currentCategoryFields: Field[] | undefined;
 
   constructor(public categoryService: CategoryService) {
-    //this.currentCategoryFields = categoryService.selectedCategory?.fields;
     this.categoryService.getCategory().subscribe((category) => this.categoryChanged(category));
   }
 
@@ -22,11 +21,11 @@ export class FilterService {
     this.currentCategoryFields = category.fields;
   }
 
-  getTypeOfFieldAtIndex(index: number): any {
-    if (this.currentCategoryFields) {
-      if (index >= 0 && index < this.currentCategoryFields.length) {
-        return this.currentCategoryFields[index].type;
-      }
-    }
-  }
+  // getTypeOfFieldAtIndex(index: number): any {
+  //   if (this.currentCategoryFields) {
+  //     if (index >= 0 && index < this.currentCategoryFields.length) {
+  //       return this.currentCategoryFields[index].type;
+  //     }
+  //   }
+  // }
 }

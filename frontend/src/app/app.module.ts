@@ -15,13 +15,14 @@ import {MatBadgeModule} from "@angular/material/badge";
 import {FilterComponent} from './filter/filter.component';
 import {MatListModule} from "@angular/material/list";
 import {MatInputModule} from "@angular/material/input";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSliderModule} from "@angular/material/slider";
 import {NumberRegulatorComponent} from "./filter/number-regulator/number-regulator.component";
 import {MatRippleModule} from "@angular/material/core";
 import { DropdownRegulatorComponent } from './filter/dropdown-regulator/dropdown-regulator.component';
 import { RadioRegulatorComponent } from './filter/radio-regulator/radio-regulator.component';
 import {MatGridListModule} from "@angular/material/grid-list";
+import {MatSelectModule} from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -35,22 +36,24 @@ import {MatGridListModule} from "@angular/material/grid-list";
     DropdownRegulatorComponent,
     RadioRegulatorComponent
   ],
-    imports: [
-        BrowserModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatTabsModule,
-        MatTableModule,
-        MatToolbarModule,
-        MatBadgeModule,
-        MatListModule,
-        MatInputModule,
-        FormsModule,
-        MatSliderModule,
-        MatRippleModule,
-        MatGridListModule
-    ],
+  imports: [
+    BrowserModule,
+    MatExpansionModule,
+    BrowserAnimationsModule,
+    MatIconModule,
+    MatTabsModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatBadgeModule,
+    MatListModule,
+    MatInputModule,
+    FormsModule,
+    MatSliderModule,
+    MatRippleModule,
+    MatGridListModule,
+    MatSelectModule,
+    ReactiveFormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
