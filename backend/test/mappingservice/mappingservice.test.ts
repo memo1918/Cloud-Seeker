@@ -145,8 +145,7 @@ describe("MappingService class test", () => {
                     constructor(
                         private csvFilePath: string,
                         private lineCount = 1
-                    ) {
-                    }
+                    ) {}
 
                     // readLine = jest.fn();
                 }
