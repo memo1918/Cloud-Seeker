@@ -1,7 +1,11 @@
 import { execQuery } from "../db";
 import { findServices } from "../db/models/services";
 import { addCategories, dropCategories } from "../db/models/categories";
-import { addOneInstanceComparison, dropInstanceComparion } from "../db/models/instancecomparison";
+import {
+    addOneInstanceComparison,
+    createInstanceComparisonIndex,
+    dropInstanceComparison
+} from "../db/models/instancecomparison";
 import { Document, WithId } from "mongodb";
 import { Category } from "../interfaces/category.interface";
 import { InstanceComparison } from "../interfaces/instancecomparison.interface";
@@ -13,6 +17,8 @@ export interface MappingDB {
     pushInstanceComparison(instanceComparison: InstanceComparison): Promise<void>;
 
     dropInstanceComparison(): Promise<void>;
+
+    createInstanceComparisonIndex(): Promise<void>;
 }
 
 export class MappingMongoDB implements MappingDB {
@@ -37,7 +43,12 @@ export class MappingMongoDB implements MappingDB {
 
     async dropInstanceComparison() {
         await execQuery(async (client) => {
-            return await dropInstanceComparion(client);
+            return await dropInstanceComparison(client);
+        });
+    }
+    async createInstanceComparisonIndex() {
+        await execQuery(async (client) => {
+            return await createInstanceComparisonIndex(client);
         });
     }
 }

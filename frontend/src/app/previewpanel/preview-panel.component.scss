@@ -1,0 +1,29 @@
+.container {
+  position: relative;
+  text-align: center;
+  color: black;
+  display: flex;
+}
+
+.example-container {
+  position: absolute;
+  display: flex;
+  border-radius: 25px;
+  background-color: #FEF7FF !important;
+  width: 30%;
+  height: 100vh;
+  right: 0;
+  color: black !important;
+}
+
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.closeButton{
+  margin-left: auto;
+  margin-right: 2%;
+}
+

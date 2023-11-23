@@ -1,5 +1,4 @@
-import { MongoMemoryServer } from "mongodb-memory-server";
-import { beforeAll, beforeEach, describe, expect, jest, test } from "@jest/globals";
+import { beforeAll, describe, expect, jest, test } from "@jest/globals";
 import { execQuery } from "../../src/db";
 import { createServicesIndex, dropServices, insertServicesData } from "../../src/db/models/services";
 import { csvTestDbFixtureData, transformedTestDbFixtureData } from "./csvTestDbFixtureData";
@@ -9,6 +8,7 @@ import { downloadDump } from "../../src/infracost/downloaddump";
 import { getDumpUrl } from "../../src/infracost/getdumpurl";
 import { ParseCsvBatch } from "../../src/csvimport/parsecsvbatch";
 import { shouldimportdump } from "../../src/infracost/shouldimportdump";
+import { countlines } from "../../src/infracost/countlines";
 
 jest.mock("../../src/infracost/getdumpurl");
 jest.mock("../../src/infracost/downloaddump");
@@ -17,6 +17,7 @@ jest.mock("../../src/infracost/removefile");
 jest.mock("../../src/infracost/shouldimportdump");
 jest.mock("../../src/db/models/services");
 jest.mock("../../src/db");
+jest.mock("../../src/infracost/countlines");
 
 jest.mock("../../src/csvimport/parsecsvbatch", () => {
     return {
@@ -50,9 +51,7 @@ describe("the dump download and dump import into the db", () => {
         (downloadDump as jest.Mock<any>).mockResolvedValue(undefined);
         (getDumpUrl as jest.Mock<any>).mockResolvedValue(someDummyUrl);
         (shouldimportdump as jest.Mock<any>).mockResolvedValue(true);
-    });
-    beforeEach(() => {
-        jest.clearAllMocks();
+        (countlines as jest.Mock<any>).mockResolvedValue(0);
     });
 
     test("that the dump is successfully inserted into the db", async () => {

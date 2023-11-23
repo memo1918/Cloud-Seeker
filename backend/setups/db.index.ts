@@ -7,7 +7,8 @@ export function setupDbIndexMock() {
             execQuery: jest.fn(async (): Promise<any> => {
                 return null;
             }),
-            setupDB: jest.fn()
+            setupDB: jest.fn(),
+            waitForDB: jest.fn<() => Promise<void>>().mockResolvedValue(undefined)
         };
 
         return {

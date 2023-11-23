@@ -42,3 +42,21 @@ export async function execQuery<T>(command: (client: MongoClient) => Promise<T>,
 export function setupDB(uri = "mongodb://localhost:27017") {
     setURI(uri);
 }
+
+export async function waitForDB() {
+    let available = false;
+    while (!available) {
+        try {
+            await execQuery<void>(async (client) => {
+                try {
+                    await client.db("admin").command({ ping: 1 });
+                    available = true;
+                } catch (e) {
+                    console.log({ message: "no connection available. retrying....", e });
+                }
+            }, 1000);
+        } catch (e) {
+            console.log({ message: "no connection available. retrying....", e });
+        }
+    }
+}

@@ -1,0 +1,14 @@
+<div class="instance-preview-container">
+  <h2>{{ instanceService.title }}</h2>
+  <div *ngIf="instanceService.loadedInstances">
+    <div *ngFor="let instance of instanceService.loadedInstances">
+      <div><b>{{ instance.name }}</b></div>
+      <div class="fieldContainer">
+        <div *ngFor="let entry of toPairs(instance.fields); index as i" class="fieldItem" [attr.data-column]="i+1">
+          <div>{{ entry[0] }}</div>
+          <div class="instanceValue"><b>{{ entry[1].value }}</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

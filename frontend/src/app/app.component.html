@@ -1,18 +1,32 @@
-<div class="primary-background">Visits:
-  <ng-container *ngIf="api.counterLoading">loading...</ng-container>
-  <ng-container *ngIf="!api.counterLoading">{{api.counter + ", "}}</ng-container>
-  <span>{{this.title + ", "}}</span>
-  <!-- showcasing currently selected category -->
-  <span>{{"Category: " + (this.categoryService.getCategory() | async)?.name}}</span>
-  <span>{{" Fields: " + this.filterService.currentCategoryFields}}</span>
-</div>
+
 <app-header></app-header>
-<div class="wrapper">
-  <div class="first">
-    <app-filter></app-filter>
+<app-previewpanel ></app-previewpanel>
+<!--<div class="primary-background">Visits:-->
+
+<!--    <ng-container *ngIf="api.counterLoading">loading...</ng-container>-->
+<!--    <ng-container *ngIf="!api.counterLoading">{{api.counter + ", "}}</ng-container>-->
+<!--    <span>{{this.title + ", "}}</span>-->
+<!--    &lt;!&ndash; showcasing currently selected category &ndash;&gt;-->
+<!--  <span>{{"Category: " + (this.categoryService.getCategory() | async)?.name}}</span>-->
+<!--</div>-->
+<ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
+  <div class="wrapper">
+    <div class="first">
+      <app-filter></app-filter>
+    </div>
+
+    <div class="second">
+      <app-category></app-category>
+      <app-instance-preview></app-instance-preview>
+      <app-instance-configuration-dialog />
+      <a (click)="routingService.setDestination('/comparison')">Cart</a>
+    </div>
   </div>
-  <div class="second">
-    <app-category></app-category>
-  </div>
-</div>
-<!--<app-comparison class="font"></app-comparison>-->
+</ng-container>
+<ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
+  <app-comparison class="font"></app-comparison>
+  <a (click)="routingService.setDestination('/')">Home</a>
+</ng-container>
+
+
+

@@ -8,17 +8,20 @@ export const SAMPLE_CATEGORY: Category = {
         {
             "name": "cores",
             "options": [],
-            "unit": "Cores"
+            "unit": "Cores",
+          "type": "dropdown"
         },
         {
             "name": "storage",
             "options": [],
-            "unit": "GB"
+            "unit": "GB",
+          "type": "dropdown"
         },
         {
             "name": "memory",
             "options": [],
-            "unit": "GB"
+            "unit": "GB",
+          "type": "dropdown"
         }
     ],
 };
@@ -31,17 +34,20 @@ export const SAMPLE_CATEGORY2: Category = {
         {
             "name": "cores",
             "options": [],
-            "unit": "Cores"
+            "unit": "Cores",
+          "type": "dropdown"
         },
         {
             "name": "storage",
             "options": [],
-            "unit": "GB"
+            "unit": "GB",
+          "type": "dropdown"
         },
         {
             "name": "memory",
             "options": [],
-            "unit": "GB"
+            "unit": "GB",
+          "type": "dropdown"
         }
     ],
 };

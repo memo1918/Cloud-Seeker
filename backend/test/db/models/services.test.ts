@@ -48,6 +48,7 @@ describe("services db", () => {
             try {
                 client = await new MongoClient(mongoServer.getUri()).connect();
                 collection = await client.db(dbName).createCollection(collectionName);
+                await collection.createIndex({ sku: "text" });
                 break;
             } catch (err) {}
         }

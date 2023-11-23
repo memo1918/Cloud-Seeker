@@ -60,17 +60,20 @@ export const SAMPLE_CATEGORIES = [
             {
                 "name": "cores",
                 "options": [],
-                "unit": "Cores"
+                "unit": "Cores",
+                "type": "dropdown"
             },
             {
                 "name": "storage",
                 "options": [],
-                "unit": "GB"
+                "unit": "GB",
+              "type": "dropdown"
             },
             {
                 "name": "memory",
                 "options": [],
-                "unit": "GB"
+                "unit": "GB",
+              "type": "dropdown"
             }
         ],
         "discovery": {

@@ -1,5 +1,5 @@
 import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../../../route";
-import express, { NextFunction } from "express";
+import { NextFunction } from "express";
 import { URL } from "url";
 import { findInstanceComparisons } from "../../../../businesslayer/instancecomparisons";
 import { InstanceComparison } from "../../../../interfaces/instancecomparison.interface";

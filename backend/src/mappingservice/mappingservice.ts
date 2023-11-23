@@ -5,6 +5,7 @@ import { Category } from "../interfaces/category.interface";
 import { InstanceComparison } from "../interfaces/instancecomparison.interface";
 import { Instance } from "../interfaces/instance.interface";
 import { Attributes } from "../interfaces/attributes.interface";
+import { result } from "lodash";
 
 export class MappingService {
     constructor(
@@ -15,6 +16,7 @@ export class MappingService {
 
     async start() {
         await this.mappingdb.dropInstanceComparison();
+        await this.mappingdb.createInstanceComparisonIndex();
 
         let skuArr: string[];
 
@@ -22,8 +24,9 @@ export class MappingService {
             try {
                 skuArr = await this.getNextLine();
                 await this.forEachSku(skuArr as string[]);
-            } catch (error) {
-                break;
+            } catch (error: any) {
+                if (error.message === "instance problem") continue;
+                else break;
             }
         }
 
@@ -54,18 +57,27 @@ export class MappingService {
     }
 
     async forEachSku(skuArr: string[]) {
-        let instanceArr = (await this.mappingdb.findSkus(skuArr)) as Instance[];
-        let attributes: { [attributeName: string]: string } = {};
-        let category = await this.categoryprovider.findCategory(instanceArr[1]);
-        for (let instance of instanceArr) {
-            try {
-                attributes = { ...attributes, ...this.getAttributesForInstance(instance, category) };
-            } catch (error) {
-                continue;
+        try {
+            let instanceArr = (await this.mappingdb.findSkus(skuArr)) as Instance[];
+            let attributes: { [attributeName: string]: string } = {};
+            let category = await this.categoryprovider.findCategory(instanceArr[1]);
+            for (let instance of instanceArr) {
+                try {
+                    attributes = { ...attributes, ...this.getAttributesForInstance(instance, category) };
+                } catch (error) {
+                    continue;
+                }
             }
-        }
+            for (const field of category.fields) {
+                if (!attributes[field.name]) {
+                    attributes[field.name] = "NA";
+                }
+            }
 
-        await this.createInstanceCompare(instanceArr, attributes, category);
+            await this.createInstanceCompare(instanceArr, attributes, category);
+        } catch (error) {
+            throw new Error("instance problem");
+        }
     }
 
     getAttributesForInstance(instance: Instance, category: Category): Attributes {
@@ -74,12 +86,12 @@ export class MappingService {
         for (let i = 0; i < category.vendors.length; i++) {
             for (let columnName in category.vendors[i].columns) {
                 let path = category.vendors[i].columns[columnName].path;
-
+                let value = result(instance, path, null);
                 //value from the instance to write in category.field options
-                const value = path.reduce((currentValue, path) => currentValue[path], instance as any) as string;
+                // const value = path.reduce((currentValue, path) => currentValue[path], instance as any) as string;
 
                 // finds the correct category.field and pushes new value to option
-                if (value !== undefined) {
+                if (value != null) {
                     let categoryField = category.fields.find((field) => field.name === columnName);
                     categoryField?.options?.push(value);
                     attributes[columnName] = value;
