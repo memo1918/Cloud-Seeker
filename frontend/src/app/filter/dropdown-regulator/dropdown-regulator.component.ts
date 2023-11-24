@@ -53,5 +53,4 @@ export class DropdownRegulatorComponent implements OnInit {
     onFilter(element: InstanceComparison): boolean {
         return (element.fields[this.field.name].value == this.selectedOption.value)
     }
-
 }

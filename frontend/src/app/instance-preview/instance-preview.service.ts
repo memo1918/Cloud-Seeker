@@ -13,6 +13,8 @@ export class InstancePreviewService {
   loadedInstances: InstanceComparison[] = [];
 
   constructor(public api: APIService, public categoryService: CategoryService) {
+    //@ts-ignore
+    window["InstancePreviewService"] = this;
     this.categoryService.getCategory().subscribe((category) => this.categoryChanged(category));
   }
 

@@ -13,6 +13,8 @@ export class FilterService {
     private filters$ = new BehaviorSubject<Chip[]>([]);
 
     constructor(public categoryService: CategoryService) {
+        //@ts-ignore
+        window["FilterService"] = this;
         this.categoryService.getCategory().subscribe((category) => this.categoryChanged(category));
     }
 

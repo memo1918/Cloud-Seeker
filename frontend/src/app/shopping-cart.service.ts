@@ -9,7 +9,8 @@ export class ShoppingCartService {
   private items: BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>([])
 
   constructor() {
-
+      //@ts-ignore
+      window["ShoppingCartService"] = this;
   }
 
   setItems(newItems: CartItem[]){

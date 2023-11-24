@@ -3,26 +3,26 @@ import {APIService} from "../api.service";
 import {Category} from "./models/Category";
 import {MatTabChangeEvent} from "@angular/material/tabs";
 import {BehaviorSubject} from "rxjs";
+import {FilterService} from "../filter/filter.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class CategoryService {
 
-
-    getCategories() {
-        return this.api.categories;
-    }
-
     selectedIndex: number = 0;
-    // selectedCategory: Category | undefined;
     private selectedCategory$ = new BehaviorSubject<Category | null>(null);
 
     constructor(public api: APIService) {
+        //@ts-ignore
+        window["CategoryService"] = this;
         this.api.loadCategories();
         this.setCategory(this.getCategories()[0]);
     }
 
+    getCategories() {
+        return this.api.categories;
+    }
 
     onTabChange(tabChangeEvent: MatTabChangeEvent) {
         this.selectedIndex = tabChangeEvent.index;
