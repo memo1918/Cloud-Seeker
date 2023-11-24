@@ -4,6 +4,7 @@ import {Field} from "./models/Field";
 import {Category} from '../category/models/Category';
 import {Chip} from "./models/chip";
 import {BehaviorSubject} from "rxjs";
+import {InstanceComparison} from "../models/instance-comparison";
 
 @Injectable({
     providedIn: 'root'
@@ -35,5 +36,14 @@ export class FilterService {
 
     getFilterValue() {
         return this.filters$.getValue();
+    }
+
+    shouldDisplay(instanceComparison: InstanceComparison) {
+        for (const chip of this.filters$.getValue()) {
+            if (!chip.filter(instanceComparison)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
