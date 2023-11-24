@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceConfigurationComponent } from "../instance-configuration.component";
 import { INSTANCE_COMPARISON_FIXTURE } from "../../fixtures/instance-comparison.fixture";
@@ -12,14 +12,14 @@ import { InstanceComparison } from "src/app/models/instance-comparison";
 export class DialogComponent {
 
   public dialogRef: MatDialogRef<InstanceConfigurationComponent, any> | undefined;
-
+  @Input({required:true}) public instance!: InstanceComparison;
   constructor(public dialog: MatDialog) {
   }
 
-  openDialog(instance: InstanceComparison) {
+  openDialog() {
     return new Promise<MatDialogRef<InstanceConfigurationComponent, any>>((resolve) => {
       const dialogRef = this.dialog.open(InstanceConfigurationComponent, {
-        data: { instance }
+        data: { instance:this.instance }
       });
       this.dialogRef = dialogRef;
 
