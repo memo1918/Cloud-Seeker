@@ -1,17 +1,17 @@
 <h2 class="header">{{field.name}}</h2>
 <div>
-  <mat-form-field class="formFieldBox" color="accent" appearance="outline">
-    <mat-label>{{field.unit}}</mat-label>
-    <input matInput type="number" [(ngModel)]="minNumber">
-  </mat-form-field>
-  <mat-form-field class="formFieldBox" color="accent" appearance="outline">
-    <mat-label>{{field.unit}}</mat-label>
-    <input matInput type="number" [(ngModel)]="maxNumber">
-  </mat-form-field>
+    <mat-form-field class="formFieldBox" color="accent" appearance="outline">
+        <mat-label>{{field.unit}}</mat-label>
+        <input matInput type="number" [(ngModel)]="minNumber">
+    </mat-form-field>
+    <mat-form-field class="formFieldBox" color="accent" appearance="outline">
+        <mat-label>{{field.unit}}</mat-label>
+        <input matInput type="number"  [(ngModel)]="maxNumber">
+    </mat-form-field>
 </div>
 <div>
-  <mat-slider class="sliderBox" color="accent" min="{{minNumber}}" max="{{maxNumber}}">
-    <input matSliderStartThumb [(ngModel)]="minNumber">
-    <input matSliderEndThumb [(ngModel)]="maxNumber">
-  </mat-slider>
+    <mat-slider class="sliderBox" color="accent" min="{{min.value}}" max="{{max.value}}">
+        <input matSliderStartThumb [(ngModel)]="minNumber">
+        <input matSliderEndThumb [(ngModel)]="maxNumber">
+    </mat-slider>
 </div>

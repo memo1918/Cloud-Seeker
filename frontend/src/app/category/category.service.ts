@@ -5,34 +5,35 @@ import {MatTabChangeEvent} from "@angular/material/tabs";
 import {BehaviorSubject} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CategoryService {
 
 
-  getCategories() {
-    return this.api.categories;
-  }
-    selectedIndex: number = 0;
-  // selectedCategory: Category | undefined;
-  private selectedCategory$ = new BehaviorSubject<Category | null>(null);
+    getCategories() {
+        return this.api.categories;
+    }
 
-  constructor(public api: APIService) {
+    selectedIndex: number = 0;
+    // selectedCategory: Category | undefined;
+    private selectedCategory$ = new BehaviorSubject<Category | null>(null);
+
+    constructor(public api: APIService) {
         this.api.loadCategories();
-    this.setCategory(this.getCategories()[0]);
+        this.setCategory(this.getCategories()[0]);
     }
 
 
-  onTabChange(tabChangeEvent: MatTabChangeEvent) {
-    this.selectedIndex = tabChangeEvent.index;
-    this.setCategory(this.getCategories()[this.selectedIndex])
-  }
+    onTabChange(tabChangeEvent: MatTabChangeEvent) {
+        this.selectedIndex = tabChangeEvent.index;
+        this.setCategory(this.getCategories()[this.selectedIndex])
+    }
 
-  getCategory() {
-    return this.selectedCategory$.asObservable();
-  }
+    getCategory() {
+        return this.selectedCategory$.asObservable();
+    }
 
-  setCategory(selectedCategory: Category) {
-    this.selectedCategory$.next(selectedCategory);
-  }
+    setCategory(selectedCategory: Category) {
+        this.selectedCategory$.next(selectedCategory);
+    }
 }

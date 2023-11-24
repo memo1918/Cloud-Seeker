@@ -34,7 +34,6 @@ import {MatListModule} from "@angular/material/list";
 import {NumberRegulatorComponent} from "./filter/number-regulator/number-regulator.component";
 import {MatRippleModule} from "@angular/material/core";
 import {DropdownRegulatorComponent} from "./filter/dropdown-regulator/dropdown-regulator.component";
-import {RadioRegulatorComponent} from "./filter/radio-regulator/radio-regulator.component";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {PreviewPanelComponent} from "./previewpanel/preview-panel.component";
 import {MatCardModule} from "@angular/material/card";
@@ -51,7 +50,6 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     FilterComponent,
     NumberRegulatorComponent,
     DropdownRegulatorComponent,
-    RadioRegulatorComponent,
     PreviewPanelComponent,
     InstancePreviewComponent,
     InstanceConfigurationComponent,
