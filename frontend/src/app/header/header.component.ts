@@ -8,15 +8,12 @@ import { HeaderService } from "./header.service";
 })
 export class HeaderComponent {
   title: string = 'Cloud-Comparison-Tool';
-  protected readonly Component = Component;
-  protected readonly onclick = onclick;
-  constructor(private service: HeaderService) { }
 
-  openPanel= false;
+  constructor(private service: HeaderService) {}
 
-  public open(){
-    this.openPanel = !this.openPanel;
-    this.service.toggle.next(this.openPanel)
+  public open() {
+    this.service.toggle.next(true);
   }
 }
+
 
