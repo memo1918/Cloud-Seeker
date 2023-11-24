@@ -33,7 +33,7 @@ export class DialogComponent {
       this.dialogRef.afterClosed().subscribe((result) => {
 
         console.log("The dialog was closed", result);
-
+        if(!result) return;
         let pricing = result.adjustedPricing as { providerName: string, factor: number, price: number }[]
         let units = result.units as {
           configuration: Unit;

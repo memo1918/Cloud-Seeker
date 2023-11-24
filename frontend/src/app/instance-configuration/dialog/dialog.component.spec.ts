@@ -15,16 +15,20 @@ import { MatDividerModule } from "@angular/material/divider";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatSelectModule } from "@angular/material/select";
+import { Component, ViewChild } from "@angular/core";
+import { TimeUnitCategorisation } from "../../pricing/timeunitcategorisation";
+import { UnitDropdownComponent } from "../unit-dropdown/unit-dropdown.component";
 
 describe("DialogComponent", () => {
-  let component: DialogComponent;
-  let fixture: ComponentFixture<DialogComponent>;
+  let component: TestComponentWrapper;
+  let fixture: ComponentFixture<TestComponentWrapper>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [
         DialogComponent,
-        InstanceConfigurationComponent
+        InstanceConfigurationComponent,
+        TestComponentWrapper
       ],
       imports: [
         NoopAnimationsModule,
@@ -46,7 +50,7 @@ describe("DialogComponent", () => {
         // {provide: InstanceConfigurationComponent, useClass: TestInstanceConfigurationComponent,}
       ]
     });
-    fixture = TestBed.createComponent(DialogComponent);
+    fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -57,12 +61,21 @@ describe("DialogComponent", () => {
 
   it("button should open the dialog", () => {
     let button = document.querySelector("[data-open-dialog-button]") as HTMLButtonElement;
-    let spy = spyOn(component, "openDialog");
+    let spy = spyOn(component.appUnitDropdownComponent, "openDialog");
     button.click();
     expect(spy).toHaveBeenCalled();
   });
   it("should pass the correct data to the dialog", async () => {
-    let dialogRef = await component.openDialog(INSTANCE_COMPARISON_FIXTURE);
+    let dialogRef = await component.appUnitDropdownComponent.openDialog();
     expect(dialogRef.componentInstance.data).toEqual({ instance: INSTANCE_COMPARISON_FIXTURE });
   });
 });
+
+@Component({
+  selector: "test-component-wrapper",
+  template: "<app-instance-configuration-dialog #appInstanceConfigurationDialog [instance]='INSTANCE_COMPARISON_FIXTURE'></app-instance-configuration-dialog>"
+})
+class TestComponentWrapper {
+  @ViewChild("appInstanceConfigurationDialog") appUnitDropdownComponent!: DialogComponent;
+  protected readonly INSTANCE_COMPARISON_FIXTURE = INSTANCE_COMPARISON_FIXTURE;
+}
