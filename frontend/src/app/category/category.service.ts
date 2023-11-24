@@ -32,6 +32,10 @@ export class CategoryService {
     return this.selectedCategory$.asObservable();
   }
 
+  getCategoryValue(){
+    return this.selectedCategory$.getValue();
+  }
+
   setCategory(selectedCategory: Category) {
     this.selectedCategory$.next(selectedCategory);
   }

@@ -1,8 +1,7 @@
-import {Component} from "@angular/core";
-import {MatDialog, MatDialogRef} from "@angular/material/dialog";
-import {InstanceConfigurationComponent} from "../instance-configuration.component";
-import {INSTANCE_COMPARISON_FIXTURE} from "../../fixtures/instance-comparison.fixture";
-import {InstanceComparison} from "src/app/models/instance-comparison";
+import { Component, Input } from "@angular/core";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
+import { InstanceConfigurationComponent } from "../instance-configuration.component";
+import { InstanceComparison } from "src/app/models/instance-comparison";
 import {CartItem} from "../../models/cart-item";
 import {ShoppingCartService} from "../../shopping-cart.service";
 import {Unit} from "../../pricing/unit";
@@ -15,14 +14,15 @@ import {Unit} from "../../pricing/unit";
 export class DialogComponent {
 
   public dialogRef: MatDialogRef<InstanceConfigurationComponent, any> | undefined;
+  @Input({ required: true }) public instance!: InstanceComparison;
 
   constructor(public dialog: MatDialog, public shoppingCart: ShoppingCartService) {
   }
 
-  openDialog(instance: InstanceComparison) {
+  openDialog() {
     return new Promise<MatDialogRef<InstanceConfigurationComponent, any>>((resolve) => {
       const dialogRef = this.dialog.open(InstanceConfigurationComponent, {
-        data: {instance}
+        data: { instance: this.instance }
       });
       this.dialogRef = dialogRef;
 
@@ -33,7 +33,7 @@ export class DialogComponent {
       this.dialogRef.afterClosed().subscribe((result) => {
 
         console.log("The dialog was closed", result);
-
+        if(!result) return;
         let pricing = result.adjustedPricing as { providerName: string, factor: number, price: number }[]
         let units = result.units as {
           configuration: Unit;
@@ -42,7 +42,7 @@ export class DialogComponent {
         }
 
         let cartItem: CartItem = {
-          instance: instance,
+          instance: this.instance,
           pricingInformation: {},
           units: units,
           selectedProvider: "aws",
@@ -65,5 +65,4 @@ export class DialogComponent {
     });
   }
 
-  protected readonly INSTANCE_COMPARISON_FIXTURE = INSTANCE_COMPARISON_FIXTURE;
 }
