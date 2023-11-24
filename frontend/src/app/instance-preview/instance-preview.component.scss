@@ -1,3 +1,8 @@
+.instance-preview-container {
+  margin-left: 3%;
+  margin-top: 3%;
+}
+
 .fieldContainer {
   display: flex;
   flex-wrap: nowrap;
@@ -10,8 +15,6 @@
   .fieldItem {
     counter-increment: cloudcolumn 1;
     flex: 1;
-    border: 2px solid #000000;
-    padding: 10px;
   }
 
   div {

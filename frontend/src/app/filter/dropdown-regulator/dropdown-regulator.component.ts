@@ -3,7 +3,7 @@ import {FilterService} from "../filter.service";
 import {Field} from "../models/Field";
 import {FormControl} from "@angular/forms";
 import {Chip} from "../models/chip";
-import {InstanceComparison} from "../../instance-preview/models/instance-comparison";
+import {InstanceComparison} from 'src/app/models/instance-comparison';
 
 @Component({
     selector: 'app-dropdown-regulator',

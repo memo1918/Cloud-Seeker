@@ -1,5 +1,8 @@
-export const INSTANCE_COMPARISON_FIXTURE = {
-  "name": "MyStorage",
+import { InstanceComparison } from "../models/instance-comparison";
+
+export const INSTANCE_COMPARISON_FIXTURE: InstanceComparison = {
+  "name": {aws: "awsname",  gcp: "gcpname", azure: "azurename"},
+  "categoryName": "somecategory",
   "price": {
     "aws": {
       "value": "0.0036000000",

@@ -1,12 +1,14 @@
 <div class="instance-preview-container">
-  <h2>{{ instanceService.title }}</h2>
   <div *ngIf="instanceService.loadedInstances">
     <div *ngFor="let instance of instanceService.loadedInstances">
-      <div><b>{{ instance.name }}</b></div>
+      <div><b>{{ valuesIn(instance.name).join(" / ") }}</b></div>
       <div class="fieldContainer">
-        <div *ngFor="let entry of toPairs(instance.fields); index as i" class="fieldItem" [attr.data-column]="i+1">
-          <div>{{ entry[0] }}</div>
-          <div class="instanceValue"><b>{{ entry[1].value }}</b></div>
+        <div *ngFor="let field of categoryService.getCategoryValue()?.fields; index as i" class="fieldItem" [attr.data-column]="i+1">
+          <div>{{ field.name }}</div>
+          <div class="instanceValue"><b>{{ instance.fields[field.name].value}}</b></div>
+        </div>
+        <div>
+          <app-instance-configuration-dialog [instance]="instance"></app-instance-configuration-dialog>
         </div>
       </div>
     </div>

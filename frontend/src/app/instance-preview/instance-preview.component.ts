@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
 import { InstancePreviewService } from "./instance-preview.service";
-import { toPairs } from "lodash";
+import { toPairs, valuesIn } from "lodash";
+import { CategoryService } from "../category/category.service";
+
 
 @Component({
   selector: "app-instance-preview",
@@ -10,13 +12,11 @@ import { toPairs } from "lodash";
 export class InstancePreviewComponent {
   title = "instance-preview";
 
-  constructor(public instanceService: InstancePreviewService) {
+  constructor(public instanceService: InstancePreviewService, public categoryService: CategoryService) {
   }
 
   protected readonly toPairs = toPairs;
+  protected readonly valuesIn = valuesIn;
+  // :((
 }
-
-/*
-list in div and display to flex
- */
 

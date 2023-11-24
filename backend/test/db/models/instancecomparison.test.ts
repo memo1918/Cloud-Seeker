@@ -9,11 +9,11 @@ describe("instancecomparison db", () => {
     let mongoServer: MongoMemoryServer;
     let fixtureInstanceComparison: Partial<IInstanceComparison>[] = [
         {
-            name: "test1",
+            name: { aws: "computestuff" },
             categoryName: "Compute"
         },
         {
-            name: "test2",
+            name: { aws: "storagestuff" },
             categoryName: "Storage"
         }
     ];
@@ -69,14 +69,19 @@ describe("instancecomparison db", () => {
         const { addOneInstanceComparison } = await import("../../../src/db/models/instancecomparison");
         setURI(mongoServer.getUri());
 
-        let testInstanceComparison: Partial<IInstanceComparison> = { name: "test3" };
+        let testInstanceComparison: Partial<IInstanceComparison> = { name: { aws: "somename" } };
 
         let client = await new MongoClient(mongoServer.getUri()).connect();
 
         await expect(addOneInstanceComparison(client, testInstanceComparison)).resolves.not.toThrow();
 
-        await expect(client.db(dbName).collection(collectionName).findOne({ name: "test3" })).resolves.toMatchObject({
-            name: "test3"
+        await expect(
+            client
+                .db(dbName)
+                .collection(collectionName)
+                .findOne({ name: { aws: "somename" } })
+        ).resolves.toMatchObject({
+            name: { aws: "somename" }
         });
     });
 
@@ -87,9 +92,14 @@ describe("instancecomparison db", () => {
 
         let client = await new MongoClient(mongoServer.getUri()).connect();
 
-        await expect(removeInstanceComparison(client, ["test1"])).resolves.not.toThrow();
+        await expect(removeInstanceComparison(client, [{ aws: "computestuff" }])).resolves.not.toThrow();
 
-        await expect(client.db(dbName).collection(collectionName).findOne({ name: "test1" })).resolves.toBe(null);
+        await expect(
+            client
+                .db(dbName)
+                .collection(collectionName)
+                .findOne({ name: { aws: "computestuff" } })
+        ).resolves.toBe(null);
     });
 
     test("find InstanceComparisons based on category", async () => {

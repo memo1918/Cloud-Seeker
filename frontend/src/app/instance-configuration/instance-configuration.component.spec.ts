@@ -16,7 +16,7 @@ import { Component, Input } from "@angular/core";
 import { UnitCategorisation } from "../pricing/units";
 import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
 import { MatDialog, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
-import { InstanceComparison } from "./instance-comparison";
+import { InstanceComparison } from "../models/instance-comparison";
 
 describe("InstanceConfigurationComponent", () => {
   let component: DialogWrapperComponent;
@@ -77,7 +77,11 @@ describe("InstanceConfigurationComponent", () => {
 
   it("should show the name of the instance", () => {
     expect(document.querySelector("[data-instance-name]")?.textContent?.trim())
-      .toBe(INSTANCE_COMPARISON_FIXTURE.name);
+      .toContain(INSTANCE_COMPARISON_FIXTURE.name["aws"]);
+    expect(document.querySelector("[data-instance-name]")?.textContent?.trim())
+      .toContain(INSTANCE_COMPARISON_FIXTURE.name["gcp"]);
+    expect(document.querySelector("[data-instance-name]")?.textContent?.trim())
+      .toContain(INSTANCE_COMPARISON_FIXTURE.name["azure"]);
   });
 
   it("should render all instance information display elements", () => {

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Category } from "./category/models/Category";
-import { InstanceComparisonResponse } from "./instance-preview/models/instance-comparison-response";
+import { InstanceComparisonResponse } from "./models/instance-comparison-response";
 
 
 @Injectable({

@@ -1,7 +1,9 @@
+<mat-dialog-content>
+
 <form class="instance-configuration-form" (ngSubmit)="onSubmit($event)" (reset)="onClose()">
 
   <div class="dialog-section">
-    <h1 data-instance-name class="headline-5">{{data.instance.name}}</h1>
+    <h1 data-instance-name class="headline-5">{{ valuesIn(data.instance.name).join(" / ") }}</h1>
     <p class="caption">Please fill out the fields below to configure your instance for the different cloud
       providers.</p>
     <p class="caption">The usage amounts should be equivalent across the cloud providers.</p>
@@ -77,3 +79,4 @@
   </div>
 
 </form>
+</mat-dialog-content>

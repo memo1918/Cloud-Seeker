@@ -1,10 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FilterService} from "../filter.service";
 import {Field} from "../models/Field";
-import {FormControl} from "@angular/forms";
 import {Chip} from "../models/chip";
 import {BehaviorSubject} from "rxjs";
-import {InstanceComparison} from "../../instance-preview/models/instance-comparison";
+import {InstanceComparison} from 'src/app/models/instance-comparison';
 
 @Component({
     selector: 'app-number-regulator',
@@ -61,7 +60,7 @@ export class NumberRegulatorComponent implements OnInit {
     }
 
     private numberChanged() {
-        if(this.disableUpdate) return;
+        if (this.disableUpdate) return;
         this.disableUpdate = true;
 
         let filters = this.filterService.getFilterValue();
@@ -84,7 +83,7 @@ export class NumberRegulatorComponent implements OnInit {
     }
 
     private filtersChanged() {
-        if(this.disableUpdate) return;
+        if (this.disableUpdate) return;
         let filters = this.filterService.getFilterValue();
         if (filters.indexOf(this.chip) == -1) {
             this.disableUpdate = true;

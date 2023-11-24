@@ -1,4 +1,4 @@
-import {InstanceComparison} from "src/app/instance-preview/models/instance-comparison"
+import {InstanceComparison} from "src/app/models/instance-comparison";
 
 export interface Chip {
     name: string,

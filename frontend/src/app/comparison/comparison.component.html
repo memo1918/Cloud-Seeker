@@ -1,21 +1,21 @@
-<div *ngIf="shoppingCart.getItems().length!=0">
+<div *ngIf="(shoppingCart.getItemsObserver() | async)?.length != 0">
   <table class="mat-table-background-pink" mat-table
-         [dataSource]="shoppingCart.getItems()">
+         [dataSource]="shoppingCart.getItemsObserver()">
     <ng-container matColumnDef="name">
-      <th class="mat-table-background-white" mat-header-cell *matHeaderCellDef> Your configuration</th>
+      <th class="mat-table-background-white grow" mat-header-cell *matHeaderCellDef> Your configuration</th>
       <td mat-cell *matCellDef="let item">
         <mat-accordion>
           <mat-expansion-panel class="mat-table-background-pink">
             <mat-expansion-panel-header>
               <mat-panel-title>
-                {{item.name}}
+                {{valuesIn(item.instance.name).join(" / ")}}
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <mat-panel-description>
-              Quick description
-            </mat-panel-description>
-            <p *ngFor="let key of keys(item.fields)">
-              {{key}}: {{item.fields[key].unit}} {{item.fields[key].value}}
+            <p *ngIf="item.notes">
+              {{item.notes}}
+            </p>
+            <p *ngFor="let key of keys(item.instance.fields)">
+              {{key}}: {{item.instance.fields[key].unit}} {{item.instance.fields[key].value}}
             </p>
           </mat-expansion-panel>
         </mat-accordion>
@@ -24,11 +24,12 @@
 
     <ng-container *ngFor="let vendor of vendors" [matColumnDef]="vendor">
       <th class="mat-table-background-white" mat-header-cell *matHeaderCellDef> {{vendor}}</th>
-      <td mat-cell *matCellDef="let item; index as i">
-        <mat-radio-button [name]="'comparison-'+i" [value]="vendor" [checked]="selectedOption[i] == vendor"
-                          (change)="selectedOption[i] = vendor">
-          <mat-chip color="accent" [highlighted]="selectedOption[i]==vendor">
-            {{item.price[vendor].value  | number:'1.2-2'}} {{item.price[vendor].unit}}
+      <td mat-cell class="vendor" *matCellDef="let item; index as i">
+        <mat-radio-button class="hidden-radio-button" [name]="'comparison-'+i" [value]="vendor" [checked]="vendor == item.selectedProvider"
+                          (change)="item.selectedProvider = vendor">
+
+          <mat-chip color="accent" [highlighted]="item.selectedProvider==vendor">
+            {{item.pricingInformation[vendor].price  | number:'1.2-2'}} USD
           </mat-chip>
         </mat-radio-button>
       </td>

@@ -3,7 +3,6 @@ import {APIService} from "../api.service";
 import {Category} from "./models/Category";
 import {MatTabChangeEvent} from "@angular/material/tabs";
 import {BehaviorSubject} from "rxjs";
-import {FilterService} from "../filter/filter.service";
 
 @Injectable({
     providedIn: 'root'
@@ -31,6 +30,10 @@ export class CategoryService {
 
     getCategory() {
         return this.selectedCategory$.asObservable();
+    }
+
+    getCategoryValue() {
+        return this.selectedCategory$.getValue();
     }
 
     setCategory(selectedCategory: Category) {
