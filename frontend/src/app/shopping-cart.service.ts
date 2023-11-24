@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
-import {CartItem} from "./comparison/cart-item";
 import {BehaviorSubject} from "rxjs";
+import {InstanceComparison} from "./models/instance-comparison";
+import {CartItem} from "./models/cart-item";
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,6 @@ export class ShoppingCartService {
   private items: BehaviorSubject<CartItem[]> = new BehaviorSubject<CartItem[]>([])
 
   constructor() {
-
   }
 
   setItems(newItems: CartItem[]){

@@ -1,14 +1,8 @@
 
 <app-header></app-header>
 <app-previewpanel ></app-previewpanel>
-<!--<div class="primary-background">Visits:-->
 
-<!--    <ng-container *ngIf="api.counterLoading">loading...</ng-container>-->
-<!--    <ng-container *ngIf="!api.counterLoading">{{api.counter + ", "}}</ng-container>-->
-<!--    <span>{{this.title + ", "}}</span>-->
-<!--    &lt;!&ndash; showcasing currently selected category &ndash;&gt;-->
-<!--  <span>{{"Category: " + (this.categoryService.getCategory() | async)?.name}}</span>-->
-<!--</div>-->
+
 <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
   <div class="wrapper">
     <div class="first">
@@ -29,3 +23,11 @@
 
 
 
+<!--<div class="primary-background">Visits:-->
+
+<!--    <ng-container *ngIf="api.counterLoading">loading...</ng-container>-->
+<!--    <ng-container *ngIf="!api.counterLoading">{{api.counter + ", "}}</ng-container>-->
+<!--    <span>{{this.title + ", "}}</span>-->
+<!--    &lt;!&ndash; showcasing currently selected category &ndash;&gt;-->
+<!--  <span>{{"Category: " + (this.categoryService.getCategory() | async)?.name}}</span>-->
+<!--</div>-->

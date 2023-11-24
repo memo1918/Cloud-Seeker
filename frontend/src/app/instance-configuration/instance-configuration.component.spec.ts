@@ -77,11 +77,11 @@ describe("InstanceConfigurationComponent", () => {
 
   it("should show the name of the instance", () => {
     expect(document.querySelector("[data-instance-name]")?.textContent?.trim())
-      .toContain(INSTANCE_COMPARISON_FIXTURE.name.aws);
+      .toContain(INSTANCE_COMPARISON_FIXTURE.name["aws"]);
     expect(document.querySelector("[data-instance-name]")?.textContent?.trim())
-      .toContain(INSTANCE_COMPARISON_FIXTURE.name.gcp);
+      .toContain(INSTANCE_COMPARISON_FIXTURE.name["gcp"]);
     expect(document.querySelector("[data-instance-name]")?.textContent?.trim())
-      .toContain(INSTANCE_COMPARISON_FIXTURE.name.azure);
+      .toContain(INSTANCE_COMPARISON_FIXTURE.name["azure"]);
   });
 
   it("should render all instance information display elements", () => {
