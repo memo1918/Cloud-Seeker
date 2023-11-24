@@ -85,7 +85,7 @@ export class InstanceConfigurationComponent {
         price: Number(this.data.instance.price[i.providerName].value) * factor
       };
     });
-    this.dialogRef.close({ units: this.pricingConfigurations, adjustedPricing: pricingResult });
+    this.dialogRef.close({ units: this.pricingConfigurations, adjustedPricing: pricingResult, notes: this.noteText });
   }
 
   onClose() {

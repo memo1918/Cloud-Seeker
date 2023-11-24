@@ -1,7 +1,7 @@
 import { InstanceComparison } from "../models/instance-comparison";
 
 export const INSTANCE_COMPARISON_FIXTURE: InstanceComparison = {
-  "name": {aws: "awsname",gcp: "gcpname",azure: "azurename"},
+  "name": {aws: "awsname",  gcp: "gcpname", azure: "azurename"},
   "categoryName": "somecategory",
   "price": {
     "aws": {
