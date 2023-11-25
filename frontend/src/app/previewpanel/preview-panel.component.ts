@@ -3,6 +3,7 @@ import { HeaderService } from "../header/header.service";
 import { ShoppingCartService } from "../shopping-cart.service";
 import { CartItem } from "../models/cart-item";
 import { CartItemGroup } from "../models/cart-item-group";
+import { valuesIn } from "lodash";
 
 
 @Component({
@@ -59,4 +60,5 @@ export class PreviewPanelComponent implements OnInit {
 
   }
 
+  protected readonly valuesIn = valuesIn;
 }

@@ -2,22 +2,24 @@
 
   <mat-sidenav-container class="example-container" hasBackdrop="true">
     <mat-sidenav mode="side" ></mat-sidenav>
-    <mat-sidenav-content >
+    <mat-sidenav-content class="panelContent">
         <div class="closeButton">
           <button (click)="close()" mat-icon-button>
             <mat-icon fontIcon="close">Close</mat-icon>
           </button>
         </div>
+        <div><b>Shopping Cart Preview</b></div>
 
 
-      <div *ngFor="let group of sortIntoGroups(shoppingCart.getItemsObserver() | async); last as last ">
+
+      <div class="groups" *ngFor="let group of sortIntoGroups(shoppingCart.getItemsObserver() | async); last as last ">
         <div>
           <!-- Display category name -->
           <h2>{{ group.category }}</h2>
 
           <!-- Iterate over items in the current category -->
-          <div *ngFor="let item of group.items">
-            {{ item.instance }}
+          <div class="items" *ngFor="let item of group.items">
+            {{ valuesIn(item.instance.name).join(" / ") }}
             <!-- Add other properties of the item as needed -->
           </div>
         </div>
