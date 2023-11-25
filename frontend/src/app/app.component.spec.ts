@@ -26,7 +26,6 @@ import { HeaderComponent } from "./header/header.component";
 import { FilterComponent } from "./filter/filter.component";
 import { NumberRegulatorComponent } from "./filter/number-regulator/number-regulator.component";
 import { DropdownRegulatorComponent } from "./filter/dropdown-regulator/dropdown-regulator.component";
-import { RadioRegulatorComponent } from "./filter/radio-regulator/radio-regulator.component";
 import { PreviewPanelComponent } from "./previewpanel/preview-panel.component";
 import { InstancePreviewComponent } from "./instance-preview/instance-preview.component";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -52,7 +51,6 @@ describe("AppComponent", () => {
         FilterComponent,
         NumberRegulatorComponent,
         DropdownRegulatorComponent,
-        RadioRegulatorComponent,
         PreviewPanelComponent,
         InstancePreviewComponent,
         InstanceConfigurationComponent,

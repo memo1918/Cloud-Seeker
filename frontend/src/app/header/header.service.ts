@@ -8,4 +8,8 @@ import { BehaviorSubject } from 'rxjs';
 export class HeaderService {
   toggle: BehaviorSubject<boolean> = new BehaviorSubject(false);
   toggle$ = this.toggle.asObservable();
+  constructor() {
+    //@ts-ignore
+    window["HeaderService"] = this;
+  }
 }

@@ -2,9 +2,9 @@ import { Component, Input } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceConfigurationComponent } from "../instance-configuration.component";
 import { InstanceComparison } from "src/app/models/instance-comparison";
-import {CartItem} from "../../models/cart-item";
-import {ShoppingCartService} from "../../shopping-cart.service";
-import {Unit} from "../../pricing/unit";
+import { CartItem } from "../../models/cart-item";
+import { ShoppingCartService } from "../../shopping-cart.service";
+import { Unit } from "../../pricing/unit";
 
 @Component({
   selector: "app-instance-configuration-dialog",
@@ -41,11 +41,12 @@ export class DialogComponent {
           providerDefault: Unit;
         }
 
+
         let cartItem: CartItem = {
           instance: this.instance,
           pricingInformation: {},
           units: units,
-          selectedProvider: "aws",
+          selectedProvider: pricing[0].providerName,
           notes: result.notes
         }
 
@@ -54,6 +55,9 @@ export class DialogComponent {
             factor: pricingElement.factor,
             price: pricingElement.price
           };
+          if (pricingElement.price < cartItem.pricingInformation[cartItem.selectedProvider].price) {
+            cartItem.selectedProvider = pricingElement.providerName;
+          }
         }
 
         let items = this.shoppingCart.getItems()
