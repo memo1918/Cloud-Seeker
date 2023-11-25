@@ -1,6 +1,6 @@
 <div class="instance-preview-container">
   <div *ngIf="instanceService.loadedInstances">
-    <div *ngFor="let instance of instanceService.loadedInstances">
+    <div *ngFor="let instance of getItems()">
         <div class="fieldContainer">
           <div class="instanceName"><b>{{ valuesIn(instance.name).join(" / ") }}</b></div>
           <div class="fieldsContainer">
