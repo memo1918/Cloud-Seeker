@@ -26,7 +26,7 @@ export async function loadinfracostdumpindb() {
     await extractDump(archiveFile, extractionFile);
     await removeFile(archiveFile);
 
-    let csvParser = new ParseCsvBatch<CsvData>(extractionFile, 10000);
+    let csvParser = new ParseCsvBatch<CsvData>(extractionFile, 1000);
 
     // recreate service collection and create index
     await execQuery<void>(async (client) => {

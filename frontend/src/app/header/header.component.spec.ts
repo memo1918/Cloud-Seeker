@@ -8,7 +8,6 @@ import { RemoveInstanceComponent } from "../remove-instance/remove-instance.comp
 import { FilterComponent } from "../filter/filter.component";
 import { NumberRegulatorComponent } from "../filter/number-regulator/number-regulator.component";
 import { DropdownRegulatorComponent } from "../filter/dropdown-regulator/dropdown-regulator.component";
-import { RadioRegulatorComponent } from "../filter/radio-regulator/radio-regulator.component";
 import { PreviewPanelComponent } from "../previewpanel/preview-panel.component";
 import { InstancePreviewComponent } from "../instance-preview/instance-preview.component";
 import { InstanceConfigurationComponent } from "../instance-configuration/instance-configuration.component";
@@ -57,7 +56,6 @@ describe('HeaderComponent', () => {
       FilterComponent,
       NumberRegulatorComponent,
       DropdownRegulatorComponent,
-      RadioRegulatorComponent,
       PreviewPanelComponent,
       InstancePreviewComponent,
       InstanceConfigurationComponent,

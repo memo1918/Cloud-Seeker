@@ -9,6 +9,8 @@ export class RoutingService {
   private destination: BehaviorSubject<string> = new BehaviorSubject<string>("/");
 
   constructor() {
+    //@ts-ignore
+    window["RoutingService"] = this;
   }
 
   getDestination() {
