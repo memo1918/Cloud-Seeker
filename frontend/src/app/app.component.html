@@ -18,7 +18,7 @@
 </ng-container>
 <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
   <app-comparison class="font"></app-comparison>
-  <a (click)="routingService.setDestination('/')">Home</a>
+  <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
 </ng-container>
 
 
