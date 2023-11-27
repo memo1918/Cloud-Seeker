@@ -1,18 +1,31 @@
 <div class="instance-preview-container">
   <div *ngIf="instanceService.loadedInstances">
-    <div *ngFor="let instance of getItems()">
-        <div class="fieldContainer">
-          <div class="instanceName"><b>{{ valuesIn(instance.name).join(" / ") }}</b></div>
-          <div class="fieldsContainer">
-            <div *ngFor="let field of categoryService.getCategoryValue()?.fields; index as i" class="fieldItem" [attr.data-column]="i+1">
+    <table>
+      <ng-container *ngFor="let instance of getItems();  last as last">
+        <tr class="titleRow">
+          <td [colSpan]="getCategoryLength() +1 || 1" class="instanceName">
+            <b>{{ valuesIn(instance.name).join(" / ") }}</b></td>
+        </tr>
+        <tr class="fieldRow">
+          <td *ngFor="let field of categoryService.getCategoryValue()?.fields; index as i;" class="fieldItem"
+              [attr.data-column]="i+1">
+            <div class="fieldsContainer">
               <div>{{ field.name }}</div>
-              <div class="fieldItem"><b>{{ instance.fields[field.name].value}}</b></div>
+              <div class="fieldItem"><b>{{ instance.fields[field.name].value }}</b></div>
             </div>
-          </div>
-          <div class="pickButton">
-            <app-instance-configuration-dialog [instance]="instance"></app-instance-configuration-dialog>
-          </div>
-        </div>
-    </div>
+          </td>
+          <td>
+            <div class="pickButton fieldsContainer">
+              <app-instance-configuration-dialog [instance]="instance"></app-instance-configuration-dialog>
+            </div>
+          </td>
+        </tr>
+        <tr style="background-color: white" *ngIf="!last">
+          <td [colSpan]="getCategoryLength() +1 || 1">
+            <mat-divider class="emptySpace"></mat-divider>
+          </td>
+        </tr>
+      </ng-container>
+    </table>
   </div>
 </div>
