@@ -1,0 +1,29 @@
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: black;
+  display: flex;
+}
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.mat-tabBackground {
+  background-color: #FEF7FF !important;
+  color: black !important;
+  border-radius: 25px;
+  max-width: 100%;
+  margin-left: 1%;
+}
+
+.mat-tabContentBackground {
+  background-color: white !important;
+  color: black !important;
+}
+

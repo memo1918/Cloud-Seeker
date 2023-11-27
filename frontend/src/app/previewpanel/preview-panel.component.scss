@@ -1,0 +1,89 @@
+
+.example-container {
+  position: fixed;
+  top: 0;
+  display: flex;
+  border-radius: 25px;
+  background-color: #f6f2f9 !important;
+  width: 30%;
+  height: 100vh;
+  right: 0;
+  color: black !important;
+  z-index: 10;
+}
+
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.title{
+  margin-right: auto;
+  margin-left: 5%;
+  margin-top: 2%;
+}
+
+.topRow{
+  display: flex;
+  flex-direction: row;
+}
+
+.closeButton{
+  margin-left: auto;
+  margin-right: 2%;
+}
+
+.panelContent{
+  margin: 1%;
+}
+
+.groups{
+ margin: 1%;
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryName{
+  margin-left: 8%;
+}
+
+.items{
+  margin: 1%;
+  margin-bottom: 2%;
+  margin-left: 7%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.itemName{
+  //change margint left to 1% after adding buttona
+  margin-left: 5%;
+}
+
+.cancel{
+  transform: scale(0.8);
+}
+
+.divider{
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+h2{
+  font-weight: normal;
+}
+
+h4{
+  font-size: 95%;
+}
+
+.cartButton{
+  margin-left: auto;
+  margin-right: 4%;
+  margin-top: auto;
+  margin-bottom: 8%;
+  border-radius: 25px;
+  min-height: 5%;
+}

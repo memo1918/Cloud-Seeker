@@ -1,0 +1,323 @@
+[
+  {
+    "name": "Compute",
+    "icon": "computer",
+    "description": "test",
+    "vendors": [
+      {
+        "name": "aws",
+        "columns": {
+          "cores": {
+            "path": [
+              "attributes",
+              "vcpu"
+            ],
+            "conversion": {}
+          },
+          "gpuMemory": {
+            "path": [
+              "attributes",
+              "gpuMemory"
+            ],
+            "conversion": {}
+          },
+          "clockSpeed": {
+            "path": [
+              "attributes",
+              "clockSpeed"
+            ],
+            "conversion": {}
+          },
+          "memory": {
+            "path": [
+              "attributes",
+              "memory"
+            ],
+            "conversion": {}
+          },
+          "regionCode": {
+            "path": [
+              "attributes",
+              "regionCode"
+            ],
+            "conversion": {}
+          },
+          "operatingSystem": {
+            "path": [
+              "attributes",
+              "operatingSystem"
+            ],
+            "conversion": {}
+          },
+          "storage": {
+            "path": [
+              "attributes",
+              "storage"
+            ],
+            "conversion": {}
+          }
+        }
+      },
+      {
+        "name": "gcp",
+        "columns": {
+        }
+      },
+      {
+        "name": "azure",
+        "columns": {
+        }
+      }
+    ],
+    "fields": [
+      {
+        "name": "cores",
+        "options": [],
+        "unit": "Cores",
+        "type": "number"
+      },
+      {
+        "name": "regionCode",
+        "options": [],
+        "unit": "",
+        "type": "dropdown"
+      },
+      {
+        "name": "gpuMemory",
+        "options": [],
+        "unit": "",
+        "type": "dropdown"
+      },
+      {
+        "name": "clockSpeed",
+        "options": [],
+        "unit": "",
+        "type": "number"
+      },
+      {
+        "name": "operatingSystem",
+        "options": [],
+        "unit": "",
+        "type": "dropdown"
+      },
+      {
+        "name": "memory",
+        "options": [],
+        "unit": "",
+        "type": "number"
+      },
+      {
+        "name": "storage",
+        "options": [],
+        "unit": "",
+        "type": "dropdown"
+      }
+    ],
+    "discovery": {
+      "aws": {
+        "key": [
+          "productFamily"
+        ],
+        "value": [
+          "Compute Instance"
+        ]
+      },
+      "gcp": {
+        "key": [
+          "productFamily"
+        ],
+        "value": [
+          "Compute Instance"
+        ]
+      },
+      "azure": {
+        "key": [
+          "productFamily"
+        ],
+        "value": [
+          "Compute"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Storage",
+    "icon": "storage",
+    "description": "test",
+    "vendors": [
+      {
+        "name": "aws",
+        "columns": {
+          "regionCode": {
+            "path": [
+              "attributes",
+              "regionCode"
+            ],
+            "conversion": {}
+          },
+          "storageClass": {
+            "path": [
+              "attributes",
+              "storageClass"
+            ],
+            "conversion": {}
+          }
+        }
+      },
+      {
+        "name": "gcp",
+        "columns": {
+        }
+      },
+      {
+        "name": "azure",
+        "columns": {
+        }
+      }
+    ],
+    "fields": [
+      {
+        "name": "regionCode",
+        "options": [],
+        "unit": "text",
+        "type": "dropdown"
+      },
+      {
+        "name": "storageClass",
+        "options": [],
+        "unit": "text",
+        "type": "dropdown"
+      }
+    ],
+    "discovery": {
+      "aws": {
+        "key": [
+          "productFamily"
+        ],
+        "value": [
+          "Storage"
+        ]
+      },
+      "gcp": {
+        "key": [
+          "productFamily"
+        ],
+        "value": [
+          "Storage"
+        ]
+      },
+      "azure": {
+        "key": [
+          "productFamily"
+        ],
+        "value": [
+          "Storage"
+        ]
+      }
+    }
+  },
+  {
+    "name": "Relational Database",
+    "icon": "save",
+    "description": "test",
+    "vendors": [
+      {
+        "name": "aws",
+        "columns": {
+          "cores": {
+            "path": [
+              "attributes",
+              "vcpu"
+            ],
+            "conversion": {}
+          },
+          "memory": {
+            "path": [
+              "attributes",
+              "memory"
+            ],
+            "conversion": {}
+          },
+          "storage": {
+            "path": [
+              "attributes",
+              "storage"
+            ],
+            "conversion": {}
+          },
+          "location": {
+            "path": [
+              "attributes",
+              "location"
+            ],
+            "conversion": {}
+          }
+        }
+      },
+      {
+        "name": "gcp",
+        "columns": {
+        }
+      },
+      {
+        "name": "azure",
+        "columns": {
+        }
+      }
+    ],
+    "fields": [
+      {
+        "name": "cores",
+        "options": [],
+        "unit": "Cores",
+        "type": "number"
+      },
+      {
+        "name": "memory",
+        "options": [],
+        "unit": "GB",
+        "type": "number"
+      },
+      {
+        "name": "storage",
+        "options": [],
+        "unit": "GB",
+        "type": "dropdown"
+      },
+      {
+        "name": "location",
+        "options": [],
+        "unit": "",
+        "type": "dropdown"
+      }
+    ],
+    "discovery": {
+      "aws": {
+        "key": [
+          "service"
+        ],
+        "value": [
+          "AmazonRDS"
+        ]
+      },
+      "gcp": {
+        "key": [
+          "service"
+        ],
+        "value": [
+          "Cloud SQL"
+        ]
+      },
+      "azure": {
+        "key": [
+          "productFamily"
+        ],
+        "value": [
+          "Databases"
+        ]
+      }
+    }
+
+
+  }
+]
