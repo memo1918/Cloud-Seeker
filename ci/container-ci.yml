@@ -11,15 +11,14 @@
 # the following values above need to be replaced.
 # registry_url = "https://index.docker.io/v1/" for default docker registry or $CI_REGISTRY
 # base64_encoded_username_and_password = "username:password" base64 encoded
-
+variables:
+  DOCKER_HOST: tcp://docker:2376
+  DOCKER_TLS_CERTDIR: "/certs"
+  DOCKER_TLS_VERIFY: 1
+  DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
 
 docker-test:
   image: docker:24.0.5
-  variables:
-    DOCKER_HOST: tcp://docker:2376
-    DOCKER_TLS_CERTDIR: "/certs"
-    DOCKER_TLS_VERIFY: 1
-    DOCKER_CERT_PATH: "$DOCKER_TLS_CERTDIR/client"
   services:
     - docker:24.0.5-dind
   script:
