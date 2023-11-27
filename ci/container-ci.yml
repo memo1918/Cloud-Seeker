@@ -13,7 +13,12 @@
 # base64_encoded_username_and_password = "username:password" base64 encoded
 
 
-
+docker-test:
+  image: docker:24.0.5
+  services:
+    - docker:24.0.5-dind
+  script:
+    - docker info
 
 containerise-frontend:
   image:
