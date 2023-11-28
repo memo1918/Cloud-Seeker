@@ -79,10 +79,11 @@ describe('ComparisonComponent', () => {
     let chip = document.querySelector("mat-chip")as HTMLElement
     expect(chip.textContent).toBe(" 371.57 USD ")
   });
-  it('should display correct data in all chips', () => {
+  it('should select cheapest option', () => {
     let chips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>
-    for (let i = 0; i < chips.length; i++) {
-      //expect(chips[i].textContent).toBe(ShoppingCartDummyService.Instance.getItems)
-    }
+    expect(chips[2].textContent).toBe(" 55.03 USD ")
+    expect(chips[2].getAttribute("ng-reflect-highlighted")=="true")
+    expect(chips[1].getAttribute("ng-reflect-highlighted")=="false")
+    expect(chips[0].getAttribute("ng-reflect-highlighted")=="false")
   });
 });
