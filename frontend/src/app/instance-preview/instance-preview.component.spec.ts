@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { InstancePreviewComponent } from "./instance-preview.component";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
 
 describe("InstancePreviewComponent", () => {
   let component: InstancePreviewComponent;
@@ -8,7 +9,8 @@ describe("InstancePreviewComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [InstancePreviewComponent]
+      ...getTestBedImports(),
+      ...getTestBedDeclarations()
     });
     fixture = TestBed.createComponent(InstancePreviewComponent);
     component = fixture.componentInstance;

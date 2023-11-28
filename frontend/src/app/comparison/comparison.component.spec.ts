@@ -1,22 +1,14 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ComparisonComponent } from './comparison.component';
-import {BrowserModule} from "@angular/platform-browser";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatTableModule} from "@angular/material/table";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComparisonComponent } from "./comparison.component";
+import { getTestBedImports } from "../testbed.app.module";
 
-describe('ComparisonComponent', () => {
+describe("ComparisonComponent", () => {
   let component: ComparisonComponent;
   let fixture: ComponentFixture<ComparisonComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        MatTableModule
-      ],
+      ...getTestBedImports(),
       declarations: [ComparisonComponent]
     });
     fixture = TestBed.createComponent(ComparisonComponent);
@@ -24,7 +16,7 @@ describe('ComparisonComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { FieldDisplayComponent } from "./field-display.component";
+import { getTestBedImports } from "../../testbed.app.module";
 
 
 describe("FieldDisplayComponent", () => {
@@ -8,7 +9,8 @@ describe("FieldDisplayComponent", () => {
   let fixture: ComponentFixture<FieldDisplayComponent>;
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [FieldDisplayComponent]
+      declarations: [FieldDisplayComponent],
+      ...getTestBedImports()
     });
 
     fixture = TestBed.createComponent(FieldDisplayComponent);
