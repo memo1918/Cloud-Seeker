@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PreviewPanelComponent } from './preview-panel.component';
+import { PreviewPanelComponent } from "./preview-panel.component";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
 
 describe('PreviewpanelComponent', () => {
   let component: PreviewPanelComponent;
@@ -8,7 +9,8 @@ describe('PreviewpanelComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PreviewPanelComponent]
+      ...getTestBedImports(),
+      ...getTestBedDeclarations()
     });
     fixture = TestBed.createComponent(PreviewPanelComponent);
     component = fixture.componentInstance;

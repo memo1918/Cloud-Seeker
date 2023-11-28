@@ -1,6 +1,6 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
-import {CategoryComponent} from './category.component';
-import {MatTabsModule} from "@angular/material/tabs";
+import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
+import { CategoryComponent } from "./category.component";
+import { getTestBedImports } from "../testbed.app.module";
 
 describe('MainComponent', () => {
     let component: CategoryComponent;
@@ -8,7 +8,7 @@ describe('MainComponent', () => {
 
     beforeEach(() => {
         TestBed.configureTestingModule({
-            imports: [MatTabsModule],
+          ...getTestBedImports(),
             declarations: [CategoryComponent]
         }).compileComponents();
         fixture = TestBed.createComponent(CategoryComponent);
