@@ -1,10 +1,16 @@
 import { Units } from "./units";
 import * as _ from "lodash";
 import { TestBed } from "@angular/core/testing";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
 
 describe("units module", () => {
 
-    beforeEach(() => TestBed.configureTestingModule({}));
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      ...getTestBedImports(),
+      ...getTestBedDeclarations()
+    });
+  });
 
     it("parsing unit for '1GB/Month'", () => {
         const unit = "1GB/Month";

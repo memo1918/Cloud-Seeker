@@ -1,5 +1,5 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {NumberRegulatorComponent} from './number-regulator.component';
+import { TestBed } from "@angular/core/testing";
+import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app.module";
 
 
 describe('PriceRegulatorComponent', () => {
@@ -8,6 +8,13 @@ describe('PriceRegulatorComponent', () => {
   it("should be silent",()=>{
     expect(true).toEqual(true);
   })
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      ...getTestBedImports(),
+      ...getTestBedDeclarations()
+    });
+    TestBed.compileComponents();
+  });
   // beforeEach(() => {
   //   TestBed.configureTestingModule({
   //     declarations: [NumberRegulatorComponent],

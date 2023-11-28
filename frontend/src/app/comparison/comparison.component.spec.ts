@@ -25,8 +25,9 @@ import {MatDividerModule} from "@angular/material/divider";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatSelectModule} from "@angular/material/select";
 import {MatDialogModule} from "@angular/material/dialog";
-import {CartItem} from "../models/cart-item";
-
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComparisonComponent } from "./comparison.component";
+import { getTestBedImports } from "../testbed.app.module";
 
 describe('ComparisonComponent', () => {
   let component: ComparisonComponent;
@@ -64,7 +65,9 @@ describe('ComparisonComponent', () => {
       declarations: [ComparisonComponent],
       providers:[
         { provide: ShoppingCartService, useClass: ShoppingCartDummyService}
-      ]
+      ],
+      ...getTestBedImports(),
+      declarations: [ComparisonComponent]
     });
     fixture = TestBed.createComponent(ComparisonComponent);
     component = fixture.componentInstance;
