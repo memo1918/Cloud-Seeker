@@ -41,10 +41,8 @@ describe('ComparisonComponent', () => {
 
   it('should switch highlighted option', async () => {
     let chips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>
-    //debugger
     chips[0].click()
     fixture.detectChanges()
-    //debugger
     expect(chips[0].getAttribute("ng-reflect-highlighted")=="true")
     expect(chips[1].getAttribute("ng-reflect-highlighted")=="false")
     expect(chips[2].getAttribute("ng-reflect-highlighted")=="false")
@@ -57,12 +55,9 @@ describe('ComparisonComponent', () => {
 
   it('should display correct data in table body', async () => {
     let tableElement = document.querySelector("mat-expansion-panel-header")as HTMLElement
-    //debugger
     tableElement.click()
     fixture.detectChanges()
     let tableContent = document.querySelector(".mat-expansion-panel-content")as HTMLElement
-    //debugger
-    //document.querySelector("[data-notes]")
     expect(tableContent.textContent).toContain(" cores:  32 ")
     expect(tableContent.textContent).toContain(" memory:  256 GiB ")
     expect(tableContent.textContent).toContain(" regionCode:  us-east-2 ")
@@ -70,5 +65,14 @@ describe('ComparisonComponent', () => {
     expect(tableContent.textContent).toContain(" storage:  EBS only ")
     expect(tableContent.textContent).toContain(" gpuMemory:  NA ")
     expect(tableContent.textContent).toContain(" clockSpeed:  NA ")
+  });
+
+  it('should show the correct message if the shopping cart is empty', async () => {
+    ShoppingCartDummyService.Instance.setItems([])
+    fixture.detectChanges()
+    let displayText = document.querySelector("p")as HTMLParagraphElement
+    expect(displayText.textContent).toBe(" The shopping cart is empty ")
+    let tableElement = document.querySelector("mat-expansion-panel-header")as HTMLElement
+    expect(tableElement).toBeFalsy()
   });
 });
