@@ -21,11 +21,11 @@ build_frontend: # job
     - npm run build # building
   artifacts:
     paths:
-      - "frontend/dist/**"
-      - "frontend/artifacts/**"
+      - ./dist/**
+      - ./artifacts/**
     reports:
       coverage_report:
         coverage_format: cobertura
-        path: "frontend/artifacts/coverage/frontend/cobertura-coverage.xml"
-      junit: "frontend/artifacts/tests/**/*.xml"
+        path: "./artifacts/coverage/frontend/cobertura-coverage.xml"
+      junit: "./artifacts/tests/**/*.xml"
     expire_in: never

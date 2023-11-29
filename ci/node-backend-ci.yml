@@ -11,12 +11,12 @@ test_backend:
   artifacts:
     when: always
     paths:
-      - backend/build/
+      - backend/build/**
     reports:
-      junit: backend/build/tests/junit.xml
+      junit: ./build/tests/junit.xml
       coverage_report:
         coverage_format: cobertura
-        path: backend/build/coverage/cobertura-coverage.xml
+        path: ./build/coverage/cobertura-coverage.xml
 
 build_backend:
   image: node:18.16.0-bullseye
