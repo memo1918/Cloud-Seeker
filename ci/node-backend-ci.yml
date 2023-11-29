@@ -13,10 +13,10 @@ test_backend:
     paths:
       - backend/build/**
     reports:
-      junit: ./build/tests/junit.xml
+      junit: backend/build/tests/junit.xml
       coverage_report:
         coverage_format: cobertura
-        path: ./build/coverage/cobertura-coverage.xml
+        path: backend/build/coverage/cobertura-coverage.xml
 
 build_backend:
   image: node:18.16.0-bullseye
