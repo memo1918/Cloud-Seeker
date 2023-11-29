@@ -44,8 +44,7 @@ describe("services db", () => {
                 setTimeout(resolve, 500);
             });
             await mongoServer.ensureInstance();
-        } catch (e) {
-        }
+        } catch (e) {}
 
         while (true) {
             try {
@@ -54,8 +53,7 @@ describe("services db", () => {
                 await collection.createIndex({ sku: "text" });
                 await collection.createIndex({ sku: 1 });
                 break;
-            } catch (err) {
-            }
+            } catch (err) {}
         }
 
         (getCollection as jest.Mock<any>).mockImplementation(async (...args: any[]) => {
@@ -68,8 +66,7 @@ describe("services db", () => {
         try {
             await client.close();
             await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {
-        }
+        } catch (e) {}
     });
 
     test("find instancecomparisons in collection services", async () => {
