@@ -1,32 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComparisonComponent } from './comparison.component';
-import {BrowserModule} from "@angular/platform-browser";
-import {MatExpansionModule} from "@angular/material/expansion";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {MatTableModule} from "@angular/material/table";
 import {ShoppingCartDummyService} from "./shopping-cart-dummy-service";
 import {ShoppingCartService} from "../shopping-cart.service";
-import {MatChipsModule} from "@angular/material/chips";
-import {MatRadioButton, MatRadioModule} from "@angular/material/radio";
-import {MatIconModule} from "@angular/material/icon";
-import {MatTabsModule} from "@angular/material/tabs";
-import {MatToolbarModule} from "@angular/material/toolbar";
-import {MatBadgeModule} from "@angular/material/badge";
-import {MatListModule} from "@angular/material/list";
-import {MatInputModule} from "@angular/material/input";
-import {MatSliderModule} from "@angular/material/slider";
-import {MatRippleModule} from "@angular/material/core";
-import {MatGridListModule} from "@angular/material/grid-list";
-import {MatButtonModule} from "@angular/material/button";
-import {MatCardModule} from "@angular/material/card";
-import {MatSidenavModule} from "@angular/material/sidenav";
-import {MatCheckboxModule} from "@angular/material/checkbox";
-import {MatDividerModule} from "@angular/material/divider";
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {MatSelectModule} from "@angular/material/select";
-import {MatDialogModule} from "@angular/material/dialog";
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { ComparisonComponent } from "./comparison.component";
 import { getTestBedImports } from "../testbed.app.module";
 
 describe('ComparisonComponent', () => {
@@ -35,39 +10,12 @@ describe('ComparisonComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [
-        BrowserModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatTabsModule,
-        MatTableModule,
-        MatToolbarModule,
-        MatBadgeModule,
-        MatListModule,
-        MatInputModule,
-        MatSliderModule,
-        MatRippleModule,
-        MatGridListModule,
-        MatButtonModule,
-        MatCardModule,
-        MatSidenavModule,
-        MatCheckboxModule,
-        MatDividerModule,
-        ReactiveFormsModule,
-        MatSelectModule,
-        MatDialogModule,
-        MatIconModule,
-        MatChipsModule,
-        MatRadioModule,
-        FormsModule,
-      ],
+
       declarations: [ComparisonComponent],
       providers:[
         { provide: ShoppingCartService, useClass: ShoppingCartDummyService}
       ],
       ...getTestBedImports(),
-      declarations: [ComparisonComponent]
     });
     fixture = TestBed.createComponent(ComparisonComponent);
     component = fixture.componentInstance;
@@ -77,16 +25,50 @@ describe('ComparisonComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
   it('should display correct data in chip', () => {
-    //let chips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>
     let chip = document.querySelector("mat-chip")as HTMLElement
     expect(chip.textContent).toBe(" 371.57 USD ")
   });
+
   it('should select cheapest option', () => {
     let chips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>
     expect(chips[2].textContent).toBe(" 55.03 USD ")
     expect(chips[2].getAttribute("ng-reflect-highlighted")=="true")
     expect(chips[1].getAttribute("ng-reflect-highlighted")=="false")
     expect(chips[0].getAttribute("ng-reflect-highlighted")=="false")
+  });
+
+  it('should switch highlighted option', async () => {
+    let chips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>
+    //debugger
+    chips[0].click()
+    fixture.detectChanges()
+    //debugger
+    expect(chips[0].getAttribute("ng-reflect-highlighted")=="true")
+    expect(chips[1].getAttribute("ng-reflect-highlighted")=="false")
+    expect(chips[2].getAttribute("ng-reflect-highlighted")=="false")
+  });
+
+  it('should display correct data in table title', () => {
+    let tableTitle = document.querySelector("mat-panel-title")as HTMLElement
+    expect(tableTitle.textContent).toBe(" Virtual Machines / AWSOutposts / Compute Engine ")
+  });
+
+  it('should display correct data in table body', async () => {
+    let tableElement = document.querySelector("mat-expansion-panel-header")as HTMLElement
+    //debugger
+    tableElement.click()
+    fixture.detectChanges()
+    let tableContent = document.querySelector(".mat-expansion-panel-content")as HTMLElement
+    //debugger
+    //document.querySelector("[data-notes]")
+    expect(tableContent.textContent).toContain(" cores:  32 ")
+    expect(tableContent.textContent).toContain(" memory:  256 GiB ")
+    expect(tableContent.textContent).toContain(" regionCode:  us-east-2 ")
+    expect(tableContent.textContent).toContain(" operatingSystem:  Windows ")
+    expect(tableContent.textContent).toContain(" storage:  EBS only ")
+    expect(tableContent.textContent).toContain(" gpuMemory:  NA ")
+    expect(tableContent.textContent).toContain(" clockSpeed:  NA ")
   });
 });
