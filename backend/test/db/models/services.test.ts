@@ -22,6 +22,7 @@ jest.mock("../../../src/db/schema");
 describe("services db", () => {
     let mongoServer: MongoMemoryServer;
     let client: MongoClient;
+    let counter = 0;
     let fixtureServices: Partial<IService>[] = [
         {
             vendorName: "test1",
@@ -37,12 +38,14 @@ describe("services db", () => {
 
     beforeEach(async () => {
         try {
-            mongoServer = await MongoMemoryServer.create();
+            let worker = Number(process.env["JEST_WORKER_ID"]);
+            mongoServer = await MongoMemoryServer.create({ instance: { port: 2000 + 100 * worker + counter++ } });
             await new Promise((resolve) => {
                 setTimeout(resolve, 500);
             });
             await mongoServer.ensureInstance();
-        } catch (e) {}
+        } catch (e) {
+        }
 
         while (true) {
             try {
@@ -51,7 +54,8 @@ describe("services db", () => {
                 await collection.createIndex({ sku: "text" });
                 await collection.createIndex({ sku: 1 });
                 break;
-            } catch (err) {}
+            } catch (err) {
+            }
         }
 
         (getCollection as jest.Mock<any>).mockImplementation(async (...args: any[]) => {
@@ -64,7 +68,8 @@ describe("services db", () => {
         try {
             await client.close();
             await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {}
+        } catch (e) {
+        }
     });
 
     test("find instancecomparisons in collection services", async () => {
