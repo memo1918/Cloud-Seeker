@@ -16,27 +16,18 @@ describe("categories db", () => {
     ];
 
     beforeEach(async () => {
-        try {
-            mongoServer = await MongoMemoryServer.create();
-            await new Promise((resolve) => {
-                setTimeout(resolve, 500);
-            });
-            await mongoServer.ensureInstance();
-        } catch (e) {}
-        while (true) {
-            try {
-                client = await new MongoClient(mongoServer.getUri()).connect();
-                await client.db("cloud-seeker").collection("categories").insertMany(fixtureCategories);
-                break;
-            } catch (err) {}
-        }
+        mongoServer = await MongoMemoryServer.create();
+        await new Promise((resolve) => {
+            setTimeout(resolve, 500);
+        });
+        await mongoServer.ensureInstance();
+        client = await new MongoClient(mongoServer.getUri()).connect();
+        await client.db("cloud-seeker").collection("categories").insertMany(fixtureCategories);
     });
 
     afterEach(async () => {
-        try {
-            await client.close();
-            await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {}
+        await client.close();
+        await mongoServer.stop({ force: true, doCleanup: true });
     });
 
     test("get all categories with two instance available", async () => {

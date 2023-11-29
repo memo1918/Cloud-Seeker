@@ -4,16 +4,13 @@ import { MongoClient } from "mongodb";
 
 describe("mongodb setup", () => {
     let mongoServer: MongoMemoryServer;
-    let client: MongoClient;
     beforeAll(async () => {
-        try {
-            mongoServer = await MongoMemoryServer.create();
-            await new Promise((resolve) => {
-                setTimeout(resolve, 500);
-            });
-            await mongoServer.ensureInstance();
-            client = await new MongoClient(mongoServer.getUri()).connect();
-        } catch (e) {}
+        mongoServer = await MongoMemoryServer.create();
+        await new Promise((resolve) => {
+            setTimeout(resolve, 500);
+        });
+        await mongoServer.ensureInstance();
+        await new MongoClient(mongoServer.getUri()).connect();
     });
 
     afterAll(async () => {

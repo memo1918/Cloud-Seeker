@@ -19,26 +19,17 @@ describe("instancecomparison db", () => {
     ];
 
     beforeEach(async () => {
-        try {
-            mongoServer = await MongoMemoryServer.create();
-            await new Promise((resolve) => {
-                setTimeout(resolve, 500);
-            });
-            await mongoServer.ensureInstance();
-        } catch (e) {}
-        while (true) {
-            try {
-                let client = await new MongoClient(mongoServer.getUri(), {}).connect();
-                await client.db(dbName).collection(collectionName).insertMany(fixtureInstanceComparison);
-                break;
-            } catch (err) {}
-        }
+        mongoServer = await MongoMemoryServer.create();
+        await new Promise((resolve) => {
+            setTimeout(resolve, 500);
+        });
+        await mongoServer.ensureInstance();
+        let client = await new MongoClient(mongoServer.getUri(), {}).connect();
+        await client.db(dbName).collection(collectionName).insertMany(fixtureInstanceComparison);
     });
 
     afterEach(async () => {
-        try {
-            await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {}
+        await mongoServer.stop({ force: true, doCleanup: true });
     });
 
     test("get all instancecomparisons", async () => {
