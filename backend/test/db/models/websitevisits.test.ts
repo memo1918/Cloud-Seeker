@@ -4,9 +4,11 @@ import { MongoClient } from "mongodb";
 
 describe("website visite module", () => {
     let mongoServer: MongoMemoryServer;
+    let counter = 0;
 
     beforeEach(async () => {
-        mongoServer = await MongoMemoryServer.create();
+        let worker = Number(process.env["JEST_WORKER_ID"]);
+        mongoServer = await MongoMemoryServer.create({ instance: { port: 2000 + 100 * worker + counter++ } });
         await new Promise((resolve) => {
             setTimeout(resolve, 500);
         });
