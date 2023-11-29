@@ -4,7 +4,7 @@
     "description": "",
     "main": "src/index.ts",
     "scripts": {
-        "test": "jest --forceExit",
+        "test": "jest",
         "build": "webpack --config webpack.prod.config.js",
         "start": "ts-node --project tsconfig.json src/index.ts",
         "watch": "tsx watch src/index.ts",
