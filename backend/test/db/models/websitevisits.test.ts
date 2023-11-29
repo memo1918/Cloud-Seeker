@@ -6,19 +6,15 @@ describe("website visite module", () => {
     let mongoServer: MongoMemoryServer;
 
     beforeEach(async () => {
-        try {
-            mongoServer = await MongoMemoryServer.create();
-            await new Promise((resolve) => {
-                setTimeout(resolve, 500);
-            });
-            await mongoServer.ensureInstance();
-        } catch (e) {}
+        mongoServer = await MongoMemoryServer.create();
+        await new Promise((resolve) => {
+            setTimeout(resolve, 500);
+        });
+        await mongoServer.ensureInstance();
     });
 
     afterEach(async () => {
-        try {
-            await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {}
+        await mongoServer.stop({ force: true, doCleanup: true });
     });
 
     test("creating and incrementing unvisited element", async () => {
