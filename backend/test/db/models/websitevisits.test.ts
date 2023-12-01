@@ -4,21 +4,19 @@ import { MongoClient } from "mongodb";
 
 describe("website visite module", () => {
     let mongoServer: MongoMemoryServer;
+    let counter = 0;
 
     beforeEach(async () => {
-        try {
-            mongoServer = await MongoMemoryServer.create();
-            await new Promise((resolve) => {
-                setTimeout(resolve, 500);
-            });
-            await mongoServer.ensureInstance();
-        } catch (e) {}
+        let worker = Number(process.env["JEST_WORKER_ID"]);
+        mongoServer = await MongoMemoryServer.create({ instance: { port: 2000 + 100 * worker + counter++ } });
+        await new Promise((resolve) => {
+            setTimeout(resolve, 500);
+        });
+        await mongoServer.ensureInstance();
     });
 
     afterEach(async () => {
-        try {
-            await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {}
+        await mongoServer.stop({ force: true, doCleanup: true });
     });
 
     test("creating and incrementing unvisited element", async () => {

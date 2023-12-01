@@ -15,8 +15,7 @@ export class UnitDisplayComponent implements OnInit {
   ngOnInit(): void {
     if (this.unit instanceof DefaultUnitCategorisation) {
       this.displayText = this.unit.token;
-    }
-    if (this.unit instanceof CustomUnitCategorisation) {
+    } else if (this.unit instanceof CustomUnitCategorisation) {
       this.displayText = `${this.unit.value} (${this.unit.token})`;
     }
   }

@@ -1,6 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { RemoveInstanceComponent } from './remove-instance.component';
+import { RemoveInstanceComponent } from "./remove-instance.component";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
 
 describe('RemoveInstanceComponent', () => {
   let component: RemoveInstanceComponent;
@@ -8,7 +9,8 @@ describe('RemoveInstanceComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [RemoveInstanceComponent]
+      ...getTestBedImports(),
+      ...getTestBedDeclarations()
     });
     fixture = TestBed.createComponent(RemoveInstanceComponent);
     component = fixture.componentInstance;

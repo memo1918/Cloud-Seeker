@@ -1,14 +1,18 @@
-import {TestBed} from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
 
-import {APIService} from './api.service';
-import {SAMPLE_CATEGORIES} from "./api.service.fixtures";
+import { APIService } from "./api.service";
+import { SAMPLE_CATEGORIES } from "./api.service.fixtures";
+import { getTestBedDeclarations, getTestBedImports } from "./testbed.app.module";
 
 describe('APIService', () => {
     let service: APIService;
     let okResponse: Response;
     let okCategory: Response;
     beforeEach(() => {
-        TestBed.configureTestingModule({});
+      TestBed.configureTestingModule({
+        ...getTestBedImports(),
+        ...getTestBedDeclarations()
+      });
         service = TestBed.inject(APIService);
         okResponse = new Response(JSON.stringify({"data": {"visitors": 5}}), {status: 200, statusText: 'OK'});
         okCategory = new Response(JSON.stringify({"data": {"categories": SAMPLE_CATEGORIES}}), {status: 200, statusText: 'OK'});

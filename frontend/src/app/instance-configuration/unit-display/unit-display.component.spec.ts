@@ -4,6 +4,7 @@ import { UnitDisplayComponent } from "./unit-display.component";
 import { Unit } from "../../pricing/unit";
 import { Component } from "@angular/core";
 import { CustomUnitCategorisation } from "../../pricing/customunitcategorisation";
+import { getTestBedImports } from "../../testbed.app.module";
 
 describe("UnitDisplayComponent", () => {
   let component: TestComponentWrapper;
@@ -12,7 +13,8 @@ describe("UnitDisplayComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [UnitDisplayComponent, TestComponentWrapper]
+      declarations: [UnitDisplayComponent, TestComponentWrapper],
+      ...getTestBedImports()
     });
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;

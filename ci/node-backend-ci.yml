@@ -11,7 +11,7 @@ test_backend:
   artifacts:
     when: always
     paths:
-      - backend/build/
+      - backend/build/**
     reports:
       junit: backend/build/tests/junit.xml
       coverage_report:

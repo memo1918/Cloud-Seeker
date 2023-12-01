@@ -22,6 +22,7 @@ jest.mock("../../../src/db/schema");
 describe("services db", () => {
     let mongoServer: MongoMemoryServer;
     let client: MongoClient;
+    let counter = 0;
     let fixtureServices: Partial<IService>[] = [
         {
             vendorName: "test1",
@@ -37,7 +38,8 @@ describe("services db", () => {
 
     beforeEach(async () => {
         try {
-            mongoServer = await MongoMemoryServer.create();
+            let worker = Number(process.env["JEST_WORKER_ID"]);
+            mongoServer = await MongoMemoryServer.create({ instance: { port: 2000 + 100 * worker + counter++ } });
             await new Promise((resolve) => {
                 setTimeout(resolve, 500);
             });
@@ -49,6 +51,7 @@ describe("services db", () => {
                 client = await new MongoClient(mongoServer.getUri()).connect();
                 collection = await client.db(dbName).createCollection(collectionName);
                 await collection.createIndex({ sku: "text" });
+                await collection.createIndex({ sku: 1 });
                 break;
             } catch (err) {}
         }

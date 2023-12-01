@@ -1,12 +1,16 @@
-import {TestBed} from '@angular/core/testing';
-import {CategoryService} from './category.service';
-import {MatTabChangeEvent} from "@angular/material/tabs";
+import { TestBed } from "@angular/core/testing";
+import { CategoryService } from "./category.service";
+import { MatTabChangeEvent } from "@angular/material/tabs";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
 
 describe('CategoryService', () => {
     let service: CategoryService;
 
     beforeEach(() => {
-        TestBed.configureTestingModule({});
+      TestBed.configureTestingModule({
+        ...getTestBedImports(),
+        ...getTestBedDeclarations()
+      });
         service = TestBed.inject(CategoryService);
         spyOn(service, 'setCategory');
     });

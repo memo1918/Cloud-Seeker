@@ -1,19 +1,9 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { UnitNumberComponent } from "./unit-number.component";
-import { BrowserModule } from "@angular/platform-browser";
-import { MatExpansionModule } from "@angular/material/expansion";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatIconModule } from "@angular/material/icon";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatTableModule } from "@angular/material/table";
-import { MatInputModule } from "@angular/material/input";
-import { MatDividerModule } from "@angular/material/divider";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatButtonModule } from "@angular/material/button";
-import { MatSelectModule } from "@angular/material/select";
 import { Component, ViewChild } from "@angular/core";
 import { NumberUnitCategorisation } from "../../pricing/numberunitcategorisation";
+import { getTestBedImports } from "../../testbed.app.module";
 
 describe("UnitNumberComponent", () => {
   let component: TestComponentWrapper;
@@ -21,21 +11,8 @@ describe("UnitNumberComponent", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      ...getTestBedImports(),
       declarations: [UnitNumberComponent, TestComponentWrapper],
-      imports: [
-        BrowserModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatTabsModule,
-        MatTableModule,
-        MatInputModule,
-        MatDividerModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatButtonModule,
-        MatSelectModule
-      ]
     });
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;

@@ -6,6 +6,15 @@ test_frontend: # job
     - npm install
   script:
     - npm run test-ci # testing
+  artifacts:
+    paths:
+      - frontend/artifacts/**
+    reports:
+      coverage_report:
+        coverage_format: cobertura
+        path: frontend/artifacts/coverage/frontend/cobertura-coverage.xml
+      junit: frontend/artifacts/tests/frontend/*.xml
+    expire_in: never
 
 build_frontend: # job
   image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
@@ -17,5 +26,5 @@ build_frontend: # job
     - npm run build # building
   artifacts:
     paths:
-      - "frontend/dist/**"
+      - frontend/dist/**
     expire_in: never

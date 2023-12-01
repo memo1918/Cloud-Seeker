@@ -1,22 +1,12 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { InstanceConfigurationComponent } from "./instance-configuration.component";
-import { BrowserModule } from "@angular/platform-browser";
-import { MatExpansionModule } from "@angular/material/expansion";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { MatIconModule } from "@angular/material/icon";
-import { MatTabsModule } from "@angular/material/tabs";
-import { MatTableModule } from "@angular/material/table";
-import { MatInputModule } from "@angular/material/input";
-import { MatDividerModule } from "@angular/material/divider";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatButtonModule } from "@angular/material/button";
-import { MatSelectModule } from "@angular/material/select";
 import { Component, Input } from "@angular/core";
 import { UnitCategorisation } from "../pricing/units";
 import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
-import { MatDialog, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceComparison } from "../models/instance-comparison";
+import { getTestBedImports } from "../testbed.app.module";
 
 describe("InstanceConfigurationComponent", () => {
   let component: DialogWrapperComponent;
@@ -25,6 +15,7 @@ describe("InstanceConfigurationComponent", () => {
   beforeEach(async () => {
 
     await TestBed.configureTestingModule({
+      ...getTestBedImports(),
       declarations: [
         InstanceConfigurationComponent,
         TestFieldDisplayComponentMock,
@@ -34,30 +25,8 @@ describe("InstanceConfigurationComponent", () => {
         TestUnitDropdownComponentMock,
         DialogWrapperComponent
       ],
-      imports: [
-        BrowserModule,
-        MatExpansionModule,
-        BrowserAnimationsModule,
-        MatIconModule,
-        MatTabsModule,
-        MatTableModule,
-        MatInputModule,
-        MatDividerModule,
-        ReactiveFormsModule,
-        FormsModule,
-        MatButtonModule,
-        MatDialogModule,
-        MatSelectModule
-      ],
       providers: [
         MatDialog
-        // {
-        //   // I was expecting this will pass the desired value
-        //   provide: MAT_DIALOG_DATA,
-        //   useValue: {
-        //     data: { instance: INSTANCE_COMPARISON_FIXTURE }
-        //   }
-        // }
       ]
     }).compileComponents();
 

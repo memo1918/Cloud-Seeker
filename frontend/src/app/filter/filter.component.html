@@ -4,11 +4,11 @@
                    [ngSwitch]="field.type">
         <mat-list-item *ngSwitchCase="numberComponent">
             <mat-divider *ngIf="!lastItem"></mat-divider>
-            <app-number-regulator [field]="field"></app-number-regulator>
+          <app-number-regulator [attr.data-filter-name]="field.name" [field]="field"></app-number-regulator>
         </mat-list-item>
         <mat-list-item *ngSwitchCase="dropdownComponent">
             <mat-divider *ngIf="!lastItem"></mat-divider>
-            <app-dropdown-regulator [field]="field"></app-dropdown-regulator>
+          <app-dropdown-regulator [attr.data-filter-name]="field.name" [field]="field"></app-dropdown-regulator>
         </mat-list-item>
     </mat-grid-list>
 </div>
