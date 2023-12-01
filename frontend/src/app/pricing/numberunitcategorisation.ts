@@ -64,7 +64,6 @@ export class NumberUnitCategorisation implements UnitCategorisation {
     getConversionFactor(target: UnitCategorisation): number {
 
         if (!this.isCompatible(target) || !(target instanceof NumberUnitCategorisation)) throw new Error(`Incompatible units ${this.unitName} and ${target.unitName}`);
-
         return target.value / this.value;
     }
 }
