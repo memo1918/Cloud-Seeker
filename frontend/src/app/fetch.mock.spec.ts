@@ -2,7 +2,7 @@ export type ResponseMappings = { [endsWith: string]: [BodyInit, ResponseInit] };
 
 export class FetchMockSpec {
   private static instance: FetchMockSpec | undefined;
-  private spy: jasmine.Spy<Window[keyof Window] extends jasmine.Func ? Window[keyof Window] : (Window[keyof Window] extends {
+  private spy!: jasmine.Spy<Window[keyof Window] extends jasmine.Func ? Window[keyof Window] : (Window[keyof Window] extends {
     new(...args: infer A): infer V
   } ? ((...args: A) => V) : never)>;
 
@@ -14,14 +14,15 @@ export class FetchMockSpec {
   }
 
   private constructor() {
-    this.spy = spyOn(window, "fetch");
   }
 
   public setSpy() {
+    this.spy = spyOn(window, "fetch");
     this.spy.and.callFake(this.handleRequest.bind(this));
   }
 
   public removeSpy() {
+    if (!this.spy) return;
     this.spy.and.callThrough();
   }
 
