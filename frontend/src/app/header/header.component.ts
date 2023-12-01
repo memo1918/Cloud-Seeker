@@ -10,9 +10,9 @@ import { ShoppingCartService } from "../shopping-cart.service";
 export class HeaderComponent {
   title: string = 'Cloud-Comparison-Tool';
 
-  constructor(private service: HeaderService, public shoppingCart: ShoppingCartService) {}
+  constructor(public service: HeaderService, public shoppingCart: ShoppingCartService) {}
 
-  public open() {
+  public openPanel() {
     this.service.toggle.next(true);
   }
 }
