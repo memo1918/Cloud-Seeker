@@ -12,7 +12,7 @@ export class FilterComponent {
 
   numberComponent: string = "number";
   dropdownComponent: string = "dropdown";
-  radioComponent: string = "radio"
+  // radioComponent: string = "radio"
 
   testField: Field = {
     "name": "cores",
