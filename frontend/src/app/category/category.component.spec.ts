@@ -13,7 +13,6 @@ describe('MainComponent', () => {
         }).compileComponents();
         fixture = TestBed.createComponent(CategoryComponent);
         component = fixture.componentInstance;
-        fixture.detectChanges();
     });
 
     it('category component should create', () => {

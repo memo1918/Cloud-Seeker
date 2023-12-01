@@ -37,7 +37,7 @@ describe("UI-Tests", () => {
 
     await domUpdate(fixture);
     debugger;
-    let dropdown = await elementToBePresent(`[data-field-name="regionCode"]`, fixture) as HTMLElement;
+    let dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;
 
     // we expect the region code dropdown to exist
     expect(dropdown).toBeTruthy();
@@ -45,7 +45,6 @@ describe("UI-Tests", () => {
     dropdown.click();
 
     await domUpdate(fixture);
-    debugger;
 
     // we now expect the dropdown to be open and to contain our elements
     let items = document.querySelectorAll("mat-option>span") as NodeListOf<HTMLSpanElement>;
@@ -63,7 +62,7 @@ describe("UI-Tests", () => {
     debugger;
 
     // we expect the selection to update to one filter
-    dropdown = await elementToBePresent(`[data-field-name="regionCode"]`, fixture) as HTMLElement;
+    dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;
     expect(dropdown.innerText).toBe(options[3]);
 
     // we check the number of results
@@ -100,6 +99,7 @@ describe("UI-Tests", () => {
     // lets set the note
     const noteForTesting = "this is my note for testing";
     htmlTextAreaElement.value = noteForTesting;
+
     htmlTextAreaElement.dispatchEvent(new Event("input"));
     fixture.detectChanges();
     // enter different number in the price configuration
@@ -135,6 +135,44 @@ describe("UI-Tests", () => {
     expect(pricingInformation["azure"].factor).toBe(8);
     expect(pricingInformation["azure"].price).toBeCloseTo(2.224);
     debugger;
-  });
+  }, 100000);
+
+  it("should filter by cpu and add instance to the shopping cart", async () => {
+    await domUpdate(fixture);
+    let coresFilter = await elementToBePresent(`[data-filter-name="cores"]`, fixture) as HTMLElement;
+    // debugger;
+    // we expect the cores input fields to exist
+    expect(coresFilter).toBeTruthy();
+    // lets get the max and min fields
+    let numberInputMin = coresFilter.querySelector(`[data-number-input-min] input[type="number"]`) as HTMLInputElement;
+    let numberInputMax = coresFilter.querySelector(`[data-number-input-max] input[type="number"]`) as HTMLInputElement;
+
+    expect(numberInputMin).toBeTruthy();
+    expect(numberInputMax).toBeTruthy();
+
+
+    // when we change a value we expect the other inputs to update accordingly
+    // we input a number in the minimum text field
+    numberInputMin.value = "8";
+    numberInputMin.dispatchEvent(new Event("input"));
+
+    await domUpdate(fixture);
+
+    // we input a number in the maximum text field
+    numberInputMax.value = "32";
+    numberInputMax.dispatchEvent(new Event("input"));
+
+    await domUpdate(fixture);
+
+    let numberSliderMin = coresFilter.querySelector(`[data-number-slider-min]`) as HTMLInputElement;
+    let numberSliderMax = coresFilter.querySelector(`[data-number-slider-max]`) as HTMLInputElement;
+
+    expect(numberSliderMin).toBeTruthy();
+    expect(numberSliderMax).toBeTruthy();
+    expect(numberSliderMin.value).toBe("8");
+    expect(numberSliderMax.value).toBe("32");
+
+
+  }, 100000);
 
 });

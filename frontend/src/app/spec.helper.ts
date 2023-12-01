@@ -26,7 +26,8 @@ export function elementToBePresent(selector: string, fixture: ComponentFixture<a
 
     observer.observe(document.body, {
       childList: true,
-      subtree: true
+      subtree: true,
+      attributes: true
     });
 
 
@@ -50,7 +51,8 @@ export async function domUpdate(fixture: ComponentFixture<any>) {
 
     observer.observe(document, {
       childList: true,
-      subtree: true
+      subtree: true,
+      attributes: true
     });
 
     fixture.detectChanges();
