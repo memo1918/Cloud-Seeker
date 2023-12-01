@@ -7,6 +7,7 @@ let dbName = "cloud-seeker";
 let collectionName = "instancecomparison";
 describe("instancecomparison db", () => {
     let mongoServer: MongoMemoryServer;
+    let counter = 0;
     let fixtureInstanceComparison: Partial<IInstanceComparison>[] = [
         {
             name: { aws: "computestuff" },
@@ -19,7 +20,8 @@ describe("instancecomparison db", () => {
     ];
 
     beforeEach(async () => {
-        mongoServer = await MongoMemoryServer.create();
+        let worker = Number(process.env["JEST_WORKER_ID"]);
+        mongoServer = await MongoMemoryServer.create({ instance: { port: 2000 + 100 * worker + counter++ } });
         await new Promise((resolve) => {
             setTimeout(resolve, 500);
         });

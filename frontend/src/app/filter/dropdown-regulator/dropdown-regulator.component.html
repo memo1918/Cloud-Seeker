@@ -1,6 +1,7 @@
+<h2 class="header">{{field.name}}</h2>
 <mat-form-field class="Box" color="accent" appearance="outline">
     <mat-label>{{field.name}}</mat-label>
-    <mat-select [formControl]="selectedOption">
+  <mat-select [formControl]="selectedOption">
         <mat-option [value]="'unselected'">None</mat-option>
         <mat-option *ngFor="let option of this.field.options" [value]="option">{{option}}</mat-option>
     </mat-select>
