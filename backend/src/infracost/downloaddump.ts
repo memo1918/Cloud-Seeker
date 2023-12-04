@@ -1,5 +1,6 @@
 import fs, { PathLike } from "fs";
 import * as https from "https";
+import * as http from "http";
 
 export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
     return new Promise<void>((resolve, reject) => {
@@ -10,8 +11,11 @@ export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
             __filename
         });
         const file = fs.createWriteStream(targetFilePath);
-        const request = https
-            .get(dumpUrl, function (response) {
+
+        let requestExecutorModule = dumpUrl.startsWith("https") ? https : http;
+
+        const request = requestExecutorModule
+            .get(dumpUrl, function(response) {
                 response.pipe(file);
                 // after download completed close filestream
 
@@ -21,11 +25,13 @@ export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
                     resolve();
                 });
             })
-            .on("error", function (err) {
+            .on("error", function(err) {
                 // Handle errors
                 console.error({ message: "download failed", err, dumpUrl, targetFilePath });
                 fs.unlink(targetFilePath, () => undefined); // Delete the file async. (But we don't check the result)
                 reject(err);
             });
+
+
     });
 }

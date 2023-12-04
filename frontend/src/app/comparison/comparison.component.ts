@@ -1,43 +1,46 @@
-import { Component } from '@angular/core';
-import {MatExpansionModule} from '@angular/material/expansion';
+import { Component } from "@angular/core";
 import { ShoppingCartService } from "../shopping-cart.service";
-import {InstanceComparison} from "../models/instance-comparison";
-import {valuesIn} from "lodash";
-import {CartItem} from "../models/cart-item";
+import { valuesIn } from "lodash";
+import { CartItem } from "../models/cart-item";
 
 @Component({
-  selector: 'app-comparison',
-  templateUrl: './comparison.component.html',
-  styleUrls: ['./comparison.component.scss']
+  selector: "app-comparison",
+  templateUrl: "./comparison.component.html",
+  styleUrls: ["./comparison.component.scss"]
 })
 
 export class ComparisonComponent {
-  panelOpenState: boolean =false;
+  panelOpenState: boolean = false;
+
   // selectedOption: string[] = []; // Initialize it with the default value
-  constructor(public shoppingCart:ShoppingCartService) {
-    this.shoppingCart.getItemsObserver().subscribe(items=>this.newShoppingCartItems(items))
+  constructor(public shoppingCart: ShoppingCartService) {
+    this.shoppingCart.getItemsObserver().subscribe(items => this.newShoppingCartItems(items));
   }
+
   protected readonly keys = Object.keys;
-  private newShoppingCartItems(items: CartItem[]){
-    if(items.length == 0){
+
+  private newShoppingCartItems(items: CartItem[]) {
+    if (items.length == 0) {
       return;
     }
     this.vendors = Object.keys(items[0].instance.price);
     this.columnsToDisplay = ["name", ...this.vendors];
+
   }
-  vendors: string[] = []
+
+  vendors: string[] = [];
   columnsToDisplay: string[] = [];
 
-  getTotalPrice(){
+  getTotalPrice() {
     const cartItems = this.shoppingCart.getItems();
     let endPrice = 0;
     for (const cartItem of cartItems) {
 
       let price = cartItem.pricingInformation[cartItem.selectedProvider];
 
-      endPrice += price.price;
+      endPrice += (price.price * cartItem.numberOfInstances);
     }
-      return endPrice;
+    return endPrice;
   }
 
   protected readonly valuesIn = valuesIn;
