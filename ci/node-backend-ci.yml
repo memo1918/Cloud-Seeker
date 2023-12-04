@@ -17,6 +17,7 @@ test_backend:
       coverage_report:
         coverage_format: cobertura
         path: backend/build/coverage/cobertura-coverage.xml
+      coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
 
 build_backend:
   image: node:18.16.0-bullseye
