@@ -18,7 +18,7 @@ import { UnitDisplayComponent } from "./instance-configuration/unit-display/unit
 import { DialogComponent } from "./instance-configuration/dialog/dialog.component";
 import { BrowserModule } from "@angular/platform-browser";
 import { MatExpansionModule } from "@angular/material/expansion";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTabsModule } from "@angular/material/tabs";
 import { MatTableModule } from "@angular/material/table";
@@ -54,7 +54,7 @@ export function getTestBedImports() {
     imports: [
       BrowserModule,
       MatExpansionModule,
-      BrowserAnimationsModule,
+      NoopAnimationsModule,
       MatIconModule,
       MatTabsModule,
       MatTableModule,

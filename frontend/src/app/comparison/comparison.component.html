@@ -11,7 +11,7 @@
                 {{valuesIn(item.instance.name).join(" / ")}}
               </mat-panel-title>
             </mat-expansion-panel-header>
-            <p *ngIf="item.notes">
+            <p *ngIf="item.notes" [attr.data-notes]="">
               {{item.notes}}
             </p>
             <p *ngFor="let key of keys(item.instance.fields)">

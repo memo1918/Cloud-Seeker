@@ -7,6 +7,7 @@ let dbName = "cloud-seeker";
 let collectionName = "instancecomparison";
 describe("instancecomparison db", () => {
     let mongoServer: MongoMemoryServer;
+    let counter = 0;
     let fixtureInstanceComparison: Partial<IInstanceComparison>[] = [
         {
             name: { aws: "computestuff" },
@@ -19,26 +20,18 @@ describe("instancecomparison db", () => {
     ];
 
     beforeEach(async () => {
-        try {
-            mongoServer = await MongoMemoryServer.create();
-            await new Promise((resolve) => {
-                setTimeout(resolve, 500);
-            });
-            await mongoServer.ensureInstance();
-        } catch (e) {}
-        while (true) {
-            try {
-                let client = await new MongoClient(mongoServer.getUri(), {}).connect();
-                await client.db(dbName).collection(collectionName).insertMany(fixtureInstanceComparison);
-                break;
-            } catch (err) {}
-        }
+        let worker = Number(process.env["JEST_WORKER_ID"]);
+        mongoServer = await MongoMemoryServer.create({ instance: { port: 2000 + 100 * worker + counter++ } });
+        await new Promise((resolve) => {
+            setTimeout(resolve, 500);
+        });
+        await mongoServer.ensureInstance();
+        let client = await new MongoClient(mongoServer.getUri(), {}).connect();
+        await client.db(dbName).collection(collectionName).insertMany(fixtureInstanceComparison);
     });
 
     afterEach(async () => {
-        try {
-            await mongoServer.stop({ force: true, doCleanup: true });
-        } catch (e) {}
+        await mongoServer.stop({ force: true, doCleanup: true });
     });
 
     test("get all instancecomparisons", async () => {

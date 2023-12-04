@@ -24,23 +24,6 @@ export class ComparisonComponent {
     }
     this.vendors = Object.keys(items[0].instance.price);
     this.columnsToDisplay = ["name", ...this.vendors];
-    // for (let i = 0; i < items.length; i++) {
-    //   const item = items[i];
-    //   let lowestPrice: number = Number.POSITIVE_INFINITY;
-    //   let lowestVendor: string = "";
-      // for (const vendor of this.vendors) {
-      //   let value = item.instance.price[vendor].value;
-      //   if (typeof value == "string") {
-      //     value = value.replace(/\D/g,'')
-      //   }
-      //   let valueN: number = value as number;
-      //   // if (valueN < lowestPrice){
-      //   //   lowestVendor = vendor;
-      //   //   lowestPrice = +item.price[vendor].value;
-      //   // }
-      // }
-      // this.selectedOption[i] = lowestVendor;
-    // }
   }
   vendors: string[] = []
   columnsToDisplay: string[] = [];
@@ -54,10 +37,6 @@ export class ComparisonComponent {
 
       endPrice += price.price;
     }
-    //   for (let i = 0; i < this.selectedOption.length; i++) {
-    //   const selected = this.selectedOption[i];
-    //   const item = cartItems[i];
-    // }
       return endPrice;
   }
 

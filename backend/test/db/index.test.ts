@@ -3,17 +3,16 @@ import { MongoMemoryServer } from "mongodb-memory-server";
 import { MongoClient } from "mongodb";
 
 describe("mongodb setup", () => {
+    let counter = 0;
     let mongoServer: MongoMemoryServer;
-    let client: MongoClient;
     beforeAll(async () => {
-        try {
-            mongoServer = await MongoMemoryServer.create();
-            await new Promise((resolve) => {
-                setTimeout(resolve, 500);
-            });
-            await mongoServer.ensureInstance();
-            client = await new MongoClient(mongoServer.getUri()).connect();
-        } catch (e) {}
+        let worker = Number(process.env["JEST_WORKER_ID"]);
+        mongoServer = await MongoMemoryServer.create({ instance: { port: 2000 + 100 * worker + counter++ } });
+        await new Promise((resolve) => {
+            setTimeout(resolve, 500);
+        });
+        await mongoServer.ensureInstance();
+        await new MongoClient(mongoServer.getUri()).connect();
     });
 
     afterAll(async () => {
