@@ -1,5 +1,4 @@
 export function getInfracostApiKey() {
-
     if (process.env["DUMMY_DATA_URL"]) {
         console.log({ message: "working with locally hosted dummy data" });
         return "working with locally hosted dummy data";

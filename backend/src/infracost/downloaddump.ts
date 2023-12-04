@@ -15,7 +15,7 @@ export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
         let requestExecutorModule = dumpUrl.startsWith("https") ? https : http;
 
         const request = requestExecutorModule
-            .get(dumpUrl, function(response) {
+            .get(dumpUrl, function (response) {
                 response.pipe(file);
                 // after download completed close filestream
 
@@ -25,13 +25,11 @@ export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
                     resolve();
                 });
             })
-            .on("error", function(err) {
+            .on("error", function (err) {
                 // Handle errors
                 console.error({ message: "download failed", err, dumpUrl, targetFilePath });
                 fs.unlink(targetFilePath, () => undefined); // Delete the file async. (But we don't check the result)
                 reject(err);
             });
-
-
     });
 }
