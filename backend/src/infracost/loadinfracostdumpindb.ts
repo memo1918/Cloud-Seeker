@@ -26,6 +26,8 @@ export async function loadinfracostdumpindb() {
     await extractDump(archiveFile, extractionFile);
     await removeFile(archiveFile);
 
+    let numberOfRows = await countlines(extractionFile);
+
     let csvParser = new ParseCsvBatch<CsvData>(extractionFile, 1000);
 
     // recreate service collection and create index
@@ -34,7 +36,6 @@ export async function loadinfracostdumpindb() {
         await createServicesIndex(client);
     });
 
-    let numberOfRows = await countlines(extractionFile);
     console.log({ message: `inserting ${numberOfRows} entries into the database` });
 
     // number of rows inserted
@@ -42,36 +43,40 @@ export async function loadinfracostdumpindb() {
     // errors during parsing
     let errors: { error: any; csvData: CsvData }[] = [];
 
-    await execQuery<void>(async (client) => {
-        let moreData = true;
-        while (moreData) {
-            try {
-                let [data, isComplete] = await csvParser.next();
-                moreData = !isComplete;
-                let dump: DumpData[] = data
-                    .map((d) => {
-                        try {
-                            let attributes = JSON.parse(d.attributes);
-                            let priceMap: { [hash: string]: [PriceInformation] } = JSON.parse(d.prices);
+    let moreData = true;
+    while (moreData) {
+        try {
+            // console.log({ message: "getting csv data", __filename });
+            let [data, isComplete] = await csvParser.next();
+            moreData = !isComplete;
+            // console.log({ message: "got csv data", moreData, __filename });
+            let dump: DumpData[] = data
+                .map((d) => {
+                    try {
+                        d.attributes = JSON.parse(d.attributes);
+                        let priceMap: { [hash: string]: [PriceInformation] } = JSON.parse(d.prices);
 
-                            let prices = Object.values(priceMap).flat();
+                        d.prices = Object.values(priceMap).flat() as any;
 
-                            return { ...d, attributes, prices };
-                        } catch (err) {
-                            errors.push({ csvData: d, error: err });
-                        }
-                        return undefined as unknown as DumpData;
-                    })
-                    .filter((data) => data != undefined);
+                        return d as any as DumpData;
+                    } catch (err) {
+                        errors.push({ csvData: d, error: err });
+                    }
+                    return undefined as unknown as DumpData;
+                })
+                .filter((data) => data != undefined);
+            // console.log({ message: "parsed csv data ... inserting into db" });
+            await execQuery<void>(async (client) => {
                 await insertServicesData(client, dump);
-                rows += dump.length;
-                console.log({ message: `inserted ${rows} of ${numberOfRows} rows` });
-            } catch (e) {
-                console.error(e);
-                break;
-            }
+            }, 1000);
+            rows += dump.length;
+            console.log({ message: `inserted ${rows} of ${numberOfRows} rows` });
+        } catch (e) {
+            console.log({ message: "error occurred while inserting into db." });
+            console.error(e);
+            break;
         }
-    });
+    }
 
     console.log({
         message: "insertion complete",
