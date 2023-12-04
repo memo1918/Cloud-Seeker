@@ -39,6 +39,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatRadioModule } from "@angular/material/radio";
+import { InstancePreviewService} from "./instance-preview/instance-preview.service";
 
 export function getTestBedModules() {
   return {
@@ -100,7 +101,8 @@ export function getTestBedDeclarations() {
       UnitDropdownComponent,
       UnitDivisionComponent,
       UnitDisplayComponent,
-      DialogComponent
+      DialogComponent,
+      InstancePreviewComponent
     ]
   };
 }
