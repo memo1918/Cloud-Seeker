@@ -14,8 +14,8 @@ test_frontend: # job
         coverage_format: cobertura
         path: frontend/artifacts/coverage/frontend/cobertura-coverage.xml
       junit: frontend/artifacts/tests/frontend/*.xml
-      coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
     expire_in: never
+  coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
 
 build_frontend: # job
   image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
