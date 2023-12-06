@@ -36,12 +36,11 @@ describe("UI-Tests", () => {
   it("should filter by region configure a instance and add a item to the shopping cart", async () => {
 
     await domUpdate(fixture);
-    debugger;
     let dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;
 
     // we expect the region code dropdown to exist
     expect(dropdown).toBeTruthy();
-    // lets click on the region code dropdown
+    // let's click on the region code dropdown
     dropdown.click();
 
     await domUpdate(fixture);
@@ -58,8 +57,6 @@ describe("UI-Tests", () => {
     // lets click on eu-south-1
     items[3].click();
     await domUpdate(fixture);
-
-    debugger;
 
     // we expect the selection to update to one filter
     dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;
@@ -84,7 +81,7 @@ describe("UI-Tests", () => {
     // click the add instance button to open the dialog
     button.click();
     let dialog = await elementToBePresent("app-instance-configuration", fixture);
-    debugger;
+
 
     // expect the title to be identical to the title in the first row
     let title = dialog.querySelector("h1");
@@ -109,16 +106,12 @@ describe("UI-Tests", () => {
     // select default units
     dropdownComponent.click();
 
-    debugger;
-
 
     let submitButton = dialog.querySelector(`button[type="submit"]`) as HTMLButtonElement;
-    // debugger;
     submitButton.click();
     await domUpdate(fixture);
     expect(document.querySelector("app-instance-configuration")).toBeFalsy();
 
-    debugger;
 
     let shoppingCartService = window["ShoppingCartService" as any] as unknown as ShoppingCartService;
     // expect the instance to be added to the cart
@@ -134,13 +127,11 @@ describe("UI-Tests", () => {
     expect(pricingInformation["gcp"].price).toBeCloseTo(2.696448);
     expect(pricingInformation["azure"].factor).toBe(8);
     expect(pricingInformation["azure"].price).toBeCloseTo(2.224);
-    debugger;
   }, 100000);
 
   it("should filter by cpu and add instance to the shopping cart", async () => {
     await domUpdate(fixture);
     let coresFilter = await elementToBePresent(`[data-filter-name="cores"]`, fixture) as HTMLElement;
-    // debugger;
     // we expect the cores input fields to exist
     expect(coresFilter).toBeTruthy();
     // lets get the max and min fields

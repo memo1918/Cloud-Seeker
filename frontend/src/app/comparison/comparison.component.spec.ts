@@ -30,7 +30,6 @@ describe('ComparisonComponent', () => {
   it('should display correct data in chip', () => {
     //selects the first chip that gets created
     let chip = document.querySelector("mat-chip")as HTMLElement
-    debugger
     //compare the text content of the chip
     expect(chip.textContent).toBe(" 371.57 USD ")
   });

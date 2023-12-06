@@ -24,7 +24,7 @@
           <!--            <button class="cancel" mat-icon-button>-->
           <!--              <mat-icon fontIcon="cancel">Cancel</mat-icon>-->
           <!--            </button>-->
-
+          <app-remove-instance [cartItem]="item"></app-remove-instance>
           <h4 class="itemName"> {{ valuesIn(item.instance.name).join(" / ") }}</h4>
 
         </div>
