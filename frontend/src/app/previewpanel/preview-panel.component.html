@@ -1,6 +1,6 @@
-<mat-sidenav-container data-preview-panel [hasBackdrop]="true" style="height: 100%">
+<mat-sidenav-container [hasBackdrop]="true" style="height: 100%">
   <mat-sidenav position="end" mode="over" class="preview-panel-content" [(opened)]="showPanel">
-    <div class="main-panel">
+    <div data-preview-panel class="main-panel">
       <div class="topRow">
         <div class="title"><h1>My Configuration</h1></div>
 
@@ -21,31 +21,31 @@
           <div class="items" *ngFor="let item of group.items">
 
 
-            <!--                buttons for removing-->
-            <!--            <button class="cancel" mat-icon-button>-->
-            <!--              <mat-icon fontIcon="cancel">Cancel</mat-icon>-->
-            <!--            </button>-->
+          <!--                buttons for removing-->
+          <!--            <button class="cancel" mat-icon-button>-->
+          <!--              <mat-icon fontIcon="cancel">Cancel</mat-icon>-->
+          <!--            </button>-->
+        <app-remove-instance [cartItem]="item"></app-remove-instance>
 
-            <h4 class="itemName"> {{ valuesIn(item.instance.name).join(" / ") }}</h4>
-            <!-- Add a divider if it's not the last group -->
-            <mat-divider *ngIf="!last" class="divider"></mat-divider>
+              <h4 class="itemName"> {{ valuesIn(item.instance.name).join(" / ") }}</h4>
+              <!-- Add a divider if it's not the last group -->
+              <mat-divider *ngIf="!last" class="divider"></mat-divider>
 
           </div>
         </div>
       </div>
-      <div class="cartButtonContainer">
-        <button mat-raised-button color="accent" class="cartButton"
-                (click)="routingService.setDestination('/comparison'); showPanel=false;">View Summary
-        </button>
+        <div class="cartButtonContainer">
+            <button mat-raised-button color="accent" class="cartButton"
+                    (click)="routingService.setDestination('/comparison'); showPanel=false;">View Summary
+            </button>
 
-      </div>
+
+        </div>
     </div>
   </mat-sidenav>
 
-  <!-- display elements passed to this component -->
-  <mat-sidenav-content>
-    <ng-content></ng-content>
-  </mat-sidenav-content>
+    <!-- display elements passed to this component -->
+    <mat-sidenav-content>
+        <ng-content></ng-content>
+    </mat-sidenav-content>
 </mat-sidenav-container>
-
-
