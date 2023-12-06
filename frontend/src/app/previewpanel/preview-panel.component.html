@@ -21,11 +21,6 @@ class="example-container" (backdropClick)="showPanel=false" [hasBackdrop]="true"
 
         <div class="items" *ngFor="let item of group.items">
 
-
-          <!--                buttons for removing-->
-          <!--            <button class="cancel" mat-icon-button>-->
-          <!--              <mat-icon fontIcon="cancel">Cancel</mat-icon>-->
-          <!--            </button>-->
           <app-remove-instance [cartItem]="item"></app-remove-instance>
           <h4 class="itemName"> {{ valuesIn(item.instance.name).join(" / ") }}</h4>
 
