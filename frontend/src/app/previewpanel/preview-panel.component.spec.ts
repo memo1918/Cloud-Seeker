@@ -1,16 +1,10 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { PreviewPanelComponent } from "./preview-panel.component";
 import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
 import { FetchMockSpec } from "../fetch.mock.spec";
-import { dummyApplicationData } from "../mocks/fetch/applicationdummydata";
-import { AppComponent } from "../app.component";
-import { domUpdate, elementToBePresent } from "../spec.helper";
-import { padEnd } from "lodash";
 import { CartItem } from "../models/cart-item";
-import { InstanceComparison } from "../models/instance-comparison";
-import { Unit } from "../pricing/unit";
-import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
+import { domUpdate, elementToBePresent } from "../helper.spec";
 
 const shoppingCartFixture =  [
   {
@@ -389,6 +383,6 @@ describe('PreviewpanelComponent', () => {
     let itemName = document.querySelector(".itemName") as HTMLElement;
     expect(itemName.innerText).toEqual("Virtual Machines / AWSOutposts / Compute Engine")
 
-  },10000);
+  });
 
 });
