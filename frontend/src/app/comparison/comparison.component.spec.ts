@@ -106,9 +106,23 @@ describe('ComparisonComponent', () => {
 
   it('should remove elements with remove button', () => {
     let removeButton = document.querySelector("button") as HTMLElement
-    debugger
+    let tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>
+    expect(tableElements.length).toBe(16)
     removeButton.click()
     fixture.detectChanges()
-    debugger
+    tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>
+    expect(tableElements.length).toBe(12)
+  });
+  it('should remove multiple elements with remove button', () => {
+    let removeButton = document.querySelector("button") as HTMLElement
+    let tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>
+    expect(tableElements.length).toBe(16)
+    removeButton.click()
+    fixture.detectChanges()
+    removeButton = document.querySelector("button") as HTMLElement
+    removeButton.click()
+    fixture.detectChanges()
+    tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>
+    expect(tableElements.length).toBe(8)
   });
 });
