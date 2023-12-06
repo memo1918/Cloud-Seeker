@@ -7,10 +7,10 @@
     </scripts>
     <node-interpreter value="project" />
     <envs>
-      <env name="DB_CONNECTION_STRING" value="mongodb://localhost:27017"/>
-      <env name="INFRACOST_API_KEY" value="ico-L0D8qyYQ38KgwpHmuujgj4AxWtfZR9CD"/>
       <env name="CATEGORY_TEMPLATES" value="../devcontainer/configuration/samplecategory.json"/>
+      <env name="DB_CONNECTION_STRING" value="mongodb://localhost:27017"/>
       <env name="DUMMY_CSV_IMPORT" value="../devcontainer/configuration/dummyCsvImport.csv"/>
+      <env name="DUMMY_DATA_URL" value="http://localhost:8080/archive.csv.gz"/>
     </envs>
     <method v="2" />
   </configuration>
