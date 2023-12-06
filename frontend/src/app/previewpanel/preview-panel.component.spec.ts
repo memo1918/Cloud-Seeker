@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { PreviewPanelComponent } from "./preview-panel.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { CartItem } from "../models/cart-item";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";

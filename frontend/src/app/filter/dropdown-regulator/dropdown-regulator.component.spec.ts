@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { DropdownRegulatorComponent } from "./dropdown-regulator.component";
-import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app";
 import { Component, ViewChild } from "@angular/core";
 import { Field } from "../models/Field";
 import { domUpdate, elementToBePresent } from "../../helper.spec";

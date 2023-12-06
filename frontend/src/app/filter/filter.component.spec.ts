@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { FilterComponent } from "./filter.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { Component, Input } from "@angular/core";
 import { Field } from "./models/Field";
 import { NumberRegulatorComponent } from "./number-regulator/number-regulator.component";

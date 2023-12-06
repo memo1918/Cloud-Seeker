@@ -19,11 +19,13 @@ export class FetchMockSpec {
   public setSpy() {
     this.spy = spyOn(window, "fetch");
     this.spy.and.callFake(this.handleRequest.bind(this));
+    return this;
   }
 
   public removeSpy() {
     if (!this.spy) return;
     this.spy.and.callThrough();
+    return this;
   }
 
   public dummyData: ResponseMappings = {};
@@ -57,14 +59,17 @@ export class FetchMockSpec {
 
   public setNextRequest(response: Response) {
     this.nextResponse = response;
+    return this;
   }
 
   public setResponseData(data: ResponseMappings) {
     this.dummyData = data;
+    return this;
   }
 
   public resetResponseData() {
     this.nextResponse = null;
     this.dummyData = {};
+    return this;
   }
 }

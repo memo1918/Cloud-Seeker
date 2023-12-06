@@ -1,7 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 import { CategoryService } from "./category.service";
 import { MatTabChangeEvent } from "@angular/material/tabs";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 
 describe('CategoryService', () => {
     let service: CategoryService;

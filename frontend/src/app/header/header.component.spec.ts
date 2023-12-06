@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { HeaderComponent } from "./header.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 import { domUpdate } from "../helper.spec";
@@ -45,7 +45,6 @@ describe("HeaderComponent", () => {
     expect(component.service.toggle.getValue()).toBeFalsy()
     button.click();
     await domUpdate(fixture);
-    expect(component.service.toggle.getValue()).toBeTruthy()
-
+    expect(component.service.toggle.getValue()).toBeTruthy();
   });
 });

@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app";
 import { NumberRegulatorComponent } from "./number-regulator.component";
 import { Component, ViewChild } from "@angular/core";
 import { Field } from "../models/Field";

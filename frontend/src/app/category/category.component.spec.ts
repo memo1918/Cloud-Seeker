@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from "@angular/core/testing";
 import { CategoryComponent } from "./category.component";
-import { getTestBedImports } from "../testbed.app.module";
+import { getTestBedImports } from "../testbed.app";
 
 describe('MainComponent', () => {
     let component: CategoryComponent;

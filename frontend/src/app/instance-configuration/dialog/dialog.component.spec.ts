@@ -5,7 +5,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { INSTANCE_COMPARISON_FIXTURE } from "../../fixtures/instance-comparison.fixture";
 import { InstanceConfigurationComponent } from "../instance-configuration.component";
 import { Component, ViewChild } from "@angular/core";
-import { getTestBedImports } from "../../testbed.app.module";
+import { getTestBedImports } from "../../testbed.app";
 
 describe("DialogComponent", () => {
   let component: TestComponentWrapper;
