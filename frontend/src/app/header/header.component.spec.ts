@@ -1,11 +1,9 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-
 import { HeaderComponent } from "./header.component";
 import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
 import { FetchMockSpec } from "../fetch.mock.spec";
-import { dummyApplicationData } from "../mocks/fetch/applicationdummydata";
-import { PreviewPanelComponent } from "../previewpanel/preview-panel.component";
-import { domUpdate, elementToBePresent } from "../spec.helper";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
+import { domUpdate } from "../helper.spec";
 
 describe("HeaderComponent", () => {
   let component: HeaderComponent;

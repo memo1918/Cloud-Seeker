@@ -202,7 +202,6 @@ describe("UI-Tests", () => {
     let secondCategory = await elementToBePresent(`div[role="tab"][aria-posinset="2"]`, fixture) as HTMLElement;
     secondCategory.click();
     await domUpdate(fixture);
-
     // check if the instance preview and filter changes
     appInstancePreview = await elementToBePresent("app-instance-preview", fixture);
     appFilter = await elementToBePresent("app-filter", fixture);
