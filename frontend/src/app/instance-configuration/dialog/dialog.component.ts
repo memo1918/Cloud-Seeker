@@ -4,7 +4,7 @@ import { InstanceConfigurationComponent } from "../instance-configuration.compon
 import { InstanceComparison } from "src/app/models/instance-comparison";
 import { CartItem } from "../../models/cart-item";
 import { ShoppingCartService } from "../../shopping-cart.service";
-import { Unit } from "../../pricing/unit";
+import { InstanceConfigurationResult } from "../instance-configuration-result";
 
 @Component({
   selector: "app-instance-configuration-dialog",
@@ -30,16 +30,13 @@ export class DialogComponent {
         resolve(dialogRef);
       });
 
-      this.dialogRef.afterClosed().subscribe((result) => {
+      this.dialogRef.afterClosed().subscribe((result: InstanceConfigurationResult | null) => {
 
         console.log("The dialog was closed", result);
-        if(!result) return;
-        let pricing = result.adjustedPricing as { providerName: string, factor: number, price: number }[]
-        let units = result.units as {
-          configuration: Unit;
-          providerName: string;
-          providerDefault: Unit;
-        }
+        if (result == null) return;
+
+        let pricing = result.adjustedPricing;
+        let units = result.units;
 
 
         let cartItem: CartItem = {
@@ -47,7 +44,8 @@ export class DialogComponent {
           pricingInformation: {},
           units: units,
           selectedProvider: pricing[0].providerName,
-          notes: result.notes
+          notes: result.notes,
+          numberOfInstances: result.numberOfInstances
         }
 
         for (const pricingElement of pricing) {

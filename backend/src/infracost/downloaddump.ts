@@ -1,5 +1,6 @@
 import fs, { PathLike } from "fs";
 import * as https from "https";
+import * as http from "http";
 
 export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
     return new Promise<void>((resolve, reject) => {
@@ -10,7 +11,10 @@ export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
             __filename
         });
         const file = fs.createWriteStream(targetFilePath);
-        const request = https
+
+        let requestExecutorModule = dumpUrl.startsWith("https") ? https : http;
+
+        const request = requestExecutorModule
             .get(dumpUrl, function (response) {
                 response.pipe(file);
                 // after download completed close filestream

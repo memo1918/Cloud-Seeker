@@ -7,9 +7,9 @@ services:
       - ./configuration:/cloudseeker/configuration
     environment:
       - DB_CONNECTION_STRING=mongodb://mongodb:27017
-      - INFRACOST_API_KEY=ico-L0D8qyYQ38KgwpHmuujgj4AxWtfZR9CD
       - CATEGORY_TEMPLATES=/cloudseeker/configuration/samplecategory.json
       - DUMMY_CSV_IMPORT=/cloudseeker/configuration/dummyCsvImport.csv
+      - DUMMY_DATA_URL=http://dummydata/archive.csv.gz
 
   reverseproxy:
     image: nginx
@@ -19,6 +19,9 @@ services:
       - "8080:80"
     extra_hosts:
       host.docker.internal: host-gateway
+
+  dummydata:
+    image: cloudseeker/dummydata
 
   mongodb:
     image: mongo
