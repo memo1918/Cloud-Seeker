@@ -1,7 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 
 import { FilterService } from "./filter.service";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { CategoryService } from "../category/category.service";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Category } from "../category/models/Category";

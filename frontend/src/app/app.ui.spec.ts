@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { getTestBedDeclarations, getTestBedImports } from "./testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "./testbed.app";
 import { AppComponent } from "./app.component";
 import { FetchMockSpec } from "./fetch.mock.spec";
 import { dummyApplicationData } from "./mocks/fetch/applicationdummydata.spec";
@@ -18,8 +18,7 @@ describe("UI-Tests", () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
-    FetchMockSpec.getInstance().setSpy();
-    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
 
     fixture = TestBed.createComponent(AppComponent);
     application = fixture.componentInstance;
@@ -40,7 +39,7 @@ describe("UI-Tests", () => {
     await domUpdate(fixture);
 
     if (ENABLE_DEBUGGER) debugger;
-
+    console.log("selecting dropdown");
     let dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;
 
     // we expect the region code dropdown to exist
@@ -48,10 +47,13 @@ describe("UI-Tests", () => {
     // lets click on the region code dropdown
     dropdown.click();
 
+    console.log("clicking on dropdown");
+
     await domUpdate(fixture);
 
     // we now expect the dropdown to be open and to contain our elements
     let items = document.querySelectorAll("mat-option>span") as NodeListOf<HTMLSpanElement>;
+    console.log("slecting all dropdown elements");
     let options = ["None", "ap-northeast-3", "eu-central-2", "eu-south-1", "eu-west-3", "us-east-1", "us-east-1-nyc-1", "us-east-2", "us-gov-east-1", "us-gov-west-1", "us-west-2", "us-west-2-den-1"];
 
     expect(items.length).toBe(options.length);
@@ -61,15 +63,18 @@ describe("UI-Tests", () => {
 
     // lets click on eu-south-1
     items[3].click();
+    console.log("clicking on the third element");
     await domUpdate(fixture);
 
     if (ENABLE_DEBUGGER) debugger;
 
+    console.log("selecting dropdown");
     // we expect the selection to update to one filter
     dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;
     expect(dropdown.innerText).toBe(options[3]);
 
     // we check the number of results
+    console.log("selecting table");
     let table = await elementToBePresent("app-instance-preview > div > div > table", fixture);
     let titleRows = table.querySelectorAll(".titleRow") as NodeListOf<HTMLTableRowElement>;
     expect(titleRows.length).toBe(1);
@@ -80,6 +85,7 @@ describe("UI-Tests", () => {
     expect(fieldCells.length).toBe(8);
 
     // we check if a button exists in the last cell to open the dialog
+    console.log("selecting add button");
     let buttonCell = fieldCells[7];
     let button = buttonCell.querySelector("app-instance-configuration-dialog button") as HTMLButtonElement;
     // expect the add instance button to exist
@@ -87,11 +93,13 @@ describe("UI-Tests", () => {
 
     // click the add instance button to open the dialog
     button.click();
+    console.log("clicking on the add button and waiting for the dialog to open");
     let dialog = await elementToBePresent("app-instance-configuration", fixture);
 
     if (ENABLE_DEBUGGER) debugger;
 
     // expect the title to be identical to the title in the first row
+    console.log("checking the header");
     let title = dialog.querySelector("h1");
     expect(title).toBeTruthy();
     expect(title!.innerText).toBe(titleRows[0].innerText);

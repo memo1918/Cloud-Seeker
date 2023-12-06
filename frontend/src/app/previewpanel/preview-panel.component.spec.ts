@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { PreviewPanelComponent } from "./preview-panel.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { CartItem } from "../models/cart-item";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
@@ -378,7 +378,6 @@ describe('PreviewpanelComponent', () => {
 
     let categoryName = await elementToBePresent(".categoryName",fixture) as HTMLElement;
     expect(categoryName.innerText).toEqual("Compute")
-    debugger
 
     let itemName = document.querySelector(".itemName") as HTMLElement;
     expect(itemName.innerText).toEqual("Virtual Machines / AWSOutposts / Compute Engine")

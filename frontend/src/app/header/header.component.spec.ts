@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { HeaderComponent } from "./header.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 import { domUpdate } from "../helper.spec";
@@ -34,7 +34,6 @@ describe("HeaderComponent", () => {
 
   it("if badge exists", async () => {
     await domUpdate(fixture);
-    debugger;
     let badgecontent = document.querySelector(".mat-badge-content.mat-badge-active") as HTMLElement;
     expect(badgecontent.innerText).toEqual("0")
 
@@ -46,7 +45,6 @@ describe("HeaderComponent", () => {
     expect(component.service.toggle.getValue()).toBeFalsy()
     button.click();
     await domUpdate(fixture);
-    expect(component.service.toggle.getValue()).toBeTruthy()
-
+    expect(component.service.toggle.getValue()).toBeTruthy();
   });
 });

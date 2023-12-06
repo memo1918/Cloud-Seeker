@@ -13,6 +13,7 @@ export function elementToBePresent(selector: string, fixture: ComponentFixture<a
       if (element) {
         return resolve(element);
       }
+      debugger;
       reject(`element "${selector}" not found`);
     }, 200);
     const observer = new MutationObserver(mutations => {

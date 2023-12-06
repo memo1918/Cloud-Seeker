@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ComparisonComponent } from "./comparison.component";
 import { ShoppingCartDummyService } from "./shopping-cart-dummy-service";
 import { ShoppingCartService } from "../shopping-cart.service";
-import { getTestBedImports } from "../testbed.app.module";
+import { getTestBedImports } from "../testbed.app";
 
 const ENABLE_DEBUGGER = false;
 

@@ -6,7 +6,7 @@ import { UnitCategorisation } from "../pricing/units";
 import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceComparison } from "../models/instance-comparison";
-import { getTestBedImports } from "../testbed.app.module";
+import { getTestBedImports } from "../testbed.app";
 
 describe("InstanceConfigurationComponent", () => {
   let component: DialogWrapperComponent;
