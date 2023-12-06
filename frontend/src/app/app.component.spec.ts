@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
-import { getTestBedDeclarations, getTestBedImports } from "./testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "./testbed.app";
 
 describe("AppComponent", () => {
   beforeEach(() => {

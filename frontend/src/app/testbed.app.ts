@@ -39,6 +39,7 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatRadioModule } from "@angular/material/radio";
+import { TagsComponent } from "./filter/tags/tags.component";
 
 export function getTestBedModules() {
   return {
@@ -72,11 +73,9 @@ export function getTestBedImports() {
       ReactiveFormsModule,
       MatSelectModule,
       MatDialogModule,
-      MatIconModule,
       MatChipsModule,
       MatRadioModule,
-      FormsModule,
-      MatSelectModule
+      FormsModule
     ]
   };
 }
@@ -100,7 +99,8 @@ export function getTestBedDeclarations(replace: [any, any][] = [], ...add: any[]
     UnitDropdownComponent,
     UnitDivisionComponent,
     UnitDisplayComponent,
-    DialogComponent
+    DialogComponent,
+    TagsComponent
   ];
   declarations = declarations.map(i => {
     let replaceable = replace.find(j => j[0] == i);

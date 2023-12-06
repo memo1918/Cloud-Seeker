@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { UnitNumberComponent } from "./unit-number.component";
 import { Component, ViewChild } from "@angular/core";
 import { NumberUnitCategorisation } from "../../pricing/numberunitcategorisation";
-import { getTestBedImports } from "../../testbed.app.module";
+import { getTestBedImports } from "../../testbed.app";
 
 describe("UnitNumberComponent", () => {
   let component: TestComponentWrapper;

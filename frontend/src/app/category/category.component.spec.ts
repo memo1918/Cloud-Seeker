@@ -1,6 +1,6 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {CategoryComponent} from "./category.component";
-import {getTestBedDeclarations, getTestBedImports} from "../testbed.app.module";
+import {getTestBedDeclarations, getTestBedImports} from "../testbed.app";
 import {FetchMockSpec} from "../fetch.mock.spec";
 import {dummyApplicationData} from "../mocks/fetch/applicationdummydata.spec";
 import {domUpdate, elementToBePresent} from "../helper.spec";

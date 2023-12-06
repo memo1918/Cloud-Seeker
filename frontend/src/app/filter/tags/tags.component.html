@@ -1,0 +1,9 @@
+<span class="tagHost">
+  <mat-chip *ngFor="let filter of (filterService.getFilter() | async)"
+            (removed)="remove(filter)" [highlighted]="true">
+    <span class="filterTagText">{{filter.optionText}}</span>
+    <button matChipRemove [attr.aria-label]="'remove filter for ' + filter.name">
+      <mat-icon class="filterTagText">cancel</mat-icon>
+    </button>
+  </mat-chip>
+</span>

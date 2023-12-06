@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FilterService} from "../filter.service";
-import {Field} from "../models/Field";
-import {FormControl} from "@angular/forms";
-import {Chip} from "../models/chip";
-import {InstanceComparison} from 'src/app/models/instance-comparison';
+import { Component, Input, OnInit } from "@angular/core";
+import { FilterService } from "../filter.service";
+import { Field } from "../models/Field";
+import { FormControl } from "@angular/forms";
+import { Chip } from "../models/chip";
+import { InstanceComparison } from "src/app/models/instance-comparison";
 
 @Component({
     selector: 'app-dropdown-regulator',
@@ -27,7 +27,7 @@ export class DropdownRegulatorComponent implements OnInit {
             newFilters = filters.filter(f => f != this.chip);
             this.filterService.setFilter(newFilters);
         } else if (this.selectedOption.value != "unselected" && this.selectedOption.value) {
-            this.chip.optionText = this.selectedOption.value;
+          this.chip.optionText = `${this.field.name}: ${this.selectedOption.value}`;
             if (filters.indexOf(this.chip) == -1) {
                 newFilters = [...filters, this.chip];
             }

@@ -1,7 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 
 import { ShoppingCartService } from "./shopping-cart.service";
-import { getTestBedDeclarations, getTestBedImports } from "./testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "./testbed.app";
 
 describe("ShoppingCartService", () => {
   let service: ShoppingCartService;

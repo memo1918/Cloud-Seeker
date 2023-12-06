@@ -1,7 +1,7 @@
 import { Units } from "./units";
 import * as _ from "lodash";
 import { TestBed } from "@angular/core/testing";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 
 describe("units module", () => {
 
