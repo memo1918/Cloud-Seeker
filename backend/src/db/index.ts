@@ -52,11 +52,11 @@ export async function waitForDB() {
                     await client.db("admin").command({ ping: 1 });
                     available = true;
                 } catch (e) {
-                    console.log({ message: "no connection available. retrying....", e });
+                    console.log({ message: "no connection available. retrying...." });
                 }
             }, 1000);
         } catch (e) {
-            console.log({ message: "no connection available. retrying....", e });
+            console.log({ message: "no connection available. retrying...." });
         }
     }
 }

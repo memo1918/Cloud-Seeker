@@ -6,7 +6,7 @@ export async function countlines(filePath: string) {
     return new Promise<number>((resolve, reject) => {
         let i;
         let count = 0;
-        fs.createReadStream(filePath)
+        fs.createReadStream(filePath, { autoClose: true })
             .on("error", reject)
             .on("data", (chunk) => {
                 for (i = 0; i < chunk.length; ++i) if (chunk[i] == 10) count++;

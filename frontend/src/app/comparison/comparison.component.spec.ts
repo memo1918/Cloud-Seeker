@@ -1,8 +1,10 @@
-import {ComponentFixture, TestBed} from '@angular/core/testing';
-import {ComparisonComponent} from './comparison.component';
-import {ShoppingCartDummyService} from "./shopping-cart-dummy-service";
-import {ShoppingCartService} from "../shopping-cart.service";
-import {getTestBedDeclarations, getTestBedImports} from "../testbed.app.module";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComparisonComponent } from "./comparison.component";
+import { ShoppingCartDummyService } from "./shopping-cart-dummy-service";
+import { ShoppingCartService } from "../shopping-cart.service";
+import {getTestBedDeclarations, getTestBedImports} from "../testbed.app";
+
+const ENABLE_DEBUGGER = false;
 
 describe('ComparisonComponent', () => {
   let component: ComparisonComponent;
@@ -16,6 +18,7 @@ describe('ComparisonComponent', () => {
       providers: [
         {provide: ShoppingCartService, useClass: ShoppingCartDummyService}
       ],
+      ...getTestBedImports(),
     });
     fixture = TestBed.createComponent(ComparisonComponent);
     component = fixture.componentInstance;
@@ -92,11 +95,11 @@ describe('ComparisonComponent', () => {
     //detect changes is necessary to update the data after changing the items in the shopping cart
     fixture.detectChanges()
     //get the element that contains the text if the shopping cart is empty
-    let displayText = document.querySelector("p") as HTMLParagraphElement
+    let displayText = document.querySelector("p")as HTMLParagraphElement
     //check if the text is correct
     expect(displayText.textContent).toBe(" The shopping cart is empty ")
     //get a table element if there is one
-    let tableElement = document.querySelector("mat-expansion-panel-header") as HTMLElement
+    let tableElement = document.querySelector("mat-expansion-panel-header")as HTMLElement
     //there is not supposed to be a table element, therefore we check if it is falsy
     expect(tableElement).toBeFalsy()
   });

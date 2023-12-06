@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
-import {CategoryService} from "../category/category.service";
-import {Field} from "./models/Field";
-import {Category} from '../category/models/Category';
-import {Chip} from "./models/chip";
-import {BehaviorSubject} from "rxjs";
-import {InstanceComparison} from "../models/instance-comparison";
+import { Injectable } from "@angular/core";
+import { CategoryService } from "../category/category.service";
+import { Field } from "./models/Field";
+import { Category } from "../category/models/Category";
+import { Chip } from "./models/chip";
+import { BehaviorSubject } from "rxjs";
+import { InstanceComparison } from "../models/instance-comparison";
 
 @Injectable({
     providedIn: 'root'
@@ -24,6 +24,7 @@ export class FilterService {
             return;
         }
         this.currentCategoryFields = category.fields;
+      this.filters$.next([]);
     }
 
     getFilter() {

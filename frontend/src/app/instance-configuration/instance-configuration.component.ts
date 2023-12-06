@@ -5,6 +5,8 @@ import { Units } from "../pricing/units";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { valuesIn } from "lodash";
 import { InstanceComparison } from "../models/instance-comparison";
+import { InstanceConfigurationResult } from "./instance-configuration-result";
+
 
 @Component({
   selector: "app-instance-configuration",
@@ -76,7 +78,6 @@ export class InstanceConfigurationComponent {
     ev.stopPropagation();
     ev.stopImmediatePropagation();
 
-    this.pricingConfigurations;
     let pricingResult = this.pricingConfigurations.map(i => {
       let factor = i.providerDefault.getFactorForConversion(i.configuration);
       return {
@@ -85,7 +86,15 @@ export class InstanceConfigurationComponent {
         price: Number(this.data.instance.price[i.providerName].value) * factor
       };
     });
-    this.dialogRef.close({ units: this.pricingConfigurations, adjustedPricing: pricingResult, notes: this.noteText });
+
+    let result: InstanceConfigurationResult = {
+      units: this.pricingConfigurations,
+      adjustedPricing: pricingResult,
+      notes: this.noteText,
+      numberOfInstances: Number(this.instanceCountFormControl.value)
+    };
+
+    this.dialogRef.close(result);
   }
 
   onClose() {

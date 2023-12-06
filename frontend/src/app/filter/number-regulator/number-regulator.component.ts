@@ -1,9 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FilterService} from "../filter.service";
-import {Field} from "../models/Field";
-import {Chip} from "../models/chip";
-import {BehaviorSubject} from "rxjs";
-import {InstanceComparison} from 'src/app/models/instance-comparison';
+import { Component, Input, OnInit } from "@angular/core";
+import { FilterService } from "../filter.service";
+import { Field } from "../models/Field";
+import { Chip } from "../models/chip";
+import { BehaviorSubject } from "rxjs";
+import { InstanceComparison } from "src/app/models/instance-comparison";
 
 @Component({
     selector: 'app-number-regulator',
@@ -69,13 +69,13 @@ export class NumberRegulatorComponent implements OnInit {
             newFilters = filters.filter(f => f != this.chip);
             this.filterService.setFilter(newFilters);
         } else if (filters.indexOf(this.chip) == -1) {
-            this.chip.optionText = `${this.minNumber$.getValue()} to ${this.maxNumber$.getValue()}`;
+          this.chip.optionText = `${this.field.name}: ${this.minNumber$.getValue()} to ${this.maxNumber$.getValue()}`;
             if (filters.indexOf(this.chip) == -1) {
                 newFilters = [...filters, this.chip];
             }
             this.filterService.setFilter(newFilters);
         } else {
-            this.chip.optionText = `${this.minNumber$.getValue()} to ${this.maxNumber$.getValue()}`;
+          this.chip.optionText = `${this.field.name}: ${this.minNumber$.getValue()} to ${this.maxNumber$.getValue()}`;
             // this.filterService.setFilter(newFilters);
         }
         this.disableUpdate = false;

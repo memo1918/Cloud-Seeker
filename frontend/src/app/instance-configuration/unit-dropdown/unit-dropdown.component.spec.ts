@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { UnitDropdownComponent } from "./unit-dropdown.component";
 import { Component, ViewChild } from "@angular/core";
 import { TimeUnitCategorisation } from "../../pricing/timeunitcategorisation";
-import { getTestBedImports } from "../../testbed.app.module";
+import { getTestBedImports } from "../../testbed.app";
 
 describe("UnitDropdownComponent", () => {
   let component: TestComponentWrapper;
