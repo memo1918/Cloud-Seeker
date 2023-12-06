@@ -34,7 +34,6 @@ describe("HeaderComponent", () => {
 
   it("if badge exists", async () => {
     await domUpdate(fixture);
-    debugger;
     let badgecontent = document.querySelector(".mat-badge-content.mat-badge-active") as HTMLElement;
     expect(badgecontent.innerText).toEqual("0")
 

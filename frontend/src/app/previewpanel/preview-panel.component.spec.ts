@@ -378,7 +378,6 @@ describe('PreviewpanelComponent', () => {
 
     let categoryName = await elementToBePresent(".categoryName",fixture) as HTMLElement;
     expect(categoryName.innerText).toEqual("Compute")
-    debugger
 
     let itemName = document.querySelector(".itemName") as HTMLElement;
     expect(itemName.innerText).toEqual("Virtual Machines / AWSOutposts / Compute Engine")
