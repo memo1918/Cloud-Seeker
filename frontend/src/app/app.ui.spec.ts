@@ -2,9 +2,11 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { getTestBedDeclarations, getTestBedImports } from "./testbed.app.module";
 import { AppComponent } from "./app.component";
 import { FetchMockSpec } from "./fetch.mock.spec";
-import { dummyApplicationData } from "./mocks/fetch/applicationdummydata";
-import { domUpdate, elementToBePresent } from "./spec.helper";
+import { dummyApplicationData } from "./mocks/fetch/applicationdummydata.spec";
+import { domUpdate, elementToBePresent } from "./helper.spec";
 import { ShoppingCartService } from "./shopping-cart.service";
+
+const ENABLE_DEBUGGER = false;
 
 describe("UI-Tests", () => {
   let application: AppComponent;
@@ -36,7 +38,9 @@ describe("UI-Tests", () => {
   it("should filter by region configure a instance and add a item to the shopping cart", async () => {
 
     await domUpdate(fixture);
-    debugger;
+
+    if (ENABLE_DEBUGGER) debugger;
+
     let dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;
 
     // we expect the region code dropdown to exist
@@ -59,7 +63,7 @@ describe("UI-Tests", () => {
     items[3].click();
     await domUpdate(fixture);
 
-    debugger;
+    if (ENABLE_DEBUGGER) debugger;
 
     // we expect the selection to update to one filter
     dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;
@@ -84,7 +88,8 @@ describe("UI-Tests", () => {
     // click the add instance button to open the dialog
     button.click();
     let dialog = await elementToBePresent("app-instance-configuration", fixture);
-    debugger;
+
+    if (ENABLE_DEBUGGER) debugger;
 
     // expect the title to be identical to the title in the first row
     let title = dialog.querySelector("h1");
@@ -109,16 +114,17 @@ describe("UI-Tests", () => {
     // select default units
     dropdownComponent.click();
 
-    debugger;
-
+    if (ENABLE_DEBUGGER) debugger;
 
     let submitButton = dialog.querySelector(`button[type="submit"]`) as HTMLButtonElement;
-    // debugger;
+
+    if (ENABLE_DEBUGGER) debugger;
+
     submitButton.click();
     await domUpdate(fixture);
     expect(document.querySelector("app-instance-configuration")).toBeFalsy();
 
-    debugger;
+    if (ENABLE_DEBUGGER) debugger;
 
     let shoppingCartService = window["ShoppingCartService" as any] as unknown as ShoppingCartService;
     // expect the instance to be added to the cart
@@ -134,13 +140,16 @@ describe("UI-Tests", () => {
     expect(pricingInformation["gcp"].price).toBeCloseTo(2.696448);
     expect(pricingInformation["azure"].factor).toBe(8);
     expect(pricingInformation["azure"].price).toBeCloseTo(2.224);
-    debugger;
-  }, 100000);
+
+    if (ENABLE_DEBUGGER) debugger;
+
+  }, ENABLE_DEBUGGER ? 100000000 : undefined);
 
   it("should filter by cpu and add instance to the shopping cart", async () => {
     await domUpdate(fixture);
+
     let coresFilter = await elementToBePresent(`[data-filter-name="cores"]`, fixture) as HTMLElement;
-    // debugger;
+    if (ENABLE_DEBUGGER) debugger;
     // we expect the cores input fields to exist
     expect(coresFilter).toBeTruthy();
     // lets get the max and min fields
@@ -172,7 +181,33 @@ describe("UI-Tests", () => {
     expect(numberSliderMin.value).toBe("8");
     expect(numberSliderMax.value).toBe("32");
 
+    if (ENABLE_DEBUGGER) debugger;
 
-  }, 100000);
+  }, ENABLE_DEBUGGER ? 100000000 : undefined);
 
+
+  it("should switch the category and change filter and intancepreview", async () => {
+
+    await domUpdate(fixture);
+    let appInstancePreview = await elementToBePresent("app-instance-preview", fixture);
+    let appFilter = await elementToBePresent("app-filter", fixture);
+    expect(appInstancePreview).toBeTruthy();
+    expect(appFilter).toBeTruthy();
+
+    // save the previous html
+    let oldPreviewHTML = appInstancePreview.outerHTML;
+    let oldFilterHTML = appFilter.outerHTML;
+
+    // click on the second category
+    let secondCategory = await elementToBePresent(`div[role="tab"][aria-posinset="2"]`, fixture) as HTMLElement;
+    secondCategory.click();
+    await domUpdate(fixture);
+
+    // check if the instance preview and filter changes
+    appInstancePreview = await elementToBePresent("app-instance-preview", fixture);
+    appFilter = await elementToBePresent("app-filter", fixture);
+    expect(appInstancePreview.outerHTML).not.toEqual(oldPreviewHTML);
+    expect(appFilter.outerHTML).not.toEqual(oldFilterHTML);
+
+  }, ENABLE_DEBUGGER ? 100000000 : undefined);
 });

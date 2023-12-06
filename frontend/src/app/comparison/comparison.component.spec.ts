@@ -1,8 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ComparisonComponent } from './comparison.component';
-import {ShoppingCartDummyService} from "./shopping-cart-dummy-service";
-import {ShoppingCartService} from "../shopping-cart.service";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComparisonComponent } from "./comparison.component";
+import { ShoppingCartDummyService } from "./shopping-cart-dummy-service";
+import { ShoppingCartService } from "../shopping-cart.service";
 import { getTestBedImports } from "../testbed.app.module";
+
+const ENABLE_DEBUGGER = false;
 
 describe('ComparisonComponent', () => {
   let component: ComparisonComponent;
@@ -30,7 +32,7 @@ describe('ComparisonComponent', () => {
   it('should display correct data in chip', () => {
     //selects the first chip that gets created
     let chip = document.querySelector("mat-chip")as HTMLElement
-    debugger
+    if (ENABLE_DEBUGGER) debugger;
     //compare the text content of the chip
     expect(chip.textContent).toBe(" 371.57 USD ")
   });
@@ -54,6 +56,7 @@ describe('ComparisonComponent', () => {
     chips[0].click()
     //detect changes is necessary to update the data after the click
     fixture.detectChanges()
+    if (ENABLE_DEBUGGER) debugger;
     //checks if the correct chip is selected in row 1, also checks if the other chips in row 1 are unselected
     expect(chips[0].getAttribute("ng-reflect-highlighted")=="true")
     expect(chips[1].getAttribute("ng-reflect-highlighted")=="false")
@@ -74,6 +77,7 @@ describe('ComparisonComponent', () => {
     tableElement.click()
     //detect changes is necessary to update the data after the click
     fixture.detectChanges()
+    if (ENABLE_DEBUGGER) debugger;
     //ge the text of the now expanded table
     let tableContent = document.querySelector(".mat-expansion-panel-content")as HTMLElement
     //check if the text is what it's supposed to be
@@ -91,6 +95,7 @@ describe('ComparisonComponent', () => {
     ShoppingCartDummyService.Instance.setItems([])
     //detect changes is necessary to update the data after changing the items in the shopping cart
     fixture.detectChanges()
+    if (ENABLE_DEBUGGER) debugger;
     //get the element that contains the text if the shopping cart is empty
     let displayText = document.querySelector("p")as HTMLParagraphElement
     //check if the text is correct
