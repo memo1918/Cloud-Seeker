@@ -6,21 +6,29 @@
 .mat-table-background-white {
   background-color: #FFFFFF !important;
 }
+
 .mat-table-background-pink {
   background-color: #FEF7FF !important;
   border-radius: 25px;
   //position: absolute;
 }
 
+.configuration-cell {
+  display: flex;
+  mat-accordion {
+    width: 100%;
+  }
+}
 
 
-.grow{
+.grow {
   width: 100%;
 }
 
-.hidden-radio-button>div {
+.hidden-radio-button > div {
   visibility: hidden;
 }
+
 //.mdc-radio{
 //  display: none !important;
 //}
