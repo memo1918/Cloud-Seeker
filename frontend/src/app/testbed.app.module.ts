@@ -81,26 +81,35 @@ export function getTestBedImports() {
   };
 }
 
-export function getTestBedDeclarations() {
+
+export function getTestBedDeclarations(replace: [any, any][] = [], ...add: any[]) {
+  let declarations = [
+    AppComponent,
+    CategoryComponent,
+    ComparisonComponent,
+    RemoveInstanceComponent,
+    HeaderComponent,
+    FilterComponent,
+    NumberRegulatorComponent,
+    DropdownRegulatorComponent,
+    PreviewPanelComponent,
+    InstancePreviewComponent,
+    InstanceConfigurationComponent,
+    FieldDisplayComponent,
+    UnitNumberComponent,
+    UnitDropdownComponent,
+    UnitDivisionComponent,
+    UnitDisplayComponent,
+    DialogComponent
+  ];
+  declarations = declarations.map(i => {
+    let replaceable = replace.find(j => j[0] == i);
+    if (replaceable) {
+      return replaceable[1];
+    }
+    return i;
+  });
   return {
-    declarations: [
-      AppComponent,
-      CategoryComponent,
-      ComparisonComponent,
-      RemoveInstanceComponent,
-      HeaderComponent,
-      FilterComponent,
-      NumberRegulatorComponent,
-      DropdownRegulatorComponent,
-      PreviewPanelComponent,
-      InstancePreviewComponent,
-      InstanceConfigurationComponent,
-      FieldDisplayComponent,
-      UnitNumberComponent,
-      UnitDropdownComponent,
-      UnitDivisionComponent,
-      UnitDisplayComponent,
-      DialogComponent
-    ]
+    declarations: [...declarations, add]
   };
 }
