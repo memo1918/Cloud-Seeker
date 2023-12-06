@@ -33,7 +33,6 @@ describe("DropdownRegulatorComponent", () => {
     };
     fixture.detectChanges();
     let dropdown = await elementToBePresent("mat-select", fixture) as HTMLElement;
-    // debugger;
     dropdown.click();
     await domUpdate(fixture);
     expect(dropdown).toBeTruthy();
@@ -82,7 +81,6 @@ describe("DropdownRegulatorComponent", () => {
     expect(filterValue.length).toBe(1);
     expect(filterValue[0].name).toBe("name1234");
     expect(filterValue[0].optionText).toBe("name1234: option1");
-    // debugger;
   });
 
   it("should remove the filter if set to none", async () => {
@@ -120,7 +118,6 @@ describe("DropdownRegulatorComponent", () => {
 
     // check if it got removed from the service again
     expect(filterService.getFilterValue().length).toEqual(0);
-
   });
 
 });
