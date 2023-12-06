@@ -76,7 +76,8 @@ export function getTestBedImports() {
       MatChipsModule,
       MatRadioModule,
       FormsModule,
-      MatSelectModule
+      MatSelectModule,
+
     ]
   };
 }
@@ -100,7 +101,7 @@ export function getTestBedDeclarations() {
       UnitDropdownComponent,
       UnitDivisionComponent,
       UnitDisplayComponent,
-      DialogComponent
+      DialogComponent,
     ]
   };
 }

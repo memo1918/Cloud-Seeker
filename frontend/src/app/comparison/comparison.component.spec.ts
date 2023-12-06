@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ComparisonComponent } from './comparison.component';
 import {ShoppingCartDummyService} from "./shopping-cart-dummy-service";
 import {ShoppingCartService} from "../shopping-cart.service";
-import { getTestBedImports } from "../testbed.app.module";
+import {getTestBedDeclarations, getTestBedImports} from "../testbed.app.module";
 
 describe('ComparisonComponent', () => {
   let component: ComparisonComponent;
@@ -11,11 +11,11 @@ describe('ComparisonComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       //Mock for shopping cart service because the default shopping cart service holds no items by default
-      declarations: [ComparisonComponent],
+      ...getTestBedDeclarations(),
+      ...getTestBedImports(),
       providers:[
         { provide: ShoppingCartService, useClass: ShoppingCartDummyService}
       ],
-      ...getTestBedImports(),
     });
     fixture = TestBed.createComponent(ComparisonComponent);
     component = fixture.componentInstance;
@@ -29,6 +29,7 @@ describe('ComparisonComponent', () => {
 
   it('should display correct data in chip', () => {
     //selects the first chip that gets created
+    fixture.detectChanges();
     let chip = document.querySelector("mat-chip")as HTMLElement
     //compare the text content of the chip
     expect(chip.textContent).toBe(" 371.57 USD ")
