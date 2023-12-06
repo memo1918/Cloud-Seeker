@@ -1,4 +1,5 @@
-<mat-sidenav-container *ngIf=showPanel class="example-container" (backdropClick)="showPanel=false" [hasBackdrop]="true">
+<mat-sidenav-container *ngIf=showPanel data-preview-panel
+class="example-container" (backdropClick)="showPanel=false" [hasBackdrop]="true">
   <mat-sidenav mode="over"></mat-sidenav>
   <mat-sidenav-content class="panelContent">
 
@@ -6,7 +7,7 @@
       <div class="title"><h1>My Configuration</h1></div>
 
       <div class="closeButton">
-        <button (click)="close()" mat-icon-button>
+        <button (click)="close()" data-panel-close mat-icon-button>
           <mat-icon fontIcon="close">Close</mat-icon>
         </button>
       </div>

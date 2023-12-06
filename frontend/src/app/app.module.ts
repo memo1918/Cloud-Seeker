@@ -39,6 +39,7 @@ import {PreviewPanelComponent} from "./previewpanel/preview-panel.component";
 import {MatCardModule} from "@angular/material/card";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatCheckboxModule} from "@angular/material/checkbox";
+import { MatTooltipModule } from "@angular/material/tooltip";
 
 @NgModule({
   declarations: [
@@ -60,34 +61,35 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     UnitDisplayComponent,
     DialogComponent
   ],
-  imports: [
-    BrowserModule,
-    MatExpansionModule,
-    BrowserAnimationsModule,
-    MatIconModule,
-    MatTabsModule,
-    MatTableModule,
-    MatToolbarModule,
-    MatBadgeModule,
-    MatListModule,
-    MatInputModule,
-    MatSliderModule,
-    MatRippleModule,
-    MatGridListModule,
-    MatButtonModule,
-    MatCardModule,
-    MatSidenavModule,
-    MatCheckboxModule,
-    MatDividerModule,
-    ReactiveFormsModule,
-    MatSelectModule,
-    MatDialogModule,
-    MatIconModule,
-    MatChipsModule,
-    MatRadioModule,
-    FormsModule,
-    MatSelectModule
-  ],
+    imports: [
+        BrowserModule,
+        MatExpansionModule,
+        BrowserAnimationsModule,
+        MatIconModule,
+        MatTabsModule,
+        MatTableModule,
+        MatToolbarModule,
+        MatBadgeModule,
+        MatListModule,
+        MatInputModule,
+        MatSliderModule,
+        MatRippleModule,
+        MatGridListModule,
+        MatButtonModule,
+        MatCardModule,
+        MatSidenavModule,
+        MatCheckboxModule,
+        MatDividerModule,
+        ReactiveFormsModule,
+        MatSelectModule,
+        MatDialogModule,
+        MatIconModule,
+        MatChipsModule,
+        MatRadioModule,
+        FormsModule,
+        MatSelectModule,
+        MatTooltipModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

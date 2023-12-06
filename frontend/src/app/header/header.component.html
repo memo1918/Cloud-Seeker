@@ -1,11 +1,15 @@
 <mat-toolbar class="header-background">
   <mat-icon>cloud</mat-icon>
   <span class="header-spacer">{{title}}</span>
-  <button (click)="open()" mat-icon-button class="align-right">
-    <mat-icon
-      matBadge="{{ (shoppingCart.getItemsObserver() | async)?.length !== undefined ? (shoppingCart.getItemsObserver() | async)?.length : '0' }}"
-      matBadgePosition="before" matBadgeColor="warn" matBadgeSize="small">menu
-    </mat-icon>
+  <button
+    (click)="openPanel()"
+    matTooltip="Configuration"
+    data-panel-button
+    mat-icon-button class="align-right">
+      <mat-icon
+        matBadge="{{ (shoppingCart.getItemsObserver() | async)?.length !== undefined ? (shoppingCart.getItemsObserver() | async)?.length : '0' }}"
+        matBadgePosition="before" matBadgeColor="warn" matBadgeSize="small">menu
+      </mat-icon>
   </button>
 </mat-toolbar>
 
