@@ -48,11 +48,15 @@ describe('CategoryComponent', () => {
     let previous = await elementToBePresent("mat-tab-group", fixture) as HTMLElement;
     let prevHTML = previous.outerHTML;
     let selection = document.querySelectorAll("div.test-cat") as NodeListOf<HTMLElement>;
-    selection[2].click();
+    let currentCategory = component.categoryService.getCategoryValue()?.name;
+    expect(currentCategory).toEqual("Compute");
+    selection[1].click();
     await domUpdate(fixture);
     let next = await elementToBePresent("mat-tab-group", fixture) as HTMLElement;
     let nextHTML = next.outerHTML;
+    currentCategory = component.categoryService.getCategoryValue()?.name;
     expect(prevHTML).not.toEqual(nextHTML);
-  },10000);
+    expect(currentCategory).toEqual("Storage")
+  }, 10000);
 
 });
