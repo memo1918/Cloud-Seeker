@@ -22,12 +22,10 @@ describe("UI-Tests", () => {
 
     fixture = TestBed.createComponent(AppComponent);
     application = fixture.componentInstance;
-    interval = setInterval(() => fixture.detectChanges(), 2);
   });
 
   afterEach(() => {
     FetchMockSpec.getInstance().resetResponseData();
-    clearInterval(interval);
   });
 
   it("should create", async () => {
@@ -112,16 +110,15 @@ describe("UI-Tests", () => {
     // lets set the note
     const noteForTesting = "this is my note for testing";
     htmlTextAreaElement.value = noteForTesting;
-
     htmlTextAreaElement.dispatchEvent(new Event("input"));
-    fixture.detectChanges();
+    await domUpdate(fixture);
     // enter different number in the price configuration
     unitInputField.value = "8";
     unitInputField.dispatchEvent(new Event("input"));
-    fixture.detectChanges();
+    await domUpdate(fixture);
     // select default units
-    dropdownComponent.click();
-
+    // dropdownComponent.click();
+    // debugger;
     if (ENABLE_DEBUGGER) debugger;
 
     let submitButton = dialog.querySelector(`button[type="submit"]`) as HTMLButtonElement;
@@ -153,8 +150,15 @@ describe("UI-Tests", () => {
 
   }, ENABLE_DEBUGGER ? 100000000 : undefined);
 
-  it("should filter by cpu and add instance to the shopping cart", async () => {
+  it("should filter by cpu", async () => {
     await domUpdate(fixture);
+
+    // save previous html element count
+    let table = await elementToBePresent("app-instance-preview > div > div > table", fixture) as HTMLTableElement;
+    let titleRows = table.querySelectorAll(".titleRow") as NodeListOf<HTMLTableRowElement>;
+    let prevTableRowCount = titleRows.length;
+
+    expect(prevTableRowCount).toEqual(18);
 
     let coresFilter = await elementToBePresent(`[data-filter-name="cores"]`, fixture) as HTMLElement;
     if (ENABLE_DEBUGGER) debugger;
@@ -172,9 +176,6 @@ describe("UI-Tests", () => {
     // we input a number in the minimum text field
     numberInputMin.value = "8";
     numberInputMin.dispatchEvent(new Event("input"));
-
-    await domUpdate(fixture);
-
     // we input a number in the maximum text field
     numberInputMax.value = "32";
     numberInputMax.dispatchEvent(new Event("input"));
@@ -190,6 +191,11 @@ describe("UI-Tests", () => {
     expect(numberSliderMax.value).toBe("32");
 
     if (ENABLE_DEBUGGER) debugger;
+    // table = document.querySelector("app-instance-preview > div > div > table") as HTMLTableElement;
+    let nextTitleRows = table.querySelectorAll(".titleRow") as NodeListOf<HTMLTableRowElement>;
+    let nextTableRowCount = nextTitleRows.length;
+
+    expect(nextTableRowCount).toEqual(7);
 
   }, ENABLE_DEBUGGER ? 100000000 : undefined);
 
