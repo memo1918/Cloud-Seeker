@@ -12,7 +12,9 @@ describe("mongodb setup", () => {
             setTimeout(resolve, 500);
         });
         await mongoServer.ensureInstance();
-        await (await new MongoClient(mongoServer.getUri(), { connectTimeoutMS: 1000 }).connect()).db("admin").command({ ping: 1 });
+        await (await new MongoClient(mongoServer.getUri(), { connectTimeoutMS: 1000 }).connect())
+            .db("admin")
+            .command({ ping: 1 });
     });
 
     afterAll(async () => {
