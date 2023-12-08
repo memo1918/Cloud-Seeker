@@ -43,7 +43,7 @@ describe("PriceRegulatorComponent", () => {
     expect(labels[1].innerText).toEqual("gb");
   });
 
-  it("shoud default to the min/max values", async () => {
+  it("should default to the min/max values", async () => {
     component.field = { name: "name1234", options: ["1", "2", "3", "4"], type: "number", unit: "gb" };
     fixture.detectChanges();
     await domUpdate(fixture);
@@ -150,7 +150,7 @@ describe("PriceRegulatorComponent", () => {
     expect(component.component.stepSize).toBe(0.1);
   });
 
-  it("should remove invalid charakters from the input", async () => {
+  it("should remove invalid characters from the input", async () => {
     component.field = {
       name: "name1234",
       options: ["1.1 aab", "2 ccd", " eef 3", "4t.3fg"],

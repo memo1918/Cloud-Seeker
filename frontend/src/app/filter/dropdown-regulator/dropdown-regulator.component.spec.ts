@@ -24,7 +24,7 @@ describe("DropdownRegulatorComponent", () => {
     expect(component).toBeDefined();
   });
 
-  it("should render a dropdown with defalut 'None' selected", async () => {
+  it("should render a dropdown with default 'None' selected", async () => {
     component.field = {
       name: "name1234",
       options: ["option1", "option2", "option3", "option4"],
