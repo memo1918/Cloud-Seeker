@@ -101,5 +101,5 @@ export class InstanceConfigurationComponent {
     this.dialogRef.close(null);
   }
 
-    protected readonly valuesIn = valuesIn;
+  protected readonly valuesIn = valuesIn;
 }
