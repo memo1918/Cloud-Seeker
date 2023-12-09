@@ -8,7 +8,7 @@
     mat-icon-button class="align-right">
       <mat-icon
         matBadge="{{ (shoppingCart.getItemsObserver() | async)?.length !== undefined ? (shoppingCart.getItemsObserver() | async)?.length : '0' }}"
-        matBadgePosition="before" matBadgeColor="warn" matBadgeSize="small">menu
+        matBadgePosition="before" matBadgeColor="warn" matBadgeSize="small">shopping_basket
       </mat-icon>
   </button>
 </mat-toolbar>

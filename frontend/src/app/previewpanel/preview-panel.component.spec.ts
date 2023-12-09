@@ -365,7 +365,7 @@ describe('PreviewpanelComponent', () => {
     await domUpdate(fixture);
     let panel = document.querySelector(".main-panel") as HTMLElement;
     let op = panel.closest("[ng-reflect-opened]") as HTMLElement;
-    debugger
+
     expect(op.getAttribute("ng-reflect-opened")).toEqual("false");
   });
 

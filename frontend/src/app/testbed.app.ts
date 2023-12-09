@@ -40,6 +40,8 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatRadioModule } from "@angular/material/radio";
 import { TagsComponent } from "./filter/tags/tags.component";
+import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 export function getTestBedModules() {
   return {
@@ -75,7 +77,8 @@ export function getTestBedImports() {
       MatDialogModule,
       MatChipsModule,
       MatRadioModule,
-      FormsModule
+      FormsModule,
+      MatSnackBarModule
     ]
   };
 }
@@ -100,7 +103,9 @@ export function getTestBedDeclarations(replace: [any, any][] = [], ...add: any[]
     UnitDivisionComponent,
     UnitDisplayComponent,
     DialogComponent,
-    TagsComponent
+    TagsComponent,
+    ToastmessageComponent
+
   ];
   declarations = declarations.map(i => {
     let replaceable = replace.find(j => j[0] == i);
