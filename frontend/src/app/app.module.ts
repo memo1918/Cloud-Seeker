@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { AppComponent } from "./app.component";
 import { MatTabsModule } from "@angular/material/tabs";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { BrowserAnimationsModule, NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { MatIconModule } from "@angular/material/icon";
 import { CategoryComponent } from "./category/category.component";
 import { ComparisonComponent } from "./comparison/comparison.component";
@@ -41,28 +41,31 @@ import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { TagsComponent } from "./filter/tags/tags.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CategoryComponent,
-    ComparisonComponent,
-    RemoveInstanceComponent,
-    HeaderComponent,
-    FilterComponent,
-    NumberRegulatorComponent,
-    DropdownRegulatorComponent,
-    PreviewPanelComponent,
-    InstancePreviewComponent,
-    InstanceConfigurationComponent,
-    FieldDisplayComponent,
-    UnitNumberComponent,
-    UnitDropdownComponent,
-    UnitDivisionComponent,
-    UnitDisplayComponent,
-    DialogComponent,
-    TagsComponent
-  ],
+    declarations: [
+        AppComponent,
+        CategoryComponent,
+        ComparisonComponent,
+        RemoveInstanceComponent,
+        HeaderComponent,
+        FilterComponent,
+        NumberRegulatorComponent,
+        DropdownRegulatorComponent,
+        PreviewPanelComponent,
+        InstancePreviewComponent,
+        InstanceConfigurationComponent,
+        FieldDisplayComponent,
+        UnitNumberComponent,
+        UnitDropdownComponent,
+        UnitDivisionComponent,
+        UnitDisplayComponent,
+        DialogComponent,
+        TagsComponent,
+        ToastmessageComponent
+    ],
   imports: [
     BrowserModule,
     MatExpansionModule,
@@ -88,7 +91,9 @@ import { MatTooltipModule } from "@angular/material/tooltip";
     MatChipsModule,
     MatRadioModule,
     FormsModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSnackBarModule,
+    NoopAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
