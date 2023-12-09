@@ -355,6 +355,7 @@ describe('PreviewpanelComponent', () => {
   it("close button test", async () => {
     await domUpdate(fixture);
 
+
     component.showPanel = true;
     await domUpdate(fixture);
     expect(component.showPanel).toBeTruthy()
