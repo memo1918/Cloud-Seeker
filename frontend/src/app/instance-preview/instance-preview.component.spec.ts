@@ -43,6 +43,6 @@ describe("InstancePreviewComponent", () => {
   });
 
   it("should display correct instance name", async () => {
-    let title = "Virtual Machines / AWSOutposts / Compute Engine";
+
   });
 });
