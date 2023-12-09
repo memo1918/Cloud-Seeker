@@ -40,6 +40,7 @@ import { MatDialogModule } from "@angular/material/dialog";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatRadioModule } from "@angular/material/radio";
 import { InstancePreviewService} from "./instance-preview/instance-preview.service";
+import { TagsComponent } from "./filter/tags/tags.component";
 
 export function getTestBedModules() {
   return {
@@ -82,9 +83,8 @@ export function getTestBedImports() {
   };
 }
 
-export function getTestBedDeclarations() {
-  return {
-    declarations: [
+export function getTestBedDeclarations(replace: [any, any][] = [], ...add: any[]) {
+    let declarations = [
       AppComponent,
       CategoryComponent,
       ComparisonComponent,
@@ -102,7 +102,17 @@ export function getTestBedDeclarations() {
       UnitDivisionComponent,
       UnitDisplayComponent,
       DialogComponent,
-      InstancePreviewComponent
-    ]
+      InstancePreviewComponent,
+      TagsComponent
+    ];
+    declarations = declarations.map(i => {
+      let replaceable = replace.find(j => j[0] == i);
+      if (replaceable) {
+        return replaceable[1];
+      }
+      return i;
+    });
+    return {
+      declarations: [...declarations, add]
   };
 }

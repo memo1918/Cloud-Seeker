@@ -4,7 +4,7 @@ import { UnitDisplayComponent } from "./unit-display.component";
 import { Unit } from "../../pricing/unit";
 import { Component } from "@angular/core";
 import { CustomUnitCategorisation } from "../../pricing/customunitcategorisation";
-import { getTestBedImports } from "../../testbed.app.module";
+import { getTestBedImports } from "../../testbed.app";
 
 describe("UnitDisplayComponent", () => {
   let component: TestComponentWrapper;

@@ -3,8 +3,9 @@
          [dataSource]="shoppingCart.getItemsObserver()">
     <ng-container matColumnDef="name">
       <th class="mat-table-background-white grow" mat-header-cell *matHeaderCellDef> Your configuration</th>
-      <td mat-cell *matCellDef="let item">
-        <mat-accordion>
+      <td class="configuration-cell" mat-cell *matCellDef="let item">
+        <app-remove-instance [cartItem]="item"></app-remove-instance>
+        <mat-accordion class="mat-elevation-z0">
           <mat-expansion-panel class="mat-table-background-pink">
             <mat-expansion-panel-header>
               <mat-panel-title>
@@ -27,14 +28,12 @@
       <td mat-cell class="vendor" *matCellDef="let item; index as i">
         <mat-radio-button class="hidden-radio-button" [name]="'comparison-'+i" [value]="vendor" [checked]="vendor == item.selectedProvider"
                           (change)="item.selectedProvider = vendor">
-
           <mat-chip color="accent" [highlighted]="item.selectedProvider==vendor">
             {{item.pricingInformation[vendor].price  | number:'1.2-2'}} USD
           </mat-chip>
         </mat-radio-button>
       </td>
     </ng-container>
-
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let item; columns: columnsToDisplay;"></tr>
   </table>
@@ -42,7 +41,6 @@
     {{getTotalPrice() | number:'1.2-2'}} USD
   </p>
 </div>
-
 
 <div *ngIf="shoppingCart.getItems().length==0">
   <p>

@@ -26,7 +26,7 @@ export class Unit {
     }
     for (let i = 0; i < this.categories.length; i++) {
       let thiselement = this.categories[i];
-      let otherelement = this.categories[i];
+      let otherelement = other.categories[i];
       if (!thiselement.isCompatible(otherelement)) {
         return false;
       }

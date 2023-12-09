@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { RemoveInstanceComponent } from "./remove-instance.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app.module";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 
 describe('RemoveInstanceComponent', () => {
   let component: RemoveInstanceComponent;

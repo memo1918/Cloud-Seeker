@@ -1,26 +1,26 @@
+<app-previewpanel>
+  <app-header></app-header>
 
-<app-previewpanel ></app-previewpanel>
-<app-header></app-header>
 
+  <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
+    <div class="wrapper">
+      <div class="first">
+        <app-filter></app-filter>
+      </div>
 
-<ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
-  <div class="wrapper">
-    <div class="first">
-      <app-filter></app-filter>
+      <div class="second">
+        <app-category></app-category>
+        <app-tags></app-tags>
+        <app-instance-preview></app-instance-preview>
+      </div>
     </div>
+  </ng-container>
+  <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
+    <app-comparison class="font"></app-comparison>
+    <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
+  </ng-container>
 
-    <div class="second">
-      <app-category></app-category>
-      <app-instance-preview></app-instance-preview>
-    </div>
-  </div>
-</ng-container>
-<ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
-  <app-comparison class="font"></app-comparison>
-  <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
-</ng-container>
-
-
+</app-previewpanel>
 
 <!--<div class="primary-background">Visits:-->
 

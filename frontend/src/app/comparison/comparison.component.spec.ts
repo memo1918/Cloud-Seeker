@@ -1,8 +1,10 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ComparisonComponent } from './comparison.component';
-import {ShoppingCartDummyService} from "./shopping-cart-dummy-service";
-import {ShoppingCartService} from "../shopping-cart.service";
-import { getTestBedImports } from "../testbed.app.module";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { ComparisonComponent } from "./comparison.component";
+import { ShoppingCartDummyService } from "./shopping-cart-dummy-service";
+import { ShoppingCartService } from "../shopping-cart.service";
+import {getTestBedDeclarations, getTestBedImports} from "../testbed.app";
+
+const ENABLE_DEBUGGER = false;
 
 describe('ComparisonComponent', () => {
   let component: ComparisonComponent;
@@ -11,9 +13,10 @@ describe('ComparisonComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       //Mock for shopping cart service because the default shopping cart service holds no items by default
-      declarations: [ComparisonComponent],
-      providers:[
-        { provide: ShoppingCartService, useClass: ShoppingCartDummyService}
+      ...getTestBedDeclarations(),
+      ...getTestBedImports(),
+      providers: [
+        {provide: ShoppingCartService, useClass: ShoppingCartDummyService}
       ],
       ...getTestBedImports(),
     });
@@ -29,8 +32,8 @@ describe('ComparisonComponent', () => {
 
   it('should display correct data in chip', () => {
     //selects the first chip that gets created
-    let chip = document.querySelector("mat-chip")as HTMLElement
-    debugger
+    fixture.detectChanges();
+    let chip = document.querySelector("mat-chip") as HTMLElement
     //compare the text content of the chip
     expect(chip.textContent).toBe(" 371.57 USD ")
   });
@@ -42,9 +45,9 @@ describe('ComparisonComponent', () => {
     expect(chips[2].textContent).toBe(" 55.03 USD ")
     //the ng-reflect-highlighted attribute shows if a chip is currently highlighted or not
     //checks the highlighted status of all chips in the first row, only the cheapest is supposed to be true
-    expect(chips[2].getAttribute("ng-reflect-highlighted")=="true")
-    expect(chips[1].getAttribute("ng-reflect-highlighted")=="false")
-    expect(chips[0].getAttribute("ng-reflect-highlighted")=="false")
+    expect(chips[2].getAttribute("ng-reflect-highlighted") == "true")
+    expect(chips[1].getAttribute("ng-reflect-highlighted") == "false")
+    expect(chips[0].getAttribute("ng-reflect-highlighted") == "false")
   });
 
   it('should switch highlighted option', async () => {
@@ -55,27 +58,27 @@ describe('ComparisonComponent', () => {
     //detect changes is necessary to update the data after the click
     fixture.detectChanges()
     //checks if the correct chip is selected in row 1, also checks if the other chips in row 1 are unselected
-    expect(chips[0].getAttribute("ng-reflect-highlighted")=="true")
-    expect(chips[1].getAttribute("ng-reflect-highlighted")=="false")
-    expect(chips[2].getAttribute("ng-reflect-highlighted")=="false")
+    expect(chips[0].getAttribute("ng-reflect-highlighted") == "true")
+    expect(chips[1].getAttribute("ng-reflect-highlighted") == "false")
+    expect(chips[2].getAttribute("ng-reflect-highlighted") == "false")
   });
 
   it('should display correct data in table title', () => {
     //gat the title of the first expandable table
-    let tableTitle = document.querySelector("mat-panel-title")as HTMLElement
+    let tableTitle = document.querySelector("mat-panel-title") as HTMLElement
     //checks if the title is correct
     expect(tableTitle.textContent).toBe(" Virtual Machines / AWSOutposts / Compute Engine ")
   });
 
   it('should display correct data in table body', async () => {
     //select the first element of the table to be able to click on it
-    let tableElement = document.querySelector("mat-expansion-panel-header")as HTMLElement
+    let tableElement = document.querySelector("mat-expansion-panel-header") as HTMLElement
     //click on the table to expand it
     tableElement.click()
     //detect changes is necessary to update the data after the click
     fixture.detectChanges()
     //ge the text of the now expanded table
-    let tableContent = document.querySelector(".mat-expansion-panel-content")as HTMLElement
+    let tableContent = document.querySelector(".mat-expansion-panel-content") as HTMLElement
     //check if the text is what it's supposed to be
     expect(tableContent.textContent).toContain(" cores:  32 ")
     expect(tableContent.textContent).toContain(" memory:  256 GiB ")
@@ -99,5 +102,13 @@ describe('ComparisonComponent', () => {
     let tableElement = document.querySelector("mat-expansion-panel-header")as HTMLElement
     //there is not supposed to be a table element, therefore we check if it is falsy
     expect(tableElement).toBeFalsy()
+  });
+
+  it('should remove elements with remove button', () => {
+    let removeButton = document.querySelector("button") as HTMLElement
+    debugger
+    removeButton.click()
+    fixture.detectChanges()
+    debugger
   });
 });

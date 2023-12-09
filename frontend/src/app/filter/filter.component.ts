@@ -1,6 +1,5 @@
-import {Component} from '@angular/core';
-import {FilterService} from "./filter.service";
-import {Field} from "./models/Field";
+import { Component } from "@angular/core";
+import { FilterService } from "./filter.service";
 
 @Component({
   selector: 'app-filter',
@@ -10,16 +9,11 @@ import {Field} from "./models/Field";
 export class FilterComponent {
   title: string = 'Filters';
 
-  numberComponent: string = "number";
-  dropdownComponent: string = "dropdown";
-  radioComponent: string = "radio"
+  readonly numberComponent: string = "number";
+  readonly dropdownComponent: string = "dropdown";
 
-  testField: Field = {
-    "name": "cores",
-    "options": [],
-    "unit": "Cores",
-    "type": "number"
-  }
+  // readonly radioComponent: string = "radio"
+
 
   constructor(public filterService: FilterService) {
   }
