@@ -362,10 +362,11 @@ describe('PreviewpanelComponent', () => {
     let closeButton = document.querySelector("[data-panel-close]") as HTMLButtonElement;
     expect(closeButton).toBeTruthy()
     closeButton.click()
-
     await domUpdate(fixture);
-    let panel = document.querySelector("[data-preview-panel]") as HTMLElement;
-    expect(panel).toBeFalsy();
+    let panel = document.querySelector(".main-panel") as HTMLElement;
+    let op = panel.closest("[ng-reflect-opened]") as HTMLElement;
+    debugger
+    expect(op.getAttribute("ng-reflect-opened")).toEqual("false");
   });
 
 
