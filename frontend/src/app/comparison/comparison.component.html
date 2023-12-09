@@ -2,13 +2,13 @@
   <table class="mat-table-background-pink" mat-table
          [dataSource]="shoppingCart.getItemsObserver()">
     <ng-container matColumnDef="name">
-      <th class="mat-table-background-white grow" mat-header-cell *matHeaderCellDef> Your configuration</th>
+      <th class="mat-table-background-white grow"  mat-header-cell *matHeaderCellDef> Your configuration</th>
       <td class="configuration-cell" mat-cell *matCellDef="let item">
         <app-remove-instance [cartItem]="item"></app-remove-instance>
-        <mat-accordion class="mat-elevation-z0">
+        <mat-accordion>
           <mat-expansion-panel class="mat-table-background-pink">
             <mat-expansion-panel-header>
-              <mat-panel-title>
+              <mat-panel-title class="mat-elevation-z0">
                 {{valuesIn(item.instance.name).join(" / ")}}
               </mat-panel-title>
             </mat-expansion-panel-header>
