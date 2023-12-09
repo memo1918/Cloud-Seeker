@@ -42,7 +42,7 @@ describe("UI-Tests", () => {
 
     // we expect the region code dropdown to exist
     expect(dropdown).toBeTruthy();
-    // lets click on the region code dropdown
+    // let's click on the region code dropdown
     dropdown.click();
 
     console.log("clicking on dropdown");
