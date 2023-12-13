@@ -354,6 +354,7 @@ describe('ToastmessageComponent', () => {
     component.shoppingCart.setItems(shoppingCartFixture);
     await domUpdate(fixture);
 
+
     component.shoppingCart.setItems([]);
     await domUpdate(fixture);
 
