@@ -13,11 +13,7 @@ export class CategoryService {
   constructor(public api: APIService) {
     //@ts-ignore
     window["CategoryService"] = this;
-    if (this.getCategory() != null) {
-      this.api.loadCategories().then(i =>
-        //@ts-ignore
-        this.setCategory(this.getCategoryValue()));
-    }
+    this.api.loadCategories().then(i => this.setCategory(this.getCategories()[0]));
   }
 
   getCategories() {
