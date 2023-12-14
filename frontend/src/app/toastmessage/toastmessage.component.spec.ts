@@ -316,26 +316,22 @@ const shoppingCartFixture =  [
 describe('ToastmessageComponent', () => {
   let component: ToastmessageComponent;
   let fixture: ComponentFixture<ToastmessageComponent>;
-  let interval: any;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations(),
-      imports:[MatSnackBarModule]
+      ...getTestBedDeclarations()
     });
     FetchMockSpec.getInstance().setSpy();
     FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
 
     fixture = TestBed.createComponent(ToastmessageComponent);
     component = fixture.componentInstance;
-    interval = setInterval(() => fixture.detectChanges(), 2);
 
   });
 
   afterEach(() => {
     FetchMockSpec.getInstance().resetResponseData();
-    clearInterval(interval);
   });
 
 
@@ -344,17 +340,26 @@ describe('ToastmessageComponent', () => {
   });
 
 
-  //
-  // it("toast message on add", async () => {
-  //   fixture.detectChanges()
-  //   component.shoppingCart.setItems(shoppingCartFixture)
-  //   await domUpdate(fixture)
-  //   component.shoppingCart.setItems(shoppingCartFixture)
-  //
-  //   let panel = document.querySelector("[simple-snack-bar]") as HTMLElement;
-  //   expect(panel).toBeTruthy()
-  //
-  // });
 
+  it("toast message on added item", async () => {
+    fixture.detectChanges()
+    component.shoppingCart.setItems(shoppingCartFixture);
+    await domUpdate(fixture);
+    const snackingDiv = document.querySelector('mat-snack-bar-container') as HTMLElement;
+    expect(snackingDiv.innerText).toEqual("Instance added\n" + "Close")
+  });
+
+  it("toast message on removed item", async () => {
+    fixture.detectChanges()
+    component.shoppingCart.setItems(shoppingCartFixture);
+    await domUpdate(fixture);
+
+
+    component.shoppingCart.setItems([]);
+    await domUpdate(fixture);
+
+    const snackingDiv = document.querySelector('mat-snack-bar-container') as HTMLElement;
+    expect(snackingDiv.innerText).toEqual("Instance removed\n" + "Close")
+  });
 
 });

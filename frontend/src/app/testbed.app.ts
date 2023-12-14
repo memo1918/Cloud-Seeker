@@ -81,8 +81,7 @@ export function getTestBedImports() {
       MatRadioModule,
       FormsModule,
       MatSnackBarModule,
-      FormsModule,
-      MatSelectModule
+      FormsModule
     ]
   };
 }
