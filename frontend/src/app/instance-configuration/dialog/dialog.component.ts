@@ -2,9 +2,9 @@ import { Component, Input } from "@angular/core";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceConfigurationComponent } from "../instance-configuration.component";
 import { InstanceComparison } from "src/app/models/instance-comparison";
-import { CartItem } from "../../models/cart-item";
+import { CartItem, createCartItemFromInstance } from "../../models/cart-item";
 import { ShoppingCartService } from "../../shopping-cart.service";
-import { InstanceConfigurationResult } from "../instance-configuration-result";
+import { InstanceConfigurationComponentDialogData } from "../instance-configuration-component-dialog.data";
 
 @Component({
   selector: "app-instance-configuration-dialog",
@@ -21,8 +21,12 @@ export class DialogComponent {
 
   openDialog() {
     return new Promise<MatDialogRef<InstanceConfigurationComponent, any>>((resolve) => {
+      let instanceConfigurationComponentDialogData: InstanceConfigurationComponentDialogData = {
+        cart: createCartItemFromInstance(this.instance)
+      };
+
       const dialogRef = this.dialog.open(InstanceConfigurationComponent, {
-        data: { instance: this.instance }
+        data: instanceConfigurationComponentDialogData
       });
       this.dialogRef = dialogRef;
 
@@ -30,36 +34,11 @@ export class DialogComponent {
         resolve(dialogRef);
       });
 
-      this.dialogRef.afterClosed().subscribe((result: InstanceConfigurationResult | null) => {
-
-        console.log("The dialog was closed", result);
+      this.dialogRef.afterClosed().subscribe((result: CartItem | null) => {
         if (result == null) return;
 
-        let pricing = result.adjustedPricing;
-        let units = result.units;
-
-
-        let cartItem: CartItem = {
-          instance: this.instance,
-          pricingInformation: {},
-          units: units,
-          selectedProvider: pricing[0].providerName,
-          notes: result.notes,
-          numberOfInstances: result.numberOfInstances
-        }
-
-        for (const pricingElement of pricing) {
-          cartItem.pricingInformation[pricingElement.providerName] = {
-            factor: pricingElement.factor,
-            price: pricingElement.price
-          };
-          if (pricingElement.price < cartItem.pricingInformation[cartItem.selectedProvider].price) {
-            cartItem.selectedProvider = pricingElement.providerName;
-          }
-        }
-
-        let items = this.shoppingCart.getItems()
-        items.push(cartItem);
+        let items = this.shoppingCart.getItems();
+        items.push(result);
         this.shoppingCart.setItems(items);
 
         this.dialogRef = undefined;

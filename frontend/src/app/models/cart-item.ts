@@ -5,7 +5,8 @@ import { Units } from "../pricing/units";
 export interface CartItem {
   pricingInformation: { [providerName: string]: { factor: number, price: number } };
   instance: InstanceComparison;
-  units: { providerName: string, providerDefault: Unit, configuration: Unit }[];
+  providers: { providerName: string, providerDefault: Unit, configuration: Unit }[];
+  providerForm: { providerName: string, providerDefault: Unit, configuration: Unit }[];
   selectedProvider: string;
   notes: string;
   numberOfInstances: number;
@@ -16,24 +17,25 @@ export interface StorageCartItem {
   selectedProvider: string;
   notes: string;
   numberOfInstances: number;
-  units: { providerName: string, providerDefault: string, configuration: string }[];
+  providers: { providerName: string, providerDefault: string, configuration: string }[];
 }
 
 
-function calculatePricingInformation(displayPricingConfigurations: {
+export function calculatePricingInformation(providers: {
   providerName: string;
   providerDefault: Unit;
   configuration: Unit
 }[], instance: InstanceComparison) {
   let pricingInformation: { [provider: string]: { factor: number, price: number } } = {};
 
-  for (const displayPricingConfiguration of displayPricingConfigurations) {
-    let factor = displayPricingConfiguration.providerDefault.getFactorForConversion(displayPricingConfiguration.configuration);
-    pricingInformation[displayPricingConfiguration.providerName] = {
+  for (const provider of providers) {
+    let factor = provider.providerDefault.getFactorForConversion(provider.configuration);
+    pricingInformation[provider.providerName] = {
       factor,
-      price: Number(instance.price[displayPricingConfiguration.providerName].value) * factor
+      price: Number(instance.price[provider.providerName].value) * factor
     };
   }
+
   return pricingInformation;
 }
 
@@ -71,7 +73,7 @@ function getPriceConfigurationFromInstance(instance: InstanceComparison) {
   return pricingConfigurations;
 }
 
-function findCheapestProvider(pricingInformation: { [p: string]: { factor: number; price: number } }) {
+export function findCheapestProvider(pricingInformation: { [p: string]: { factor: number; price: number } }) {
   let selectedProvider: string | null = null;
 
   for (const pricingElementKey in pricingInformation) {
@@ -80,20 +82,21 @@ function findCheapestProvider(pricingInformation: { [p: string]: { factor: numbe
       selectedProvider = pricingElementKey;
     }
   }
-  return selectedProvider;
+  return selectedProvider!;
 }
 
 export function createCartItemFromInstance(instance: InstanceComparison): CartItem {
   let pricingConfigurations = getPriceConfigurationFromInstance(instance);
   let displayPricingConfigurations = findCompatibleUnits(pricingConfigurations);
-  let pricingInformation = calculatePricingInformation(displayPricingConfigurations, instance);
+  let pricingInformation = calculatePricingInformation(pricingConfigurations, instance);
   let selectedProvider = findCheapestProvider(pricingInformation);
 
   return {
     notes: "",
     numberOfInstances: 1,
     instance: instance,
-    units: displayPricingConfigurations,
+    providers: pricingConfigurations,
+    providerForm: displayPricingConfigurations,
     selectedProvider: selectedProvider!,
     pricingInformation: pricingInformation
   };
@@ -101,7 +104,7 @@ export function createCartItemFromInstance(instance: InstanceComparison): CartIt
 
 function getPriceConfigurationFromStorage(storage: StorageCartItem) {
   let pricingConfigurations: { providerName: string, providerDefault: Unit, configuration: Unit }[] = [];
-  for (const unit of storage.units) {
+  for (const unit of storage.providers) {
     pricingConfigurations.push({
       providerName: unit.providerName,
       providerDefault: Units.categorise(unit.providerDefault),
@@ -155,14 +158,30 @@ export function createCartItemFromStorageAndInstance(storage: StorageCartItem, i
   assertInstanceStorageCompatibility(instancePricingConfigurations, storagePricingConfiguration, instance);
 
   let displayPricingConfigurations = findCompatibleUnits(storagePricingConfiguration);
-  let pricingInformation = calculatePricingInformation(displayPricingConfigurations, instance);
+  let pricingInformation = calculatePricingInformation(storagePricingConfiguration, instance);
   let selectedProvider = findCheapestProvider(pricingInformation);
+
   return {
     notes: storage.notes,
     numberOfInstances: storage.numberOfInstances,
     instance: instance,
-    units: displayPricingConfigurations,
+    providers: storagePricingConfiguration,
+    providerForm: displayPricingConfigurations,
     selectedProvider: storage.selectedProvider!,
     pricingInformation: pricingInformation
+  };
+}
+
+export function cartItemToStorageCartItem(item: CartItem): StorageCartItem {
+  return {
+    providers: item.providers.map(i => ({
+      providerName: i.providerName,
+      providerDefault: i.providerDefault.getUnitString(),
+      configuration: i.configuration.getUnitString()
+    })),
+    selectedProvider: item.selectedProvider,
+    numberOfInstances: item.numberOfInstances,
+    notes: item.notes,
+    skus: item.instance.skus
   };
 }

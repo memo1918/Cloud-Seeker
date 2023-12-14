@@ -41,7 +41,7 @@ describe("DialogComponent", () => {
   });
   it("should pass the correct data to the dialog", async () => {
     let dialogRef = await component.appUnitDropdownComponent.openDialog();
-    expect(dialogRef.componentInstance.data).toEqual({ instance: INSTANCE_COMPARISON_FIXTURE });
+    expect(dialogRef.componentInstance.data.cart.instance).toEqual(INSTANCE_COMPARISON_FIXTURE);
   });
 });
 

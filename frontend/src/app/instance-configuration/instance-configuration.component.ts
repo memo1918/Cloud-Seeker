@@ -1,11 +1,9 @@
 import { Component, Inject } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
-import { Unit } from "../pricing/unit";
-import { Units } from "../pricing/units";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { valuesIn } from "lodash";
-import { InstanceConfigurationResult } from "./instance-configuration-result";
-import { CartItem } from "../models/cart-item";
+import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog.data";
+import { calculatePricingInformation, findCheapestProvider } from "../models/cart-item";
 
 
 @Component({
@@ -15,52 +13,17 @@ import { CartItem } from "../models/cart-item";
 })
 export class InstanceConfigurationComponent {
 
-
-  public noteText: string = "";
-
   instanceCountFormControl = new FormControl("1",
     [Validators.required, Validators.min(1)]
   );
 
-  private pricingConfigurations: {
-    providerName: string,
-    providerDefault: Unit,
-    configuration: Unit,
-  }[] = [];
-
-  public displayPricingConfigurations: {
-    providerName: string,
-    providerDefault: Unit,
-    configuration: Unit,
-  }[] = [];
+  noteFormControl = new FormControl("");
 
   constructor(public dialogRef: MatDialogRef<InstanceConfigurationComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { cart: CartItem }) {
-    this.parseUnits();
+              @Inject(MAT_DIALOG_DATA) public data: InstanceConfigurationComponentDialogData) {
     this.instanceCountFormControl.setValue(this.data.cart.numberOfInstances.toString());
-    this.noteText = this.data.cart.notes;
-  }
-
-  private parseUnits() {
-    for (const priceKey in this.data.cart.instance.price) {
-      const price = this.data.cart.instance.price[priceKey];
-      this.pricingConfigurations.push({
-        providerName: priceKey,
-        providerDefault: Units.categorise(price.unit),
-        configuration: Units.categorise(price.unit)
-      });
-    }
-
-    defaultConfigurationLoop: for (const pricingConfiguration of this.pricingConfigurations) {
-      for (const displayPricingConfiguration of this.displayPricingConfigurations) {
-        if (pricingConfiguration.configuration.isCompatible(displayPricingConfiguration.configuration)) {
-          pricingConfiguration.configuration = displayPricingConfiguration.configuration;
-          displayPricingConfiguration.providerName += "/" + pricingConfiguration.providerName;
-          continue defaultConfigurationLoop;
-        }
-      }
-      this.displayPricingConfigurations.push({ ...pricingConfiguration });
-    }
+    this.noteFormControl.setValue(this.data.cart.notes);
+    this.noteFormControl.valueChanges.subscribe(() => this.onNotesChanged());
   }
 
   getFields() {
@@ -81,28 +44,23 @@ export class InstanceConfigurationComponent {
     ev.stopPropagation();
     ev.stopImmediatePropagation();
 
-    let pricingResult = this.pricingConfigurations.map(i => {
-      let factor = i.providerDefault.getFactorForConversion(i.configuration);
-      return {
-        providerName: i.providerName,
-        factor,
-        price: Number(this.data.cart.instance.price[i.providerName].value) * factor
-      };
-    });
-
-    let result: InstanceConfigurationResult = {
-      units: this.pricingConfigurations,
-      adjustedPricing: pricingResult,
-      notes: this.noteText,
-      numberOfInstances: Number(this.instanceCountFormControl.value)
-    };
-
-    this.dialogRef.close(result);
+    calculatePricingInformation(this.data.cart.providers, this.data.cart.instance);
+    this.data.cart.selectedProvider = findCheapestProvider(this.data.cart.pricingInformation)!;
+    this.data.cart.numberOfInstances = this.instanceCountFormControl.value as any;
+    this.dialogRef.close(this.data.cart);
   }
 
   onClose() {
     this.dialogRef.close(null);
   }
 
+  onNotesChanged() {
+    this.data.cart.notes = this.noteFormControl.value!;
+  }
+
   protected readonly valuesIn = valuesIn;
+
+  getInstanceName() {
+    return valuesIn(this.data.cart.instance.name).join(" / ");
+  }
 }

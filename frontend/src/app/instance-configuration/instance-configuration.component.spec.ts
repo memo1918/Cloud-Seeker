@@ -68,7 +68,7 @@ describe("InstanceConfigurationComponent", () => {
     textarea.value = "Hello World";
     textarea.dispatchEvent(new Event("input"));
     fixture.detectChanges();
-    expect(component.dialogRef.componentInstance.noteText).toBe("Hello World");
+    expect(component.dialogRef.componentInstance.noteText.getValue()).toBe("Hello World");
   });
 
   it("should assign the correct number of instances and parse the value", () => {
