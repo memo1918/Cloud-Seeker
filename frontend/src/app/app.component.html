@@ -1,4 +1,4 @@
-<app-previewpanel  class="primary-background">
+<app-previewpanel class="primary-background">
   <app-header></app-header>
   <app-toastmessage></app-toastmessage>
 
@@ -8,7 +8,6 @@
         <div class="first">
           <app-filter></app-filter>
         </div>
-
         <div class="second">
           <app-category></app-category>
           <app-tags></app-tags>
@@ -17,11 +16,12 @@
       </div>
     </ng-container>
   </div>
-    <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
-      <app-comparison class="font"></app-comparison>
-      <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
-    </ng-container>
- </app-previewpanel>
+
+  <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
+    <app-comparison class="font"></app-comparison>
+    <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
+  </ng-container>
+</app-previewpanel>
 
 
 <!--<div class="primary-background">Visits:-->

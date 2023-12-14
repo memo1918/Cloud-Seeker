@@ -28,8 +28,9 @@ describe("TagsComponent", () => {
   });
 
   it("should render all selected filters", async () => {
-    let root = await elementToBePresent(".tagHost", fixture);
-    let matChips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>;
+    await domUpdate(fixture);
+    let matChips = document.querySelectorAll(".tagHost mat-chip") as NodeListOf<HTMLElement>;
+    debugger;
     expect(matChips.length).toEqual(0);
 
 
@@ -37,7 +38,7 @@ describe("TagsComponent", () => {
     let filterFixture = [{ filter: (i: any) => true, name: "my special name", optionText }];
     component.filterService.setFilter(filterFixture);
     await domUpdate(fixture);
-    matChips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>;
+    matChips = document.querySelectorAll(".tagHost mat-chip") as NodeListOf<HTMLElement>;
     expect(matChips.length).toEqual(1);
 
     let filterSpan = document.querySelector("span.filterTagText") as HTMLSpanElement;
@@ -46,8 +47,8 @@ describe("TagsComponent", () => {
   });
 
   it("should remove a filter correctly", async () => {
-    let root = await elementToBePresent(".tagHost", fixture);
-    let matChips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>;
+    await domUpdate(fixture);
+    let matChips = document.querySelectorAll(".tagHost mat-chip") as NodeListOf<HTMLElement>;
     expect(matChips.length).toEqual(0);
 
 
@@ -55,7 +56,7 @@ describe("TagsComponent", () => {
     let filterFixture = [{ filter: (i: any) => true, name: "my special name", optionText }];
     component.filterService.setFilter(filterFixture);
     await domUpdate(fixture);
-    matChips = document.querySelectorAll("mat-chip") as NodeListOf<HTMLElement>;
+    matChips = document.querySelectorAll(".tagHost mat-chip") as NodeListOf<HTMLElement>;
     expect(matChips.length).toEqual(1);
 
     let removeButton = document.querySelector("mat-chip button") as HTMLButtonElement;

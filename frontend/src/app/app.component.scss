@@ -8,22 +8,22 @@
 
 .wrapper {
   width: 80%;
-  overflow: hidden; /* will contain if #first is longer than #second */
+  overflow: hidden;
+  display: flex;
 }
 
 .first {
   width: 30%;
-  float: left; /* add this */
+  float: left;
 }
 
 .second {
-  overflow: hidden; /* if you don't want #second to wrap below #first */
-  margin-left: 50px;
-  .margin {
-    margin-bottom: 500px;
-  }
-
+  overflow: hidden;
+  margin-left: 2%;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
 }
-
 
 
