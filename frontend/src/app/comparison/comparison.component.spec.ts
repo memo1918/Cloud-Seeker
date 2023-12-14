@@ -126,6 +126,7 @@ describe("ComparisonComponent", () => {
     fixture.detectChanges();
     tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>;
     expect(tableElements.length).toBe(8);
+
   });
 
   it("quantity should change", async() => {
