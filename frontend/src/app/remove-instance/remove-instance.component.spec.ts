@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
+import {ComponentFixture, TestBed} from "@angular/core/testing";
 
-import { RemoveInstanceComponent } from "./remove-instance.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import {RemoveInstanceComponent} from "./remove-instance.component";
+import {getTestBedDeclarations, getTestBedImports} from "../testbed.app";
 import {ShoppingCartService} from "../shopping-cart.service";
 import {ShoppingCartDummyService} from "../comparison/shopping-cart-dummy-service";
 import {Component, ViewChild} from "@angular/core";
@@ -16,7 +16,7 @@ describe('RemoveInstanceComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations([],[TestComponentWrapper]),
+      ...getTestBedDeclarations([], [TestComponentWrapper]),
       providers: [
         {provide: ShoppingCartService, useClass: ShoppingCartDummyService}
       ],
@@ -36,6 +36,7 @@ describe('RemoveInstanceComponent', () => {
     expect(ShoppingCartDummyService.Instance.getItems()).not.toContain(component.cartItem)
   });
 });
+
 @Component({
   selector: "test-component-wrapper",
   template: `
