@@ -7,11 +7,11 @@
             <b>{{ valuesIn(instance.name).join(" / ") }}</b></td>
         </tr>
         <tr class="fieldRow">
-          <td *ngFor="let field of categoryService.getCategoryValue()?.fields; index as i;" class="fieldItem"
+          <td *ngFor="let field of categoryService.getCategoryValue()?.fields; index as i;" class="fieldName"
               [attr.data-column]="i+1">
             <div class="fieldsContainer">
               <div>{{ field.name }}</div>
-              <div class="fieldItem"><b>{{ instance.fields[field.name]?.value }}</b></div>
+              <div class="fieldValue"><b>{{ instance.fields[field.name]?.value }}</b></div>
             </div>
           </td>
           <td>
