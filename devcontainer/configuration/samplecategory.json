@@ -91,7 +91,7 @@
       {
         "name": "clockSpeed",
         "options": [],
-        "unit": "",
+        "unit": "GHz",
         "type": "number"
       },
       {
@@ -103,7 +103,7 @@
       {
         "name": "memory",
         "options": [],
-        "unit": "",
+        "unit": "GiB",
         "type": "number"
       },
       {

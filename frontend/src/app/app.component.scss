@@ -18,6 +18,11 @@
 
 .second {
   overflow: hidden; /* if you don't want #second to wrap below #first */
+  margin-left: 50px;
+  .margin {
+    margin-bottom: 500px;
+  }
+
 }
 
 

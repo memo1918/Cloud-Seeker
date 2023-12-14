@@ -1,16 +1,11 @@
 mat-chip[ng-reflect-highlighted="true"] {
-  background-color: #9E9E9E;
-  // background-color: #FF4081; //pink
+  background-color: #fcbfd4;
 }
 
 mat-chip {
-  margin: 5px;
+  margin-right: 5px;
 }
 
 .filterTagText {
   color: black;
-}
-
-.tagHost {
-  margin-left: 2.5%;
 }
