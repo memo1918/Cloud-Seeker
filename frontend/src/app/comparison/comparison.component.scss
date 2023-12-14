@@ -2,9 +2,9 @@
   margin-left: 8px;
 }
 
-
 .mat-table-background-white {
   background-color: #FFFFFF !important;
+  width: 100%;
 }
 
 .mat-table-background-pink {
@@ -14,11 +14,11 @@
 
 .configuration-cell {
   display: flex;
+
   mat-accordion {
     width: 100%;
   }
 }
-
 
 .grow {
   width: 100%;
@@ -26,6 +26,20 @@
 
 .hidden-radio-button > div {
   visibility: hidden;
+}
+
+.quantity {
+  width: 40px;
+  margin-left: 10px;
+  border: 0;
+
+  background-color: transparent;
+}
+
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+  opacity: 1;
 }
 
 //.mdc-radio{
