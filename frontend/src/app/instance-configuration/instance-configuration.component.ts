@@ -4,8 +4,8 @@ import { Unit } from "../pricing/unit";
 import { Units } from "../pricing/units";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { valuesIn } from "lodash";
-import { InstanceComparison } from "../models/instance-comparison";
 import { InstanceConfigurationResult } from "./instance-configuration-result";
+import { CartItem } from "../models/cart-item";
 
 
 @Component({
@@ -17,6 +17,7 @@ export class InstanceConfigurationComponent {
 
 
   public noteText: string = "";
+
   instanceCountFormControl = new FormControl("1",
     [Validators.required, Validators.min(1)]
   );
@@ -34,13 +35,15 @@ export class InstanceConfigurationComponent {
   }[] = [];
 
   constructor(public dialogRef: MatDialogRef<InstanceConfigurationComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { instance: InstanceComparison }) {
+              @Inject(MAT_DIALOG_DATA) public data: { cart: CartItem }) {
     this.parseUnits();
+    this.instanceCountFormControl.setValue(this.data.cart.numberOfInstances.toString());
+    this.noteText = this.data.cart.notes;
   }
 
   private parseUnits() {
-    for (const priceKey in this.data.instance.price) {
-      const price = this.data.instance.price[priceKey];
+    for (const priceKey in this.data.cart.instance.price) {
+      const price = this.data.cart.instance.price[priceKey];
       this.pricingConfigurations.push({
         providerName: priceKey,
         providerDefault: Units.categorise(price.unit),
@@ -65,8 +68,8 @@ export class InstanceConfigurationComponent {
       name: string,
       value: string
     }[] = [];
-    for (const configurationKey in this.data.instance.fields) {
-      let value = this.data.instance.fields[configurationKey];
+    for (const configurationKey in this.data.cart.instance.fields) {
+      let value = this.data.cart.instance.fields[configurationKey];
       fields.push({ name: configurationKey, value: `${value.value} ${value.unit}` });
     }
     return fields;
@@ -83,7 +86,7 @@ export class InstanceConfigurationComponent {
       return {
         providerName: i.providerName,
         factor,
-        price: Number(this.data.instance.price[i.providerName].value) * factor
+        price: Number(this.data.cart.instance.price[i.providerName].value) * factor
       };
     });
 

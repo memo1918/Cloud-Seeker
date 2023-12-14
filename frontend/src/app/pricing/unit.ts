@@ -61,4 +61,8 @@ export class Unit {
 
     return factor;
   }
+
+  public getUnitString() {
+    return this.categories.map(c => c.getCategorisationString()).join(" ");
+  }
 }
