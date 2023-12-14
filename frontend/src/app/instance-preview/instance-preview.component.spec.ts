@@ -9,16 +9,10 @@ import { FilterService } from "../filter/filter.service";
 import * as _ from "lodash";
 import { CategoryService } from "../category/category.service";
 
-var isArrayEqual = function(x: any[], y: any[]) {
-  return _(x).xorWith(y, _.isEqual).isEmpty();
-};
-
 describe("InstancePreviewComponent", () => {
   let component: InstancePreviewComponent;
   let fixture: ComponentFixture<InstancePreviewComponent>;
   let interval: any;
-  let filterService: FilterService;
-  let categoryService: CategoryService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -31,8 +25,6 @@ describe("InstancePreviewComponent", () => {
     fixture = TestBed.createComponent(InstancePreviewComponent);
     component = fixture.componentInstance;
     interval = setInterval(() => fixture.detectChanges(), 2);
-    filterService = TestBed.inject(FilterService);
-    categoryService = TestBed.inject(CategoryService);
   });
 
   afterEach(() => {
@@ -63,19 +55,21 @@ describe("InstancePreviewComponent", () => {
   it("should display the correct fields & number of fields for each category", async () => {
     await domUpdate(fixture);
     // display the correct amount of fields for the selected category
-    const expectedCategory = "compute";
+
     const expectedFields = ["cores", "regionCode", "gpuMemory", "clockSpeed", "operatingSystem", "memory", "storage"];
+    let fieldRows = document.querySelectorAll(".fieldRow") as NodeListOf<HTMLElement>;
     for (let i = 0; i < component.getItems().length; i++) {
-      const item = component.getItems()[i];
-      const fields = document.querySelectorAll(".fieldsContainer") as NodeListOf<HTMLElement>;
-
-      // Check the number of fields
-      //expect(fields.length).toEqual(expectedFields.length);
-
+      const instanceRow = fieldRows[i];
+      const fields = instanceRow.querySelectorAll(".fieldNameData") as NodeListOf<HTMLElement>;
       for (let j = 0; j < fields.length; j++) {
-        const fieldName = fields[j].querySelector(".fieldName")?.textContent?.trim();
+        const fieldName = fields[j].textContent?.trim();
         expect(fieldName).toEqual(expectedFields[j]);
       }
+      expect(fields.length).toEqual(expectedFields.length);
     }
+  });
+
+  it("test for no selected category", async () => {
+    expect(component.getCategoryLength()).toEqual(0);
   });
 });
