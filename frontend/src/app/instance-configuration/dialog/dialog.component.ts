@@ -22,7 +22,10 @@ export class DialogComponent {
   openDialog() {
     return new Promise<MatDialogRef<InstanceConfigurationComponent, any>>((resolve) => {
       const dialogRef = this.dialog.open(InstanceConfigurationComponent, {
-        data: { instance: this.instance }
+        data: { instance: this.instance },
+        panelClass: 'custom-dialog-container',
+        height: '80%',
+        width: '80%'
       });
       this.dialogRef = dialogRef;
 
