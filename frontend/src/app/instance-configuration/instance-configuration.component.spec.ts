@@ -16,6 +16,7 @@ import { UnitDisplayComponent } from "./unit-display/unit-display.component";
 import { UnitNumberComponent } from "./unit-number/unit-number.component";
 import { UnitDivisionComponent } from "./unit-division/unit-division.component";
 import { UnitDropdownComponent } from "./unit-dropdown/unit-dropdown.component";
+import { domUpdate } from "../helper.spec";
 
 describe("InstanceConfigurationComponent", () => {
   let component: DialogWrapperComponent;
@@ -26,11 +27,6 @@ describe("InstanceConfigurationComponent", () => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations([
-        [FieldDisplayComponent, TestFieldDisplayComponentMock],
-        [UnitDisplayComponent, TestUnitDisplayComponentMock],
-        [UnitNumberComponent, TestUnitNumberComponentMock],
-        [UnitDivisionComponent, TestUnitDivisionComponentMock],
-        [UnitDropdownComponent, TestUnitDropdownComponentMock]
       ], [DialogWrapperComponent]),
       providers: [
         MatDialog
@@ -78,12 +74,13 @@ describe("InstanceConfigurationComponent", () => {
     expect(component.dialogRef.componentInstance.noteFormControl.value).toBe("Hello World");
   });
 
-  it("should assign the correct number of instances and parse the value", () => {
-    let instanceCount = document.querySelector("[type='number']") as HTMLInputElement;
+  it("should assign the correct number of instances and parse the value", async () => {
+    let instanceCount = document.querySelector(".instance-count-input [type='number']") as HTMLInputElement;
     expect(instanceCount.value).toBe(component.dialogRef.componentInstance.instanceCountFormControl.value as string);
     instanceCount.value = "1234";
     instanceCount.dispatchEvent(new Event("input"));
-    expect(component.dialogRef.componentInstance.instanceCountFormControl.value as any).toBe(1234);
+    await domUpdate(fixture);
+    expect(component.dialogRef.componentInstance.instanceCountFormControl.value as any).toEqual(1234);
   });
 
   it("should submit the form", () => {
@@ -93,47 +90,6 @@ describe("InstanceConfigurationComponent", () => {
     expect(spy).toHaveBeenCalled();
   });
 });
-
-@Component({
-  selector: "app-field-display",
-  template: "<p>app-field-display</p>"
-})
-class TestFieldDisplayComponentMock {
-  @Input({ required: true }) name!: string;
-  @Input({ required: true }) value!: string;
-}
-
-@Component({
-  selector: "app-unit-display",
-  template: "<p>app-unit-display</p>"
-})
-class TestUnitDisplayComponentMock {
-  @Input({ required: true }) unit!: UnitCategorisation;
-}
-
-@Component({
-  selector: "app-unit-division",
-  template: "<p>app-unit-division</p>"
-})
-class TestUnitDivisionComponentMock {
-  @Input({ required: true }) unit!: UnitCategorisation;
-}
-
-@Component({
-  selector: "app-unit-dropdown",
-  template: "<p>app-unit-dropdown</p>"
-})
-class TestUnitDropdownComponentMock {
-  @Input({ required: true }) unit!: UnitCategorisation;
-}
-
-@Component({
-  selector: "app-unit-number",
-  template: "<p>app-unit-number</p>"
-})
-class TestUnitNumberComponentMock {
-  @Input({ required: true }) unit!: UnitCategorisation;
-}
 
 @Component({
   selector: "wrapper-component",
