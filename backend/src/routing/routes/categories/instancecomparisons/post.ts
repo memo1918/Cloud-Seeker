@@ -1,8 +1,9 @@
 import { ErrorCallback, FrameworkRequest, FrameworkResponse, Route } from "../../../route";
 import { NextFunction } from "express";
 import { execQuery } from "../../../../db";
-import { findInstanceCompareSkus } from "../../../../db/models/instancecomparison";
+import { _findInstanceCompareSkus } from "../../../../db/models/instancecomparison";
 import Joi, { object } from "joi";
+import { findInstanceComparisonSkus } from "../../../../businesslayer/instancecomparisons";
 
 export default class Root implements Route {
     getFileName(): string {
@@ -49,9 +50,7 @@ export default class Root implements Route {
 
             res.status(404);
         } else {
-            result = await execQuery(async (client) => {
-                return await findInstanceCompareSkus(client, req.body);
-            });
+            result = await findInstanceComparisonSkus(req.body);
         }
 
         res.contentType("application/json")

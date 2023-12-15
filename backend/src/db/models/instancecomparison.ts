@@ -2,7 +2,7 @@ import { getCollection } from "../schema";
 import { Document, MongoClient, WithId } from "mongodb";
 import { Category } from "../../interfaces/category.interface";
 import { InstanceComparison } from "../../interfaces/instancecomparison.interface";
-import { object } from "joi";
+import { btoa } from "buffer";
 
 export interface IInstanceComparison extends WithId<Document>, InstanceComparison {}
 
@@ -46,13 +46,22 @@ export async function _findInstanceComparisons(client: MongoClient, categoryname
         .toArray()) as any as InstanceComparison[];
 }
 
-export async function findInstanceCompareSkus(client: MongoClient, skus: string[][]) {
+export async function _findInstanceCompareSkus(client: MongoClient, skusArray: string[][]) {
     let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
 
-    let result = await Promise.all(
-        skus.map(async (i) => {
-            return (await instanceComparisonCollection.find({ skus: i }).toArray()) as any[];
-        })
-    );
-    return result.flat();
+    const orCondition = skusArray.map((innerArray) => ({ skus: innerArray }));
+
+    const matchStage = { $match: { $or: orCondition } };
+
+    const agg = [matchStage];
+
+    const results = await instanceComparisonCollection.aggregate(agg).toArray();
+    let map = new Map();
+    const getKey = (instance: string[]) => instance.map(btoa).join(",");
+
+    for (let result of results) {
+        map.set(getKey(result.skus), result);
+    }
+
+    return skusArray.map((i) => map.get(getKey(i)));
 }

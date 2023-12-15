@@ -12,12 +12,12 @@ describe("instancecomparison db", () => {
         {
             name: { aws: "computestuff" },
             categoryName: "Compute",
-            skus:['123',"345","567"]
+            skus: ["1", "2", "3"]
         },
         {
             name: { aws: "storagestuff" },
             categoryName: "Storage",
-            skus:['135','246','357']
+            skus: ["4", "5", "6"]
         }
     ];
 
@@ -107,13 +107,18 @@ describe("instancecomparison db", () => {
         await expect(_findInstanceComparisons(client, "Compute")).resolves.toEqual([fixtureInstanceComparison[0]]);
     });
 
-    // test("find InstanceComparisons based on sku arrays", async () => {
-    //     const { setURI } = await import("../../../src/db");
-    //     const { findInstanceCompareSkus } = await import("../../../src/db/models/instancecomparison");
-    //     setURI(mongoServer.getUri());
-    //
-    //     let client = await new MongoClient(mongoServer.getUri()).connect();
-    //
-    //     await expect(findInstanceCompareSkus(client, [['135','246','357'],['123',"345","567"]]) ).resolves.toContain(fixtureInstanceComparison.sort());
-    // });
+    test("find InstanceComparisons based on sku arrays", async () => {
+        const { setURI } = await import("../../../src/db");
+        const { _findInstanceCompareSkus } = await import("../../../src/db/models/instancecomparison");
+        setURI(mongoServer.getUri());
+
+        let client = await new MongoClient(mongoServer.getUri()).connect();
+
+        await expect(
+            _findInstanceCompareSkus(client, [
+                ["1", "2", "3"],
+                ["4", "5", "6"]
+            ])
+        ).resolves.toEqual(fixtureInstanceComparison);
+    });
 });

@@ -5,7 +5,7 @@ import { findInstanceComparisons } from "../../../../../src/businesslayer/instan
 
 jest.mock("../../../../../src/businesslayer/instancecomparisons");
 
-describe("root route", () => {
+describe("instancecomparison get", () => {
     const { res, next, clearMockRes } = getMockRes();
     const errorMock = jest.fn(() => {});
 
