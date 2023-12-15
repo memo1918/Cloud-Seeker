@@ -8,6 +8,7 @@ module.exports = function(config) {
     plugins: [
       require("karma-jasmine"),
       require("karma-chrome-launcher"),
+      require("karma-firefox-launcher"),
       require("karma-jasmine-html-reporter"),
       require("karma-coverage"),
       require("karma-junit-reporter"),
@@ -46,7 +47,9 @@ module.exports = function(config) {
       properties: {}, // key value pair of properties to add to the <properties> section of the report
       xmlVersion: null // use '1' if reporting to be per SonarQube 6.2 XML format
     },
-    browsers: ["Chrome"],
-    restartOnFileChange: true
+    browsers: ["Chrome", "Firefox"],
+    restartOnFileChange: true,
+    browserDisconnectTimeout: 10000,
+    browserDisconnectTolerance: 100
   });
 };
