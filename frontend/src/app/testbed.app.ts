@@ -43,6 +43,12 @@ import { TagsComponent } from "./filter/tags/tags.component";
 import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 
+jasmine.getEnv().addReporter({
+  specStarted: function(result) {
+    console.log(`Test Name: ${result.fullName}`);
+  }
+});
+
 export function getTestBedModules() {
   return {
     ...getTestBedDeclarations(),
