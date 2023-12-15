@@ -2,8 +2,8 @@ import { Component, Inject } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { valuesIn } from "lodash";
-import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog.data";
 import { findCheapestProvider, updatePricingInformation } from "../models/cart-item";
+import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog-data";
 
 
 @Component({

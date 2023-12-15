@@ -47,9 +47,9 @@ module.exports = function(config) {
       properties: {}, // key value pair of properties to add to the <properties> section of the report
       xmlVersion: null // use '1' if reporting to be per SonarQube 6.2 XML format
     },
-    browsers: ["Firefox"],
+    browsers: ["Chrome"],
     restartOnFileChange: true,
     browserDisconnectTimeout: 10000,
-    browserDisconnectTolerance: 100
+    browserDisconnectTolerance: 1
   });
 };

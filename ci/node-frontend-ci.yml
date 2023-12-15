@@ -1,5 +1,5 @@
 test_frontend: # job
-  image: selenium/node-firefox
+  image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
   stage: test
   before_script:
     - cd frontend
@@ -18,7 +18,7 @@ test_frontend: # job
   coverage: '/All files[^|]*\|[^|]*\s+([\d\.]+)/'
 
 build_frontend: # job
-  image: selenium/node-firefox
+  image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
   stage: build
   before_script:
     - cd frontend

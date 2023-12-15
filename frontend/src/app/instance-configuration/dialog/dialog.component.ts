@@ -4,7 +4,7 @@ import { InstanceConfigurationComponent } from "../instance-configuration.compon
 import { InstanceComparison } from "src/app/models/instance-comparison";
 import { CartItem, createCartItemFromInstance } from "../../models/cart-item";
 import { ShoppingCartService } from "../../shopping-cart.service";
-import { InstanceConfigurationComponentDialogData } from "../instance-configuration-component-dialog.data";
+import { InstanceConfigurationComponentDialogData } from "../instance-configuration-component-dialog-data";
 
 @Component({
   selector: "app-instance-configuration-dialog",

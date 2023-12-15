@@ -1,21 +1,15 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { InstanceConfigurationComponent } from "./instance-configuration.component";
-import { Component, Input } from "@angular/core";
-import { UnitCategorisation } from "../pricing/units";
+import { Component } from "@angular/core";
 import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceComparison } from "../models/instance-comparison";
 import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { createCartItemFromInstance } from "../models/cart-item";
-import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog.data";
+import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog-data";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
-import { FieldDisplayComponent } from "./field-display/field-display.component";
-import { UnitDisplayComponent } from "./unit-display/unit-display.component";
-import { UnitNumberComponent } from "./unit-number/unit-number.component";
-import { UnitDivisionComponent } from "./unit-division/unit-division.component";
-import { UnitDropdownComponent } from "./unit-dropdown/unit-dropdown.component";
 import { domUpdate } from "../helper.spec";
 
 describe("InstanceConfigurationComponent", () => {
@@ -23,16 +17,15 @@ describe("InstanceConfigurationComponent", () => {
   let fixture: ComponentFixture<DialogWrapperComponent>;
   let dialogContent: InstanceConfigurationComponent;
   beforeEach(async () => {
-    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations([
-      ], [DialogWrapperComponent]),
+      ...getTestBedDeclarations([], [DialogWrapperComponent]),
       providers: [
         MatDialog
-      ]
+      ],
     });
     localStorage.clear();
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     fixture = TestBed.createComponent(DialogWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -40,7 +33,6 @@ describe("InstanceConfigurationComponent", () => {
     await component.openDialog(INSTANCE_COMPARISON_FIXTURE);
     dialogContent = component.dialogRef.componentInstance;
     fixture.detectChanges();
-
   });
 
   it("should create", () => {
