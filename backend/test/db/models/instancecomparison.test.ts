@@ -12,12 +12,12 @@ describe("instancecomparison db", () => {
         {
             name: { aws: "computestuff" },
             categoryName: "Compute",
-            skus:['123',"345","567"]
+            skus: ["123", "345", "567"]
         },
         {
             name: { aws: "storagestuff" },
             categoryName: "Storage",
-            skus:['135','246','357']
+            skus: ["135", "246", "357"]
         }
     ];
 
