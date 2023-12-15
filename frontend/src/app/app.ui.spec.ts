@@ -115,9 +115,10 @@ describe("UI-Tests", () => {
     let unitInputField = dialog.querySelector("input[data-unit-number]") as HTMLInputElement;
     unitInputField.value = "8";
     unitInputField.dispatchEvent(new Event("input"));
-    console.log("fails @ 1");
-    await domUpdate(fixture);
+
+    fixture.detectChanges();
     console.log("fails @ 2");
+
     if (ENABLE_DEBUGGER) debugger;
 
     let submitButton = dialog.querySelector(`button[type="submit"]`) as HTMLButtonElement;
