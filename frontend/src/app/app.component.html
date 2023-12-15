@@ -19,7 +19,9 @@
 
   <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
     <app-comparison class="font"></app-comparison>
-    <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
+    <p class="goBackButton" align="right">
+      <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
+    </p>
   </ng-container>
 </app-previewpanel>
 
