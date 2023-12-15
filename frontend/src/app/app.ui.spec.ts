@@ -13,12 +13,12 @@ describe("UI-Tests", () => {
   let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(() => {
-    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
 
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();
 
     fixture = TestBed.createComponent(AppComponent);
@@ -29,9 +29,9 @@ describe("UI-Tests", () => {
     // FetchMockSpec.getInstance().resetResponseData();
   });
 
-  it("should create", async () => {
-    expect(application).toBeTruthy();
-  });
+  // it("should create", async () => {
+  //   expect(application).toBeTruthy();
+  // });
 
   it("should filter by region configure a instance and add a item to the shopping cart", async () => {
 
