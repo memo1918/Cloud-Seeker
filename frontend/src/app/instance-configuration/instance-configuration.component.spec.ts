@@ -10,7 +10,6 @@ import { createCartItemFromInstance } from "../models/cart-item";
 import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog-data";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
-import { domUpdate } from "../helper.spec";
 
 describe("InstanceConfigurationComponent", () => {
   let component: DialogWrapperComponent;
@@ -71,7 +70,7 @@ describe("InstanceConfigurationComponent", () => {
     expect(instanceCount.value).toBe(component.dialogRef.componentInstance.instanceCountFormControl.value as string);
     instanceCount.value = "1234";
     instanceCount.dispatchEvent(new Event("input"));
-    await domUpdate(fixture);
+    fixture.detectChanges();
     expect(component.dialogRef.componentInstance.instanceCountFormControl.value as any).toEqual(1234);
   });
 
