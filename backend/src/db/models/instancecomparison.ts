@@ -19,6 +19,7 @@ export async function addOneInstanceComparison(client: MongoClient, instanceComp
     await instanceComparisonCollection.insertOne(instanceComparison);
     return;
 }
+
 export async function dropInstanceComparison(client: MongoClient) {
     return client.db(dbName).dropCollection(collectionName);
 }
@@ -26,6 +27,7 @@ export async function dropInstanceComparison(client: MongoClient) {
 export async function createInstanceComparisonIndex(client: MongoClient) {
     let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
     await instanceComparisonCollection.createIndex({ categoryName: 1 });
+    await instanceComparisonCollection.createIndex({ skus: 1 });
 }
 
 export async function removeInstanceComparison(
@@ -42,4 +44,15 @@ export async function _findInstanceComparisons(client: MongoClient, categoryname
     return (await instanceComparisonCollection
         .find({ categoryName: { $eq: categoryname } })
         .toArray()) as any as InstanceComparison[];
+}
+
+export async function findInstanceCompareSkus(client: MongoClient, skus: string[][]) {
+    let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
+
+    let result = await Promise.all(
+        skus.map(async (i) => {
+            return (await instanceComparisonCollection.find({ skus: i }).toArray()) as any[];
+        })
+    );
+    return result.flat();
 }

@@ -1,8 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { ShoppingCartService } from "../shopping-cart.service";
 import { valuesIn } from "lodash";
 import { CartItem } from "../models/cart-item";
-
 @Component({
   selector: "app-comparison",
   templateUrl: "./comparison.component.html",

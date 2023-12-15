@@ -1,5 +1,6 @@
 <app-previewpanel>
   <app-header></app-header>
+  <app-toastmessage></app-toastmessage>
 
 
   <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
@@ -19,8 +20,9 @@
     <app-comparison class="font"></app-comparison>
     <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
   </ng-container>
-
 </app-previewpanel>
+
+
 
 <!--<div class="primary-background">Visits:-->
 

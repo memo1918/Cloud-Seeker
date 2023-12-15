@@ -23,6 +23,7 @@ export default class Root implements Route {
         res.contentType("application/json")
             .json({
                 Status: "Done"
+                // result
             })
             .end();
 

@@ -15,21 +15,6 @@ export async function findServices(client: MongoClient, sku: string[]) {
     // console.time("findServices" + sku.join());
     let result = await Promise.all(
         sku.map(async (i) => {
-            // const query = [
-            //     {
-            //         $match: {
-            //             $text: {
-            //                 $search: i
-            //             }
-            //         }
-            //     },
-            //     {
-            //         $match: {
-            //             sku: i
-            //         }
-            //     }
-            // ];
-
             return (await serviceCollection.find({ sku: i }).toArray()) as any[];
         })
     );

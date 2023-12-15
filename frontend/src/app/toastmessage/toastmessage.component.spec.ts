@@ -1,10 +1,12 @@
-import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { PreviewPanelComponent } from "./preview-panel.component";
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ToastmessageComponent } from './toastmessage.component';
+import { domUpdate } from "../helper.spec";
+import { CartItem } from "../models/cart-item";
 import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
-import { CartItem } from "../models/cart-item";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
-import { domUpdate, elementToBePresent } from "../helper.spec";
+
 
 const shoppingCartFixture =  [
   {
@@ -311,10 +313,9 @@ const shoppingCartFixture =  [
   }
 ] as any as CartItem[];
 
-describe('PreviewpanelComponent', () => {
-  let component: PreviewPanelComponent;
-  let fixture: ComponentFixture<PreviewPanelComponent>;
-  let interval: any;
+describe('ToastmessageComponent', () => {
+  let component: ToastmessageComponent;
+  let fixture: ComponentFixture<ToastmessageComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -324,14 +325,13 @@ describe('PreviewpanelComponent', () => {
     FetchMockSpec.getInstance().setSpy();
     FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
 
-    fixture = TestBed.createComponent(PreviewPanelComponent);
+    fixture = TestBed.createComponent(ToastmessageComponent);
     component = fixture.componentInstance;
-    interval = setInterval(() => fixture.detectChanges(), 2);
+
   });
 
   afterEach(() => {
     FetchMockSpec.getInstance().resetResponseData();
-    clearInterval(interval);
   });
 
 
@@ -340,50 +340,26 @@ describe('PreviewpanelComponent', () => {
   });
 
 
-  it("panel show test", async () => {
-    await domUpdate(fixture);
-    expect(component.showPanel).toBeFalse()
 
-    component.showPanel = true;
-    await domUpdate(fixture);
-
-    let panel = document.querySelector("[data-preview-panel]") as HTMLElement;
-    expect(panel).toBeTruthy()
-
-  });
-
-  it("close button test", async () => {
-    await domUpdate(fixture);
-
-
-    component.showPanel = true;
-    await domUpdate(fixture);
-    expect(component.showPanel).toBeTruthy()
-
-    let closeButton = document.querySelector("[data-panel-close]") as HTMLButtonElement;
-    expect(closeButton).toBeTruthy()
-    closeButton.click()
-    await domUpdate(fixture);
-    let panel = document.querySelector(".main-panel") as HTMLElement;
-    let op = panel.closest("[ng-reflect-opened]") as HTMLElement;
-
-    expect(op.getAttribute("ng-reflect-opened")).toEqual("false");
-  });
-
-
-  it("check data shopping cart", async () => {
+  it("toast message on added item", async () => {
     fixture.detectChanges()
-    component.shoppingCart .setItems(shoppingCartFixture)
-    component.showPanel = true;
+    component.shoppingCart.setItems(shoppingCartFixture);
+    await domUpdate(fixture);
+    const snackingDiv = document.querySelector('mat-snack-bar-container') as HTMLElement;
+    expect(snackingDiv.innerText).toEqual("Instance added\n" + "Close")
+  });
 
-    // await domUpdate(fixture)
+  it("toast message on removed item", async () => {
+    fixture.detectChanges()
+    component.shoppingCart.setItems(shoppingCartFixture);
+    await domUpdate(fixture);
 
-    let categoryName = await elementToBePresent(".categoryName",fixture) as HTMLElement;
-    expect(categoryName.innerText).toEqual("Compute")
 
-    let itemName = document.querySelector(".itemName") as HTMLElement;
-    expect(itemName.innerText).toEqual("Virtual Machines / AWSOutposts / Compute Engine")
+    component.shoppingCart.setItems([]);
+    await domUpdate(fixture);
 
+    const snackingDiv = document.querySelector('mat-snack-bar-container') as HTMLElement;
+    expect(snackingDiv.innerText).toEqual("Instance removed\n" + "Close")
   });
 
 });
