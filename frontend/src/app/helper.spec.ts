@@ -50,7 +50,7 @@ export async function domUpdate(fixture: ComponentFixture<any>) {
       _resolve();
     }
 
-    let interval = setInterval(() => fixture.detectChanges(), 1);
+    let interval = setInterval(() => fixture.detectChanges(), 10);
 
     timeout = setTimeout(() => {
       resolve();
