@@ -64,7 +64,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
         UnitDisplayComponent,
         DialogComponent,
         TagsComponent,
-        ToastmessageComponent
+        ToastmessageComponent,
     ],
   imports: [
     BrowserModule,

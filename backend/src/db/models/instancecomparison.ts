@@ -43,3 +43,4 @@ export async function _findInstanceComparisons(client: MongoClient, categoryname
         .find({ categoryName: { $eq: categoryname } })
         .toArray()) as any as InstanceComparison[];
 }
+
