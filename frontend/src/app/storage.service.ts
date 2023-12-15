@@ -16,15 +16,15 @@ export class StorageService {
   }
 
   public setCartItems(shoppingCart: CartItem[]) {
-    localStorage[this.shoppingCartKey] = JSON.stringify(shoppingCart.map(cartItemToStorageCartItem));
+    localStorage.setItem(this.shoppingCartKey, JSON.stringify(shoppingCart.map(cartItemToStorageCartItem)));
   }
 
   private getCartItems(): StorageCartItem[] {
-    if (!localStorage[this.shoppingCartKey]) {
+    if (!localStorage.getItem(this.shoppingCartKey)) {
       return [];
     }
 
-    return JSON.parse(localStorage[this.shoppingCartKey]);
+    return JSON.parse(localStorage.getItem(this.shoppingCartKey)!);
   }
 
   private updateStorage() {
