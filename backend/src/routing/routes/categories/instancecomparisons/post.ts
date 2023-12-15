@@ -37,8 +37,7 @@ export default class Root implements Route {
             };
         }
 
-        res.json(result)
-            .end();
+        res.json(result).end();
 
         return Promise.resolve(undefined);
     }
