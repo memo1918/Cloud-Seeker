@@ -23,7 +23,6 @@ export class UnitNumberComponent implements OnInit {
 
   inputChanged() {
     if (this.unit instanceof NumberUnitCategorisation) {
-      console.log("number input changed");
       this.unit.value = Number(this.numberFormControl.value);
     }
   }

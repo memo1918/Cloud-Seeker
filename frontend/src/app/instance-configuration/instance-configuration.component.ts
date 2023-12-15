@@ -53,7 +53,6 @@ export class InstanceConfigurationComponent {
   }
 
   onNotesChanged() {
-    console.log("data notes changed");
     this.data.cart.notes = this.noteFormControl.value!;
   }
 
@@ -64,7 +63,7 @@ export class InstanceConfigurationComponent {
   }
 
   private onInstanceCountChanged() {
-    console.log("data instancecount changed");
+
     this.data.cart.numberOfInstances = Number(this.instanceCountFormControl.value);
   }
 }

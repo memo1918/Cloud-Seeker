@@ -115,31 +115,34 @@ describe("UI-Tests", () => {
     let unitInputField = dialog.querySelector("input[data-unit-number]") as HTMLInputElement;
     unitInputField.value = "8";
     unitInputField.dispatchEvent(new Event("input"));
-
+    console.log("fails @ 1");
     await domUpdate(fixture);
-    // select default units
-    // dropdownComponent.click();
-    // debugger;
+    console.log("fails @ 2");
     if (ENABLE_DEBUGGER) debugger;
 
     let submitButton = dialog.querySelector(`button[type="submit"]`) as HTMLButtonElement;
 
     if (ENABLE_DEBUGGER) debugger;
+    console.log("fails @ 3");
 
     submitButton.click();
     await domUpdate(fixture);
+    console.log("fails @ 4");
     expect(document.querySelector("app-instance-configuration")).toBeFalsy();
+    console.log("fails @ 5");
 
     if (ENABLE_DEBUGGER) debugger;
 
     let shoppingCartService = window["ShoppingCartService" as any] as unknown as ShoppingCartService;
     // expect the instance to be added to the cart
     expect(shoppingCartService.getItems().length).toBe(1);
+    console.log("fails @ 6");
 
     let item = shoppingCartService.getItems()[0];
     expect(item.notes).toBe(noteForTesting);
     expect(item.selectedProvider).toBe("azure");
     let pricingInformation = item.pricingInformation;
+    console.log("fails @ 7");
     expect(pricingInformation["aws"].factor).toBe(8);
     expect(pricingInformation["aws"].price).toBeCloseTo(43.11272);
     expect(pricingInformation["gcp"].factor).toBe(8);
