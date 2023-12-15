@@ -6,5 +6,5 @@ export async function findInstanceComparisons(categoryname: string) {
     return execQuery<InstanceComparison[]>((client) => _findInstanceComparisons(client, categoryname));
 }
 export async function findInstanceComparisonSkus(skuArray: string[][]) {
-    return execQuery<InstanceComparison[]>((client) => _findInstanceCompareSkus(client, skuArray));
+    return execQuery<any[]>((client) => _findInstanceCompareSkus(client, skuArray));
 }
