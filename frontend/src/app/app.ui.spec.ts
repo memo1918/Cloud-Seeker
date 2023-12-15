@@ -159,7 +159,7 @@ describe("UI-Tests", () => {
     let table = await elementToBePresent("app-instance-preview > div > div > table", fixture) as HTMLTableElement;
     let titleRows = table.querySelectorAll(".titleRow") as NodeListOf<HTMLTableRowElement>;
     let prevTableRowCount = titleRows.length;
-    debugger;
+    // debugger;
     expect(prevTableRowCount).toEqual(18);
 
     let coresFilter = await elementToBePresent(`[data-filter-name="cores"]`, fixture) as HTMLElement;

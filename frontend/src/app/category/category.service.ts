@@ -12,10 +12,14 @@ export class CategoryService {
   constructor(public api: APIService) {
     //@ts-ignore
     window["CategoryService"] = this;
+    this.loadCategories();
   }
 
   public loadCategories() {
-    this.api.loadCategories().then(i => this.setCategory(this.getCategories()[0]));
+    this.api.loadCategories().then(i => {
+      console.log("laoding of categories complete");
+      this.setCategory(this.getCategories()[0]);
+    });
   }
 
   getCategories() {

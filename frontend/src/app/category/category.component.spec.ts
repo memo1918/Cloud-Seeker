@@ -38,8 +38,11 @@ describe('CategoryComponent', () => {
   });
 
   it('should have correct data as categories', async () => {
-    await fixture.whenRenderingDone();
     await domUpdate(fixture);
+    await domUpdate(fixture);
+    // debugger;
+    await elementToBePresent(".test-cat", fixture);
+    // debugger;
     let selection = document.querySelectorAll("div.test-cat") as NodeListOf<HTMLElement>;
     expect(selection[1].innerText).toEqual("Storage");
   })

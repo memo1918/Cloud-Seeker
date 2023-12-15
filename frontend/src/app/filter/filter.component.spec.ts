@@ -32,7 +32,6 @@ describe("FilterComponent", () => {
 
     fixture = TestBed.createComponent(FilterComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it("should create", () => {

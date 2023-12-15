@@ -44,7 +44,7 @@ export function elementToBePresent(selector: string, fixture: ComponentFixture<a
 
 export async function domUpdate(fixture: ComponentFixture<any>) {
   return new Promise<void>(async (_resolve) => {
-    fixture.detectChanges();
+    // fixture.detectChanges();
     let observer: MutationObserver;
     let timeout: number;
     let resolve = debounce(function(...args) {
@@ -57,16 +57,16 @@ export async function domUpdate(fixture: ComponentFixture<any>) {
       resolve();
     }, 200) as any as number;
 
-    observer = new MutationObserver(mutations => {
-      observer.disconnect();
-      resolve();
-    });
+    // observer = new MutationObserver(mutations => {
+    //   observer.disconnect();
+    //   resolve();
+    // });
 
-    observer.observe(document, {
-      childList: true,
-      subtree: true,
-      attributes: true
-    });
+    // observer.observe(document, {
+    //   childList: true,
+    //   subtree: true,
+    //   attributes: true
+    // });
 
     fixture.detectChanges();
   });

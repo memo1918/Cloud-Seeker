@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ViewChild } from "@angular/core";
 import { CategoryService } from "./category.service";
 import { FilterService } from "../filter/filter.service";
 import { MatTabChangeEvent, MatTabGroup } from "@angular/material/tabs";
@@ -9,7 +9,7 @@ import { MatTabChangeEvent, MatTabGroup } from "@angular/material/tabs";
   styleUrls: ["./category.component.scss"]
 })
 
-export class CategoryComponent implements OnInit, AfterViewInit {
+export class CategoryComponent implements AfterViewInit {
   title = "categoryComponent";
   @ViewChild("tabGroup") tabGroup!: MatTabGroup;
 
@@ -26,9 +26,5 @@ export class CategoryComponent implements OnInit, AfterViewInit {
       this.tabGroup.selectedIndex = this.categoryService.getCategories().indexOf(this.categoryService.getCategoryValue()!);
       this.filterService.setFilter([]);
     }
-  }
-
-  ngOnInit(): void {
-    this.categoryService.loadCategories();
   }
 }

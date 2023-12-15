@@ -52,7 +52,6 @@ export class APIService {
       return data.InstanceComparisons;
     } catch (err) {
       console.error(err);
-      debugger;
       return [];
     }
   }
