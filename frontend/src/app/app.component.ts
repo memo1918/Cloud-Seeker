@@ -14,4 +14,9 @@ export class AppComponent {
   constructor(public api: APIService, public categoryService: CategoryService, public filterService: FilterService,public routingService: RoutingService) {
     this.api.loadCounter();
   }
+
+  printDocument() {
+    console.log("print it");
+    window.print();
+  }
 }

@@ -43,6 +43,11 @@
     background-color: transparent;
   }
 
+  .print {
+    @media print {
+      visibility: hidden;
+    }
+  }
 
   input[type=number]::-webkit-outer-spin-button,
   input[type=number]::-webkit-inner-spin-button {

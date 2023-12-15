@@ -1,8 +1,6 @@
 <app-previewpanel>
   <app-header></app-header>
   <app-toastmessage></app-toastmessage>
-
-
   <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
     <div class="wrapper">
       <div class="first">
@@ -18,10 +16,14 @@
   </ng-container>
   <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
     <app-comparison class="font"></app-comparison>
-    <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
+  <div class="goBackButton-printButton">
+    <button mat-raised-button color="accent" class="nonPrintable" (click)="routingService.setDestination('/')"> Go Back</button>
+    <button mat-icon-button class="print-dialog-button" (click)="printDocument()">
+      <mat-icon>print</mat-icon>
+    </button>
+  </div>
   </ng-container>
 </app-previewpanel>
-
 
 
 <!--<div class="primary-background">Visits:-->

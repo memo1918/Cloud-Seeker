@@ -17,5 +17,30 @@
   overflow: hidden; /* if you don't want #second to wrap below #first */
 }
 
+mat-list {
+  align-items: normal;
+}
+
+.goBackButton-printButton {
+  display: flex;
+}
+
+@media print {
+  @page { margin: 0; }
+  .printable {
+    visibility: visible;
+  }
+  .nonPrintable {
+    visibility: hidden;
+  }
+}
+
+.print-dialog-button {
+  background-color: #0074D9;
+  cursor: pointer;
+  margin-left: 90%;
+}
+
+
 
 

@@ -43,4 +43,5 @@ export class ComparisonComponent {
   }
 
   protected readonly valuesIn = valuesIn;
+
 }

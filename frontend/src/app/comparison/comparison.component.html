@@ -42,8 +42,8 @@
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let item; columns: columnsToDisplay;"></tr>
   </table>
-  <p>
-    {{getTotalPrice() | number:'1.2-2'}} USD
+  <p class="print">
+   {{getTotalPrice() | number:'1.2-2'}} USD
   </p>
 </div>
 
