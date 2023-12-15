@@ -164,7 +164,8 @@ export class ShoppingCartDummyService extends ShoppingCartService {
           }
         }],
         "selectedProvider": "gcp",
-        "notes": "backend"
+        "notes": "backend",
+        "numberOfInstances": 1,
       }, {
         "instance": {
           "name": {"azure": "Virtual Machines", "aws": "AmazonEC2", "gcp": "Compute Engine"},
@@ -374,7 +375,8 @@ export class ShoppingCartDummyService extends ShoppingCartService {
           }
         }],
         "selectedProvider": "gcp",
-        "notes": "frontend"
+        "notes": "frontend",
+      "numberOfInstances": 1,
       }, {
         "instance": {
           "name": {"aws": "AmazonS3", "azure": "Storage", "gcp": "Cloud Storage"},
@@ -611,7 +613,8 @@ export class ShoppingCartDummyService extends ShoppingCartService {
           }
         }],
         "selectedProvider": "aws",
-        "notes": ""
+        "notes": "",
+        "numberOfInstances": 1,
       }, {
         "instance": {
           "name": {"azure": "Storage", "aws": "AmazonSageMaker", "gcp": "Cloud Storage"},
@@ -863,7 +866,8 @@ export class ShoppingCartDummyService extends ShoppingCartService {
           }
         }],
         "selectedProvider": "gcp",
-        "notes": ""
+        "notes": "",
+        "numberOfInstances": 1,
       }] as any
     )
   }
