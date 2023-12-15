@@ -47,5 +47,17 @@
   .mat-mdc-radio-button .mdc-radio {
     display: none;
   }
-}
 
+  .quantity {
+    width: 40px;
+    margin-left: 10px;
+    border: 0;
+    background-color: transparent;
+  }
+
+
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+  }
+}
