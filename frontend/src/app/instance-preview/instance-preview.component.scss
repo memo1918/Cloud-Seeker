@@ -21,7 +21,13 @@
     flex: 1;
   }
 
-  .fieldItem {
+  .fieldName {
+    counter-increment: cloudcolumn 1;
+    padding: 5px;
+    flex: 1;
+  }
+
+  .fieldValue {
     counter-increment: cloudcolumn 1;
     padding: 5px;
     flex: 1;
