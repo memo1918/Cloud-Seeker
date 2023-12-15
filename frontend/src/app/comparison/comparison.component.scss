@@ -40,7 +40,10 @@ input[type=number]::-webkit-outer-spin-button,
 input[type=number]::-webkit-inner-spin-button {
   opacity: 1;
 }
-
+.notes {
+  font-weight: 500;
+  font-size: large;
+}
 //.mdc-radio{
 //  display: none !important;
 //}

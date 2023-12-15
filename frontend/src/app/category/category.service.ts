@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { APIService } from "../api.service";
-import { Category } from "./models/Category";
-import { MatTabChangeEvent } from "@angular/material/tabs";
-import { BehaviorSubject } from "rxjs";
+import {Injectable} from "@angular/core";
+import {APIService} from "../api.service";
+import {Category} from "./models/Category";
+import {MatTabChangeEvent} from "@angular/material/tabs";
+import {BehaviorSubject} from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -35,4 +35,5 @@ export class CategoryService {
   setCategory(selectedCategory: Category) {
     this.selectedCategory$.next(selectedCategory);
   }
+
 }
