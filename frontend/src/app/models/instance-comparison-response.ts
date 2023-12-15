@@ -1,7 +1,13 @@
 import { InstanceComparison } from "./instance-comparison";
 
-export interface InstanceComparisonResponse {
+export interface InstanceComparisonSuccessResponse {
   data: {
     InstanceComparisons: InstanceComparison[]
+  };
+}
+
+export interface InstanceComparisonErrorResponse {
+  error: {
+    message: string;
   };
 }

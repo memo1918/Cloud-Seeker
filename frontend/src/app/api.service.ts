@@ -1,7 +1,11 @@
 import { Injectable } from "@angular/core";
 import { Category } from "./category/models/Category";
-import { InstanceComparisonResponse } from "./models/instance-comparison-response";
+import {
+  InstanceComparisonErrorResponse,
+  InstanceComparisonSuccessResponse
+} from "./models/instance-comparison-response";
 import { InstanceComparison } from "./models/instance-comparison";
+import { ApiResult } from "./api-result";
 
 @Injectable({
   providedIn: "root"
@@ -42,7 +46,7 @@ export class APIService {
   public async loadInstances(categoryName: string) {
     try {
       let response = await fetch(`${this.baseLocation}/categories/instancecomparisons?categoryname=${categoryName}`);
-      let { data }: InstanceComparisonResponse = await response.json();
+      let { data }: InstanceComparisonSuccessResponse = await response.json();
       this.putInstanceIntoCache(...data.InstanceComparisons);
       return data.InstanceComparisons;
     } catch (err) {
@@ -53,19 +57,19 @@ export class APIService {
 
   private skuCache: Map<string, InstanceComparison> = new Map<string, InstanceComparison>();
 
-  public async getInstancesBySKU(instances: string[][]) {
+  public async getInstancesBySKU(instances: string[][]): ApiResult<InstanceComparison[]> {
     const getKey = (instance: string[]) => instance.map(btoa).join(",");
 
     let instancesNotInCache = instances.filter(instance => !this.skuCache.has(getKey(instance)));
     let instancesInCache = instances.filter(instance => this.skuCache.has(getKey(instance)));
 
-    let result = [];
+    let result: InstanceComparison[] = [];
     for (const instanceInCache of instancesInCache) {
-      result.push(this.skuCache.get(getKey(instanceInCache)));
+      result.push(this.skuCache.get(getKey(instanceInCache))!);
     }
 
     if (instancesNotInCache.length == 0) {
-      return result;
+      return [result, null];
     }
     // fetch missing instances
     try {
@@ -73,14 +77,18 @@ export class APIService {
         method: "POST",
         body: JSON.stringify(instancesNotInCache)
       });
-      let { data }: InstanceComparisonResponse = await response.json();
-      this.putInstanceIntoCache(...data.InstanceComparisons);
-      return [...result, ...data.InstanceComparisons];
+      let { data, error }: InstanceComparisonSuccessResponse & InstanceComparisonErrorResponse = await response.json();
+
+      if (data) {
+        this.putInstanceIntoCache(...data.InstanceComparisons);
+        return [[...result, ...data.InstanceComparisons], null];
+      } else {
+        return [null, error];
+      }
     } catch (err) {
       console.error(err);
-      return [];
+      return [null, { message: "could not fetch a response" }];
     }
-
   }
 
   private putInstanceIntoCache(...sku: InstanceComparison[]) {
