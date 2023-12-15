@@ -4,12 +4,15 @@ import { NumberRegulatorComponent } from "./number-regulator.component";
 import { Component, ViewChild } from "@angular/core";
 import { Field } from "../models/Field";
 import { domUpdate, elementToBePresent } from "../../helper.spec";
+import { FetchMockSpec } from "../../fetch.mock.spec";
+import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 
 
 describe("PriceRegulatorComponent", () => {
   let component: TestComponentWrapper;
   let fixture: ComponentFixture<TestComponentWrapper>;
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations(undefined, [TestComponentWrapper])

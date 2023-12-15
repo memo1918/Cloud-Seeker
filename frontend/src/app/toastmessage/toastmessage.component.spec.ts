@@ -11,14 +11,13 @@ describe("ToastmessageComponent", () => {
   let fixture: ComponentFixture<ToastmessageComponent>;
 
   beforeEach(() => {
+
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();
-    FetchMockSpec.getInstance().setSpy();
-    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
-
     fixture = TestBed.createComponent(ToastmessageComponent);
     component = fixture.componentInstance;
 

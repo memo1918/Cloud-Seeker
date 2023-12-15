@@ -9,7 +9,6 @@ import { domUpdate, elementToBePresent } from "../helper.spec";
 describe("InstancePreviewComponent", () => {
   let component: InstancePreviewComponent;
   let fixture: ComponentFixture<InstancePreviewComponent>;
-  let interval: any;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -17,17 +16,10 @@ describe("InstancePreviewComponent", () => {
       ...getTestBedDeclarations()
     });
     localStorage.clear();
-    FetchMockSpec.getInstance().setSpy();
-    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
 
     fixture = TestBed.createComponent(InstancePreviewComponent);
     component = fixture.componentInstance;
-    interval = setInterval(() => fixture.detectChanges(), 2);
-  });
-
-  afterEach(() => {
-    FetchMockSpec.getInstance().resetResponseData();
-    clearInterval(interval);
   });
 
 
@@ -40,9 +32,5 @@ describe("InstancePreviewComponent", () => {
     let preview = await elementToBePresent("div.instance-preview-container", fixture) as HTMLElement;
     // expect the preview to exist
     expect(preview).toBeTruthy();
-  });
-
-  it("should display correct instance name", async () => {
-
   });
 });

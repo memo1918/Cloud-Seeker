@@ -15,9 +15,8 @@ describe("HeaderComponent", () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();
-    FetchMockSpec.getInstance().setSpy();
-    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
 
     fixture = TestBed.createComponent(HeaderComponent);
     component = fixture.componentInstance;

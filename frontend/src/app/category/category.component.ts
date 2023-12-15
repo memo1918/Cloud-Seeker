@@ -1,23 +1,23 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {CategoryService} from "./category.service";
-import {FilterService} from "../filter/filter.service";
-import {MatTabChangeEvent, MatTabGroup} from "@angular/material/tabs";
+import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { CategoryService } from "./category.service";
+import { FilterService } from "../filter/filter.service";
+import { MatTabChangeEvent, MatTabGroup } from "@angular/material/tabs";
 
 @Component({
-  selector: 'app-category',
-  templateUrl: './category.component.html',
-  styleUrls: ['./category.component.scss'],
+  selector: "app-category",
+  templateUrl: "./category.component.html",
+  styleUrls: ["./category.component.scss"]
 })
 
-export class CategoryComponent implements AfterViewInit {
-  title = 'categoryComponent';
+export class CategoryComponent implements OnInit, AfterViewInit {
+  title = "categoryComponent";
   @ViewChild("tabGroup") tabGroup!: MatTabGroup;
 
   constructor(public categoryService: CategoryService, public filterService: FilterService) {
   }
 
   onTabChange($event: MatTabChangeEvent) {
-    this.categoryService.onTabChange($event);
+    this.categoryService.setCategory(this.categoryService.getCategories()[$event.index]);
     this.filterService.setFilter([]);
   }
 
@@ -26,5 +26,9 @@ export class CategoryComponent implements AfterViewInit {
       this.tabGroup.selectedIndex = this.categoryService.getCategories().indexOf(this.categoryService.getCategoryValue()!);
       this.filterService.setFilter([]);
     }
+  }
+
+  ngOnInit(): void {
+    this.categoryService.loadCategories();
   }
 }

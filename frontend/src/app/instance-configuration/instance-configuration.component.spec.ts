@@ -6,32 +6,36 @@ import { UnitCategorisation } from "../pricing/units";
 import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceComparison } from "../models/instance-comparison";
-import { getTestBedImports } from "../testbed.app";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { createCartItemFromInstance } from "../models/cart-item";
 import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog.data";
+import { FetchMockSpec } from "../fetch.mock.spec";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
+import { FieldDisplayComponent } from "./field-display/field-display.component";
+import { UnitDisplayComponent } from "./unit-display/unit-display.component";
+import { UnitNumberComponent } from "./unit-number/unit-number.component";
+import { UnitDivisionComponent } from "./unit-division/unit-division.component";
+import { UnitDropdownComponent } from "./unit-dropdown/unit-dropdown.component";
 
 describe("InstanceConfigurationComponent", () => {
   let component: DialogWrapperComponent;
   let fixture: ComponentFixture<DialogWrapperComponent>;
   let dialogContent: InstanceConfigurationComponent;
   beforeEach(async () => {
-
-    await TestBed.configureTestingModule({
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
+    TestBed.configureTestingModule({
       ...getTestBedImports(),
-      declarations: [
-        InstanceConfigurationComponent,
-        TestFieldDisplayComponentMock,
-        TestUnitDisplayComponentMock,
-        TestUnitNumberComponentMock,
-        TestUnitDivisionComponentMock,
-        TestUnitDropdownComponentMock,
-        DialogWrapperComponent
-      ],
+      ...getTestBedDeclarations([
+        [FieldDisplayComponent, TestFieldDisplayComponentMock],
+        [UnitDisplayComponent, TestUnitDisplayComponentMock],
+        [UnitNumberComponent, TestUnitNumberComponentMock],
+        [UnitDivisionComponent, TestUnitDivisionComponentMock],
+        [UnitDropdownComponent, TestUnitDropdownComponentMock]
+      ], [DialogWrapperComponent]),
       providers: [
         MatDialog
       ]
-    }).compileComponents();
-
+    });
     localStorage.clear();
     fixture = TestBed.createComponent(DialogWrapperComponent);
     component = fixture.componentInstance;

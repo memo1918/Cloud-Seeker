@@ -39,7 +39,6 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatRadioModule } from "@angular/material/radio";
-import { InstancePreviewService} from "./instance-preview/instance-preview.service";
 import { TagsComponent } from "./filter/tags/tags.component";
 import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
@@ -53,6 +52,7 @@ export function getTestBedModules() {
 }
 
 export function getTestBedImports() {
+
   return {
     imports: [
       BrowserModule,

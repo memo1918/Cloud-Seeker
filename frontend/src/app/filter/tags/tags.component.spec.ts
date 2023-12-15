@@ -4,7 +4,7 @@ import { TagsComponent } from "./tags.component";
 import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app";
 import { FetchMockSpec } from "../../fetch.mock.spec";
 import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
-import { domUpdate, elementToBePresent } from "../../helper.spec";
+import { domUpdate } from "../../helper.spec";
 
 describe("TagsComponent", () => {
   let component: TagsComponent;
@@ -15,13 +15,11 @@ describe("TagsComponent", () => {
       ...getTestBedDeclarations(),
       ...getTestBedImports()
     });
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();
     fixture = TestBed.createComponent(TagsComponent);
 
-    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
-
     component = fixture.componentInstance;
-    // fixture.detectChanges();
   });
 
   it("should create", () => {
@@ -31,7 +29,6 @@ describe("TagsComponent", () => {
   it("should render all selected filters", async () => {
     await domUpdate(fixture);
     let matChips = document.querySelectorAll(".tagHost mat-chip") as NodeListOf<HTMLElement>;
-    debugger;
     expect(matChips.length).toEqual(0);
 
 

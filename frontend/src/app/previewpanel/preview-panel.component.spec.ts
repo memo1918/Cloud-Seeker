@@ -16,10 +16,8 @@ describe('PreviewpanelComponent', () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();
-    FetchMockSpec.getInstance().setSpy();
-    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
-
     fixture = TestBed.createComponent(PreviewPanelComponent);
     component = fixture.componentInstance;
     interval = setInterval(() => fixture.detectChanges(), 2);

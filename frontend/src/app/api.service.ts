@@ -24,7 +24,7 @@ export class APIService {
 
   public async loadCounter() {
     try {
-      let response = await fetch(`${this.baseLocation}/`);
+      let response = await window.fetch(`${this.baseLocation}/`);
       let { data }: { "data": { "visitors": number } } = await response.json();
       this.counter = data.visitors;
       this.counterLoading = false;
@@ -35,7 +35,7 @@ export class APIService {
 
   public async loadCategories() {
     try {
-      let response = await fetch(`${this.baseLocation}/categories`);
+      let response = await window.fetch(`${this.baseLocation}/categories`);
       let { data }: { "data": { "categories": Category[] } } = await response.json();
       this.categories = data.categories;
     } catch (err) {
@@ -45,12 +45,14 @@ export class APIService {
 
   public async loadInstances(categoryName: string) {
     try {
-      let response = await fetch(`${this.baseLocation}/categories/instancecomparisons?categoryname=${categoryName}`);
+      let response = await window.fetch(`${this.baseLocation}/categories/instancecomparisons?categoryname=${categoryName}`);
+      // debugger;
       let { data }: InstanceComparisonSuccessResponse = await response.json();
       this.putInstanceIntoCache(...data.InstanceComparisons);
       return data.InstanceComparisons;
     } catch (err) {
       console.error(err);
+      debugger;
       return [];
     }
   }
@@ -61,34 +63,40 @@ export class APIService {
     const getKey = (instance: string[]) => instance.map(btoa).join(",");
 
     let instancesNotInCache = instances.filter(instance => !this.skuCache.has(getKey(instance)));
-    let instancesInCache = instances.filter(instance => this.skuCache.has(getKey(instance)));
+
+    if (instancesNotInCache.length != 0) {
+      // window.fetch missing instances
+      try {
+        let body = JSON.stringify(instancesNotInCache);
+        let response = await window.fetch(`${this.baseLocation}/categories/instancecomparisons`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: body
+        });
+
+        let {
+          data,
+          error
+        }: InstanceComparisonSuccessResponse & InstanceComparisonErrorResponse = await response.json();
+
+        if (!data) {
+          return [null, error];
+        }
+        this.putInstanceIntoCache(...data.InstanceComparisons);
+
+      } catch (err) {
+        console.error(err);
+        return [null, { message: "could not window.fetch a response" }];
+      }
+    }
 
     let result: InstanceComparison[] = [];
-    for (const instanceInCache of instancesInCache) {
+    for (const instanceInCache of instances) {
       result.push(this.skuCache.get(getKey(instanceInCache))!);
     }
-
-    if (instancesNotInCache.length == 0) {
-      return [result, null];
-    }
-    // fetch missing instances
-    try {
-      let response = await fetch(`${this.baseLocation}/categories/instancecomparisons`, {
-        method: "POST",
-        body: JSON.stringify(instancesNotInCache)
-      });
-      let { data, error }: InstanceComparisonSuccessResponse & InstanceComparisonErrorResponse = await response.json();
-
-      if (data) {
-        this.putInstanceIntoCache(...data.InstanceComparisons);
-        return [[...result, ...data.InstanceComparisons], null];
-      } else {
-        return [null, error];
-      }
-    } catch (err) {
-      console.error(err);
-      return [null, { message: "could not fetch a response" }];
-    }
+    return [result, null];
   }
 
   private putInstanceIntoCache(...sku: InstanceComparison[]) {

@@ -2,12 +2,15 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { FieldDisplayComponent } from "./field-display.component";
 import { getTestBedImports } from "../../testbed.app";
+import { FetchMockSpec } from "../../fetch.mock.spec";
+import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 
 
 describe("FieldDisplayComponent", () => {
   let component: FieldDisplayComponent;
   let fixture: ComponentFixture<FieldDisplayComponent>;
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       declarations: [FieldDisplayComponent],
       ...getTestBedImports()

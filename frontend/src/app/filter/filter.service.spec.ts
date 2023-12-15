@@ -6,6 +6,8 @@ import { CategoryService } from "../category/category.service";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Category } from "../category/models/Category";
 import { MatTabChangeEvent } from "@angular/material/tabs";
+import { FetchMockSpec } from "../fetch.mock.spec";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 
 const fields_mock = [{
   "name": "cores",
@@ -73,6 +75,7 @@ describe("FilterService", () => {
   }
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations(),

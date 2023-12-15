@@ -1,8 +1,7 @@
-import {Injectable} from "@angular/core";
-import {APIService} from "../api.service";
-import {Category} from "./models/Category";
-import {MatTabChangeEvent} from "@angular/material/tabs";
-import {BehaviorSubject} from "rxjs";
+import { Injectable } from "@angular/core";
+import { APIService } from "../api.service";
+import { Category } from "./models/Category";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -13,6 +12,9 @@ export class CategoryService {
   constructor(public api: APIService) {
     //@ts-ignore
     window["CategoryService"] = this;
+  }
+
+  public loadCategories() {
     this.api.loadCategories().then(i => this.setCategory(this.getCategories()[0]));
   }
 
@@ -20,9 +22,10 @@ export class CategoryService {
     return this.api.categories;
   }
 
-  onTabChange(tabChangeEvent: MatTabChangeEvent) {
-    this.setCategory(this.getCategories()[tabChangeEvent.index]);
-  }
+  //
+  // onTabChange(tabChangeEvent: MatTabChangeEvent) {
+  //   this.setCategory(this.getCategories()[tabChangeEvent.index]);
+  // }
 
   getCategory() {
     return this.selectedCategory$.asObservable();

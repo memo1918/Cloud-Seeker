@@ -11,22 +11,21 @@ describe('CategoryComponent', () => {
   let interval: any;
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations(),
     });
     localStorage.clear();
-    FetchMockSpec.getInstance().setSpy();
-    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
 
     fixture = TestBed.createComponent(CategoryComponent);
     component = fixture.componentInstance;
-    interval = setInterval(() => fixture.detectChanges(), 2);
+    // interval = setInterval(() => fixture.detectChanges(), 2);
   });
 
   afterEach(() => {
-    FetchMockSpec.getInstance().resetResponseData();
-    clearInterval(interval);
+    // FetchMockSpec.getInstance().resetResponseData();
+    // clearInterval(interval);
   });
 
   it('category component should create', () => {
@@ -39,6 +38,7 @@ describe('CategoryComponent', () => {
   });
 
   it('should have correct data as categories', async () => {
+    await fixture.whenRenderingDone();
     await domUpdate(fixture);
     let selection = document.querySelectorAll("div.test-cat") as NodeListOf<HTMLElement>;
     expect(selection[1].innerText).toEqual("Storage");
@@ -46,7 +46,6 @@ describe('CategoryComponent', () => {
 
   it('should change category on click', async () => {
     await domUpdate(fixture);
-    debugger;
     let previous = await elementToBePresent("mat-tab-group", fixture) as HTMLElement;
     let prevHTML = previous.outerHTML;
     let selection = document.querySelectorAll("div.test-cat") as NodeListOf<HTMLElement>;
@@ -54,12 +53,11 @@ describe('CategoryComponent', () => {
     expect(currentCategory).toEqual("Compute");
     selection[1].click();
     await domUpdate(fixture);
+    await fixture.whenStable();
     let next = await elementToBePresent("mat-tab-group", fixture) as HTMLElement;
     let nextHTML = next.outerHTML;
-    debugger;
     currentCategory = component.categoryService.getCategoryValue()?.name;
     expect(prevHTML).not.toEqual(nextHTML);
-    debugger;
     expect(currentCategory).toEqual("Storage")
   }, 10000);
 

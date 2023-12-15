@@ -5,49 +5,28 @@ import { FetchMockSpec } from "./fetch.mock.spec";
 import { dummyApplicationData } from "./mocks/fetch/applicationdummydata.spec";
 import { domUpdate, elementToBePresent } from "./helper.spec";
 import { ShoppingCartService } from "./shopping-cart.service";
-import { StorageService } from "./storage.service";
-import { BehaviorSubject } from "rxjs";
-import { CartItem, StorageCartItem } from "./models/cart-item";
 
 const ENABLE_DEBUGGER = false;
-
-class DummyStorageService {
-  readonly shoppingCart: BehaviorSubject<StorageCartItem[]> = new BehaviorSubject<StorageCartItem[]>([]);
-  private shoppingCartKey: string = "";
-
-  private getCartItems(): StorageCartItem[] {
-    return [];
-  }
-
-  setCartItems(shoppingCart: CartItem[]): void {
-  }
-
-  private updateStorage(): void {
-  }
-
-}
 
 describe("UI-Tests", () => {
   let application: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
+
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations(),
-      providers: [{
-        provide: StorageService, useClass: DummyStorageService
-      }]
+      ...getTestBedDeclarations()
     });
     localStorage.clear();
-    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
 
     fixture = TestBed.createComponent(AppComponent);
     application = fixture.componentInstance;
   });
 
   afterEach(() => {
-    FetchMockSpec.getInstance().resetResponseData();
+    // FetchMockSpec.getInstance().resetResponseData();
   });
 
   it("should create", async () => {
@@ -57,6 +36,7 @@ describe("UI-Tests", () => {
   it("should filter by region configure a instance and add a item to the shopping cart", async () => {
 
     await domUpdate(fixture);
+    // await fixture.whenStable();
 
     if (ENABLE_DEBUGGER) debugger;
     console.log("selecting dropdown");
@@ -173,12 +153,13 @@ describe("UI-Tests", () => {
 
   it("should filter by cpu", async () => {
     await domUpdate(fixture);
+    // await fixture.whenStable();
 
     // save previous html element count
     let table = await elementToBePresent("app-instance-preview > div > div > table", fixture) as HTMLTableElement;
     let titleRows = table.querySelectorAll(".titleRow") as NodeListOf<HTMLTableRowElement>;
     let prevTableRowCount = titleRows.length;
-
+    debugger;
     expect(prevTableRowCount).toEqual(18);
 
     let coresFilter = await elementToBePresent(`[data-filter-name="cores"]`, fixture) as HTMLElement;
@@ -224,6 +205,7 @@ describe("UI-Tests", () => {
   it("should switch the category and change filter and intancepreview", async () => {
 
     await domUpdate(fixture);
+    // await fixture.whenStable();
     let appInstancePreview = await elementToBePresent("app-instance-preview", fixture);
     let appFilter = await elementToBePresent("app-filter", fixture);
     expect(appInstancePreview).toBeTruthy();

@@ -4,6 +4,7 @@ import { CartItem, createCartItemFromStorageAndInstance } from "./models/cart-it
 import { StorageService } from "./storage.service";
 import { APIService } from "./api.service";
 import { PromiseQueue } from "./promise-queue";
+import { isEqual } from "lodash";
 
 @Injectable({
   providedIn: "root"
@@ -19,6 +20,7 @@ export class ShoppingCartService {
   }
 
   setItems(newItems: CartItem[]) {
+    if (isEqual(newItems, this.getItems())) return;
     this.items.next(newItems);
     this.storage.setCartItems(newItems);
   }

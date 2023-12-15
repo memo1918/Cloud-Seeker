@@ -6,12 +6,15 @@ import { INSTANCE_COMPARISON_FIXTURE } from "../../fixtures/instance-comparison.
 import { InstanceConfigurationComponent } from "../instance-configuration.component";
 import { Component, ViewChild } from "@angular/core";
 import { getTestBedImports } from "../../testbed.app";
+import { FetchMockSpec } from "../../fetch.mock.spec";
+import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 
 describe("DialogComponent", () => {
   let component: TestComponentWrapper;
   let fixture: ComponentFixture<TestComponentWrapper>;
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       declarations: [
         DialogComponent,
