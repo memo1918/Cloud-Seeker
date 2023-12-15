@@ -15,6 +15,7 @@ describe("TagsComponent", () => {
       ...getTestBedDeclarations(),
       ...getTestBedImports()
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(TagsComponent);
 
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);

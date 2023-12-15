@@ -21,9 +21,9 @@ describe("DialogComponent", () => {
       ...getTestBedImports(),
       providers: [
         MatDialog
-        // {provide: InstanceConfigurationComponent, useClass: TestInstanceConfigurationComponent,}
       ]
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
     fixture.detectChanges();

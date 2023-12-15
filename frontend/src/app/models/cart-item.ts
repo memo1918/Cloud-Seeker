@@ -20,8 +20,11 @@ export interface StorageCartItem {
   providers: { providerName: string, providerDefault: string, configuration: string }[];
 }
 
+export function updatePricingInformation(cartItem: CartItem) {
+  cartItem.pricingInformation = calculatePricingInformation(cartItem.providers, cartItem.instance);
+}
 
-export function calculatePricingInformation(providers: {
+function calculatePricingInformation(providers: {
   providerName: string;
   providerDefault: Unit;
   configuration: Unit

@@ -5,19 +5,41 @@ import { FetchMockSpec } from "./fetch.mock.spec";
 import { dummyApplicationData } from "./mocks/fetch/applicationdummydata.spec";
 import { domUpdate, elementToBePresent } from "./helper.spec";
 import { ShoppingCartService } from "./shopping-cart.service";
+import { StorageService } from "./storage.service";
+import { BehaviorSubject } from "rxjs";
+import { CartItem, StorageCartItem } from "./models/cart-item";
 
 const ENABLE_DEBUGGER = false;
+
+class DummyStorageService {
+  readonly shoppingCart: BehaviorSubject<StorageCartItem[]> = new BehaviorSubject<StorageCartItem[]>([]);
+  private shoppingCartKey: string = "";
+
+  private getCartItems(): StorageCartItem[] {
+    return [];
+  }
+
+  setCartItems(shoppingCart: CartItem[]): void {
+  }
+
+  private updateStorage(): void {
+  }
+
+}
 
 describe("UI-Tests", () => {
   let application: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  let interval: any;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations()
+      ...getTestBedDeclarations(),
+      providers: [{
+        provide: StorageService, useClass: DummyStorageService
+      }]
     });
+    localStorage.clear();
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
 
     fixture = TestBed.createComponent(AppComponent);
@@ -105,16 +127,15 @@ describe("UI-Tests", () => {
 
     // expect being able to take notes
     let htmlTextAreaElement = dialog.querySelector("[data-notes-input]") as HTMLTextAreaElement;
-    let unitInputField = dialog.querySelector("input[data-unit-number]") as HTMLInputElement;
-    let dropdownComponent = dialog.querySelector("mat-select") as HTMLElement;
-    // lets set the note
     const noteForTesting = "this is my note for testing";
     htmlTextAreaElement.value = noteForTesting;
     htmlTextAreaElement.dispatchEvent(new Event("input"));
-    await domUpdate(fixture);
+
     // enter different number in the price configuration
+    let unitInputField = dialog.querySelector("input[data-unit-number]") as HTMLInputElement;
     unitInputField.value = "8";
     unitInputField.dispatchEvent(new Event("input"));
+
     await domUpdate(fixture);
     // select default units
     // dropdownComponent.click();

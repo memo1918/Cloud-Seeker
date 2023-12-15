@@ -15,6 +15,7 @@ describe("HeaderComponent", () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    localStorage.clear();
     FetchMockSpec.getInstance().setSpy();
     FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
 

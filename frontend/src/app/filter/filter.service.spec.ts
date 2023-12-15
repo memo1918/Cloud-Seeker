@@ -80,6 +80,7 @@ describe("FilterService", () => {
         { provide: CategoryService, useClass: MockCategoryService }
       ]
     });
+    localStorage.clear();
     service = TestBed.inject(FilterService);
   });
 

@@ -35,11 +35,11 @@
     <mat-divider class="divider"></mat-divider>
 
     <div class="dialog-section">
-      <div *ngFor="let supplier of data.cart.providerForm; let last = last">
-        <p>{{supplier.providerName}}</p>
+      <div *ngFor="let form of data.cart.providerForm; let last = last">
+        <p>{{form.providerName}}</p>
 
         <div class="unit-display">
-          <div *ngFor="let category of supplier.configuration.categories; index as i"
+          <div *ngFor="let category of form.configuration.categories; index as i"
                [ngSwitch]="category.unitName">
             <app-unit-display *ngSwitchCase="'CustomUnitCategorisation'" [unit]="category" />
             <app-unit-display *ngSwitchCase="'DefaultUnitCategorisation'" [unit]="category" />

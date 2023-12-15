@@ -1,9 +1,9 @@
-import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {CategoryComponent} from "./category.component";
-import {getTestBedDeclarations, getTestBedImports} from "../testbed.app";
-import {FetchMockSpec} from "../fetch.mock.spec";
-import {dummyApplicationData} from "../mocks/fetch/applicationdummydata.spec";
-import {domUpdate, elementToBePresent} from "../helper.spec";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { CategoryComponent } from "./category.component";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import { FetchMockSpec } from "../fetch.mock.spec";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
+import { domUpdate, elementToBePresent } from "../helper.spec";
 
 describe('CategoryComponent', () => {
   let component: CategoryComponent;
@@ -15,6 +15,7 @@ describe('CategoryComponent', () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations(),
     });
+    localStorage.clear();
     FetchMockSpec.getInstance().setSpy();
     FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
 
@@ -45,6 +46,7 @@ describe('CategoryComponent', () => {
 
   it('should change category on click', async () => {
     await domUpdate(fixture);
+    debugger;
     let previous = await elementToBePresent("mat-tab-group", fixture) as HTMLElement;
     let prevHTML = previous.outerHTML;
     let selection = document.querySelectorAll("div.test-cat") as NodeListOf<HTMLElement>;
@@ -54,8 +56,10 @@ describe('CategoryComponent', () => {
     await domUpdate(fixture);
     let next = await elementToBePresent("mat-tab-group", fixture) as HTMLElement;
     let nextHTML = next.outerHTML;
+    debugger;
     currentCategory = component.categoryService.getCategoryValue()?.name;
     expect(prevHTML).not.toEqual(nextHTML);
+    debugger;
     expect(currentCategory).toEqual("Storage")
   }, 10000);
 

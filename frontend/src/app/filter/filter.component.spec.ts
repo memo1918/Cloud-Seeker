@@ -26,6 +26,7 @@ describe("FilterComponent", () => {
       ]),
       ...getTestBedImports()
     });
+    localStorage.clear();
     FetchMockSpec.getInstance().setSpy();
     FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
     fixture = TestBed.createComponent(FilterComponent);

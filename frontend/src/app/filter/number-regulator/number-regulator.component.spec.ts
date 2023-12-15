@@ -14,6 +14,7 @@ describe("PriceRegulatorComponent", () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations(undefined, [TestComponentWrapper])
     });
+    localStorage.clear();
     TestBed.compileComponents();
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;

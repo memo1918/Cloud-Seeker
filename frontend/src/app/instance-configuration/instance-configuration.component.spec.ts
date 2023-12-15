@@ -7,6 +7,8 @@ import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fix
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceComparison } from "../models/instance-comparison";
 import { getTestBedImports } from "../testbed.app";
+import { createCartItemFromInstance } from "../models/cart-item";
+import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog.data";
 
 describe("InstanceConfigurationComponent", () => {
   let component: DialogWrapperComponent;
@@ -30,6 +32,7 @@ describe("InstanceConfigurationComponent", () => {
       ]
     }).compileComponents();
 
+    localStorage.clear();
     fixture = TestBed.createComponent(DialogWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -68,7 +71,7 @@ describe("InstanceConfigurationComponent", () => {
     textarea.value = "Hello World";
     textarea.dispatchEvent(new Event("input"));
     fixture.detectChanges();
-    expect(component.dialogRef.componentInstance.noteText.getValue()).toBe("Hello World");
+    expect(component.dialogRef.componentInstance.noteFormControl.value).toBe("Hello World");
   });
 
   it("should assign the correct number of instances and parse the value", () => {
@@ -136,14 +139,15 @@ export class DialogWrapperComponent {
   public dialogRef!: MatDialogRef<InstanceConfigurationComponent, any>;
 
   constructor(public dialog: MatDialog) {
-    // this.openDialog(INSTANCE_COMPARISON_FIXTURE)
   }
 
   openDialog(instance: InstanceComparison) {
     return new Promise((resolve) => {
-
+      let instanceConfigurationComponentDialogData: InstanceConfigurationComponentDialogData = {
+        cart: createCartItemFromInstance(instance)
+      };
       this.dialogRef = this.dialog.open(InstanceConfigurationComponent, {
-        data: { instance },
+        data: instanceConfigurationComponentDialogData,
         enterAnimationDuration: 0,
         exitAnimationDuration: 0
       });
@@ -151,7 +155,5 @@ export class DialogWrapperComponent {
     });
 
   }
-
-  protected readonly INSTANCE_COMPARISON_FIXTURE = INSTANCE_COMPARISON_FIXTURE;
 }
 

@@ -11,6 +11,7 @@ describe("RoutingService", () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    localStorage.clear();
     service = TestBed.inject(RoutingService);
   });
 

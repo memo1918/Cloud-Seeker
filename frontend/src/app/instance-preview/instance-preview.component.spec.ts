@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { InstancePreviewComponent } from "./instance-preview.component";
-import { getTestBedImports, getTestBedDeclarations} from "../testbed.app";
-import { dummyApplicationData} from "../mocks/fetch/applicationdummydata.spec";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { domUpdate, elementToBePresent } from "../helper.spec";
 
@@ -16,6 +16,7 @@ describe("InstancePreviewComponent", () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    localStorage.clear();
     FetchMockSpec.getInstance().setSpy();
     FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
 
@@ -37,7 +38,6 @@ describe("InstancePreviewComponent", () => {
   it("should initialize with loaded instances", async () => {
     await domUpdate(fixture);
     let preview = await elementToBePresent("div.instance-preview-container", fixture) as HTMLElement;
-    debugger;
     // expect the preview to exist
     expect(preview).toBeTruthy();
   });

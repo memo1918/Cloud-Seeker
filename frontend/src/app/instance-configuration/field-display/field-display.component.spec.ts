@@ -13,6 +13,7 @@ describe("FieldDisplayComponent", () => {
       ...getTestBedImports()
     });
 
+    localStorage.clear();
     fixture = TestBed.createComponent(FieldDisplayComponent);
 
     component = fixture.componentInstance;

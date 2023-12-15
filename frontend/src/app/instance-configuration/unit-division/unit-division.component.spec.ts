@@ -14,6 +14,7 @@ describe("UnitDivisionComponent", () => {
       ...getTestBedImports(),
       declarations: [UnitDivisionComponent, TestComponentWrapper],
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
     fixture.detectChanges();

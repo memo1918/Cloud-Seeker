@@ -12,6 +12,7 @@ describe('RemoveInstanceComponent', () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(RemoveInstanceComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

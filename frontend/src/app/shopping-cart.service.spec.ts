@@ -11,6 +11,7 @@ describe("ShoppingCartService", () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    localStorage.clear();
     service = TestBed.inject(ShoppingCartService);
   });
 

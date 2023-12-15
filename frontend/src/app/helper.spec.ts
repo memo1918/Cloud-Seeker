@@ -51,7 +51,7 @@ export async function domUpdate(fixture: ComponentFixture<any>) {
       _resolve(...args);
       if (timeout) clearTimeout(timeout);
       if (observer) observer.disconnect();
-    }, 32, { trailing: true });
+    }, 64, { leading: true, trailing: true });
 
     timeout = setTimeout(() => {
       resolve();

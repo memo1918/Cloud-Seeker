@@ -15,6 +15,7 @@ describe("DropdownRegulatorComponent", () => {
       ...getTestBedDeclarations(undefined, [TestComponentWrapper]),
       ...getTestBedImports()
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
     // fixture.detectChanges(); // disabled for now :(

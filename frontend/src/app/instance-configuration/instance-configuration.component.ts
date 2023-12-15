@@ -3,7 +3,7 @@ import { FormControl, Validators } from "@angular/forms";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { valuesIn } from "lodash";
 import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog.data";
-import { calculatePricingInformation, findCheapestProvider } from "../models/cart-item";
+import { findCheapestProvider, updatePricingInformation } from "../models/cart-item";
 
 
 @Component({
@@ -24,6 +24,7 @@ export class InstanceConfigurationComponent {
     this.instanceCountFormControl.setValue(this.data.cart.numberOfInstances.toString());
     this.noteFormControl.setValue(this.data.cart.notes);
     this.noteFormControl.valueChanges.subscribe(() => this.onNotesChanged());
+    this.instanceCountFormControl.valueChanges.subscribe(() => this.onInstanceCountChanged());
   }
 
   getFields() {
@@ -41,10 +42,7 @@ export class InstanceConfigurationComponent {
   onSubmit(_ev: Event) {
     const ev = _ev as SubmitEvent;
     ev.preventDefault();
-    ev.stopPropagation();
-    ev.stopImmediatePropagation();
-
-    calculatePricingInformation(this.data.cart.providers, this.data.cart.instance);
+    updatePricingInformation(this.data.cart);
     this.data.cart.selectedProvider = findCheapestProvider(this.data.cart.pricingInformation)!;
     this.data.cart.numberOfInstances = this.instanceCountFormControl.value as any;
     this.dialogRef.close(this.data.cart);
@@ -55,6 +53,7 @@ export class InstanceConfigurationComponent {
   }
 
   onNotesChanged() {
+    console.log("data notes changed");
     this.data.cart.notes = this.noteFormControl.value!;
   }
 
@@ -62,5 +61,10 @@ export class InstanceConfigurationComponent {
 
   getInstanceName() {
     return valuesIn(this.data.cart.instance.name).join(" / ");
+  }
+
+  private onInstanceCountChanged() {
+    console.log("data instancecount changed");
+    this.data.cart.numberOfInstances = Number(this.instanceCountFormControl.value);
   }
 }

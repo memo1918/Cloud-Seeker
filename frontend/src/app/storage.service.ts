@@ -13,6 +13,7 @@ export class StorageService {
     window.addEventListener("storage", (event) => {
       this.updateStorage();
     });
+    this.updateStorage();
   }
 
   public setCartItems(shoppingCart: CartItem[]) {
@@ -20,11 +21,12 @@ export class StorageService {
   }
 
   private getCartItems(): StorageCartItem[] {
-    if (!localStorage.getItem(this.shoppingCartKey)) {
+    if (localStorage.getItem(this.shoppingCartKey) == null) {
       return [];
     }
 
-    return JSON.parse(localStorage.getItem(this.shoppingCartKey)!);
+    let data = JSON.parse(localStorage.getItem(this.shoppingCartKey)!);
+    return data ? data : [];
   }
 
   private updateStorage() {

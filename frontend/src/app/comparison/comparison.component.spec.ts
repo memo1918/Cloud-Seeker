@@ -21,6 +21,7 @@ describe("ComparisonComponent", () => {
       ],
       ...getTestBedImports()
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(ComparisonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -129,18 +130,17 @@ describe("ComparisonComponent", () => {
 
   });
 
-  it("quantity should change", async() => {
+  it("quantity should change", async () => {
     let quantity = document.querySelector("[data-quantityinput]") as HTMLInputElement;
     let tableElement = document.querySelector("mat-expansion-panel-header") as HTMLElement;
     await domUpdate(fixture);
-
-    expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(1)
+    expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(1);
 
     quantity.stepUp(1);
-    quantity.dispatchEvent(new Event("input"))
+    quantity.dispatchEvent(new Event("input"));
 
-    fixture.detectChanges();
-    expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(2)
+    await domUpdate(fixture);
+    expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(2);
 
   });
 

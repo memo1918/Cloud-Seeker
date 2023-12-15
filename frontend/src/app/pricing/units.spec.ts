@@ -10,6 +10,7 @@ describe("units module", () => {
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
+    localStorage.clear();
   });
 
     it("parsing unit for '1GB/Month'", () => {
