@@ -42,6 +42,7 @@ import { MatRadioModule } from "@angular/material/radio";
 import { TagsComponent } from "./filter/tags/tags.component";
 import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 jasmine.getEnv().addReporter({
   specStarted: function(result) {
@@ -87,7 +88,8 @@ export function getTestBedImports() {
       MatRadioModule,
       FormsModule,
       MatSnackBarModule,
-      FormsModule
+      FormsModule,
+      MatTooltipModule
     ]
   };
 }

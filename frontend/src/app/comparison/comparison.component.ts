@@ -1,7 +1,8 @@
 import { Component, Input } from "@angular/core";
 import { ShoppingCartService } from "../shopping-cart.service";
-import { indexOf, valuesIn } from "lodash";
+import {  valuesIn } from "lodash";
 import { CartItem } from "../models/cart-item";
+import {MatTooltipModule} from '@angular/material/tooltip';
 @Component({
   selector: "app-comparison",
   templateUrl: "./comparison.component.html",

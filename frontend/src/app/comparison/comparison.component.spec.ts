@@ -6,6 +6,7 @@ import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { domUpdate } from "../helper.spec";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 const ENABLE_DEBUGGER = false;
 
@@ -92,6 +93,9 @@ describe("ComparisonComponent", () => {
     expect(tableContent.textContent).toContain(" storage:  EBS only ");
     expect(tableContent.textContent).toContain(" gpuMemory:  NA ");
     expect(tableContent.textContent).toContain(" clockSpeed:  NA ");
+    expect(tableContent.textContent).toContain(" azure : 1 hour ");
+    expect(tableContent.textContent).toContain(" aws : 1 hour ");
+    expect(tableContent.textContent).toContain(" gcp : 1 hour ");
   });
 
   it("should show the correct message if the shopping cart is empty", async () => {
@@ -146,5 +150,16 @@ describe("ComparisonComponent", () => {
     expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(2);
 
   });
+
+  it("tooltip message check", async () => {
+    let icon = document.querySelector("[data-tooltipUnit]") as HTMLElement;
+    await domUpdate(fixture);
+
+
+    expect(icon.getAttribute("ng-reflect-message")).toEqual("1 hour");
+
+  });
+
+
 
 });
