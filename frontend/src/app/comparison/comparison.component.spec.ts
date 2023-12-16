@@ -98,6 +98,7 @@ describe("ComparisonComponent", () => {
     expect(tableContent.textContent).toContain(" gcp : 1 hour ");
   });
 
+
   it("should show the correct message if the shopping cart is empty", async () => {
     //remove the contents of the shopping cart
     ShoppingCartDummyService.Instance.setItems([]);
