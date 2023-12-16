@@ -102,7 +102,7 @@ describe("ComparisonComponent", () => {
     //get the element that contains the text if the shopping cart is empty
     let displayText = document.querySelector("p") as HTMLParagraphElement;
     //check if the text is correct
-    expect(displayText.textContent).toBe(" The shopping cart is empty ");
+    expect(displayText.textContent).toBe("The shopping cart is empty");
     //get a table element if there is one
     let tableElement = document.querySelector("mat-expansion-panel-header") as HTMLElement;
     //there is not supposed to be a table element, therefore we check if it is falsy
