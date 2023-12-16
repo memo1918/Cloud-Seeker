@@ -1,21 +1,17 @@
 import { TestBed } from "@angular/core/testing";
 
-import { RoutingService } from "./routing.service";
-import { getTestBedDeclarations, getTestBedImports } from "./testbed.app";
+import { StorageService } from "./storage.service";
 import { FetchMockSpec } from "./fetch.mock.spec";
 import { dummyApplicationData } from "./mocks/fetch/applicationdummydata.spec";
 
-describe("RoutingService", () => {
-  let service: RoutingService;
+describe("StorageService", () => {
+  let service: StorageService;
 
   beforeEach(() => {
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
-    TestBed.configureTestingModule({
-      ...getTestBedImports(),
-      ...getTestBedDeclarations()
-    });
+    TestBed.configureTestingModule({});
     localStorage.clear();
-    service = TestBed.inject(RoutingService);
+    service = TestBed.inject(StorageService);
   });
 
   it("should be created", () => {

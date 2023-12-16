@@ -56,4 +56,8 @@ export class ScalingUnitCategorisation implements UnitCategorisation {
 
         return target.factor / this.factor;
     }
+
+  getCategorisationString(): string {
+    return this.factor.toString();
+  }
 }

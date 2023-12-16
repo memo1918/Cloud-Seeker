@@ -174,4 +174,8 @@ export class StorageUnitCategorisation implements UnitCategorisation {
 
         return targetValue / this.value;
     }
+
+  getCategorisationString(): string {
+    return this.selected;
+  }
 }

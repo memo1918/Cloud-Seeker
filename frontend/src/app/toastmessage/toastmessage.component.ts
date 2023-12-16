@@ -8,11 +8,12 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ['./toastmessage.component.scss']
 })
 export class ToastmessageComponent implements OnInit{
-  oldLen=0;
+  private oldLen: number = 0;
   constructor( public shoppingCart: ShoppingCartService, private snackBar: MatSnackBar) {
   }
 
   ngOnInit() {
+    this.oldLen = this.shoppingCart.getItems().length;
     this.shoppingCart.getItemsObserver().subscribe((items) => ( this.openSnackBar(items.length)));
   }
 

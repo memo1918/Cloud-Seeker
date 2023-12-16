@@ -1,5 +1,4 @@
 import { ComponentFixture } from "@angular/core/testing";
-import { debounce } from "lodash";
 
 export function elementToBePresent(selector: string, fixture: ComponentFixture<any>) {
   return new Promise<Element>(async (resolve, reject) => {
@@ -45,28 +44,18 @@ export function elementToBePresent(selector: string, fixture: ComponentFixture<a
 export async function domUpdate(fixture: ComponentFixture<any>) {
   return new Promise<void>(async (_resolve) => {
     fixture.detectChanges();
-    let observer: MutationObserver;
     let timeout: number;
-    let resolve = debounce(function(...args) {
-      _resolve(...args);
+    let resolve = () => {
       if (timeout) clearTimeout(timeout);
-      if (observer) observer.disconnect();
-    }, 32, { trailing: true });
+      _resolve();
+    }
+
+    let interval = setInterval(() => fixture.detectChanges(), 10);
 
     timeout = setTimeout(() => {
       resolve();
+      clearInterval(interval);
     }, 200) as any as number;
-
-    observer = new MutationObserver(mutations => {
-      observer.disconnect();
-      resolve();
-    });
-
-    observer.observe(document, {
-      childList: true,
-      subtree: true,
-      attributes: true
-    });
 
     fixture.detectChanges();
   });

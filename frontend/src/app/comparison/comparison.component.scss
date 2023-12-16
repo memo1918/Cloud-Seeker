@@ -1,78 +1,56 @@
-.mat-mdc-form-field + .mat-mdc-form-field {
-  margin-left: 8px;
-}
+:host::ng-deep {
 
 
-.mat-table-background-white {
-  background-color: #FFFFFF !important;
-}
+  .mat-mdc-form-field + .mat-mdc-form-field {
+    margin-left: 8px;
+  }
 
-.mat-table-background-pink {
-  background-color: #FEF7FF !important;
-  border-radius: 25px;
-}
 
-.configuration-cell {
-  display: flex;
-  mat-accordion {
+  .mat-table-background-white {
+    background-color: #FFFFFF !important;
+  }
+
+  .mat-table-background-pink {
+    background-color: #FEF7FF !important;
+    border-radius: 25px;
+  }
+
+  .configuration-cell {
+    display: flex;
+
+    mat-accordion {
+      width: 100%;
+    }
+  }
+
+
+  .grow {
     width: 100%;
   }
+
+  .mat-expansion-panel:not([class*="mat-elevation-z"]) {
+    box-shadow: none;
+  }
+
+  .mat-mdc-radio-button .mdc-radio {
+    display: none;
+  }
+
+  .quantity {
+    width: 40px;
+    margin-left: 10px;
+    border: 0;
+    background-color: transparent;
+  }
+
+
+  input[type=number]::-webkit-outer-spin-button,
+  input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+  }
+
+  .notes {
+    font-weight: 500;
+    font-size: large;
+  }
 }
-
-
-.grow {
-  width: 100%;
-}
-
-.hidden-radio-button > div {
-  display: none;
-}
-
-//.mdc-radio{
-//  display: none !important;
-//}
-
-
-//.mat-mdc-cell{
-//  background-color: blue;
-//}
-
-//.mat-mdc-row, .mat-mdc-table{
-//  border-radius: 50px;
-//  padding: 5px;
-//  background-color: green;
-//}
-//app-comparison{
-//  border: 1px solid black;
-//  background-color: #73AD21;
-//}
-//
-//th, thead, tbody{
-//  border: 1px solid black;
-//  border-radius: 100px;
-//}
-
-//table, .mat-mdc-table {
-//  border: 1px solid black;
-//  border-radius: 10px;
-//}
-
-//.mat-mdc-table tbody, .mat-mdc-table thead, .mat-mdc-cell, .mat-mdc-header-row, .mat-mdc-row, .mat-mdc-table .mat-mdc-header-cell {
-//  border-radius: 25px;
-//  border: 2px solid black;
-//}
-//.mat-mdc-table, thead, td, mat-cell {
-//  //background-color: aqua;
-//  border-radius: 25px !important;
-//}
-//.mat-table-background-white {
-//  background-color: #FFFFFF !important;
-//}
-
-//table {
-//  //border-radius:25px;
-//}
-//
-//.table-circles {
-//  border-radius: 25px;
-//}

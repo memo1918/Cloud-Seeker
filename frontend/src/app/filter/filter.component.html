@@ -3,11 +3,11 @@
     <mat-grid-list cols="1" *ngFor="let field of this.filterService.currentCategoryFields; let lastItem=last;"
                    [ngSwitch]="field.type">
         <mat-list-item *ngSwitchCase="numberComponent">
-            <mat-divider *ngIf="!lastItem"></mat-divider>
+            <mat-divider class="emptySpace" *ngIf="!lastItem"></mat-divider>
           <app-number-regulator [attr.data-filter-name]="field.name" [field]="field"></app-number-regulator>
         </mat-list-item>
         <mat-list-item *ngSwitchCase="dropdownComponent">
-            <mat-divider *ngIf="!lastItem"></mat-divider>
+            <mat-divider class="emptySpace" *ngIf="!lastItem"></mat-divider>
           <app-dropdown-regulator [attr.data-filter-name]="field.name" [field]="field"></app-dropdown-regulator>
         </mat-list-item>
     </mat-grid-list>

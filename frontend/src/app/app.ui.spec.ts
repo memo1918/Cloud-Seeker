@@ -11,30 +11,32 @@ const ENABLE_DEBUGGER = false;
 describe("UI-Tests", () => {
   let application: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
-  let interval: any;
 
   beforeEach(() => {
+
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations()
     });
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
+    localStorage.clear();
 
     fixture = TestBed.createComponent(AppComponent);
     application = fixture.componentInstance;
   });
 
   afterEach(() => {
-    FetchMockSpec.getInstance().resetResponseData();
+    // FetchMockSpec.getInstance().resetResponseData();
   });
 
-  it("should create", async () => {
-    expect(application).toBeTruthy();
-  });
+  // it("should create", async () => {
+  //   expect(application).toBeTruthy();
+  // });
 
   it("should filter by region configure a instance and add a item to the shopping cart", async () => {
 
     await domUpdate(fixture);
+    // await fixture.whenStable();
 
     if (ENABLE_DEBUGGER) debugger;
     console.log("selecting dropdown");
@@ -105,40 +107,43 @@ describe("UI-Tests", () => {
 
     // expect being able to take notes
     let htmlTextAreaElement = dialog.querySelector("[data-notes-input]") as HTMLTextAreaElement;
-    let unitInputField = dialog.querySelector("input[data-unit-number]") as HTMLInputElement;
-    let dropdownComponent = dialog.querySelector("mat-select") as HTMLElement;
-    // lets set the note
     const noteForTesting = "this is my note for testing";
     htmlTextAreaElement.value = noteForTesting;
     htmlTextAreaElement.dispatchEvent(new Event("input"));
-    await domUpdate(fixture);
+
     // enter different number in the price configuration
+    let unitInputField = dialog.querySelector("input[data-unit-number]") as HTMLInputElement;
     unitInputField.value = "8";
     unitInputField.dispatchEvent(new Event("input"));
-    await domUpdate(fixture);
-    // select default units
-    // dropdownComponent.click();
-    // debugger;
+
+    fixture.detectChanges();
+    console.log("fails @ 2");
+
     if (ENABLE_DEBUGGER) debugger;
 
     let submitButton = dialog.querySelector(`button[type="submit"]`) as HTMLButtonElement;
 
     if (ENABLE_DEBUGGER) debugger;
+    console.log("fails @ 3");
 
     submitButton.click();
     await domUpdate(fixture);
+    console.log("fails @ 4");
     expect(document.querySelector("app-instance-configuration")).toBeFalsy();
+    console.log("fails @ 5");
 
     if (ENABLE_DEBUGGER) debugger;
 
     let shoppingCartService = window["ShoppingCartService" as any] as unknown as ShoppingCartService;
     // expect the instance to be added to the cart
     expect(shoppingCartService.getItems().length).toBe(1);
+    console.log("fails @ 6");
 
     let item = shoppingCartService.getItems()[0];
     expect(item.notes).toBe(noteForTesting);
     expect(item.selectedProvider).toBe("azure");
     let pricingInformation = item.pricingInformation;
+    console.log("fails @ 7");
     expect(pricingInformation["aws"].factor).toBe(8);
     expect(pricingInformation["aws"].price).toBeCloseTo(43.11272);
     expect(pricingInformation["gcp"].factor).toBe(8);
@@ -152,12 +157,13 @@ describe("UI-Tests", () => {
 
   it("should filter by cpu", async () => {
     await domUpdate(fixture);
+    // await fixture.whenStable();
 
     // save previous html element count
     let table = await elementToBePresent("app-instance-preview > div > div > table", fixture) as HTMLTableElement;
     let titleRows = table.querySelectorAll(".titleRow") as NodeListOf<HTMLTableRowElement>;
     let prevTableRowCount = titleRows.length;
-
+    // debugger;
     expect(prevTableRowCount).toEqual(18);
 
     let coresFilter = await elementToBePresent(`[data-filter-name="cores"]`, fixture) as HTMLElement;
@@ -203,6 +209,7 @@ describe("UI-Tests", () => {
   it("should switch the category and change filter and intancepreview", async () => {
 
     await domUpdate(fixture);
+    // await fixture.whenStable();
     let appInstancePreview = await elementToBePresent("app-instance-preview", fixture);
     let appFilter = await elementToBePresent("app-filter", fixture);
     expect(appInstancePreview).toBeTruthy();

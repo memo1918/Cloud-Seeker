@@ -39,10 +39,15 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatDialogModule } from "@angular/material/dialog";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatRadioModule } from "@angular/material/radio";
-import { InstancePreviewService} from "./instance-preview/instance-preview.service";
 import { TagsComponent } from "./filter/tags/tags.component";
 import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+
+jasmine.getEnv().addReporter({
+  specStarted: function(result) {
+    console.log(`Test Name: ${result.fullName}`);
+  }
+});
 
 export function getTestBedModules() {
   return {
@@ -53,6 +58,7 @@ export function getTestBedModules() {
 }
 
 export function getTestBedImports() {
+
   return {
     imports: [
       BrowserModule,

@@ -1,35 +1,30 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { InstanceConfigurationComponent } from "./instance-configuration.component";
-import { Component, Input } from "@angular/core";
-import { UnitCategorisation } from "../pricing/units";
+import { Component } from "@angular/core";
 import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceComparison } from "../models/instance-comparison";
-import { getTestBedImports } from "../testbed.app";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import { createCartItemFromInstance } from "../models/cart-item";
+import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog-data";
+import { FetchMockSpec } from "../fetch.mock.spec";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 
 describe("InstanceConfigurationComponent", () => {
   let component: DialogWrapperComponent;
   let fixture: ComponentFixture<DialogWrapperComponent>;
   let dialogContent: InstanceConfigurationComponent;
   beforeEach(async () => {
-
-    await TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
       ...getTestBedImports(),
-      declarations: [
-        InstanceConfigurationComponent,
-        TestFieldDisplayComponentMock,
-        TestUnitDisplayComponentMock,
-        TestUnitNumberComponentMock,
-        TestUnitDivisionComponentMock,
-        TestUnitDropdownComponentMock,
-        DialogWrapperComponent
-      ],
+      ...getTestBedDeclarations([], [DialogWrapperComponent]),
       providers: [
         MatDialog
-      ]
-    }).compileComponents();
-
+      ],
+    });
+    localStorage.clear();
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     fixture = TestBed.createComponent(DialogWrapperComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -37,7 +32,6 @@ describe("InstanceConfigurationComponent", () => {
     await component.openDialog(INSTANCE_COMPARISON_FIXTURE);
     dialogContent = component.dialogRef.componentInstance;
     fixture.detectChanges();
-
   });
 
   it("should create", () => {
@@ -68,15 +62,16 @@ describe("InstanceConfigurationComponent", () => {
     textarea.value = "Hello World";
     textarea.dispatchEvent(new Event("input"));
     fixture.detectChanges();
-    expect(component.dialogRef.componentInstance.noteText).toBe("Hello World");
+    expect(component.dialogRef.componentInstance.noteFormControl.value).toBe("Hello World");
   });
 
-  it("should assign the correct number of instances and parse the value", () => {
-    let instanceCount = document.querySelector("[type='number']") as HTMLInputElement;
+  it("should assign the correct number of instances and parse the value", async () => {
+    let instanceCount = document.querySelector(".instance-count-input [type='number']") as HTMLInputElement;
     expect(instanceCount.value).toBe(component.dialogRef.componentInstance.instanceCountFormControl.value as string);
     instanceCount.value = "1234";
     instanceCount.dispatchEvent(new Event("input"));
-    expect(component.dialogRef.componentInstance.instanceCountFormControl.value as any).toBe(1234);
+    fixture.detectChanges();
+    expect(component.dialogRef.componentInstance.instanceCountFormControl.value as any).toEqual(1234);
   });
 
   it("should submit the form", () => {
@@ -88,47 +83,6 @@ describe("InstanceConfigurationComponent", () => {
 });
 
 @Component({
-  selector: "app-field-display",
-  template: "<p>app-field-display</p>"
-})
-class TestFieldDisplayComponentMock {
-  @Input({ required: true }) name!: string;
-  @Input({ required: true }) value!: string;
-}
-
-@Component({
-  selector: "app-unit-display",
-  template: "<p>app-unit-display</p>"
-})
-class TestUnitDisplayComponentMock {
-  @Input({ required: true }) unit!: UnitCategorisation;
-}
-
-@Component({
-  selector: "app-unit-division",
-  template: "<p>app-unit-division</p>"
-})
-class TestUnitDivisionComponentMock {
-  @Input({ required: true }) unit!: UnitCategorisation;
-}
-
-@Component({
-  selector: "app-unit-dropdown",
-  template: "<p>app-unit-dropdown</p>"
-})
-class TestUnitDropdownComponentMock {
-  @Input({ required: true }) unit!: UnitCategorisation;
-}
-
-@Component({
-  selector: "app-unit-number",
-  template: "<p>app-unit-number</p>"
-})
-class TestUnitNumberComponentMock {
-  @Input({ required: true }) unit!: UnitCategorisation;
-}
-
-@Component({
   selector: "wrapper-component",
   template: "<p>Hello world</p>"
 })
@@ -136,14 +90,15 @@ export class DialogWrapperComponent {
   public dialogRef!: MatDialogRef<InstanceConfigurationComponent, any>;
 
   constructor(public dialog: MatDialog) {
-    // this.openDialog(INSTANCE_COMPARISON_FIXTURE)
   }
 
   openDialog(instance: InstanceComparison) {
     return new Promise((resolve) => {
-
+      let instanceConfigurationComponentDialogData: InstanceConfigurationComponentDialogData = {
+        cart: createCartItemFromInstance(instance)
+      };
       this.dialogRef = this.dialog.open(InstanceConfigurationComponent, {
-        data: { instance },
+        data: instanceConfigurationComponentDialogData,
         enterAnimationDuration: 0,
         exitAnimationDuration: 0
       });
@@ -151,7 +106,5 @@ export class DialogWrapperComponent {
     });
 
   }
-
-  protected readonly INSTANCE_COMPARISON_FIXTURE = INSTANCE_COMPARISON_FIXTURE;
 }
 

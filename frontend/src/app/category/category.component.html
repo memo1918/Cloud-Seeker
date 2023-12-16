@@ -1,5 +1,5 @@
 <div>
-  <mat-tab-group fitInkBarToContent="true" class="mat-tabBackground" mat-stretch-tabs="false"
+  <mat-tab-group #tabGroup fitInkBarToContent="true" class="mat-tabBackground" mat-stretch-tabs="false"
                  (selectedTabChange)="onTabChange($event)">
     <mat-tab *ngFor="let category of this.categoryService.getCategories()"
              mat-align-tabs="left">

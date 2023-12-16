@@ -4,16 +4,21 @@ import { UnitNumberComponent } from "./unit-number.component";
 import { Component, ViewChild } from "@angular/core";
 import { NumberUnitCategorisation } from "../../pricing/numberunitcategorisation";
 import { getTestBedImports } from "../../testbed.app";
+import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
+import { FetchMockSpec } from "../../fetch.mock.spec";
 
 describe("UnitNumberComponent", () => {
   let component: TestComponentWrapper;
   let fixture: ComponentFixture<TestComponentWrapper>;
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
+
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       declarations: [UnitNumberComponent, TestComponentWrapper],
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
     fixture.detectChanges();

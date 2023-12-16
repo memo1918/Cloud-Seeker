@@ -1,4 +1,7 @@
-<span class="tagHost">
+<mat-chip *ngIf="((filterService.getFilter() | async)?.length) == 0">
+  <span class="filterTagText">no filters</span>
+</mat-chip>
+<span *ngIf="((filterService.getFilter() | async)?.length) != 0" class="tagHost">
   <mat-chip *ngFor="let filter of (filterService.getFilter() | async)"
             (removed)="remove(filter)" [highlighted]="true">
     <span class="filterTagText">{{filter.optionText}}</span>
