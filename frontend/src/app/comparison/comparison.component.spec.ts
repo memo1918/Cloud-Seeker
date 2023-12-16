@@ -4,6 +4,8 @@ import { ShoppingCartDummyService } from "./shopping-cart-dummy-service";
 import { ShoppingCartService } from "../shopping-cart.service";
 import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
 import { domUpdate } from "../helper.spec";
+import { FetchMockSpec } from "../fetch.mock.spec";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 
 const ENABLE_DEBUGGER = false;
 
@@ -12,6 +14,7 @@ describe("ComparisonComponent", () => {
   let fixture: ComponentFixture<ComparisonComponent>;
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       //Mock for shopping cart service because the default shopping cart service holds no items by default
       ...getTestBedDeclarations(),
@@ -21,6 +24,7 @@ describe("ComparisonComponent", () => {
       ],
       ...getTestBedImports()
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(ComparisonComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -98,7 +102,7 @@ describe("ComparisonComponent", () => {
     //get the element that contains the text if the shopping cart is empty
     let displayText = document.querySelector("p") as HTMLParagraphElement;
     //check if the text is correct
-    expect(displayText.textContent).toBe(" The shopping cart is empty ");
+    expect(displayText.textContent).toBe("The shopping cart is empty");
     //get a table element if there is one
     let tableElement = document.querySelector("mat-expansion-panel-header") as HTMLElement;
     //there is not supposed to be a table element, therefore we check if it is falsy
@@ -129,18 +133,17 @@ describe("ComparisonComponent", () => {
 
   });
 
-  it("quantity should change", async() => {
+  it("quantity should change", async () => {
     let quantity = document.querySelector("[data-quantityinput]") as HTMLInputElement;
     let tableElement = document.querySelector("mat-expansion-panel-header") as HTMLElement;
     await domUpdate(fixture);
-
-    expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(1)
+    expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(1);
 
     quantity.stepUp(1);
-    quantity.dispatchEvent(new Event("input"))
+    quantity.dispatchEvent(new Event("input"));
 
-    fixture.detectChanges();
-    expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(2)
+    await domUpdate(fixture);
+    expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(2);
 
   });
 

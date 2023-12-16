@@ -2,6 +2,7 @@ import { Component, Input } from "@angular/core";
 import { ShoppingCartService } from "../shopping-cart.service";
 import { valuesIn } from "lodash";
 import { CartItem } from "../models/cart-item";
+
 @Component({
   selector: "app-comparison",
   templateUrl: "./comparison.component.html",
@@ -42,9 +43,6 @@ export class ComparisonComponent {
     return endPrice;
   }
 
-  setPanelOpenState() {
-    this.panelOpenState = true;
-  }
-  protected readonly valuesIn = valuesIn;
 
+  protected readonly valuesIn = valuesIn;
 }

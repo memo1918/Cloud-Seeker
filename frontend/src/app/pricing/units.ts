@@ -9,24 +9,26 @@ import { CustomUnitCategorisation } from "./customunitcategorisation";
 
 export type InputType = "input" | "dropdown" | null;
 
-export interface UnitCategorisation {
-    unitName: string;
-    token: string;
-    type: string;
-    options: null | string[];
-    inputType: InputType;
-    selected: null | string;
+export interface UnitCategorisationData {
+  unitName: string;
+  token: string;
+  type: string;
+  options: null | string[];
+  inputType: InputType;
+  selected: null | string;
+}
 
+export interface UnitCategorisation extends UnitCategorisationData {
     expand(prevUnit: UnitCategorisation | null): UnitCategorisation[];
-
     isCompatible(other: UnitCategorisation): boolean;
-
     /**
      * gives a conversion factor for converting this unit into the target unit
      * this * conversionfactor = target -> factor = target/this
      * @param target
      */
     getConversionFactor(target: UnitCategorisation): number;
+
+  getCategorisationString(): string;
 }
 
 export class Units {
@@ -121,4 +123,5 @@ export class Units {
         });
         return DefaultUnitCategorisation.create(token);
     }
+
 }

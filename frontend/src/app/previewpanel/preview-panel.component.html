@@ -24,10 +24,9 @@
             <app-remove-instance [cartItem]="item"></app-remove-instance>
 
             <h4 class="itemName"> {{ valuesIn(item.instance.name).join(" / ") }}</h4>
+          </div>
             <!-- Add a divider if it's not the last group -->
             <mat-divider *ngIf="!last" class="divider"></mat-divider>
-
-          </div>
         </div>
       </div>
       <div class="cartButtonContainer">
@@ -41,7 +40,7 @@
   </mat-sidenav>
 
   <!-- display elements passed to this component -->
-  <mat-sidenav-content>
+  <mat-sidenav-content class="white-background">
     <ng-content></ng-content>
   </mat-sidenav-content>
 </mat-sidenav-container>

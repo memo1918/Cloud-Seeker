@@ -47,4 +47,8 @@ export class DivisionUnitCategorisation implements UnitCategorisation {
   getConversionFactor(other: UnitCategorisation): number {
     return 1;
   }
+
+  getCategorisationString(): string {
+    return this.token;
+  }
 }

@@ -3,7 +3,6 @@ import {APIService} from "./api.service";
 import {CategoryService} from "./category/category.service";
 import {FilterService} from "./filter/filter.service";
 import { RoutingService } from "./routing.service";
-import { ComparisonComponent } from "./comparison/comparison.component";
 
 @Component({
   selector: 'app-root',
@@ -18,7 +17,6 @@ export class AppComponent {
 
   printDocument() {
 
-    console.log("print it");
     window.print();
   }
 }

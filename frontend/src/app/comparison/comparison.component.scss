@@ -8,6 +8,8 @@
 
   .mat-table-background-white {
     background-color: #FFFFFF !important;
+    font-size: large;
+    text-align: center;
   }
 
   .mat-table-background-pink {
@@ -43,14 +45,32 @@
     background-color: transparent;
   }
 
-  .print {
-    @media print {
-      visibility: hidden;
-    }
-  }
 
   input[type=number]::-webkit-outer-spin-button,
   input[type=number]::-webkit-inner-spin-button {
     opacity: 1;
   }
+
+  .notes {
+    font-weight: 500;
+    font-size: large;
+  }
+
+  .priceFont {
+    @media print {
+      visibility: hidden;
+    }
+    font-size: large;
+    margin-top: 1%;
+    margin-right: 1%;
+  }
+
+  .vendorAlign {
+    text-align: left;
+  }
+
+  .emptyCart {
+    text-align: center;
+  }
+
 }

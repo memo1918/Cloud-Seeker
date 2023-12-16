@@ -5,6 +5,8 @@ import { Unit } from "../../pricing/unit";
 import { Component } from "@angular/core";
 import { CustomUnitCategorisation } from "../../pricing/customunitcategorisation";
 import { getTestBedImports } from "../../testbed.app";
+import { FetchMockSpec } from "../../fetch.mock.spec";
+import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 
 describe("UnitDisplayComponent", () => {
   let component: TestComponentWrapper;
@@ -12,10 +14,12 @@ describe("UnitDisplayComponent", () => {
   let unit: Unit;
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       declarations: [UnitDisplayComponent, TestComponentWrapper],
       ...getTestBedImports()
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
     fixture.detectChanges();

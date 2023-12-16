@@ -5,6 +5,7 @@ import * as _get from "./routes/get";
 import * as _categories_get from "./routes/categories/get";
 import * as _mappingservices_get from "./routes/mappingservices/get";
 import * as _instancecomparisons_get from "./routes/categories/instancecomparisons/get";
+import * as _instancecomparisons_post from "./routes/categories/instancecomparisons/post";
 
 export const routes = new RouteRegister(app, ROUTE_ROOT_PATH);
 
@@ -13,4 +14,5 @@ export function registerRoutes() {
     routes.register(_categories_get);
     routes.register(_mappingservices_get);
     routes.register(_instancecomparisons_get);
+    routes.register(_instancecomparisons_post);
 }

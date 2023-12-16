@@ -1,11 +1,9 @@
 import { Component, Inject } from "@angular/core";
 import { FormControl, Validators } from "@angular/forms";
-import { Unit } from "../pricing/unit";
-import { Units } from "../pricing/units";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
 import { valuesIn } from "lodash";
-import { InstanceComparison } from "../models/instance-comparison";
-import { InstanceConfigurationResult } from "./instance-configuration-result";
+import { findCheapestProvider, updatePricingInformation } from "../models/cart-item";
+import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog-data";
 
 
 @Component({
@@ -15,49 +13,18 @@ import { InstanceConfigurationResult } from "./instance-configuration-result";
 })
 export class InstanceConfigurationComponent {
 
-
-  public noteText: string = "";
   instanceCountFormControl = new FormControl("1",
     [Validators.required, Validators.min(1)]
   );
 
-  private pricingConfigurations: {
-    providerName: string,
-    providerDefault: Unit,
-    configuration: Unit,
-  }[] = [];
-
-  public displayPricingConfigurations: {
-    providerName: string,
-    providerDefault: Unit,
-    configuration: Unit,
-  }[] = [];
+  noteFormControl = new FormControl("");
 
   constructor(public dialogRef: MatDialogRef<InstanceConfigurationComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: { instance: InstanceComparison }) {
-    this.parseUnits();
-  }
-
-  private parseUnits() {
-    for (const priceKey in this.data.instance.price) {
-      const price = this.data.instance.price[priceKey];
-      this.pricingConfigurations.push({
-        providerName: priceKey,
-        providerDefault: Units.categorise(price.unit),
-        configuration: Units.categorise(price.unit)
-      });
-    }
-
-    defaultConfigurationLoop: for (const pricingConfiguration of this.pricingConfigurations) {
-      for (const displayPricingConfiguration of this.displayPricingConfigurations) {
-        if (pricingConfiguration.configuration.isCompatible(displayPricingConfiguration.configuration)) {
-          pricingConfiguration.configuration = displayPricingConfiguration.configuration;
-          displayPricingConfiguration.providerName += "/" + pricingConfiguration.providerName;
-          continue defaultConfigurationLoop;
-        }
-      }
-      this.displayPricingConfigurations.push({ ...pricingConfiguration });
-    }
+              @Inject(MAT_DIALOG_DATA) public data: InstanceConfigurationComponentDialogData) {
+    this.instanceCountFormControl.setValue(this.data.cart.numberOfInstances.toString());
+    this.noteFormControl.setValue(this.data.cart.notes);
+    this.noteFormControl.valueChanges.subscribe(() => this.onNotesChanged());
+    this.instanceCountFormControl.valueChanges.subscribe(() => this.onInstanceCountChanged());
   }
 
   getFields() {
@@ -65,8 +32,8 @@ export class InstanceConfigurationComponent {
       name: string,
       value: string
     }[] = [];
-    for (const configurationKey in this.data.instance.fields) {
-      let value = this.data.instance.fields[configurationKey];
+    for (const configurationKey in this.data.cart.instance.fields) {
+      let value = this.data.cart.instance.fields[configurationKey];
       fields.push({ name: configurationKey, value: `${value.value} ${value.unit}` });
     }
     return fields;
@@ -75,31 +42,28 @@ export class InstanceConfigurationComponent {
   onSubmit(_ev: Event) {
     const ev = _ev as SubmitEvent;
     ev.preventDefault();
-    ev.stopPropagation();
-    ev.stopImmediatePropagation();
-
-    let pricingResult = this.pricingConfigurations.map(i => {
-      let factor = i.providerDefault.getFactorForConversion(i.configuration);
-      return {
-        providerName: i.providerName,
-        factor,
-        price: Number(this.data.instance.price[i.providerName].value) * factor
-      };
-    });
-
-    let result: InstanceConfigurationResult = {
-      units: this.pricingConfigurations,
-      adjustedPricing: pricingResult,
-      notes: this.noteText,
-      numberOfInstances: Number(this.instanceCountFormControl.value)
-    };
-
-    this.dialogRef.close(result);
+    updatePricingInformation(this.data.cart);
+    this.data.cart.selectedProvider = findCheapestProvider(this.data.cart.pricingInformation)!;
+    this.data.cart.numberOfInstances = this.instanceCountFormControl.value as any;
+    this.dialogRef.close(this.data.cart);
   }
 
   onClose() {
     this.dialogRef.close(null);
   }
 
+  onNotesChanged() {
+    this.data.cart.notes = this.noteFormControl.value!;
+  }
+
   protected readonly valuesIn = valuesIn;
+
+  getInstanceName() {
+    return valuesIn(this.data.cart.instance.name).join(" / ");
+  }
+
+  private onInstanceCountChanged() {
+
+    this.data.cart.numberOfInstances = Number(this.instanceCountFormControl.value);
+  }
 }

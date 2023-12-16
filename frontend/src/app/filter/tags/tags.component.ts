@@ -5,7 +5,8 @@ import { Chip } from "../models/chip";
 @Component({
   selector: "app-tags",
   templateUrl: "./tags.component.html",
-  styleUrls: ["./tags.component.scss"]
+  styleUrls: ["./tags.component.scss"],
+
 })
 export class TagsComponent {
 

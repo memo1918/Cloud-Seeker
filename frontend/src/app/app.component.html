@@ -1,29 +1,33 @@
-<app-previewpanel>
+<app-previewpanel class="primary-background">
   <app-header></app-header>
   <app-toastmessage></app-toastmessage>
-  <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
-    <div class="wrapper">
-      <div class="first">
-        <app-filter></app-filter>
-      </div>
 
-      <div class="second">
-        <app-category></app-category>
-        <app-tags></app-tags>
-        <app-instance-preview></app-instance-preview>
+  <div class="primary-background">
+    <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/'">
+      <div class="wrapper">
+        <div class="first">
+          <app-filter></app-filter>
+        </div>
+        <div class="second">
+          <app-category></app-category>
+          <app-tags></app-tags>
+          <app-instance-preview></app-instance-preview>
+        </div>
       </div>
-    </div>
-  </ng-container>
+    </ng-container>
+  </div>
+
   <ng-container *ngIf="(routingService.getDestinationObservable() | async) == '/comparison'">
     <app-comparison class="font"></app-comparison>
-  <div class="goBackButton-printButton">
-    <button mat-raised-button color="accent" class="nonPrintable" (click)="routingService.setDestination('/')"> Go Back</button>
-    <button mat-icon-button class="print-dialog-button" (click)="printDocument()">
-      <mat-icon>print</mat-icon>
-    </button>
-  </div>
+    <p class="goBackButton" align="right">
+      <button mat-raised-button color="accent" (click)="routingService.setDestination('/')"> Go Back</button>
+      <button mat-icon-button class="print-dialog-button" (click)="printDocument()">
+        <mat-icon>print</mat-icon>
+      </button>
+    </p>
   </ng-container>
 </app-previewpanel>
+
 
 
 <!--<div class="primary-background">Visits:-->

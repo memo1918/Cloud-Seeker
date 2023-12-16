@@ -5,16 +5,20 @@ import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app";
 import { Component, ViewChild } from "@angular/core";
 import { Field } from "../models/Field";
 import { domUpdate, elementToBePresent } from "../../helper.spec";
+import { FetchMockSpec } from "../../fetch.mock.spec";
+import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 
 describe("DropdownRegulatorComponent", () => {
   let component: TestComponentWrapper;
   let fixture: ComponentFixture<TestComponentWrapper>;
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedDeclarations(undefined, [TestComponentWrapper]),
       ...getTestBedImports()
     });
+    localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
     // fixture.detectChanges(); // disabled for now :(
