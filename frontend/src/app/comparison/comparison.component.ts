@@ -42,6 +42,9 @@ export class ComparisonComponent {
     return endPrice;
   }
 
+  setPanelOpenState() {
+    this.panelOpenState = true;
+  }
   protected readonly valuesIn = valuesIn;
 
 }
