@@ -2,8 +2,8 @@
   <table class="mat-table-background-pink" mat-table
          [dataSource]="shoppingCart.getItemsObserver()">
     <ng-container matColumnDef="name">
-      <th class="mat-table-background-white grow"  mat-header-cell *matHeaderCellDef> Your configuration</th>
-      <td  mat-cell *matCellDef="let item">
+      <th class="mat-table-background-white vendorAlign grow" mat-header-cell *matHeaderCellDef>Your configuration</th>
+      <td mat-cell *matCellDef="let item">
 
         <div class="configuration-cell">
           <app-remove-instance [cartItem]="item"></app-remove-instance>
@@ -14,7 +14,7 @@
                   {{valuesIn(item.instance.name).join(" / ")}}
                 </mat-panel-title>
               </mat-expansion-panel-header>
-              <p *ngIf="item.notes" [attr.data-notes]="">
+              <p class="notes" *ngIf="item.notes" [attr.data-notes]="">
                 {{item.notes}}
               </p>
               <p *ngFor="let key of keys(item.instance.fields)">
@@ -43,13 +43,12 @@
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let item; columns: columnsToDisplay;"></tr>
   </table>
-  <p>
+  <p class="priceFont" align="right">
+    Total:
     {{getTotalPrice() | number:'1.2-2'}} USD
   </p>
 </div>
 
 <div *ngIf="shoppingCart.getItems().length==0">
-  <p>
-    The shopping cart is empty
-  </p>
+  <p class="emptyCart">The shopping cart is empty</p>
 </div>

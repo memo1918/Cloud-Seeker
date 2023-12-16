@@ -27,7 +27,6 @@ export class DialogComponent {
 
       const dialogRef = this.dialog.open(InstanceConfigurationComponent, {
         data: instanceConfigurationComponentDialogData,
-        panelClass: 'custom-dialog-container',
         height: '80%',
         width: '80%'
       });
