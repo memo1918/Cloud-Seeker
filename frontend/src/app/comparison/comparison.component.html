@@ -8,7 +8,7 @@
         <div class="configuration-cell">
           <app-remove-instance [cartItem]="item"></app-remove-instance>
           <mat-accordion>
-            <mat-expansion-panel class="mat-table-background-pink">
+            <mat-expansion-panel [expanded]="printService.isPrinting?true: undefined" class="mat-table-background-pink">
               <mat-expansion-panel-header>
                 <mat-panel-title class="mat-elevation-z0">
                   {{valuesIn(item.instance.name).join(" / ")}}
