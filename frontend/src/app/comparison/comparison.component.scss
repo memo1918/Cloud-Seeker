@@ -1,10 +1,8 @@
 :host::ng-deep {
 
-
   .mat-mdc-form-field + .mat-mdc-form-field {
     margin-left: 8px;
   }
-
 
   .mat-table-background-white {
     background-color: #FFFFFF !important;
@@ -25,7 +23,6 @@
     }
   }
 
-
   .grow {
     width: 100%;
   }
@@ -34,18 +31,11 @@
     box-shadow: none;
   }
 
-.notes {
-  font-weight: 500;
-  font-size: large;
-}
-//.mdc-radio{
-//  display: none !important;
-//}
+  .notes {
+    font-weight: 500;
+    font-size: large;
+  }
 
-
-//.mat-mdc-cell{
-//  background-color: blue;
-//}
   .mat-mdc-radio-button .mdc-radio {
     display: none;
   }
@@ -56,7 +46,6 @@
     border: 0;
     background-color: transparent;
   }
-
 
   input[type=number]::-webkit-outer-spin-button,
   input[type=number]::-webkit-inner-spin-button {
@@ -71,6 +60,11 @@
 
   .vendorAlign {
     text-align: left;
+  }
+
+  .emptyCart {
+    text-align: center;
+
   }
 
 }
