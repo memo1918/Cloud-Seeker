@@ -1,9 +1,9 @@
-import {ComponentFixture, TestBed} from "@angular/core/testing";
-import {CategoryComponent} from "./category.component";
-import {getTestBedDeclarations, getTestBedImports} from "../testbed.app";
-import {FetchMockSpec} from "../fetch.mock.spec";
-import {dummyApplicationData} from "../mocks/fetch/applicationdummydata.spec";
-import {domUpdate, elementToBePresent} from "../helper.spec";
+import { ComponentFixture, TestBed } from "@angular/core/testing";
+import { CategoryComponent } from "./category.component";
+import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import { FetchMockSpec } from "../fetch.mock.spec";
+import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
+import { domUpdate, elementToBePresent } from "../helper.spec";
 
 describe('CategoryComponent', () => {
   let component: CategoryComponent;
@@ -11,21 +11,21 @@ describe('CategoryComponent', () => {
   let interval: any;
 
   beforeEach(() => {
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations(),
     });
-    FetchMockSpec.getInstance().setSpy();
-    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
+    localStorage.clear();
 
     fixture = TestBed.createComponent(CategoryComponent);
     component = fixture.componentInstance;
-    interval = setInterval(() => fixture.detectChanges(), 2);
+    // interval = setInterval(() => fixture.detectChanges(), 2);
   });
 
   afterEach(() => {
-    FetchMockSpec.getInstance().resetResponseData();
-    clearInterval(interval);
+    // FetchMockSpec.getInstance().resetResponseData();
+    // clearInterval(interval);
   });
 
   it('category component should create', () => {
@@ -39,6 +39,10 @@ describe('CategoryComponent', () => {
 
   it('should have correct data as categories', async () => {
     await domUpdate(fixture);
+    await domUpdate(fixture);
+    // debugger;
+    await elementToBePresent(".test-cat", fixture);
+    // debugger;
     let selection = document.querySelectorAll("div.test-cat") as NodeListOf<HTMLElement>;
     expect(selection[1].innerText).toEqual("Storage");
   })
@@ -52,6 +56,7 @@ describe('CategoryComponent', () => {
     expect(currentCategory).toEqual("Compute");
     selection[1].click();
     await domUpdate(fixture);
+    await fixture.whenStable();
     let next = await elementToBePresent("mat-tab-group", fixture) as HTMLElement;
     let nextHTML = next.outerHTML;
     currentCategory = component.categoryService.getCategoryValue()?.name;

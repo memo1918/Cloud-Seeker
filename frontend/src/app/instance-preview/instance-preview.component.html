@@ -1,5 +1,5 @@
 <div class="instance-preview-container">
-  <div *ngIf="instanceService.loadedInstances">
+  <div *ngIf="instanceService.loadedInstances.length != 0">
     <table>
       <ng-container *ngFor="let instance of getItems();  last as last">
         <tr class="titleRow">

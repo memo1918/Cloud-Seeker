@@ -19,6 +19,9 @@ describe("FilterComponent", () => {
   beforeEach(() => {
     TestNumberRegulatorComponentMock.instances = [];
     TestDropdownRegulatorComponentMock.instances = [];
+    localStorage.clear();
+    FetchMockSpec.getInstance().setSpy();
+    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedDeclarations([
         [NumberRegulatorComponent, TestNumberRegulatorComponentMock],
@@ -26,15 +29,9 @@ describe("FilterComponent", () => {
       ]),
       ...getTestBedImports()
     });
-    FetchMockSpec.getInstance().setSpy();
-    FetchMockSpec.getInstance().setResponseData(dummyApplicationData);
+
     fixture = TestBed.createComponent(FilterComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  afterEach(() => {
-    FetchMockSpec.getInstance().removeSpy();
   });
 
   it("should create", () => {

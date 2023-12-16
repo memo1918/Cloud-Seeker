@@ -1,83 +1,83 @@
 <mat-dialog-content>
 
-<form class="instance-configuration-form" (ngSubmit)="onSubmit($event)" (reset)="onClose()">
+  <form class="instance-configuration-form" (ngSubmit)="onSubmit($event)" (reset)="onClose()">
 
-  <div class="dialog-section">
-    <h1 data-instance-name class="headline-5">{{ valuesIn(data.instance.name).join(" / ") }}</h1>
-    <p class="caption">Please fill out the fields below to configure your instance for the different cloud
-      providers.</p>
-    <p class="caption">The usage amounts should be equivalent across the cloud providers.</p>
-  </div>
-
-  <mat-divider class="divider"></mat-divider>
-
-  <div class="dialog-section">
-    <p>Properties</p>
-    <div class="field-display">
-      <app-field-display *ngFor="let field of getFields()" [name]="field.name" [value]="field.value" />
+    <div class="dialog-section">
+      <h1 data-instance-name class="headline-5">{{ getInstanceName() }}</h1>
+      <p class="caption">Please fill out the fields below to configure your instance for the different cloud
+        providers.</p>
+      <p class="caption">The usage amounts should be equivalent across the cloud providers.</p>
     </div>
-  </div>
 
-  <mat-divider class="divider"></mat-divider>
+    <mat-divider class="divider"></mat-divider>
 
-  <div class="dialog-section">
-    <div class="notes-input">
-      <mat-form-field class="notes-full-width" appearance="outline">
-        <mat-label>Notes</mat-label>
-        <textarea [(ngModel)]="noteText" [ngModelOptions]="{standalone: true}" data-notes-input matInput
-                  placeholder="Enter notes"></textarea>
-        <mat-hint align="start">Add additional information to be reflected in your configuration summary.
-        </mat-hint>
-      </mat-form-field>
+    <div class="dialog-section">
+      <p>Properties</p>
+      <div class="field-display">
+        <app-field-display *ngFor="let field of getFields()" [name]="field.name" [value]="field.value" />
+      </div>
     </div>
-  </div>
 
-  <mat-divider class="divider"></mat-divider>
+    <mat-divider class="divider"></mat-divider>
 
-  <div class="dialog-section">
-    <div *ngFor="let supplier of displayPricingConfigurations; let last = last">
-      <p>{{supplier.providerName}}</p>
+    <div class="dialog-section">
+      <div class="notes-input">
+        <mat-form-field class="notes-full-width" appearance="outline">
+          <mat-label>Notes</mat-label>
+          <textarea data-notes-input matInput [formControl]="noteFormControl"
+                    placeholder="Enter notes"></textarea>
+          <mat-hint align="start">Add additional information to be reflected in your configuration summary.
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </div>
 
-      <div class="unit-display">
-        <div *ngFor="let category of supplier.configuration.categories; index as i"
-             [ngSwitch]="category.unitName">
-          <app-unit-display *ngSwitchCase="'CustomUnitCategorisation'" [unit]="category" />
-          <app-unit-display *ngSwitchCase="'DefaultUnitCategorisation'" [unit]="category" />
-          <app-unit-division *ngSwitchCase="'DivisionUnitCategorisation'" [unit]="category" />
-          <app-unit-dropdown *ngSwitchCase="'StorageUnitCategorisation'" [unit]="category" />
-          <app-unit-dropdown *ngSwitchCase="'TimeUnitCategorisation'" [unit]="category" />
-          <app-unit-number *ngSwitchCase="'NumberUnitCategorisation'" [unit]="category" />
-          <p *ngSwitchDefault>error</p>
+    <mat-divider class="divider"></mat-divider>
+
+    <div class="dialog-section">
+      <div *ngFor="let form of data.cart.providerForm; let last = last">
+        <p>{{form.providerName}}</p>
+
+        <div class="unit-display">
+          <div *ngFor="let category of form.configuration.categories; index as i"
+               [ngSwitch]="category.unitName">
+            <app-unit-display *ngSwitchCase="'CustomUnitCategorisation'" [unit]="category" />
+            <app-unit-display *ngSwitchCase="'DefaultUnitCategorisation'" [unit]="category" />
+            <app-unit-division *ngSwitchCase="'DivisionUnitCategorisation'" [unit]="category" />
+            <app-unit-dropdown *ngSwitchCase="'StorageUnitCategorisation'" [unit]="category" />
+            <app-unit-dropdown *ngSwitchCase="'TimeUnitCategorisation'" [unit]="category" />
+            <app-unit-number *ngSwitchCase="'NumberUnitCategorisation'" [unit]="category" />
+            <p *ngSwitchDefault>error</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <mat-divider class="divider"></mat-divider>
+    <mat-divider class="divider"></mat-divider>
 
-  <div class="dialog-section">
-    <p>Select the number of instances to add</p>
+    <div class="dialog-section">
+      <p>Select the number of instances to add</p>
 
-    <div class="final-section">
-      <div class="instance-count-input">
-        <mat-form-field class="instance-count-full-width" appearance="outline">
-          <mat-label>Number of instances</mat-label>
-          <input type="number" matInput placeholder="Enter a number"
-                 [formControl]="instanceCountFormControl">
-        </mat-form-field>
-      </div>
-      <div class="dialog-buttons">
-        <button mat-flat-button color="basic" type="button" type="reset">
-          <mat-icon>arrow_back</mat-icon>
-          Instance selection
-        </button>
-        <button mat-stroked-button color="primary" type="submit">
-          <mat-icon>add</mat-icon>
-          Add to cart
-        </button>
+      <div class="final-section">
+        <div class="instance-count-input">
+          <mat-form-field class="instance-count-full-width" appearance="outline">
+            <mat-label>Number of instances</mat-label>
+            <input type="number" matInput placeholder="Enter a number"
+                   [formControl]="instanceCountFormControl">
+          </mat-form-field>
+        </div>
+        <div class="dialog-buttons">
+          <button mat-flat-button color="basic" type="button" type="reset">
+            <mat-icon>arrow_back</mat-icon>
+            Instance selection
+          </button>
+          <button mat-stroked-button color="primary" type="submit">
+            <mat-icon>add</mat-icon>
+            Add to cart
+          </button>
+        </div>
       </div>
     </div>
-  </div>
 
-</form>
+  </form>
 </mat-dialog-content>

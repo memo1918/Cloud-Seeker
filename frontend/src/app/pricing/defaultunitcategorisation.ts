@@ -40,4 +40,8 @@ export class DefaultUnitCategorisation implements UnitCategorisation {
     getConversionFactor(other: UnitCategorisation): number {
         return 1;
     }
+
+  getCategorisationString(): string {
+    return this.token;
+  }
 }

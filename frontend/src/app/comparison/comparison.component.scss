@@ -31,11 +31,6 @@
     box-shadow: none;
   }
 
-  .notes {
-    font-weight: 500;
-    font-size: large;
-  }
-
   .mat-mdc-radio-button .mdc-radio {
     display: none;
   }
@@ -52,6 +47,11 @@
     opacity: 1;
   }
 
+  .notes {
+    font-weight: 500;
+    font-size: large;
+  }
+
   .priceFont {
     font-size: large;
     margin-top: 1%;
@@ -64,7 +64,6 @@
 
   .emptyCart {
     text-align: center;
-
   }
 
 }
