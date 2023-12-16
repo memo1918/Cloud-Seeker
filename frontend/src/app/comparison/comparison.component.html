@@ -35,6 +35,7 @@
                           (change)="item.selectedProvider = vendor">
           <mat-chip color="accent" [highlighted]="item.selectedProvider==vendor">
             {{item.pricingInformation[vendor].price  | number:'1.2-2'}} USD
+<!--            {{getUnitStringForVendor(item.providers, vendor)}}-->
           </mat-chip>
         </mat-radio-button>
       </td>

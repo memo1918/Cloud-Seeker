@@ -1,6 +1,6 @@
 import { Component, Input } from "@angular/core";
 import { ShoppingCartService } from "../shopping-cart.service";
-import { valuesIn } from "lodash";
+import { indexOf, valuesIn } from "lodash";
 import { CartItem } from "../models/cart-item";
 @Component({
   selector: "app-comparison",
@@ -43,4 +43,22 @@ export class ComparisonComponent {
   }
 
   protected readonly valuesIn = valuesIn;
+
+
+  getUnitStringForVendor(providers: any[] | undefined, vendor: string): string {
+    if (!providers) {
+      return 'x';
+    }
+
+    const index = providers.findIndex(providerItem => providerItem?.providerName === vendor);
+
+    if (index !== -1 && providers[index]?.configuration?.getUnitString) {
+      return providers[index].configuration.getUnitString();
+    }
+
+    // Handle the case when the vendor is not found or configuration/getUnitString is not defined
+    return 'x';
+  }
+
+
 }
