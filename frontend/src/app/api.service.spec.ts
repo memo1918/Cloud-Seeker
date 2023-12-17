@@ -1,9 +1,9 @@
 import { TestBed } from "@angular/core/testing";
 
 import { APIService } from "./api.service";
-import { SAMPLE_CATEGORIES } from "./api.service.fixtures";
 import { getTestBedDeclarations, getTestBedImports } from "./testbed.app";
 import { FetchMockSpec } from "./fetch.mock.spec";
+import {SAMPLE_CATEGORIES} from "./mocks/apiservice/categories.spec";
 
 describe("APIService", () => {
   let service: APIService;

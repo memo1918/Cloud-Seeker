@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { FilterComponent } from "./filter.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
 import { Component, Input } from "@angular/core";
 import { Field } from "./models/Field";
 import { NumberRegulatorComponent } from "./number-regulator/number-regulator.component";
@@ -9,6 +9,7 @@ import { DropdownRegulatorComponent } from "./dropdown-regulator/dropdown-regula
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 import { domUpdate, elementToBePresent } from "../helper.spec";
+import {CategoryService} from "../category/category.service";
 
 const ENABLE_DEBUGGER = false;
 
@@ -27,7 +28,8 @@ describe("FilterComponent", () => {
         [NumberRegulatorComponent, TestNumberRegulatorComponentMock],
         [DropdownRegulatorComponent, TestDropdownRegulatorComponentMock]
       ]),
-      ...getTestBedImports()
+      ...getTestBedImports(),
+      ...getTestBedProviders()
     });
 
     fixture = TestBed.createComponent(FilterComponent);

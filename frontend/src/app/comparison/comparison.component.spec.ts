@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ComparisonComponent } from "./comparison.component";
 import { ShoppingCartDummyService } from "./shopping-cart-dummy-service";
 import { ShoppingCartService } from "../shopping-cart.service";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
 import { domUpdate } from "../helper.spec";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
@@ -20,10 +20,7 @@ describe("ComparisonComponent", () => {
       //Mock for shopping cart service because the default shopping cart service holds no items by default
       ...getTestBedDeclarations(),
       ...getTestBedImports(),
-      providers: [
-        { provide: ShoppingCartService, useClass: ShoppingCartDummyService }
-      ],
-      ...getTestBedImports()
+      ...getTestBedProviders({ provide: ShoppingCartService, useClass: ShoppingCartDummyService })
     });
     localStorage.clear();
     fixture = TestBed.createComponent(ComparisonComponent);

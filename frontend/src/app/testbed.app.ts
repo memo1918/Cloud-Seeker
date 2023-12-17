@@ -49,12 +49,16 @@ jasmine.getEnv().addReporter({
     console.log(`Test Name: ${result.fullName}`);
   }
 });
+import {APIService} from "./api.service";
+import {MockApiService} from "./api.service.fixtures.spec";
+import {StorageService} from "./storage.service";
+import {MockStorageService} from "./storage.service.fixture.spec";
 
 export function getTestBedModules() {
   return {
     ...getTestBedDeclarations(),
     ...getTestBedImports(),
-    providers: []
+    ...getTestBedProviders()
   } as TestModuleMetadata;
 }
 
@@ -65,7 +69,6 @@ export function getTestBedImports() {
       BrowserModule,
       MatExpansionModule,
       NoopAnimationsModule,
-      MatIconModule,
       MatTabsModule,
       MatTableModule,
       MatToolbarModule,
@@ -86,7 +89,6 @@ export function getTestBedImports() {
       MatIconModule,
       MatChipsModule,
       MatRadioModule,
-      FormsModule,
       MatSnackBarModule,
       FormsModule,
       MatTooltipModule
@@ -126,5 +128,15 @@ export function getTestBedDeclarations(replace: [any, any][] = [], ...add: any[]
   });
   return {
     declarations: [...declarations, add]
+  };
+}
+
+export function getTestBedProviders(...add: any[]) {
+  return {
+    providers: [
+      {provide: APIService, useClass: MockApiService},
+      {provide: StorageService, useClass: MockStorageService},
+      ...add
+    ]
   };
 }

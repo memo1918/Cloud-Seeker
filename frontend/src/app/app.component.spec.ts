@@ -1,6 +1,6 @@
 import { TestBed } from "@angular/core/testing";
 import { AppComponent } from "./app.component";
-import { getTestBedDeclarations, getTestBedImports } from "./testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "./testbed.app";
 import { FetchMockSpec } from "./fetch.mock.spec";
 import { dummyApplicationData } from "./mocks/fetch/applicationdummydata.spec";
 
@@ -8,7 +8,8 @@ describe("AppComponent", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations()
+      ...getTestBedDeclarations(),
+      ...getTestBedProviders()
     });
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();

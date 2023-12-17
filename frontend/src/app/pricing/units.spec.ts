@@ -1,7 +1,7 @@
 import { Units } from "./units";
 import * as _ from "lodash";
 import { TestBed } from "@angular/core/testing";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 
@@ -11,7 +11,8 @@ describe("units module", () => {
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations()
+      ...getTestBedDeclarations(),
+      ...getTestBedProviders()
     });
     localStorage.clear();
   });

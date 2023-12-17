@@ -1,29 +1,24 @@
 import {ComponentFixture, TestBed} from "@angular/core/testing";
 import {RemoveInstanceComponent} from "./remove-instance.component";
-import {getTestBedDeclarations, getTestBedImports} from "../testbed.app";
 import {ShoppingCartService} from "../shopping-cart.service";
 import {ShoppingCartDummyService} from "../comparison/shopping-cart-dummy-service";
 import {Component, ViewChild} from "@angular/core";
-import {Field} from "../filter/models/Field";
-import {NumberRegulatorComponent} from "../filter/number-regulator/number-regulator.component";
 import {CartItem} from "../models/cart-item";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 
 describe('RemoveInstanceComponent', () => {
   let component: TestComponentWrapper;
-  // let fixture: ComponentFixture<TestComponentWrapper>;
   let fixture: ComponentFixture<TestComponentWrapper>;
 
   beforeEach(() => {
-    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations([], [TestComponentWrapper]),
-      providers: [
-        {provide: ShoppingCartService, useClass: ShoppingCartDummyService}
-      ],
+      ...getTestBedProviders({provide: ShoppingCartService, useClass: ShoppingCartDummyService}),
     });
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);
     component = fixture.componentInstance;
