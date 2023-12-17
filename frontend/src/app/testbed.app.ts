@@ -44,6 +44,8 @@ import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import {APIService} from "./api.service";
 import {MockApiService} from "./api.service.fixtures.spec";
+import {StorageService} from "./storage.service";
+import {MockStorageService} from "./storage.service.fixture.spec";
 
 export function getTestBedModules() {
   return {
@@ -127,6 +129,7 @@ export function getTestBedProviders(...add: any[]) {
   return {
     providers: [
       {provide: APIService, useClass: MockApiService},
+      {provide: StorageService, useClass: MockStorageService},
       ...add
     ]
   };

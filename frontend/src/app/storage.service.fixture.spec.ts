@@ -1,13 +1,11 @@
-import {EventEmitter, Injectable} from "@angular/core";
 import {CartItem, cartItemToStorageCartItem, StorageCartItem} from "./models/cart-item";
-import {Subject} from "rxjs";
+import {EventEmitter} from "@angular/core";
 
-@Injectable({
-  providedIn: "root"
-})
-export class StorageService {
-  private shoppingCartKey = "SHOPPING_CART_CONFIGURATION";
+export class MockStorageService{
   public shoppingCart: EventEmitter<StorageCartItem[]> = new EventEmitter<StorageCartItem[]>();
+  private shoppingCartKey: string = "SHOPPING_CART_CONFIGURATION";
+  public storage: { [key: string]: string } = {};
+
   constructor() {
     // triggered when other tab makes a change
     window.addEventListener("storage", (event) => {
@@ -17,16 +15,17 @@ export class StorageService {
 
   public setCartItems(shoppingCart: CartItem[]) {
     let value = shoppingCart.map(cartItemToStorageCartItem);
-    localStorage.setItem(this.shoppingCartKey, JSON.stringify(value))
+    this.storage[this.shoppingCartKey] = JSON.stringify(value)
   }
 
 
   public getCartItems(): StorageCartItem[] {
-    if (localStorage.getItem(this.shoppingCartKey) == null) {
+
+    if (this.storage[this.shoppingCartKey] == null) {
       return [];
     }
 
-    let data = JSON.parse(localStorage.getItem(this.shoppingCartKey)!);
+    let data = JSON.parse(this.storage[this.shoppingCartKey]);
     return data ? data : [];
   }
 
@@ -39,5 +38,4 @@ export class StorageService {
         console.log("StorageService: Unknown storage event", event)
     }
   }
-
 }

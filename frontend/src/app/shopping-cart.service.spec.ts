@@ -9,8 +9,6 @@ describe("ShoppingCartService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      // ...getTestBedImports(),
-      // ...getTestBedDeclarations(),
       ...getTestBedProviders()
     });
     localStorage.clear();
@@ -38,7 +36,7 @@ describe("ShoppingCartService", () => {
     await new Promise(resolve => setTimeout(resolve, 200)); // wait for the promise queue to finish
 
     const cartItems = service.getItems();
-    const storageItems = service.storage.shoppingCart.getValue();
+    const storageItems = service.storage.getCartItems();
     cartItems.forEach((item, index) => {
       expect(item.instance.skus).toEqual(storageItems[index].skus);
     })
@@ -57,13 +55,10 @@ describe("ShoppingCartService", () => {
     await new Promise(resolve => setTimeout(resolve, 200)); // wait for the promise queue to finish
 
     const cartItems = service.getItems();
-    const storageItems = service.storage.shoppingCart.getValue();
+    const storageItems = service.storage.getCartItems();
 
     cartItems.forEach((item, index) => {
       expect(item.instance.skus).toEqual(storageItems[index].skus);
     })
-
-    await new Promise(resolve => setTimeout(resolve, 800)); // wait for the promise queue to finish
-
   });
 });

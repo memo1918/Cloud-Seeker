@@ -11,12 +11,8 @@ describe("StorageService", () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      ...getTestBedImports(),
-      ...getTestBedDeclarations(),
-      ...getTestBedProviders()
     });
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
-    TestBed.configureTestingModule({});
     localStorage.clear();
     service = TestBed.inject(StorageService);
   });
@@ -25,22 +21,33 @@ describe("StorageService", () => {
     expect(service).toBeTruthy();
   });
 
-  it("should get an empty array of cart items", () => {
-    expect(service.shoppingCart.getValue()).toEqual([]);
-  });
-
-  it("should set new shopping cart items", async () => {
+  it("should save the shopping cart items", async () => {
     service.setCartItems(ShoppingCartDummyItemsFixture);
-    expect(service.shoppingCart.value).toEqual(StorageShoppingCartFixture);
-    expect(localStorage.getItem("SHOPPING_CART_CONFIGURATION")).toEqual(JSON.stringify(StorageShoppingCartFixture));
+    expect(service.getCartItems()).toEqual(StorageShoppingCartFixture);
   });
 
-  it("should parse the items when a storage event is triggered", async () => {
-   localStorage.setItem("SHOPPING_CART_CONFIGURATION", JSON.stringify(StorageShoppingCartFixture));
-   window.dispatchEvent(new StorageEvent("storage", {
-     key: "SHOPPING_CART_CONFIGURATION",
-     newValue: JSON.stringify(StorageShoppingCartFixture)
-   }));
-    expect(service.shoppingCart.value).toEqual(StorageShoppingCartFixture);
-  })
+  it("should return an empty array if no items are set", async () => {
+    expect(service.getCartItems()).toEqual([]);
+  });
+
+  it("should update on storage event", async () => {
+    localStorage.setItem("SHOPPING_CART_CONFIGURATION", JSON.stringify(StorageShoppingCartFixture));
+    window.dispatchEvent(new StorageEvent("storage", {
+      key: "SHOPPING_CART_CONFIGURATION",
+      newValue: JSON.stringify(StorageShoppingCartFixture)
+    }));
+    await new Promise(resolve => setTimeout(resolve, 200)); // wait for the promise queue to finish
+    expect(service.getCartItems()).toEqual(StorageShoppingCartFixture);
+  });
+
+  it("should notify on a storage envent", async () => {
+    let spy = spyOn(service.shoppingCart, "emit");
+    localStorage.setItem("SHOPPING_CART_CONFIGURATION", JSON.stringify(StorageShoppingCartFixture));
+    window.dispatchEvent(new StorageEvent("storage", {
+      key: "SHOPPING_CART_CONFIGURATION",
+      newValue: JSON.stringify(StorageShoppingCartFixture)
+    }));
+    await new Promise(resolve => setTimeout(resolve, 200)); // wait for the promise queue to finish
+    expect(spy).toHaveBeenCalled();
+  });
 });

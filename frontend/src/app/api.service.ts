@@ -78,7 +78,6 @@ export class APIService {
           data,
           error
         }: InstanceComparisonSuccessResponse & InstanceComparisonErrorResponse = await response.json();
-        debugger;
         if (!data) {
           return [null, error];
         }
