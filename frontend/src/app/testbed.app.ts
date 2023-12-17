@@ -42,12 +42,14 @@ import { MatRadioModule } from "@angular/material/radio";
 import { TagsComponent } from "./filter/tags/tags.component";
 import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import {APIService} from "./api.service";
+import {MockApiService} from "./api.service.fixtures.spec";
 
 export function getTestBedModules() {
   return {
     ...getTestBedDeclarations(),
     ...getTestBedImports(),
-    providers: []
+    ...getTestBedProviders()
   } as TestModuleMetadata;
 }
 
@@ -118,5 +120,14 @@ export function getTestBedDeclarations(replace: [any, any][] = [], ...add: any[]
   });
   return {
     declarations: [...declarations, add]
+  };
+}
+
+export function getTestBedProviders(...add: any[]) {
+  return {
+    providers: [
+      {provide: APIService, useClass: MockApiService},
+      ...add
+    ]
   };
 }

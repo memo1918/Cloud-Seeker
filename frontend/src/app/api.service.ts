@@ -59,9 +59,8 @@ export class APIService {
   private skuCache: Map<string, InstanceComparison> = new Map<string, InstanceComparison>();
 
   public async getInstancesBySKU(instances: string[][]): ApiResult<InstanceComparison[]> {
-    const getKey = (instance: string[]) => instance.map(btoa).join(",");
 
-    let instancesNotInCache = instances.filter(instance => !this.skuCache.has(getKey(instance)));
+    let instancesNotInCache = instances.filter(instance => !this.skuCache.has(this.getKey(instance)));
 
     if (instancesNotInCache.length != 0) {
       // window.fetch missing instances
@@ -79,7 +78,7 @@ export class APIService {
           data,
           error
         }: InstanceComparisonSuccessResponse & InstanceComparisonErrorResponse = await response.json();
-
+        debugger;
         if (!data) {
           return [null, error];
         }
@@ -93,15 +92,16 @@ export class APIService {
 
     let result: InstanceComparison[] = [];
     for (const instanceInCache of instances) {
-      result.push(this.skuCache.get(getKey(instanceInCache))!);
+      result.push(this.skuCache.get(this.getKey(instanceInCache))!);
     }
     return [result, null];
   }
+  private getKey = (instance: string[]) => instance.map(btoa).join(",");
 
   private putInstanceIntoCache(...sku: InstanceComparison[]) {
-    const getKey = (instance: string[]) => instance.map(btoa).join(",");
     for (const instanceComparison of sku) {
-      this.skuCache.set(getKey(instanceComparison.skus), instanceComparison);
+      this.skuCache.set(this.getKey(instanceComparison.skus), instanceComparison);
     }
   }
 }
+

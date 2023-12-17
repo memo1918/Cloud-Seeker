@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { UnitDropdownComponent } from "./unit-dropdown.component";
 import { Component, ViewChild } from "@angular/core";
 import { TimeUnitCategorisation } from "../../pricing/timeunitcategorisation";
-import { getTestBedImports } from "../../testbed.app";
+import {getTestBedImports, getTestBedProviders} from "../../testbed.app";
 import { FetchMockSpec } from "../../fetch.mock.spec";
 import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 
@@ -15,7 +15,8 @@ describe("UnitDropdownComponent", () => {
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      declarations: [UnitDropdownComponent, TestComponentWrapper]
+      declarations: [UnitDropdownComponent, TestComponentWrapper],
+      ...getTestBedProviders()
     });
     localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);

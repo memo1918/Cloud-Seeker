@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { DropdownRegulatorComponent } from "./dropdown-regulator.component";
-import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../../testbed.app";
 import { Component, ViewChild } from "@angular/core";
 import { Field } from "../models/Field";
 import { domUpdate, elementToBePresent } from "../../helper.spec";
@@ -16,7 +16,8 @@ describe("DropdownRegulatorComponent", () => {
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedDeclarations(undefined, [TestComponentWrapper]),
-      ...getTestBedImports()
+      ...getTestBedImports(),
+      ...getTestBedProviders()
     });
     localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);

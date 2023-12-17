@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { TagsComponent } from "./tags.component";
-import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../../testbed.app";
 import { FetchMockSpec } from "../../fetch.mock.spec";
 import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 import { domUpdate } from "../../helper.spec";
@@ -13,7 +13,8 @@ describe("TagsComponent", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       ...getTestBedDeclarations(),
-      ...getTestBedImports()
+      ...getTestBedImports(),
+      ...getTestBedProviders()
     });
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();

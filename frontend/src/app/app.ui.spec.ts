@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { getTestBedDeclarations, getTestBedImports } from "./testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "./testbed.app";
 import { AppComponent } from "./app.component";
 import { FetchMockSpec } from "./fetch.mock.spec";
 import { dummyApplicationData } from "./mocks/fetch/applicationdummydata.spec";
@@ -13,12 +13,13 @@ describe("UI-Tests", () => {
   let fixture: ComponentFixture<AppComponent>;
 
   beforeEach(() => {
-    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
 
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations()
+      ...getTestBedDeclarations(),
+      ...getTestBedProviders()
     });
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();
 
     fixture = TestBed.createComponent(AppComponent);
@@ -37,7 +38,7 @@ describe("UI-Tests", () => {
 
     await domUpdate(fixture);
     // await fixture.whenStable();
-
+    debugger;
     if (ENABLE_DEBUGGER) debugger;
     console.log("selecting dropdown");
     let dropdown = await elementToBePresent(`[data-filter-name="regionCode"] mat-select`, fixture) as HTMLElement;

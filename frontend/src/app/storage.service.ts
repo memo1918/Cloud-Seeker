@@ -11,17 +11,22 @@ export class StorageService {
   public readonly shoppingCart: BehaviorSubject<StorageCartItem[]> = new BehaviorSubject<StorageCartItem[]>([]);
   private disablePropagation = false;
 
-  constructor() {
-    window.addEventListener("storage", (event) => {
+    constructor() {
+      // triggered when other tab makes a change
+      window.addEventListener("storage", (event) => {
+        this.updateStorage();
+      });
       this.updateStorage();
-    });
-    this.updateStorage();
-  }
+    }
 
   public setCartItems(shoppingCart: CartItem[]) {
-    let value = shoppingCart.map(cartItemToStorageCartItem);
-    if (!isEqual(this.getCartItems(), value)) localStorage.setItem(this.shoppingCartKey, JSON.stringify(value));
-  }
+      let value = shoppingCart.map(cartItemToStorageCartItem);
+      if (!isEqual(this.getCartItems(), value))
+      {
+        localStorage.setItem(this.shoppingCartKey, JSON.stringify(value))
+        this.updateStorage();
+      }
+    }
 
   private getCartItems(): StorageCartItem[] {
     if (localStorage.getItem(this.shoppingCartKey) == null) {

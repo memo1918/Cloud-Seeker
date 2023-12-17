@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { RemoveInstanceComponent } from "./remove-instance.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 
@@ -10,11 +10,12 @@ describe('RemoveInstanceComponent', () => {
   let fixture: ComponentFixture<RemoveInstanceComponent>;
 
   beforeEach(() => {
-    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations()
+      ...getTestBedDeclarations(),
+      ...getTestBedProviders()
     });
+    FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     localStorage.clear();
     fixture = TestBed.createComponent(RemoveInstanceComponent);
     component = fixture.componentInstance;

@@ -5,7 +5,7 @@ import { MatDialog } from "@angular/material/dialog";
 import { INSTANCE_COMPARISON_FIXTURE } from "../../fixtures/instance-comparison.fixture";
 import { InstanceConfigurationComponent } from "../instance-configuration.component";
 import { Component, ViewChild } from "@angular/core";
-import { getTestBedImports } from "../../testbed.app";
+import {getTestBedImports, getTestBedProviders} from "../../testbed.app";
 import { FetchMockSpec } from "../../fetch.mock.spec";
 import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 
@@ -22,9 +22,7 @@ describe("DialogComponent", () => {
         TestComponentWrapper
       ],
       ...getTestBedImports(),
-      providers: [
-        MatDialog
-      ]
+      ...getTestBedProviders(MatDialog)
     });
     localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);

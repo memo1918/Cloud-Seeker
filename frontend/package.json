@@ -29,6 +29,7 @@
     "karma-junit-reporter": "^2.0.1",
     "lodash": "^4.17.21",
     "rxjs": "~7.8.0",
+    "rxjs-async-map": "^0.3.0-preview.0",
     "spectre.css": "^0.5.9",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
