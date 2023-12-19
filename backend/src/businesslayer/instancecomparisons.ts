@@ -2,6 +2,7 @@ import { execQuery } from "../db";
 import { _findInstanceComparisons } from "../db/models/instancecomparison";
 import { InstanceComparison } from "../interfaces/instancecomparison.interface";
 
+// wrapper function for _findInstanceComparisons for easy mocking
 export async function findInstanceComparisons(categoryname: string) {
     return execQuery<InstanceComparison[]>((client) => _findInstanceComparisons(client, categoryname));
 }
