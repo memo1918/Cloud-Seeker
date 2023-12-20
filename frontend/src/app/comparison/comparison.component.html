@@ -10,7 +10,7 @@
           <mat-accordion>
             <mat-expansion-panel [expanded]="printService.isPrinting?true: undefined" class="mat-table-background-pink">
               <mat-expansion-panel-header>
-                <mat-panel-title class="mat-elevation-z0">
+                <mat-panel-title class="mat-elevation-z0" style="white-space: nowrap;">
                   {{valuesIn(item.instance.name).join(" / ")}}
                 </mat-panel-title>
               </mat-expansion-panel-header>
