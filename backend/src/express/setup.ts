@@ -6,7 +6,6 @@ import { createServer } from "http";
 // it also exports functions to start and stop the server
 // the server is started on port 3000
 
-
 export const app = express();
 // parse json, text and urlencoded data
 app.use(express.json({}));

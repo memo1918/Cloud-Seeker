@@ -51,10 +51,12 @@ export async function removeInstanceComparison(
 export async function _findInstanceComparisons(client: MongoClient, categoryname: string) {
     // get the collection from the database and return all instance comparisons that match the category name
     let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
-    return (await instanceComparisonCollection
-        // find all instance comparisons that match the category name
-        .find({ categoryName: { $eq: categoryname } })
-        .toArray()) as any as InstanceComparison[];
+    return (
+        (await instanceComparisonCollection
+            // find all instance comparisons that match the category name
+            .find({ categoryName: { $eq: categoryname } })
+            .toArray()) as any as InstanceComparison[]
+    );
 }
 
 // this function finds instance comparisons by skus
