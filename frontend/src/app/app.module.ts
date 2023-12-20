@@ -43,6 +43,7 @@ import { TagsComponent } from "./filter/tags/tags.component";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { ToastmessageComponent } from "./toastmessage/toastmessage.component";
 import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
 @NgModule({
     declarations: [
@@ -65,6 +66,7 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
         DialogComponent,
         TagsComponent,
         ToastmessageComponent,
+        SearchbarComponent,
     ],
   imports: [
     BrowserModule,
