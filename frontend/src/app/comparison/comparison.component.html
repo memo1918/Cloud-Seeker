@@ -1,45 +1,77 @@
+<!-- This is the shopping cart component. It displays the shopping cart and the total price. -->
+<!-- It also allows to remove instances from the shopping cart. -->
+<!-- It also allows to select a vendor for each instance. -->
+<!-- It also allows to change the number of instances. -->
 <div *ngIf="(shoppingCart.getItemsObserver() | async)?.length != 0">
+  <!-- the table is a mat-table. It displays the instances in the shopping cart. -->
+  <!-- The first column displays the name of the instance. -->
+  <!-- The other columns display the price of the instance for each vendor. -->
+  <!-- The selected vendor is highlighted. -->
+  <!-- The total price is displayed at the bottom of the table. -->
+  <!-- By default the cheapest vendor is selected. -->
+  <!-- The Name column is a mat-expansion-panel. It displays the configuration of the instance. -->
   <table class="mat-table-background-pink" mat-table
          [dataSource]="shoppingCart.getItemsObserver()">
+    <!-- The columnsToDisplay array contains the name of the columns to display. -->
+    <!-- The first column is the name column. -->
     <ng-container matColumnDef="name">
       <th class="mat-table-background-white vendorAlign grow" mat-header-cell *matHeaderCellDef>Your configuration</th>
       <td mat-cell *matCellDef="let item">
-
         <div class="configuration-cell">
+          <!-- The remove-instance component allows to remove an instance from the shopping cart. -->
           <app-remove-instance [cartItem]="item"></app-remove-instance>
+          <!-- The mat-accordion is the expansion panel. -->
+          <!-- It displays the configuration of the instance. -->
           <mat-accordion>
             <mat-expansion-panel class="mat-table-background-pink">
               <mat-expansion-panel-header>
                 <mat-panel-title class="mat-elevation-z0">
+                  <!-- The name of the instance is displayed. -->
+                  <!-- It consists of the name of each provider. -->
                   {{valuesIn(item.instance.name).join(" / ")}}
                 </mat-panel-title>
               </mat-expansion-panel-header>
+              <!-- The notes of the instance are displayed which the user has added during the configuration dialog. -->
               <p class="notes" *ngIf="item.notes" [attr.data-notes]="">
                 {{item.notes}}
               </p>
+              <!-- The configuration of the instance is displayed. -->
+              <!-- It consists of the name of each field and its value. -->
               <p *ngFor="let key of keys(item.instance.fields)">
                 {{key}}: {{item.instance.fields[key].unit}} {{item.instance.fields[key].value}}
               </p>
+              <!-- The price unit of the instance for each vendor is displayed. -->
               <p *ngFor="let vendor of vendors">
                 {{vendor}} : {{getUnitStringForVendor(item.providers, vendor)}}
               </p>
             </mat-expansion-panel>
           </mat-accordion>
-
-          <input class="quantity" data-quantityinput type="number" oninput="this.value = this.value >= 1 ? this.value : 1"  [(ngModel)]="item.numberOfInstances">
+          <!-- The quantity of the instance is displayed. -->
+          <!-- It can be changed. -->
+          <input class="quantity" data-quantityinput type="number"
+                 oninput="this.value = this.value >= 1 ? this.value : 1" [(ngModel)]="item.numberOfInstances">
         </div>
       </td>
     </ng-container>
-
+    <!-- The other columns display the price of the instance for each vendor. -->
     <ng-container *ngFor="let vendor of vendors" [matColumnDef]="vendor">
-      <th class="mat-table-background-white" mat-header-cell *matHeaderCellDef> {{vendor}}</th>
+      <!-- The column header displays the name of the vendor. -->
+      <th class="mat-table-background-white" mat-header-cell *matHeaderCellDef>{{vendor}}</th>
+      <!-- The column cell displays the price of the instance for the vendor. -->
       <td mat-cell class="vendor" *matCellDef="let item; index as i">
-        <mat-radio-button class="hidden-radio-button" [name]="'comparison-'+i" [value]="vendor" [checked]="vendor == item.selectedProvider"
+        <!-- The radio button allows to select the vendor. -->
+        <!-- The selected vendor is highlighted. -->
+        <!-- The radiobutton is hidden. Only the chip is visible. -->
+        <mat-radio-button class="hidden-radio-button" [name]="'comparison-'+i" [value]="vendor"
+                          [checked]="vendor == item.selectedProvider"
                           (change)="item.selectedProvider = vendor">
 
+          <!-- The chip displays the price of the instance for the vendor. -->
           <mat-chip color="accent" [highlighted]="item.selectedProvider==vendor">
             {{item.pricingInformation[vendor].price  | number:'1.2-2'}} USD
           </mat-chip>
+
+          <!-- The info icon displays the price unit of the instance for the vendor when hovering over it. -->
           <mat-icon data-tooltipUnit matTooltip="{{getUnitStringForVendor(item.providers, vendor)}}"
                     style="transform: scale(0.8);" fontIcon="info">
           </mat-icon>
@@ -47,15 +79,19 @@
         </mat-radio-button>
       </td>
     </ng-container>
+    <!-- The columns to display are the name column and the columns for each vendor. -->
     <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
     <tr mat-row *matRowDef="let item; columns: columnsToDisplay;"></tr>
   </table>
+  <!-- The total price is displayed at the bottom of the table. -->
+  <!-- It is the sum of each selected vendor. -->
   <p class="priceFont" align="right">
     Total:
     {{getTotalPrice() | number:'1.2-2'}} USD
   </p>
 </div>
 
+<!-- If the shopping cart is empty, a message is displayed. -->
 <div *ngIf="shoppingCart.getItems().length==0">
   <p class="emptyCart">The shopping cart is empty</p>
 </div>

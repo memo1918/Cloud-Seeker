@@ -1,13 +1,19 @@
 import { TestBed } from "@angular/core/testing";
 import { CategoryService } from "./category.service";
-import { MatTabChangeEvent } from "@angular/material/tabs";
-import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
+import { getTestBedDeclarations, getTestBedImports, getTestBedProviders } from "../testbed.app";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 
+// this is the test module for the category service
 describe("CategoryService", () => {
+  // the category service instance
   let service: CategoryService;
-
+  // before each test
+  // configure the test bed
+  // add the spy on the fetch mock spec used for mocking the backend
+  // set the response data to the dummy application data
+  // create the category service instance
+  // spy on the set category function
   beforeEach(() => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
@@ -19,22 +25,8 @@ describe("CategoryService", () => {
     service = TestBed.inject(CategoryService);
     spyOn(service, "setCategory");
   });
-
+  // test if the category service is created and does not throw an error
   it("should be created", () => {
     expect(service).toBeTruthy();
-  });
-
-  it("should initialize selectedIndex", () => {
-    // expect(service.selectedIndex).toBeDefined();
-  });
-
-  it("should set selected category on tab change", () => {
-    const tabChangeEvent: MatTabChangeEvent = { index: 1 } as MatTabChangeEvent;
-
-    // service.onTabChange(tabChangeEvent);
-
-    // expect(service.selectedIndex).toEqual(1);
-    // expect(service.setCategory).toHaveBeenCalled();
-    // expect(service.getCategory).toEqual(service.getCategories()[1]);
   });
 });

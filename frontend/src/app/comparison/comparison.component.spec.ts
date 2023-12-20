@@ -2,24 +2,36 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { ComparisonComponent } from "./comparison.component";
 import { ShoppingCartDummyService } from "./shopping-cart-dummy-service";
 import { ShoppingCartService } from "../shopping-cart.service";
-import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
+import { getTestBedDeclarations, getTestBedImports, getTestBedProviders } from "../testbed.app";
 import { domUpdate } from "../helper.spec";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
-import {MatTooltipModule} from '@angular/material/tooltip';
 
+// we can enable the debugger by setting this variable to true
+// this is useful for debugging tests as we can set breakpoints in the browser and inspect the dom and variables
 const ENABLE_DEBUGGER = false;
 
+// this is the test module for the comparison component
 describe("ComparisonComponent", () => {
+  // the component instance
   let component: ComparisonComponent;
+  // the angular fixture used for detecting changes
   let fixture: ComponentFixture<ComparisonComponent>;
-
+  // before each test
+  // create a new instance of the comparison component that mocks our backend
+  // set the spy on the fetch mock spec
+  // set the response data to the dummy application data
+  // configure the test bed
+  // create the fixture
+  // create the component instance
   beforeEach(() => {
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       //Mock for shopping cart service because the default shopping cart service holds no items by default
       ...getTestBedDeclarations(),
       ...getTestBedImports(),
+      // add a dummy shopping cart service to the providers
+      // this is done because the default shopping cart service holds no items by default
       ...getTestBedProviders({ provide: ShoppingCartService, useClass: ShoppingCartDummyService })
     });
     localStorage.clear();
@@ -112,50 +124,74 @@ describe("ComparisonComponent", () => {
   });
 
   it("should remove elements with remove button", () => {
+    // get the remove button
     let removeButton = document.querySelector("button") as HTMLElement;
+    // get the table elements
     let tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>;
+    // check if there are 16 table elements
     expect(tableElements.length).toBe(16);
+    // click on the remove button
     removeButton.click();
+    // detect changes is necessary to update the data after the click
     fixture.detectChanges();
+    // get the table elements
     tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>;
+    // check if there are 12 table elements now as 4 elements should have been removed by the click (1 row)
     expect(tableElements.length).toBe(12);
   });
 
   it("should remove multiple elements with remove button", () => {
+    // get the remove button
     let removeButton = document.querySelector("button") as HTMLElement;
+    // get the table elements
     let tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>;
+    // check if there are 16 table elements
     expect(tableElements.length).toBe(16);
+    // click on the remove button
     removeButton.click();
+    // detect changes is necessary to update the data after the click
     fixture.detectChanges();
+    // get the second remove button
     removeButton = document.querySelector("button") as HTMLElement;
+    // click on the second remove button
     removeButton.click();
+    // detect changes is necessary to update the data after the click
     fixture.detectChanges();
+    // get the table elements
     tableElements = document.querySelectorAll("td") as NodeListOf<HTMLElement>;
+    // check if there are 8 table elements now as 8 elements should have been removed by the click (2 rows)
     expect(tableElements.length).toBe(8);
-
   });
 
   it("quantity should change", async () => {
+    // get the quantity input
     let quantity = document.querySelector("[data-quantityinput]") as HTMLInputElement;
+    // get the table elements
     let tableElement = document.querySelector("mat-expansion-panel-header") as HTMLElement;
+    // wait for the table to be loaded
     await domUpdate(fixture);
+    // check if the quantity is 1
     expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(1);
-
+    // increase the quantity by 1
     quantity.stepUp(1);
+    // dispatch an input event to update the quantity
+    // this is necessary because the quantity is updated on the input event by angular
     quantity.dispatchEvent(new Event("input"));
-
+    // detect changes is necessary to update the data after the click
     await domUpdate(fixture);
+    // check if the quantity is 2
     expect(ShoppingCartDummyService.Instance.getItems()[0].numberOfInstances).toEqual(2);
-
   });
 
   it("tooltip message check", async () => {
+    // get the tooltip icon
     let icon = document.querySelector("[data-tooltipUnit]") as HTMLElement;
     await domUpdate(fixture);
 
-
+    // check if the tooltip message is correct
+    // we check if the tooltip message is correct by checking the ng-reflect-message attribute
+    // we use a material tooltip for this
     expect(icon.getAttribute("ng-reflect-message")).toEqual("1 hour");
-
   });
 
 

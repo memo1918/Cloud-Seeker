@@ -1,9 +1,24 @@
+<!--
+  This component is used for displaying the categories in a tab group
+-->
 <div>
+  <!--
+    the material ui tab group
+    https://material.angular.io/components/tabs/overview
+    when the tab changes the onTabChange method is called
+   -->
   <mat-tab-group #tabGroup fitInkBarToContent="true" class="mat-tabBackground" mat-stretch-tabs="false"
                  (selectedTabChange)="onTabChange($event)">
+    <!--
+      a tab is created for each category.
+      it consists of the name and the icon of the category
+    -->
     <mat-tab *ngFor="let category of this.categoryService.getCategories()"
              mat-align-tabs="left">
       <ng-template mat-tab-label>
+        <!--
+          Icon and name of the category
+        -->
         <div>
           <mat-icon aria-hidden="false" aria-label="category icon"
                     fontIcon="{{category.icon}}"></mat-icon>
