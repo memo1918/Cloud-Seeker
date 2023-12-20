@@ -1,7 +1,8 @@
 import { Component, Input } from "@angular/core";
 import { ShoppingCartService } from "../shopping-cart.service";
-import {  valuesIn } from "lodash";
+import { valuesIn } from "lodash";
 import { CartItem } from "../models/cart-item";
+import { PrintService } from "../print.service";
 import {MatTooltipModule} from '@angular/material/tooltip';
 @Component({
   selector: "app-comparison",
@@ -13,7 +14,7 @@ export class ComparisonComponent {
   panelOpenState: boolean = false;
 
   // selectedOption: string[] = []; // Initialize it with the default value
-  constructor(public shoppingCart: ShoppingCartService) {
+  constructor(public shoppingCart: ShoppingCartService, public printService: PrintService) {
     this.shoppingCart.getItemsObserver().subscribe(items => this.newShoppingCartItems(items));
   }
 
