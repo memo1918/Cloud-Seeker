@@ -33,6 +33,7 @@
       visibility: hidden;
     }
     margin-right: 1%;
+    margin-bottom: 1%;
   }
 
   mat-list {
@@ -56,7 +57,10 @@
     color: white;
     background-color: #ff4081;
     cursor: pointer;
-    margin-left: 90%;
+    margin-bottom: 5%;
+    margin-right: 2%;
   }
-
+  .buttonContainer {
+    text-align: right
+  }
 }
