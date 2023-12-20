@@ -6,11 +6,11 @@
       <td mat-cell *matCellDef="let item">
 
         <div class="configuration-cell">
-          <app-remove-instance [cartItem]="item"></app-remove-instance>
+          <app-remove-instance *ngIf="!printService.isPrinting" [cartItem]="item"></app-remove-instance>
           <mat-accordion>
-            <mat-expansion-panel [expanded]="printService.isPrinting?true: undefined" class="mat-table-background-pink">
+            <mat-expansion-panel [expanded]="printService.isPrinting?true: undefined" [hideToggle]="printService.isPrinting" class="mat-table-background-pink">
               <mat-expansion-panel-header>
-                <mat-panel-title class="mat-elevation-z0" style="white-space: nowrap;">
+                <mat-panel-title class="mat-elevation-z0">
                   {{valuesIn(item.instance.name).join(" / ")}}
                 </mat-panel-title>
               </mat-expansion-panel-header>
@@ -26,7 +26,8 @@
             </mat-expansion-panel>
           </mat-accordion>
 
-          <input class="quantity" data-quantityinput type="number" oninput="this.value = this.value >= 1 ? this.value : 1"  [(ngModel)]="item.numberOfInstances">
+          <input *ngIf="!printService.isPrinting" class="quantity" data-quantityinput type="number" oninput="this.value = this.value >= 1 ? this.value : 1"  [(ngModel)]="item.numberOfInstances">
+          <div *ngIf="printService.isPrinting" class="quantity">{{item.numberOfInstances}} x</div>
         </div>
       </td>
     </ng-container>

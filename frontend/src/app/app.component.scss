@@ -8,6 +8,7 @@
     background-color: white !important;
   }
 
+
   .wrapper {
     width: 80%;
     overflow: hidden;
@@ -54,6 +55,9 @@
   }
 
   .print-dialog-button {
+    @media print {
+      visibility: hidden;
+    }
     color: white;
     background-color: #ff4081;
     cursor: pointer;
