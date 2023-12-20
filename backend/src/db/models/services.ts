@@ -62,21 +62,23 @@ export async function insertServicesData(client: MongoClient, services: any[]) {
 export async function _getDistinctUnitsGroupedByServiceFamily(client: MongoClient) {
     let serviceCollection = await getCollection(client, dbName, collectionName);
 
-    return (await serviceCollection
-        // unwind the prices array in order to group by product family and adding the units to a set
-        .aggregate([
-            { $unwind: "$prices" },
-            {
-                $group: {
-                    _id: "$productFamily",
-                    units: {
-                        $addToSet: "$prices.unit"
+    return (
+        (await serviceCollection
+            // unwind the prices array in order to group by product family and adding the units to a set
+            .aggregate([
+                { $unwind: "$prices" },
+                {
+                    $group: {
+                        _id: "$productFamily",
+                        units: {
+                            $addToSet: "$prices.unit"
+                        }
                     }
                 }
-            }
-        ])
-        .toArray()) as {
-        _id: string;
-        units: string[];
-    }[];
+            ])
+            .toArray()) as {
+            _id: string;
+            units: string[];
+        }[]
+    );
 }

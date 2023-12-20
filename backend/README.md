@@ -1,11 +1,11 @@
 # Environment variables
 
-- `CATEGORY_TEMPLATES` - Path to the templates folder (default: `""`)
-- `DUMMY_DATA_URL` - URL to the dummy data (default: `""`)
-    - if `DUMMY_DATA_URL` is not set, the `INFRACOST_API_KEY` is required as it will be used to fetch the dummy data
-      from the infracost API
-- `DB_CONNECTION_STRING` - Connection string to the mongodb database (default: `""`) required
-- `DUMMY_CSV_IMPORT` - Path to the dummy csv file (default: `""`)
+-   `CATEGORY_TEMPLATES` - Path to the templates folder (default: `""`)
+-   `DUMMY_DATA_URL` - URL to the dummy data (default: `""`)
+    -   if `DUMMY_DATA_URL` is not set, the `INFRACOST_API_KEY` is required as it will be used to fetch the dummy data
+        from the infracost API
+-   `DB_CONNECTION_STRING` - Connection string to the mongodb database (default: `""`) required
+-   `DUMMY_CSV_IMPORT` - Path to the dummy csv file (default: `""`)
 
 # Running the backend
 
@@ -44,8 +44,9 @@ In WebStorm you can run the tests with the `test-backend` run configuration.
 
 1. Install the dependencies with `npm install`
 2. Run the tests with `npm run test` This will run the tests.
-  - The coverage report will be available in the `build/coverage` folder.
-  - The test results will be available in the `build/tests` folder.
+
+-   The coverage report will be available in the `build/coverage` folder.
+-   The test results will be available in the `build/tests` folder.
 
 # prettier
 
@@ -68,22 +69,22 @@ License information of used packages will be available in the `build/webpack/ind
 
 The project is structured in the following way:
 
-- `src` - Source code of the backend
-  - `businesslayer` - Business logic of the backend mostly related to the database
-  - `categories` - Category specific code
-  - `csvimport` - Code related to the csv import
-  - `db` - Code related to the database (mongodb)
-    - `models` - Database models (categories, instancecomparisons, services, websitevisits)
-  - `express` - Code related to the express server
-  - `infracost` - Code related to the infracost API mostly for downloading the dummy data
-  - `interfaces` - Interfaces used in the backend
-  - `mappingservice` - Code related to the mapping service that maps the csv data to a instance comparison
-  - `providerapi` - Code related to the provider API (AWS, Azure, GCP) (not implemented yet)
-  - `routing` - Code related to the routing of the express server
-    - `routes` - Routes of the express server
-- `tests` - Tests for the backend
-- `build` - Build output
-  - `coverage` - Coverage report
-  - `tests` - Test results
-  - `webpack` - Build output of the webpack build
-- `setups` - Shared setup code for the tests
+-   `src` - Source code of the backend
+    -   `businesslayer` - Business logic of the backend mostly related to the database
+    -   `categories` - Category specific code
+    -   `csvimport` - Code related to the csv import
+    -   `db` - Code related to the database (mongodb)
+        -   `models` - Database models (categories, instancecomparisons, services, websitevisits)
+    -   `express` - Code related to the express server
+    -   `infracost` - Code related to the infracost API mostly for downloading the dummy data
+    -   `interfaces` - Interfaces used in the backend
+    -   `mappingservice` - Code related to the mapping service that maps the csv data to a instance comparison
+    -   `providerapi` - Code related to the provider API (AWS, Azure, GCP) (not implemented yet)
+    -   `routing` - Code related to the routing of the express server
+        -   `routes` - Routes of the express server
+-   `tests` - Tests for the backend
+-   `build` - Build output
+    -   `coverage` - Coverage report
+    -   `tests` - Test results
+    -   `webpack` - Build output of the webpack build
+-   `setups` - Shared setup code for the tests

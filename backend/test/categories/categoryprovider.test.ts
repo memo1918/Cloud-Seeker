@@ -11,7 +11,6 @@ beforeEach(() => {
 });
 // CategoryProvider class test
 describe("CategoryProvider class test", () => {
-
     test("test categories variable", async () => {
         const { getCategoryTemplate } = await import("../../src/categories/categorytemplateread");
         let getCategoryTemplateMock = getCategoryTemplate as jest.Mock;
