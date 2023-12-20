@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
-import { getTestBedDeclarations, getTestBedImports } from "../../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../../testbed.app";
 import { NumberRegulatorComponent } from "./number-regulator.component";
 import { Component, ViewChild } from "@angular/core";
 import { Field } from "../models/Field";
@@ -15,7 +15,8 @@ describe("PriceRegulatorComponent", () => {
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations(undefined, [TestComponentWrapper])
+      ...getTestBedDeclarations(undefined, [TestComponentWrapper]),
+      ...getTestBedProviders()
     });
     localStorage.clear();
     TestBed.compileComponents();

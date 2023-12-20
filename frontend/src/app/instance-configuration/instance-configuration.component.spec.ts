@@ -5,7 +5,7 @@ import { Component } from "@angular/core";
 import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
 import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { InstanceComparison } from "../models/instance-comparison";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
 import { createCartItemFromInstance } from "../models/cart-item";
 import { InstanceConfigurationComponentDialogData } from "./instance-configuration-component-dialog-data";
 import { FetchMockSpec } from "../fetch.mock.spec";
@@ -19,9 +19,7 @@ describe("InstanceConfigurationComponent", () => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       ...getTestBedDeclarations([], [DialogWrapperComponent]),
-      providers: [
-        MatDialog
-      ],
+      ...getTestBedProviders(MatDialog)
     });
     localStorage.clear();
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);

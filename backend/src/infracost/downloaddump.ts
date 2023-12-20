@@ -1,24 +1,30 @@
 import fs, { PathLike } from "fs";
 import * as https from "https";
 import * as http from "http";
-
+// this function downloads a file from the internet and saves it to the targetFilePath
+// it returns a promise that resolves when the download is complete
+// it returns a promise that rejects when the download fails
+// it takes a dumpUrl and a targetFilePath as parameters
 export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
     return new Promise<void>((resolve, reject) => {
+        // log the download
         console.log({
             message: "downloading dump to file. this might take a while go get some coffee",
             dumpUrl,
             targetFilePath,
             __filename
         });
+        // create a filestream to write the dump to
         const file = fs.createWriteStream(targetFilePath);
-
+        // check if the dumpUrl is https or http
+        // this is done because the https module as different implementations
+        // one for https and one for http the interface is the same
         let requestExecutorModule = dumpUrl.startsWith("https") ? https : http;
-
-        const request = requestExecutorModule
+        // pipe the result of the request to the filestream
+        requestExecutorModule
             .get(dumpUrl, function (response) {
                 response.pipe(file);
                 // after download completed close filestream
-
                 file.on("finish", () => {
                     console.log({ message: "download complete", dumpUrl, targetFilePath });
                     file.close();

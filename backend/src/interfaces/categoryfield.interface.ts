@@ -1,3 +1,5 @@
+// Purpose: interface for category fields
+// each field has a name, unit, type and options
 export interface CategoryField {
     name: string; // the name of the category
     options?: any[]; // the available options for the category -> ui needs to decide on the filter component

@@ -1,6 +1,8 @@
 import { BaseApi, PriceInformation } from "./baseapi";
 import { IService } from "../db/models/services";
 
+// currently unused
+// api for aws
 export class AwsApi implements BaseApi {
     name: string = "aws";
     displayName = "AmazonWebServices";

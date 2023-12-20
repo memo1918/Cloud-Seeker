@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from "@angular/core/testing";
 import { UnitNumberComponent } from "./unit-number.component";
 import { Component, ViewChild } from "@angular/core";
 import { NumberUnitCategorisation } from "../../pricing/numberunitcategorisation";
-import { getTestBedImports } from "../../testbed.app";
+import {getTestBedImports, getTestBedProviders} from "../../testbed.app";
 import { dummyApplicationData } from "../../mocks/fetch/applicationdummydata.spec";
 import { FetchMockSpec } from "../../fetch.mock.spec";
 
@@ -17,6 +17,7 @@ describe("UnitNumberComponent", () => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
       declarations: [UnitNumberComponent, TestComponentWrapper],
+      ...getTestBedProviders()
     });
     localStorage.clear();
     fixture = TestBed.createComponent(TestComponentWrapper);

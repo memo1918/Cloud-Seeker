@@ -1,14 +1,17 @@
-import { afterEach, beforeAll, beforeEach, describe, expect, test, jest } from "@jest/globals";
+import { beforeAll, beforeEach, describe, expect, jest, test } from "@jest/globals";
 import { setupgetCategoryTemplateMock } from "../../setups/categories.categorytemplateread";
 import { Category } from "../../src/interfaces/category.interface";
 import { Instance } from "../../src/interfaces/instance.interface";
 
+// setup mock
 beforeAll(setupgetCategoryTemplateMock);
+// clear mocks before each test
 beforeEach(() => {
     jest.clearAllMocks();
 });
-
+// CategoryProvider class test
 describe("CategoryProvider class test", () => {
+
     test("test categories variable", async () => {
         const { getCategoryTemplate } = await import("../../src/categories/categorytemplateread");
         let getCategoryTemplateMock = getCategoryTemplate as jest.Mock;

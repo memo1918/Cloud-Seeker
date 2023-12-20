@@ -1,6 +1,7 @@
 import { BaseApi, PriceInformation } from "./baseapi";
 import { IService } from "../db/models/services";
-
+// currently unused
+// api for gcp
 export class GcpApi implements BaseApi {
     name: string = "gcp";
     displayName = "Google Cloud Platform";

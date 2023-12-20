@@ -20,6 +20,9 @@
               <p *ngFor="let key of keys(item.instance.fields)">
                 {{key}}: {{item.instance.fields[key].unit}} {{item.instance.fields[key].value}}
               </p>
+              <p *ngFor="let vendor of vendors">
+                {{vendor}} : {{getUnitStringForVendor(item.providers, vendor)}}
+              </p>
             </mat-expansion-panel>
           </mat-accordion>
 
@@ -33,9 +36,14 @@
       <td mat-cell class="vendor" *matCellDef="let item; index as i">
         <mat-radio-button class="hidden-radio-button" [name]="'comparison-'+i" [value]="vendor" [checked]="vendor == item.selectedProvider"
                           (change)="item.selectedProvider = vendor">
+
           <mat-chip color="accent" [highlighted]="item.selectedProvider==vendor">
             {{item.pricingInformation[vendor].price  | number:'1.2-2'}} USD
           </mat-chip>
+          <mat-icon data-tooltipUnit matTooltip="{{getUnitStringForVendor(item.providers, vendor)}}"
+                    style="transform: scale(0.8);" fontIcon="info">
+          </mat-icon>
+
         </mat-radio-button>
       </td>
     </ng-container>

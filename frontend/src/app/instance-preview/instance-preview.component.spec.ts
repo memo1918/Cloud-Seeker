@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { InstancePreviewComponent } from "./instance-preview.component";
-import { getTestBedDeclarations, getTestBedImports } from "../testbed.app";
+import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { domUpdate, elementToBePresent } from "../helper.spec";
@@ -14,7 +14,8 @@ describe("InstancePreviewComponent", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       ...getTestBedImports(),
-      ...getTestBedDeclarations()
+      ...getTestBedDeclarations(),
+      ...getTestBedProviders()
     });
     localStorage.clear();
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);

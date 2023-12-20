@@ -1,3 +1,4 @@
+// all valid http methods
 export type ValidMethod =
     | "checkout"
     | "copy"
@@ -22,12 +23,12 @@ export type ValidMethod =
     | "trace"
     | "unlock"
     | "unsubscribe";
-
+// all valid http methods
 export const validMethods: ValidMethod[] = [
     "checkout",
     "copy",
-    "delete", //
-    "get", //
+    "delete",
+    "get",
     "head",
     "lock",
     "merge",
@@ -37,10 +38,10 @@ export const validMethods: ValidMethod[] = [
     "m-search",
     "notify",
     "options",
-    "patch", //
-    "post", //
+    "patch",
+    "post",
     "purge",
-    "put", //
+    "put",
     "report",
     "search",
     "subscribe",

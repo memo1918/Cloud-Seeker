@@ -3,7 +3,7 @@ import { ShoppingCartService } from "../shopping-cart.service";
 import { valuesIn } from "lodash";
 import { CartItem } from "../models/cart-item";
 import { PrintService } from "../print.service";
-
+import {MatTooltipModule} from '@angular/material/tooltip';
 @Component({
   selector: "app-comparison",
   templateUrl: "./comparison.component.html",
@@ -44,6 +44,23 @@ export class ComparisonComponent {
     return endPrice;
   }
 
-
   protected readonly valuesIn = valuesIn;
+
+
+  getUnitStringForVendor(providers: any[] | undefined, vendor: string): string {
+    if (!providers) {
+      return 'x';
+    }
+
+    const index = providers.findIndex(providerItem => providerItem?.providerName === vendor);
+
+    if (index !== -1 && providers[index]?.configuration?.getUnitString) {
+      return providers[index].configuration.getUnitString();
+    }
+
+    // Handle the case when the vendor is not found or configuration/getUnitString is not defined
+    return 'x';
+  }
+
+
 }

@@ -64,7 +64,10 @@ function findCompatibleUnits(pricingConfigurations: {
 
 function getPriceConfigurationFromInstance(instance: InstanceComparison) {
   let pricingConfigurations: { providerName: string, providerDefault: Unit, configuration: Unit }[] = [];
-
+  if(!instance) {
+    console.log({instance})
+    throw new Error("Instance has no price, cannot create cart item");
+  }
   for (const priceKey in instance.price) {
     const price = instance.price[priceKey];
     pricingConfigurations.push({
