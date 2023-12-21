@@ -1,87 +1,101 @@
-.preview-panel-content {
-  width: 30%;
-  border-radius: 25px;
-  background-color: #FEF7FF !important;
-  color: black !important;
-}
+:host::ng-deep {
+  .preview-panel-content {
+    width: 30%;
+    border-radius: 25px;
+    background-color: #FEF7FF !important;
+    color: black !important;
+  }
 
-.title {
-  margin-right: auto;
-  margin-left: 5%;
-  margin-top: 2%;
-}
+  .title {
+    margin-right: auto;
+    margin-left: 5%;
+    margin-top: 2%;
+  }
 
-//
-.topRow {
-  display: flex;
-  flex-direction: row;
-}
+  //
+  .topRow {
+    display: flex;
+    flex-direction: row;
+  }
 
-//
-.closeButton {
-  margin-left: auto;
-  margin-right: 2%;
-}
+  //
+  .closeButton {
+    margin-left: auto;
+    margin-right: 2%;
+  }
 
-.groups {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-
-.categoryName {
-  margin-left: 8%;
-}
-
-.items {
-  margin: 1%;
-  margin-bottom: 2%;
-  margin-left: 6%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-}
-
-.itemName {
-  //change margin left to 1% after adding button
-  margin-left: 0%;
-}
+  .groups {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
 
 
-.divider {
-  margin-left: 5%;
-  margin-right: 5%;
-  margin-bottom: 5%;
-}
+  .categoryName {
+    margin-left: 8%;
+  }
+
+  .items {
+    margin: 1%;
+    margin-bottom: 2%;
+    margin-left: 6%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .itemName {
+    //change margin left to 1% after adding button
+    margin-left: 0%;
+  }
 
 
-h2 {
-  font-weight: normal;
-}
+  .divider {
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5%;
+  }
 
-h4 {
-  font-size: 95%;
-}
 
-.cartButtonContainer {
-  width: 100%;
-  display: flex;
-  flex-direction: row-reverse;
-}
+  h2 {
+    font-weight: normal;
+  }
 
-.cartButton {
-  margin-right: 10px;
-  border-radius: 25px;
-  min-height: 5%;
-}
+  h4 {
+    font-size: 95%;
+  }
 
-.main-panel {
-  height: 99%;
-  display: flex;
-  flex-direction: column;
-}
+  .cartButtonContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row-reverse;
+  }
 
-.white-background {
-  background-color: white !important;
+  .cartButton {
+    margin-right: 10px;
+    border-radius: 25px;
+    min-height: 5%;
+  }
+
+  .main-panel {
+    height: 99%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .white-background {
+    background-color: white !important;
+  }
+
+  @media print {
+    .forPrint {
+      overflow: visible !important;
+    }
+    .mat-drawer-content {
+      height: auto !important;
+    }
+    .mat-drawer-container {
+      overflow: inherit !important;
+    }
+  }
 }

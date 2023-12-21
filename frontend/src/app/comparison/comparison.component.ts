@@ -1,7 +1,9 @@
 import { Component } from "@angular/core";
 import { ShoppingCartService } from "../shopping-cart.service";
-import { valuesIn } from "lodash";
+import {  valuesIn } from "lodash";
 import { CartItem } from "../models/cart-item";
+import { PrintService } from "../print.service";
+import {MatTooltipModule} from '@angular/material/tooltip';
 
 // this is the comparison component
 @Component({
@@ -13,9 +15,10 @@ import { CartItem } from "../models/cart-item";
 export class ComparisonComponent {
   // indicates if the comparison panel is open
   panelOpenState: boolean = false;
+
   // the constructor of the comparison component
   // @param shoppingCart the shopping cart service that is used to get the items in the shopping cart
-  constructor(public shoppingCart: ShoppingCartService) {
+  constructor(public shoppingCart: ShoppingCartService, public printService: PrintService) {
     // subscribe to the items in the shopping cart and call the newShoppingCartItems function when the items change
     this.shoppingCart.getItemsObserver().subscribe(items => this.newShoppingCartItems(items));
   }

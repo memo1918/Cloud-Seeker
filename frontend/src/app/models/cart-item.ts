@@ -17,7 +17,7 @@ export interface StorageCartItem {
   selectedProvider: string;
   notes: string;
   numberOfInstances: number;
-  providers: { providerName: string, providerDefault: string, configuration: string }[];
+  providers: {   providerName: string, providerDefault: string, configuration: string }[];
 }
 
 export function updatePricingInformation(cartItem: CartItem) {

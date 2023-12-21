@@ -23,11 +23,11 @@
           <!-- The mat-accordion is the expansion panel. -->
           <!-- It displays the configuration of the instance. -->
           <mat-accordion>
-            <mat-expansion-panel class="mat-table-background-pink">
+            <mat-expansion-panel [expanded]="printService.isPrinting ? true : undefined" class="mat-table-background-pink">
               <mat-expansion-panel-header>
-                <mat-panel-title class="mat-elevation-z0">
                   <!-- The name of the instance is displayed. -->
                   <!-- It consists of the name of each provider. -->
+                <mat-panel-title class="mat-elevation-z0" style="white-space: nowrap;">
                   {{valuesIn(item.instance.name).join(" / ")}}
                 </mat-panel-title>
               </mat-expansion-panel-header>
