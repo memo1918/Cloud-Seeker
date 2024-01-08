@@ -6,6 +6,7 @@
         from the infracost API
 -   `DB_CONNECTION_STRING` - Connection string to the mongodb database (default: `""`) required
 -   `DUMMY_CSV_IMPORT` - Path to the dummy csv file (default: `""`)
+- `INFRACOST_API_KEY` - API key for the infracost API (default: `""`)
 
 # Running the backend
 
@@ -88,3 +89,17 @@ The project is structured in the following way:
     -   `tests` - Test results
     -   `webpack` - Build output of the webpack build
 -   `setups` - Shared setup code for the tests
+
+# configuration-files
+
+In this section we will explain how to create configuration files for the backend.
+
+## category-templates
+
+TODO: explain how to create category templates and how to use them
+Set the file via the `CATEGORY_TEMPLATES` environment variable.
+
+## csv-mapping-files
+
+TODO: explain how to create csv mapping files
+Set the file via the `DUMMY_CSV_IMPORT` environment variable.
