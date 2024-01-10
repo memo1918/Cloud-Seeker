@@ -5,6 +5,7 @@ import {Category} from "../category/models/Category";
 import {InstanceComparison} from "../models/instance-comparison";
 
 
+
 @Injectable({
     providedIn: "root"
 })
