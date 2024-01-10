@@ -1,3 +1,5 @@
+<!-- This component is responsible for displaying the instances in the instance preview section -->
+<!-- It uses the instance service to get the instances and the category service to get the category -->
 <div class="instance-preview-container">
   <div *ngIf="instanceService.loadedInstances.length != 0">
     <table>
@@ -7,6 +9,8 @@
             <b>{{ valuesIn(instance.name).join(" / ") }}</b></td>
         </tr>
         <tr class="fieldRow">
+          <!-- The first column is the instance name -->
+          <!-- The rest of the columns are the fields of the category -->
           <td *ngFor="let field of categoryService.getCategoryValue()?.fields; index as i;" class="fieldName"
               [attr.data-column]="i+1">
             <div class="fieldsContainer">
