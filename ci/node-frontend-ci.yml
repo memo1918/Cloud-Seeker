@@ -37,7 +37,7 @@ documentation_frontend: # job
     - cd frontend
     - npm install
   script:
-    - npm run doc # documentation
+    - npm run docs # documentation
   artifacts:
     paths:
       - frontend/artifacts/docs/**
