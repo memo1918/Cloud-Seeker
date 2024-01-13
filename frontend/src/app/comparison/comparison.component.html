@@ -19,15 +19,16 @@
       <td mat-cell *matCellDef="let item">
         <div class="configuration-cell">
           <!-- The remove-instance component allows to remove an instance from the shopping cart. -->
-          <app-remove-instance [cartItem]="item"></app-remove-instance>
+          <app-remove-instance *ngIf="!printService.isPrinting" [cartItem]="item"></app-remove-instance>
           <!-- The mat-accordion is the expansion panel. -->
           <!-- It displays the configuration of the instance. -->
           <mat-accordion>
-            <mat-expansion-panel [expanded]="printService.isPrinting ? true : undefined" class="mat-table-background-pink">
+            <mat-expansion-panel [expanded]="printService.isPrinting?true: undefined"
+                                 [hideToggle]="printService.isPrinting" class="mat-table-background-pink">
               <mat-expansion-panel-header>
-                  <!-- The name of the instance is displayed. -->
-                  <!-- It consists of the name of each provider. -->
-                <mat-panel-title class="mat-elevation-z0" style="white-space: nowrap;">
+                <!-- The name of the instance is displayed. -->
+                <!-- It consists of the name of each provider. -->
+                <mat-panel-title class="mat-elevation-z0">
                   {{valuesIn(item.instance.name).join(" / ")}}
                 </mat-panel-title>
               </mat-expansion-panel-header>
@@ -48,15 +49,16 @@
           </mat-accordion>
           <!-- The quantity of the instance is displayed. -->
           <!-- It can be changed. -->
-          <input class="quantity" data-quantityinput type="number"
+          <input *ngIf="!printService.isPrinting" class="quantity" data-quantityinput type="number"
                  oninput="this.value = this.value >= 1 ? this.value : 1" [(ngModel)]="item.numberOfInstances">
+          <div *ngIf="printService.isPrinting" class="quantity">{{ item.numberOfInstances }} x</div>
         </div>
       </td>
     </ng-container>
     <!-- The other columns display the price of the instance for each vendor. -->
     <ng-container *ngFor="let vendor of vendors" [matColumnDef]="vendor">
       <!-- The column header displays the name of the vendor. -->
-      <th class="mat-table-background-white" mat-header-cell *matHeaderCellDef>{{vendor}}</th>
+      <th class="mat-table-background-white" mat-header-cell *matHeaderCellDef> {{ vendor }}</th>
       <!-- The column cell displays the price of the instance for the vendor. -->
       <td mat-cell class="vendor" *matCellDef="let item; index as i">
         <!-- The radio button allows to select the vendor. -->
@@ -70,7 +72,6 @@
           <mat-chip color="accent" [highlighted]="item.selectedProvider==vendor">
             {{item.pricingInformation[vendor].price  | number:'1.2-2'}} USD
           </mat-chip>
-
           <!-- The info icon displays the price unit of the instance for the vendor when hovering over it. -->
           <mat-icon data-tooltipUnit matTooltip="{{getUnitStringForVendor(item.providers, vendor)}}"
                     style="transform: scale(0.8);" fontIcon="info">
