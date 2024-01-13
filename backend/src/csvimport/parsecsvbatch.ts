@@ -2,19 +2,43 @@ import fs from "fs";
 import csv from "csv-parser";
 import csvParser from "csv-parser";
 
-// this class is responsible for reading csv data in batches
+/**
+ * this class is responsible for reading a csv file in batches
+ *
+ * @template T the type of the data in the csv file
+ */
 export class ParseCsvBatch<T> {
-    // this is the csv file stream
+    /**
+     * this is the csv file stream
+     * @private
+     */
     private filestream?: csvParser.CsvParser;
-    // this is the callback that is called when the next batch is ready
+    /**
+     * this is the callback that is called when the next batch is ready
+     * @private
+     */
     private onResolve?: (data: [T[], boolean]) => void;
-    // this is the callback that is called when an error occurs or the file is read completely
+    /**
+     * this is the callback that is called when an error occurs or the file is read completely
+     * @private
+     */
     private onReject?: (data: [T[], boolean]) => void;
-    // this is the data that is currently read and not yet returned
+    /**
+     * this is the data that is currently read and not yet returned
+     * @private
+     */
     private data: T[] = [];
-    // this is a flag that indicates if the file is read completely
+    /**
+     * this is a flag that indicates if the file is read completely
+     * @private
+     */
     private isComplete = false;
 
+    /**
+     * creates a new instance of the class
+     * @param csvFilePath the path to the csv file
+     * @param numberOfLines the number of lines to read in one batch
+     */
     constructor(
         private csvFilePath: string,
         private numberOfLines = 1000
@@ -39,7 +63,11 @@ export class ParseCsvBatch<T> {
         });
     }
 
-    // this method is called when a new line is read
+    /**
+     * this method is called when a new line is read
+     * @param data the data that was read
+     * @private
+     */
     private onNewLine(data: T) {
         // add the data to the data array
         this.data.push(data);
@@ -50,7 +78,12 @@ export class ParseCsvBatch<T> {
         }
     }
 
-    // this method returns the next batch of data
+    /**
+     * this method returns the next batch of data
+     *
+     * @returns {Promise<[T[], boolean]>} the next batch of data and a flag that indicates if the file is read completely
+     * @throws {Error} if a request is currently fulfilled or the file is read completely
+     */
     next(): Promise<[T[], boolean]> {
         // if a request is currently fulfilled, throw an error
         if (this.onResolve || this.onReject) {
@@ -68,7 +101,10 @@ export class ParseCsvBatch<T> {
         });
     }
 
-    // this method publishes the data that is currently read
+    /**
+     * this method publishes the data that is currently read
+     * @private
+     */
     private publish() {
         // if no callbacks are set ignore the publish event
         if (!this.onReject || !this.onResolve) {
@@ -83,6 +119,11 @@ export class ParseCsvBatch<T> {
         this.onReject = undefined;
     }
 
+    /**
+     * this method is called when an error occurs
+     * @param err the error that occurred
+     * @private
+     */
     private error(err: any) {
         // if no callbacks are set ignore the error event
         if (!this.onReject || !this.onResolve) {

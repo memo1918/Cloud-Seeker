@@ -2,7 +2,7 @@ import fs, { PathLike } from "fs";
 import * as zlib from "zlib";
 
 /**
- * Extracts a dump file from an tar.gz archive
+ * Extracts a dump file from a tar.gz archive
  * @param archiveFilePath The path to the archive file.
  * @param targetFilePath The path to the target file.
  * @returns A promise that resolves when the extraction is complete.

@@ -7,13 +7,26 @@ import { Instance } from "../interfaces/instance.interface";
 import { Attributes } from "../interfaces/attributes.interface";
 import { result } from "lodash";
 
+/**
+ * class for the mapping service
+ */
 export class MappingService {
+    /**
+     * constructor for the mapping service
+     * @param categoryprovider the category provider
+     * @param mappingdb the mapping db
+     * @param csvreader the csv reader
+     */
     constructor(
         private categoryprovider: CategoryProvider,
         private mappingdb: MappingDB,
         private csvreader: CSVReader
     ) {}
 
+    /**
+     * starts the mapping service
+     * @returns {Promise<void>} a promise that resolves when the mapping service is completed
+     */
     async start() {
         await this.mappingdb.dropInstanceComparison();
         await this.mappingdb.createInstanceComparisonIndex();
@@ -34,6 +47,10 @@ export class MappingService {
         await this.mappingdb.pushCategories(this.categoryprovider.categories);
     }
 
+    /**
+     * cleans the options of the fields
+     * @private
+     */
     private cleanOptions() {
         for (let category of this.categoryprovider.categories) {
             for (let field of category.fields) {
@@ -42,6 +59,9 @@ export class MappingService {
         }
     }
 
+    /**
+     * gets the next line from the csv reader
+     */
     async getNextLine() {
         try {
             const line = (await this.csvreader.readLine())[0];
@@ -56,6 +76,11 @@ export class MappingService {
         }
     }
 
+    /**
+     * for each sku in the sku array
+     * @param skuArr the sku array
+     * @returns {Promise<void>} a promise that resolves when the sku array is processed
+     */
     async forEachSku(skuArr: string[]) {
         try {
             let instanceArr = (await this.mappingdb.findSkus(skuArr)) as Instance[];
@@ -80,6 +105,12 @@ export class MappingService {
         }
     }
 
+    /**
+     * gets the attributes for an instance and a category
+     * @param instance the instance
+     * @param category the category
+     * @returns {Attributes} the attributes for the instance and the category
+     */
     getAttributesForInstance(instance: Instance, category: Category): Attributes {
         let attributes: Attributes = {};
 
@@ -101,6 +132,13 @@ export class MappingService {
         return attributes;
     }
 
+    /**
+     * creates an instance comparison
+     * @param instanceArr the instance array
+     * @param attributes the attributes
+     * @param category the category
+     * @returns {Promise<void>} a promise that resolves when the instance comparison is created and pushed to the database
+     */
     async createInstanceCompare(instanceArr: Instance[], attributes: Attributes, category: Category) {
         let newInstanceComparison: InstanceComparison = {
             name: {},

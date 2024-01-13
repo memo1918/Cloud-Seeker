@@ -1,20 +1,35 @@
 import path from "path";
 import { ValidMethod, validMethods } from "./methods";
 
-// regex for validating names
+/**
+ * regex for validating names
+ */
 const NAME_REGEX = /^[a-z0-9_()]+$/gs;
 
-// check if a segment is a parameter
+/**
+ * check if a segment is a parameter
+ * @param segment the segment to check
+ * @returns {boolean} true if the segment is a parameter, false otherwise
+ */
 const isParameter = (segment: string): boolean => {
     // a parameter is a segment that starts with [ and ends with ] like [name]
     return segment.startsWith("[") && segment.endsWith("]");
 };
 
-// check if a segment is a route
+/**
+ * check if a segment is a route
+ * @param segment the segment to check
+ * @returns {boolean} true if the segment is a route, false otherwise
+ */
 const isRoute = (segment: string): boolean => {
     return segment.endsWith(".ts");
 };
-// extract the name of a parameter by removing the [ and ] and converting it to lowercase
+
+/**
+ * extract the name of a parameter by removing the [ and ] and converting it to lowercase
+ * @param segment the segment to extract the name from
+ * @returns {string} the name of the parameter
+ */
 const extractParameterName = (segment: string): string => {
     segment = segment.substring(1, segment.length - 1);
     segment = segment.toLowerCase();
@@ -26,7 +41,11 @@ const extractParameterName = (segment: string): string => {
     }
     return segment;
 };
-// extract the name of a segment by converting it to lowercase
+/**
+ * extract the name of a segment by converting it to lowercase
+ * @param segment the segment to extract the name from
+ * @returns {string} the name of the segment
+ */
 const extractName = (segment: string): string => {
     const name = segment.toLowerCase();
     if (name.match(NAME_REGEX) == null) {
@@ -34,8 +53,12 @@ const extractName = (segment: string): string => {
     }
     return segment;
 };
-// extract the method from a segment by removing the .ts and converting it to lowercase
-const extractMethod = (segment: string) => {
+/**
+ * extract the method from a segment by removing the .ts and converting it to lowercase
+ * @param segment the segment to extract the method from
+ * @returns {ValidMethod} the method of the segment
+ */
+const extractMethod = (segment: string): ValidMethod => {
     const method = <ValidMethod>segment.replace(".ts", "").toLowerCase();
     if (validMethods.indexOf(method) == -1) {
         throw new Error(
@@ -45,7 +68,12 @@ const extractMethod = (segment: string) => {
     return method;
 };
 
-// get the express route from a route path
+/**
+ * get the express route from a route path
+ * @param rootPath the root path of the routes
+ * @param routePath the route path
+ * @returns {[ValidMethod, string]} the method and the route as they are used by express
+ */
 export function getExpressRoute(rootPath: string, routePath: string): [ValidMethod, string] {
     // get the relative route path
     const relativeRoutePath = path.relative(rootPath, routePath).toLowerCase();

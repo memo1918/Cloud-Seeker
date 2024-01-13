@@ -1,11 +1,17 @@
 import fs, { PathLike } from "fs";
 import * as https from "https";
 import * as http from "http";
-// this function downloads a file from the internet and saves it to the targetFilePath
-// it returns a promise that resolves when the download is complete
-// it returns a promise that rejects when the download fails
-// it takes a dumpUrl and a targetFilePath as parameters
-export function downloadDump(dumpUrl: string, targetFilePath: PathLike) {
+
+/**
+ * this function downloads a file from the internet and saves it to the targetFilePath
+ * it returns a promise that resolves when the download is complete
+ * it returns a promise that rejects when the download fails
+ * it takes a dumpUrl and a targetFilePath as parameters
+ * @param dumpUrl the url to download the file from
+ * @param targetFilePath the path to save the file to
+ * @returns {Promise<void>} a promise that resolves when the download is complete
+ */
+export function downloadDump(dumpUrl: string, targetFilePath: PathLike): Promise<void> {
     return new Promise<void>((resolve, reject) => {
         // log the download
         console.log({

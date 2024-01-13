@@ -60,3 +60,22 @@ mockedSomeFunction.mockImplementation(() => {
 ```
 
 ### How to mock the database
+
+We can start the database in the `beforeAll` hook and stop it in the `afterAll` hook.
+
+Start the datatbase:
+
+```typescript
+import { MongoMemoryServer } from 'mongodb-memory-server';
+
+let mongoServer: MongoMemoryServer;
+let counter = 0;
+
+beforeAll(async () => {
+   let worker = Number(process.env["JEST_WORKER_ID"]);
+    mongoServer = await MongoMemoryServer.create({ instance: { port: 2000 + 100 * worker + counter++ } });
+    const mongoUri = await mongoServer.getUri();
+   client = await new MongoClient(mongoUri).connect();
+    
+});
+```

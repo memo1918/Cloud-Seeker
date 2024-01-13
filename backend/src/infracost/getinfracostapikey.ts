@@ -1,5 +1,8 @@
-// get the infracost api key from the environment variables
-export function getInfracostApiKey() {
+/**
+ * get the infracost api key from the environment variables
+ * @returns {string} the infracost api key
+ */
+export function getInfracostApiKey(): string {
     // if the dump url is set in the environment variables use that
     if (process.env["DUMMY_DATA_URL"]) {
         console.log({ message: "working with locally hosted dummy data" });

@@ -6,11 +6,17 @@ import * as _categories_get from "./routes/categories/get";
 import * as _mappingservices_get from "./routes/mappingservices/get";
 import * as _instancecomparisons_get from "./routes/categories/instancecomparisons/get";
 import * as _instancecomparisons_post from "./routes/categories/instancecomparisons/post";
-// contains all routes
-// this is used by the framework to register all routes
+
+/**
+ * contains all routes
+ * this is used by the framework to register all routes
+ * @type {RouteRegister}
+ */
 export const routes = new RouteRegister(app, ROUTE_ROOT_PATH);
 
-// register all routes
+/**
+ * register all routes
+ */
 export function registerRoutes() {
     // GET /api
     routes.register(_get);

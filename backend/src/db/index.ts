@@ -1,14 +1,22 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
 
-// the uri used to connect to the database it is used in the execQuery function to connect to the database
+/**
+ * the uri used to connect to the database it is used in the execQuery function to connect to the database
+ */
 let uri = "";
 
-// this function sets the uri used to connect to the database
+/**
+ * this function sets the uri used to connect to the database
+ * @param newUri the new uri to use
+ */
 export function setURI(newUri: string) {
     uri = newUri;
 }
 
-// this function creates a mongo client and connects to the database
+/**
+ * this function creates a mongo client and connects to the database
+ * @param timeout_ms the timeout in milliseconds
+ */
 async function createMongoClient(timeout_ms: number) {
     // if the uri is not set throw an error
     if (!uri) {
@@ -31,11 +39,16 @@ async function createMongoClient(timeout_ms: number) {
     }
 }
 
-// this function executes a query on the database
-// it takes a function that takes a mongo client and returns a promise
-// the result of the promise is returned by the execQuery function
-// the mongo client is closed after the promise is resolved or rejected
-// optionally a timeout can be specified in milliseconds
+
+/**
+ * this function executes a query on the database
+ * it takes a function that takes a mongo client and returns a promise
+ * the result of the promise is returned by the execQuery function
+ * the mongo client is closed after the promise is resolved or rejected
+ * optionally a timeout can be specified in milliseconds
+ * @param command the command to execute
+ * @param timeout_ms the timeout in milliseconds
+ */
 export async function execQuery<T>(command: (client: MongoClient) => Promise<T>, timeout_ms = 100) {
     // create a promise that resolves with the mongo client after a connection is established
     const clientPromise: Promise<MongoClient> = createMongoClient(timeout_ms);
@@ -56,14 +69,21 @@ export async function execQuery<T>(command: (client: MongoClient) => Promise<T>,
     }
 }
 
-// wrapper for the setURI function
+/**
+ * wrapper for the setURI function
+ * @param uri the uri to use
+ */
 export function setupDB(uri = "") {
     setURI(uri);
 }
 
-// this function waits for the database to be available after a restart
-// it tries to connect to the database every second until it is available
-// it does this by executing a ping command on the admin database
+/**
+ * this function waits for the database to be available after a restart
+ * it tries to connect to the database every second until it is available
+ * it does this by executing a ping command on the admin database
+ *
+ * @returns {Promise<void>} when the database is available
+ */
 export async function waitForDB() {
     let available = false;
     while (!available) {

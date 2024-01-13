@@ -2,15 +2,25 @@ import { execQuery } from "../index";
 import { getCollection } from "../schema";
 import { Document, WithId } from "mongodb";
 
-// interface for the visits of  a specific website
+/**
+ * interface for the visits of  a specific website or page
+ */
 interface VisitorsDocument extends WithId<Document> {
-    // the name of the website or page
+    /**
+     * the name of the website or page
+     */
     name: string;
-    // the number of visits for the website or page
+    /**
+     * the number of visits for the website or page
+     */
     visits: number;
 }
 
-// this function gets the visits for a specific website or page and increments the visits by one
+/**
+ * this function gets the visits for a specific website or page and increments the visits by one
+ * @param name the name of the website or page
+ * @returns {Promise<number>} the number of visits for the website or page
+ */
 export async function getVisits(name: string): Promise<number> {
     return execQuery(async (client) => {
         // get the collection storing the visits from the database

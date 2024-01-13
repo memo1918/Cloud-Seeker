@@ -10,7 +10,8 @@
     "test-chrome": "ng test --browsers Chrome",
     "test-firefox": "ng test --browsers Firefox",
     "test-ci": "ng test --no-watch --no-progress",
-    "containerise": "docker build -t cloud-seeker/frontend:latest ."
+    "containerise": "docker build -t cloud-seeker/frontend:latest .",
+    "docs": "typedoc --jsDocCompatibility --out ./artifacts/docs --entryPointStrategy expand ./src/app"
   },
   "private": true,
   "dependencies": {
@@ -47,6 +48,7 @@
     "karma-firefox-launcher": "^2.1.2",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "typedoc": "^0.25.7",
     "typescript": "~5.0.2"
   }
 }

@@ -1,7 +1,9 @@
 import fs, { PathLike } from "fs";
 
-// this function removes a file from the filesystem
-// it returns a promise that resolves when the removal is complete
+/**
+ * Removes a file from the filesystem.
+ * @param files The path to the file.
+ */
 export function removeFile(...files: PathLike[]) {
     console.log({ message: "removing file(s)", files, __filename });
     let promises = files.map(

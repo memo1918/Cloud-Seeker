@@ -1,9 +1,15 @@
 import fs from "fs";
 import csv from "csv-parser";
 
-// this method counts the number of lines in a csv file and returns a promise with the line count
+/**
+ * this function counts the number of lines in a csv file
+ *
+ * @param csvFilePath the path to the csv file
+ *
+ * @returns {Promise<number>} the number of lines in the csv file
+ */
 export function countLinesInCSV(csvFilePath: string): Promise<number> {
-    // ceate a promise that resolves with the line count
+    // create a promise that resolves with the line count
     return new Promise<number>((resolve, reject) => {
         // create a line count variable
         let lineCount = 0;
