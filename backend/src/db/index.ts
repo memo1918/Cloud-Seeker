@@ -39,7 +39,6 @@ async function createMongoClient(timeout_ms: number) {
     }
 }
 
-
 /**
  * this function executes a query on the database
  * it takes a function that takes a mongo client and returns a promise

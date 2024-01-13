@@ -5,7 +5,7 @@ export type CsvData = {
     /**
      * the key of the column and the value of the column
      */
-    [key: string]: string
+    [key: string]: string;
 };
 
 /**

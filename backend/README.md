@@ -6,7 +6,7 @@
         from the infracost API
 -   `DB_CONNECTION_STRING` - Connection string to the mongodb database (default: `""`) required
 -   `DUMMY_CSV_IMPORT` - Path to the dummy csv file (default: `""`)
-- `INFRACOST_API_KEY` - API key for the infracost API (default: `""`)
+-   `INFRACOST_API_KEY` - API key for the infracost API (default: `""`)
 
 # Running the backend
 

@@ -3,8 +3,7 @@ import { Document, MongoClient, WithId } from "mongodb";
 import { Category } from "../../interfaces/category.interface";
 import { InstanceComparison } from "../../interfaces/instancecomparison.interface";
 
-export interface IInstanceComparison extends WithId<Document>, InstanceComparison {
-}
+export interface IInstanceComparison extends WithId<Document>, InstanceComparison {}
 
 /**
  * this is the name of the database and collection
@@ -34,7 +33,10 @@ export async function getAllInstanceComparisons(client: MongoClient): Promise<Ca
  *
  * @returns {Promise<void>} nothing
  */
-export async function addOneInstanceComparison(client: MongoClient, instanceComparison: Partial<IInstanceComparison>): Promise<void> {
+export async function addOneInstanceComparison(
+    client: MongoClient,
+    instanceComparison: Partial<IInstanceComparison>
+): Promise<void> {
     // get the collection from the database and insert the instance comparison supplied
     let instanceComparisonCollection = await getCollection(client, dbName, collectionName);
     await instanceComparisonCollection.insertOne(instanceComparison);
