@@ -15,22 +15,62 @@ Person(user, "Customer", "People that want to compare cloud prices", $sprite="us
 
 Boundary(spa, "Cloud-Seeker SPA"){
 
-    Container(cart,"Shopping cart","angular component","Stores the current cloud configuration")
-    Container(category,"Category selection","angular component","Displays available service categories")
-    Container(instance,"Instance selection","angular component", "Displays different filters for selecting the desired service instance")
-    Container(search,"Service and Instance search","angular component", "Displays search results from Services and Instances")
-    Container(service, "Cloud-Seeker-Service", "angular service", "Proxy for API")
+Container(api_service, "Cloud-Seeker API", "angular service", "Provides data to the frontend")
+Container(app_component, "App Component", "angular component", "Root component of the application")
+Container(print_service, "Print Service", "angular service", "Provides printing functionality")
+Container(routing_service, "Routing Service", "angular service", "Provides routing functionality to change a page")
+Container(shopping_cart_service, "Shopping Cart Service", "angular service", "Provides functionality to add and remove items from the shopping cart")
+Container(storage_service, "Storage Service", "angular service", "Provides functionality to store and retrieve data from the local storage")
+Container(filter_service, "Filter Service", "angular service", "Provides functionality to configure the filtering parameter")
+Container(category_service, "Category Service", "angular service", "Provides functionality to select a category")
+Container(header_service, "Header Service", "angular service", "Provides functionality to display the header and opening the cart flyout")
+Container(intance_preview_service, "Instance Preview Service", "angular service", "Provides functionality to display the instance preview and apply new filters")
+
+Boundary(category, "Category selection"){
+    Container(category_component, "Category Component", "angular component", "Displays available service categories")
+}
+
+Boundary(comparison, "Comparison"){
+    Container(comparison_component, "Comparison Component", "angular component", "Displays the comparison of the selected instances")
+}
+
+Boundary(filter, "Filter"){
+    Container(regulator_component, "Dropdown Component", "angular component", "Provides functionality to select a value from a dropdown or number selection")
+    Container(tags_component, "Tags Component", "angular component", "Provides functionality to display and clear selected filters as tags")
+    Container(filter_component, "Filter Component", "angular component", "Displays different filters for selecting the desired service instance")
+}
+
+Boundary(header, "Header"){
+    Container(header_component, "Header Component", "angular component", "Displays the header of the application")
+}
+
+Boundary(instance_configuration, "Instance Configuration"){
+    Container(instance_configuration_component, "Instance Configuration Component", "angular component", "Displays the configuration of the selected instance as a material ui dialog")
+    Container(dialog, "Dialog", "angular component", "Provides functionality to open a configuration dialog for a instance by clicking a button")
+    Container(field_component, "Field Component", "angular component", "Provides functionality to display a field of the configuration dialog")
+}
+
+Boundary(instance_preview, "Instance Preview"){
+    Container(instance_preview_component, "Instance Preview Component", "angular component", "Displays the preview of all instances of the current category with applied filters")
+}
+
+Boundary(preview_panel, "Preview Panel"){
+    Container(preview_panel_component, "Preview Panel Component", "angular component", "Displays the slide-out shopping cart")
+}
+
+Boundary(pricing, "Pricing"){
+    Container(pricing_class, "Pricing Class", "normal class", "Parses pricing units and conversion between those.")
 }
 
 Container_Ext(api, "API", "Node.js", "Regularly updates pricing and category information/serve data to the user", $sprite="nodejs")
 
-Rel(instance, cart, "Add instance to cart")
-Rel_R(category, instance, "prefilter instances")
+'Rel(instance, cart, "Add instance to cart")
+'Rel_R(category, instance, "prefilter instances")
 
-Rel(user, cart, "view comparison")
-Rel(user, instance, "configure")
-Rel(user, category, "select")
-Rel_L(user, search, "full text search")
+'Rel(user, cart, "view comparison")
+'Rel(user, instance, "configure")
+'Rel(user, category, "select")
+'Rel_L(user, search, "full text search")
 
 
 Rel(category, service, "Queries available categories")
