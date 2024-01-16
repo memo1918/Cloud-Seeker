@@ -7,8 +7,11 @@ import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 import * as cartItem from "./cart-item";
 import { INSTANCE_COMPARISON_FIXTURE } from "../fixtures/instance-comparison.fixture";
 
+/**
+ * This test suite tests the cart item functions.
+ * The cart item functions are tested in this file.
+ */
 describe("cart item test", () => {
-
   beforeEach(() => {
     FetchMockSpec.getInstance().setSpy().setResponseData(dummyApplicationData);
     TestBed.configureTestingModule({
@@ -20,7 +23,7 @@ describe("cart item test", () => {
     localStorage.clear();
 
   });
-
+  // This test tests if the price information is updated correctly.
   it("update price info", async () => {
     const service = new ShoppingCartDummyService();
     const item = service.getItems()[0];
@@ -36,6 +39,7 @@ describe("cart item test", () => {
     }).not.toThrowError();
   });
 
+  // This test is for creating a cart item from an instance.
   it("createCartItemFromInstance", async () => {
     expect(() => {
       cartItem.createCartItemFromInstance(INSTANCE_COMPARISON_FIXTURE);
