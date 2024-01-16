@@ -7,6 +7,7 @@ import { FetchMockSpec } from "../fetch.mock.spec";
 import { domUpdate, elementToBePresent } from "../helper.spec";
 import * as _ from "lodash";
 
+
 describe("InstancePreviewComponent", () => {
   let component: InstancePreviewComponent;
   let fixture: ComponentFixture<InstancePreviewComponent>;
