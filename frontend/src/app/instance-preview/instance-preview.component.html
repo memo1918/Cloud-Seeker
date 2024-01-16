@@ -1,35 +1,40 @@
 <!-- This component is responsible for displaying the instances in the instance preview section -->
 <!-- It uses the instance service to get the instances and the category service to get the category -->
 <div class="instance-preview-container">
-  <div *ngIf="instanceService.loadedInstances.length != 0">
-    <table>
-      <ng-container *ngFor="let instance of getItems();  last as last">
-        <tr class="titleRow">
-          <td [colSpan]="getCategoryLength() +1 || 1" class="instanceName">
-            <b>{{ valuesIn(instance.name).join(" / ") }}</b></td>
-        </tr>
-        <tr class="fieldRow">
-          <!-- The first column is the instance name -->
-          <!-- The rest of the columns are the fields of the category -->
-          <td *ngFor="let field of categoryService.getCategoryValue()?.fields; index as i;" class="fieldName"
-              [attr.data-column]="i+1">
-            <div class="fieldsContainer">
-              <div class="fieldNameData">{{ field.name }}</div>
-              <div class="fieldValue"><b>{{ instance.fields[field.name]?.value }}</b></div>
-            </div>
-          </td>
-          <td>
-            <div class="pickButton fieldsContainer">
-              <app-instance-configuration-dialog [instance]="instance"></app-instance-configuration-dialog>
-            </div>
-          </td>
-        </tr>
-        <tr style="background-color: white" *ngIf="!last">
-          <td [colSpan]="getCategoryLength() +1 || 1">
-            <mat-divider class="emptySpace"></mat-divider>
-          </td>
-        </tr>
-      </ng-container>
-    </table>
-  </div>
+    <div *ngIf="instanceService.loadedInstances.length != 0">
+        <table>
+            <ng-container *ngFor="let instance of getItems();  last as last">
+                <tr class="titleRow">
+                    <td [colSpan]="getCategoryLength() +1 || 1" class="instanceName">
+                        <b>{{ valuesIn(instance.name).join(" / ") }}</b></td>
+                </tr>
+                <tr class="fieldRow">
+                    <!-- The first column is the instance name -->
+                    <!-- The rest of the columns are the fields of the category -->
+                    <td *ngFor="let field of categoryService.getCategoryValue()?.fields; index as i;" class="fieldName"
+                        [attr.data-column]="i+1">
+                        <div class="fieldsContainer">
+                            <!-- The field name is displayed in the first row -->
+                            <!-- The value of those fields is displayed in the second row -->
+                            <div class="fieldNameData">{{ field.name }}</div>
+                            <div class="fieldValue"><b>{{ instance.fields[field.name]?.value }}</b></div>
+                        </div>
+                    </td>
+                    <td>
+                        <!-- The last column is the pick button -->
+                        <div class="pickButton fieldsContainer">
+                            <app-instance-configuration-dialog
+                                [instance]="instance"></app-instance-configuration-dialog>
+                        </div>
+                    </td>
+                </tr>
+                <!-- If the instance is not the last one, a divider is displayed -->
+                <tr style="background-color: white" *ngIf="!last">
+                    <td [colSpan]="getCategoryLength() +1 || 1">
+                        <mat-divider class="emptySpace"></mat-divider>
+                    </td>
+                </tr>
+            </ng-container>
+        </table>
+    </div>
 </div>
