@@ -21,8 +21,7 @@ export class MappingService {
         private categoryprovider: CategoryProvider,
         private mappingdb: MappingDB,
         private csvreader: CSVReader
-    ) {
-    }
+    ) {}
 
     /**
      * starts the mapping service
