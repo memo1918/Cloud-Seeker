@@ -13,14 +13,16 @@ import { extractDump } from "./extractdump";
 import { shouldimportdump } from "./shouldimportdump";
 import { countlines } from "./countlines";
 
-// Purpose: Load infracost dump in db.
-// this function loads the infracost dump into the database
-// it downloads the dump from the infracost website
-// it extracts the dump from the archive
-// it parses the csv data
-// it inserts the parsed data into the database
-// it removes the dump file after it is done
-// it returns a promise that resolves when the loading is complete
+/**
+ * this function loads the infracost dump into the database
+ * it downloads the dump from the infracost website
+ * it extracts the dump from the archive
+ * it parses the csv data
+ * it inserts the parsed data into the database
+ * it removes the dump file after it is done
+ * it returns a promise that resolves when the loading is complete
+ * @returns {Promise<void>} a promise that resolves when the loading is complete
+ */
 export async function loadinfracostdumpindb() {
     // check if the dump should be imported
     if (!(await shouldimportdump())) {

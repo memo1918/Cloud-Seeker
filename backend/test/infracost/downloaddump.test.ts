@@ -78,6 +78,10 @@ describe("module for downloading arbitrary data from a url to the target file pa
         await expect(downloadDump(dummyUrl, dummyPath)).rejects.toBe(dummyError);
 
         expect(fs.unlink).toBeCalled();
-        actualFs.unlinkSync(tmpFilePath);
+        try {
+            actualFs.unlinkSync(tmpFilePath);
+        } catch (e) {
+            console.log(e);
+        }
     });
 });

@@ -1,0 +1,48 @@
+@startuml Cloud_Seeker_Frontend_Filter
+!include <C4/C4_Container>
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/nodejs.puml
+!include DEVICONS/mongodb.puml
+!include FONTAWESOME/users.puml
+
+title Cloud-Seeker-Frontend-Filter
+
+
+Person(user, "Customer", "People that want to compare cloud prices", $sprite="users")
+
+Boundary(spa, "Cloud-Seeker SPA") {
+
+Container(filter_service, "Filter Service", "angular service", "Provides functionality to configure the filtering parameter")
+Container(category_service, "Category Service", "angular service", "Provides functionality to select a category")
+Container(category_component, "Category selection", "angular component", "Displays available service categories")
+Container(instance_preview_component, "Instance Preview Component", "angular component", "Displays the preview of all instances of the current category with applied filters")
+
+Boundary(filter, "Filter"){
+    Container(regulator_component, "Selection Components", "angular component", "Provides functionality to select a value from a dropdown or number selection")
+    Container(tags_component, "Tags Component", "angular component", "Provides functionality to display and clear selected filters as tags")
+    Container(filter_component, "Filter Component", "angular component", "Displays different filters for selecting the desired service instance")
+}
+}
+
+
+
+Rel(user, category_component, "select category")
+Rel_R(user, filter_component, "filter by instance properties")
+Rel(user, instance_preview_component, "select instance")
+
+
+Rel(filter_component, filter_service, "Subscribes and triggers filter changes")
+Rel(filter_component, regulator_component, "uses regulator components to display and update filters")
+
+Rel(tags_component, filter_service, "Subscribes to filter changes")
+
+Rel(instance_preview_component, filter_service, "Applies configured filters to the instance list")
+
+Rel(category_component, category_service, "Subscribes and triggers category changes")
+
+
+
+@enduml

@@ -3,7 +3,7 @@ import fs from "fs";
 /**
  * Counts the number of lines in a file.
  * @param filePath The path to the file.
- * @returns The number of lines in the file.
+ * @returns {Promise<number>} The number of lines in the file.
  */
 export async function countlines(filePath: string) {
     // function copied from http://stackoverflow.com/questions/12453057/node-js-count-the-number-of-lines-in-a-file

@@ -4,7 +4,9 @@ import { setupDB, waitForDB } from "./db";
 import { loadinfracostdumpindb } from "./infracost/loadinfracostdumpindb";
 import { runMappingService } from "./mappingservice/runmappingservice";
 
-// start the server
+/**
+ * starts the server
+ */
 async function start() {
     console.log({ message: "registering routes" });
     registerRoutes();
@@ -36,7 +38,9 @@ async function start() {
         });
 }
 
-// start the server by default when the file is executed
+/**
+ * starts the server by default when the file is executed
+ */
 start().then(() => {
     console.log({ message: "startup complete" });
 });

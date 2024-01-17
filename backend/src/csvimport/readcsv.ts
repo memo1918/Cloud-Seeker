@@ -3,19 +3,41 @@ import csv from "csv-parser";
 import csvParser from "csv-parser";
 import { CsvData, CSVReader } from "./CSVReader";
 
-// this class is responsible for reading csv data
+/**
+ * this class is responsible for reading csv data
+ */
 export class ReadCSV implements CSVReader {
-    // this is the csv file stream
+    /**
+     * this is the csv file stream
+     * @private
+     */
     private filestream?: csvParser.CsvParser;
-    // this is the callback that is called when the next batch is ready
+    /**
+     * this is the callback that is called when the next batch is ready
+     * @private
+     */
     private onResolve?: (data: CsvData[]) => void;
-    // this is the callback that is called when an error occurs or the file is read completely
+    /**
+     * this is the callback that is called when an error occurs or the file is read completely
+     * @private
+     */
     private onReject?: (err: any) => void;
-    // this is the data that is currently read and not yet returned
+    /**
+     * this is the data that is currently read and not yet returned
+     * @private
+     */
     private cache: CsvData[] = [];
-    // this is a flag that indicates if the file is read completely
+    /**
+     * this is a flag that indicates if the file is read completely
+     * @private
+     */
     private isCSVDone = false;
 
+    /**
+     * creates a new instance of the class
+     * @param csvFilePath the path to the csv file
+     * @param lineCount the number of lines to read in one batch
+     */
     constructor(
         private csvFilePath: string,
         private lineCount = 1
@@ -55,7 +77,11 @@ export class ReadCSV implements CSVReader {
         this.filestream.pause();
     }
 
-    // this method is called when a new line is read
+    /**
+     * this method is called when a new line is read
+     * @param data the data that was read
+     * @private
+     */
     private onNewLine(data: CsvData) {
         // add data to cache
         this.cache.push(data);
@@ -65,7 +91,10 @@ export class ReadCSV implements CSVReader {
         }
     }
 
-    // this method is called to resolve the promise with the next batch of data
+    /**
+     * this method is called to resolve the promise with the next batch of data
+     * @private
+     */
     private publish() {
         if (this.onResolve) {
             this.onResolve(this.cache);
@@ -75,7 +104,11 @@ export class ReadCSV implements CSVReader {
         }
     }
 
-    // this method is called by the consumer to get the next batch of data
+    /**
+     * this method is called by the consumer to get the next batch of data
+     *
+     * @returns {Promise<CsvData[]>} the next batch of data
+     */
     public readLine(): Promise<CsvData[]> {
         // if a request is currently fulfilled, return a rejected promise
         if (this.onResolve || this.onReject) {

@@ -29,3 +29,16 @@ build_frontend: # job
     paths:
       - frontend/dist/**
     expire_in: never
+
+documentation_frontend: # job
+  image: atlassianlabs/docker-node-jdk-chrome-firefox:latest
+  stage: documentation
+  before_script:
+    - cd frontend
+    - npm install
+  script:
+    - npm run docs # documentation
+  artifacts:
+    paths:
+      - frontend/artifacts/docs/**
+    expire_in: never

@@ -11,7 +11,8 @@
         "checkformat": "prettier . --check",
         "format": "prettier . --write",
         "clean": "rimraf build",
-        "containerise": "docker build -t cloud-seeker/backend:latest ."
+        "containerise": "docker build -t cloud-seeker/backend:latest .",
+        "docs": "typedoc --jsDocCompatibility --out ./build/docs --entryPointStrategy expand ./src"
     },
     "devDependencies": {
         "@jest-mock/express": "^2.0.2",
@@ -34,6 +35,7 @@
         "ts-loader": "^9.2.3",
         "ts-node": "^10.9.1",
         "tsx": "^3.14.0",
+        "typedoc": "^0.25.7",
         "typescript": "^4.3.5",
         "webpack": "^5.88.2",
         "webpack-cli": "^5.1.4"

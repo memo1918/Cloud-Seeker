@@ -16,8 +16,8 @@ Boundary(api, "Cloud-Seeker API"){
     Container(dbwrapper,"Database access","MongoDB","DB-Driver for interacting with mongodb")
     Container(business,"Business layer", "","Holds logic for performing multiple database operations")
     Container(priceapi, "External pricing api´s from AWS,Azure...", "", "External pricing api wrapper")
-    Container(timer,"Timer service", "", "Managing regularly reoccurring events")
     Container(mapping,"Mapping service", "","Matching service instances and their pricing")
+    Container(infracost, "Infracost Dump", "","Holds infracost dump data")
 }
 
 
@@ -30,10 +30,10 @@ Rel(service, routing,"Web request")
 Rel(dbwrapper,db,"Read/Write")
 Rel(routing, business,"Forwards request after validation")
 Rel(mapping,priceapi,"Query pricing for services")
-Rel(timer,mapping,"Regularly starts")
 Rel(business,dbwrapper,"perform transactions/queries/search")
 Rel_R(mapping,business,"update service descriptions")
-Rel(priceapi,cloudprovider,"Access")
+Rel(priceapi,infracost,"Access")
+Rel(infracost,cloudprovider,"loads and provides")
 Rel_L(mapping,mappingconfig,"Uses")
 
 @enduml

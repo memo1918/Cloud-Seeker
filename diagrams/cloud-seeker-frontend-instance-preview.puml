@@ -1,0 +1,49 @@
+@startuml Cloud_Seeker_Frontend_Instance_Preview
+!include <C4/C4_Container>
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/nodejs.puml
+!include DEVICONS/mongodb.puml
+!include FONTAWESOME/users.puml
+
+title Cloud-Seeker-Frontend-Instance-Preview
+
+
+Person(user, "Customer", "People that want to compare cloud prices", $sprite="users")
+
+Boundary(spa, "Cloud-Seeker SPA") {
+
+    Container(api_service, "Cloud-Seeker API", "angular service", "Provides data to the frontend")
+    Container(filter_service, "Filter Service", "angular service", "Provides functionality to configure the filtering parameter")
+    Container(category_service, "Category Service", "angular service", "Provides functionality to select a category")
+    Container(instance_preview_service, "Instance Preview Service", "angular service", "Provides functionality to display the instance preview and apply new filters")
+    Container(instance_preview_component, "Instance Preview Component", "angular component", "Displays the preview of all instances of the current category with applied filters")
+    Container(instance_configuration, "Instance Configuration", "angular component", "Displays the configuration of the selected instance as a material ui dialog when clicking a button")
+}
+
+
+
+Container_Ext(api, "API", "Node.js", "Regularly updates pricing and category information/serve data to the user", $sprite="nodejs")
+
+Rel(api_service, api, "Queries data from the API")
+
+Rel(instance_preview_service, api_service, "Queries available instances by from the API")
+Rel(category_service, api_service, "Queries available categories by from the API")
+Rel_L(instance_preview_service, category_service, "Shows from current category")
+
+'Rel(app_component, routing_service, "Subscribes and invokes route changes")
+
+Rel(user, instance_configuration, "configure instance")
+Rel(user, instance_preview_component, "select instance")
+
+
+
+Rel(instance_preview_service, filter_service, "Subscribes to filter changes to update the preview")
+
+Rel(instance_preview_component, instance_preview_service, "Subscribes to preview changes")
+Rel(instance_preview_component, instance_configuration, "Opens configuration dialog")
+
+
+@enduml

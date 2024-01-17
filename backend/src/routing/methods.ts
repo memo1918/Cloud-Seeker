@@ -1,4 +1,6 @@
-// all valid http methods
+/**
+ * all valid http methods
+ */
 export type ValidMethod =
     | "checkout"
     | "copy"
@@ -23,7 +25,9 @@ export type ValidMethod =
     | "trace"
     | "unlock"
     | "unsubscribe";
-// all valid http methods
+/**
+ * all valid http methods
+ */
 export const validMethods: ValidMethod[] = [
     "checkout",
     "copy",

@@ -1,4 +1,9 @@
-// Purpose: Interface for attributes of the database dump.
+/**
+ * Interface for attributes of the database dump.
+ */
 export interface Attributes {
-    [attributeName: string]: string; // key value pairs of attributes
+    /**
+     * key value pairs of attributes
+     */
+    [attributeName: string]: string;
 }

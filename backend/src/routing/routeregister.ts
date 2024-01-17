@@ -2,12 +2,24 @@ import { ErrorCallback, makeFramework, RouteClass } from "./route";
 import { Application, NextFunction, Request, Response } from "express";
 import { getExpressRoute } from "./parse";
 
-// is a class for registering routes
-// it is used to register routes in the express application
+/**
+ * is a class for registering routes
+ * it is used to register routes in the express application
+ */
 export class RouteRegister {
     // is a object containing all routes by path and method
+    /**
+     * is a object containing all routes by path and method
+     * @type {{[p: string]: {[p: string]: RouteClass}}}
+     * @private
+     */
     private readonly routes: { [path: string]: { [method: string]: RouteClass } } = {};
 
+    /**
+     * constructor for the RouteRegister class
+     * @param app is the express application to register the routes in
+     * @param routeRootPath is the root path for all routes
+     */
     constructor(
         // is the express application to register the routes in
         private readonly app: Application,
@@ -17,6 +29,10 @@ export class RouteRegister {
 
     // is a function for registering a route
     // it takes a module containing a route class which is exported as default
+    /**
+     * register a route
+     * @param module is a module containing a route class which is exported as default
+     */
     register(module: { default: RouteClass }) {
         // the route class is constructed and a instance is created
         const routeClass = module.default;
@@ -61,7 +77,9 @@ export class RouteRegister {
         });
     }
 
-    // is a function for getting all routes
+    /**
+     * is a function for getting all routes
+     */
     getRoutes() {
         return { ...this.routes };
     }

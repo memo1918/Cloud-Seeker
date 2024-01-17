@@ -44,3 +44,16 @@ formatting_backend:
     - npm run checkformat
   allow_failure: true
 
+documentation_backend:
+  image: node:18.16.0-bullseye
+  stage: documentation
+  needs: [ ]
+  before_script:
+    - cd backend
+    - npm install
+  script:
+    - npm run docs
+  artifacts:
+    when: always
+    paths:
+      - backend/build/docs/**

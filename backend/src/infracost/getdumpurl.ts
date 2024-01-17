@@ -1,7 +1,10 @@
 import { getInfracostApiKey } from "./getinfracostapikey";
 import axios, { AxiosResponse } from "axios";
 
-// This function fetches the dump download url from infracost api
+/**
+ * This function fetches the dump download url from infracost api
+ * @returns {Promise<string>} a promise that resolves when the dump download url is fetched
+ */
 export async function getDumpUrl() {
     let infracost_api_key = getInfracostApiKey();
     // if the dump url is set in the environment variables use that
