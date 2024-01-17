@@ -8,7 +8,7 @@
 !include DEVICONS/mongodb.puml
 !include FONTAWESOME/users.puml
 
-title Cloud-Seeker-Frontend
+title Cloud-Seeker-Frontend-Total-Overview
 
 
 Person(user, "Customer", "People that want to compare cloud prices", $sprite="users")

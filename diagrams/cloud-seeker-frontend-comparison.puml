@@ -1,0 +1,63 @@
+@startuml Cloud_Seeker_Frontend
+!include <C4/C4_Container>
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/nodejs.puml
+!include DEVICONS/mongodb.puml
+!include FONTAWESOME/users.puml
+
+title Cloud-Seeker-Frontend-ShoppingCart
+
+
+Person(user, "Customer", "People that want to compare cloud prices", $sprite="users")
+
+Boundary(spa, "Cloud-Seeker SPA") {
+
+Container(api_service, "Cloud-Seeker API", "angular service", "Provides data to the frontend")
+'Done
+'Container(app_component, "App Component", "angular component", "Root component of the application")
+'Done
+Container(print_service, "Print Service", "angular service", "Provides printing functionality")
+Container(shopping_cart_service, "Shopping Cart Service", "angular service", "Provides functionality to add and remove items from the shopping cart")
+Container(storage_service, "Storage Service", "angular service", "Provides functionality to store and retrieve data from the local storage")
+'Container(header_service, "Header Service", "angular service", "Provides functionality to display the header and opening the cart flyout")
+Container(pricing_class, "Pricing service", "angular service", "Parses pricing units and conversion between those.")
+Container(comparison_component, "Comparison Component", "angular component", "Displays the comparison of the selected instances in a shopping cart like way")
+Container(header_component, "Header", "angular component", "Displays the header of the application")
+Container(preview_panel_component, "Preview Panel", "angular component", "Displays the slide-out shopping cart")
+
+Container(instance_configuration_component, "Instance Configuration", "angular component", "Displays the configuration of the selected instance as material ui dialog content")
+
+}
+
+
+Container_Ext(api, "API", "Node.js", "Regularly updates pricing and category information/serve data to the user", $sprite="nodejs")
+
+Rel(api_service, api, "Queries data from the API")
+
+Rel(shopping_cart_service, api_service, "Queries saved configuration details from the API")
+
+Rel_R(user, comparison_component, "selects instances")
+Rel(user, preview_panel_component, "display overview of selected instances")
+Rel(user, instance_configuration_component, "configure instance")
+
+Rel(instance_configuration_component, pricing_class, "Parses units")
+
+Rel_R(comparison_component, print_service, "Triggers print events")
+
+Rel(header_component, preview_panel_component, "opens")
+
+Rel(preview_panel_component, comparison_component, "opens")
+
+
+Rel(shopping_cart_service, storage_service, "Saves and loads configuration")
+Rel_Back(comparison_component, shopping_cart_service, "Provides user configuration")
+
+Rel_L(instance_configuration_component, shopping_cart_service, "Adds instance configuration")
+
+
+
+
+@enduml

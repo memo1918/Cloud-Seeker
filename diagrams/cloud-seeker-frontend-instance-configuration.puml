@@ -1,0 +1,51 @@
+@startuml Cloud_Seeker_Frontend
+!include <C4/C4_Container>
+
+!define DEVICONS https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/devicons
+!define FONTAWESOME https://raw.githubusercontent.com/tupadr3/plantuml-icon-font-sprites/master/font-awesome-5
+!include DEVICONS/angular.puml
+!include DEVICONS/nodejs.puml
+!include DEVICONS/mongodb.puml
+!include FONTAWESOME/users.puml
+
+title Cloud-Seeker-Frontend-Instance-Configuration
+
+
+Person(user, "Customer", "People that want to compare cloud prices", $sprite="users")
+
+Boundary(spa, "Cloud-Seeker SPA") {
+
+Container(shopping_cart_service, "Shopping Cart Service", "angular service", "Provides functionality to add and remove items from the shopping cart")
+Container(instance_preview_service, "Instance Preview Service", "angular service", "Provides functionality to display the instance preview and apply new filters")
+Container(pricing_class, "Pricing service", "angular service", "Parses pricing units and conversion between those.")
+Container(instance_preview_component, "Instance Preview Component", "angular component", "Displays the preview of all instances of the current category with applied filters")
+
+
+Boundary(instance_configuration, "Instance Configuration"){
+    Container(instance_configuration_component, "Instance Configuration Component", "angular component", "Displays the configuration of the selected instance as material ui dialog content")
+    Container(instance_configuration_dialog, "Dialog button", "angular component", "Provides functionality to open a configuration dialog for a instance by clicking a button")
+    Container(field_component, "Field Component", "angular component", "Provides functionality to display a field of the configuration dialog")
+}
+}
+
+
+
+Rel(user, instance_configuration_component, "configure instance")
+Rel(user, instance_preview_component, "select instance")
+
+Rel_L(instance_configuration_dialog, instance_configuration_component, "Hosts configuration dialog")
+Rel(instance_configuration_component, pricing_class, "Parses units")
+Rel(instance_configuration_component, field_component, "Display fields according to pricing model")
+
+
+
+
+Rel(instance_preview_component, instance_preview_service, "Subscribes to preview changes")
+Rel(instance_preview_component, instance_configuration_dialog, "shows")
+
+Rel_L(instance_configuration_component, shopping_cart_service, "Adds instance configuration")
+
+
+
+
+@enduml
