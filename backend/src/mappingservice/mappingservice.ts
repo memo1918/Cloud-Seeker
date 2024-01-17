@@ -21,7 +21,8 @@ export class MappingService {
         private categoryprovider: CategoryProvider,
         private mappingdb: MappingDB,
         private csvreader: CSVReader
-    ) {}
+    ) {
+    }
 
     /**
      * starts the mapping service
@@ -159,13 +160,10 @@ export class MappingService {
             };
 
             for (let i = 0; i < instance.prices.length; i++) {
-                let price = parseFloat(instance.prices[i].USD);
-                if (price != 0) {
-                    newInstanceComparison.price[instance.vendorName] = {
-                        value: instance.prices[i].USD.toString(),
-                        unit: instance.prices[i].unit.toString()
-                    };
-                }
+                newInstanceComparison.price[instance.vendorName] = {
+                    value: instance.prices[i].USD.toString(),
+                    unit: instance.prices[i].unit.toString()
+                };
             }
 
             newInstanceComparison.skus.indexOf(instance.sku) === -1
