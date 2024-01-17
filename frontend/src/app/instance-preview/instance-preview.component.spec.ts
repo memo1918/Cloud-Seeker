@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from "@angular/core/testing";
 
 import { InstancePreviewComponent } from "./instance-preview.component";
-import {getTestBedDeclarations, getTestBedImports, getTestBedProviders} from "../testbed.app";
+import { getTestBedDeclarations, getTestBedImports, getTestBedProviders } from "../testbed.app";
 import { dummyApplicationData } from "../mocks/fetch/applicationdummydata.spec";
 import { FetchMockSpec } from "../fetch.mock.spec";
 import { domUpdate, elementToBePresent } from "../helper.spec";
@@ -25,18 +25,25 @@ describe("InstancePreviewComponent", () => {
     component = fixture.componentInstance;
   });
 
-
+  /**
+   * This test checks if the instance preview component is created.
+   */
   it("should create", () => {
     expect(component).toBeTruthy();
   });
 
+  /**
+   * This test checks if the instance preview is initialized with loaded instances.
+   */
   it("should initialize with loaded instances", async () => {
     await domUpdate(fixture);
     let preview = await elementToBePresent("div.instance-preview-container", fixture) as HTMLElement;
-    // expect the preview to exist
     expect(preview).toBeTruthy();
   });
 
+  /**
+   * This test checks if the instance name is displayed correctly.
+   */
   it("should display the correct instance name", async () => {
     await domUpdate(fixture);
     let titles = document.querySelectorAll(".instanceName") as NodeListOf<HTMLElement>;
@@ -46,10 +53,11 @@ describe("InstancePreviewComponent", () => {
     }
   });
 
+  /**
+   * This test checks if the correct fields & the correct number of fields are displayed for each category.
+   */
   it("should display the correct fields & number of fields for each category", async () => {
     await domUpdate(fixture);
-    // display the correct amount of fields for the selected category
-
     const expectedFields = ["cores", "regionCode", "gpuMemory", "clockSpeed", "operatingSystem", "memory", "storage"];
     let fieldRows = document.querySelectorAll(".fieldRow") as NodeListOf<HTMLElement>;
     for (let i = 0; i < component.getItems().length; i++) {
@@ -63,6 +71,9 @@ describe("InstancePreviewComponent", () => {
     }
   });
 
+  /**
+   * This test checks for 0 if there is no category selected.
+   */
   it("test for no selected category", async () => {
     expect(component.getCategoryLength()).toEqual(0);
   });
