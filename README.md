@@ -24,10 +24,6 @@ We need the following tools for our environment:
     * `npm i -g @angular/cli`
 * MongoDB Compass https://www.mongodb.com/products/tools/compass
 
-We need to clone the repo:
-
-* git clone https://git.it.hs-heilbronn.de/it/courses/seb/pmt/pmt-sose-23/cloud-seeker.git
-* use credentials of choice (Token, PW, ….)
 
 ## Deployment
 
